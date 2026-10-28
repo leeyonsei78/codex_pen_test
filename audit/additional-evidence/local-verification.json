@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-28T14:09:10.097Z",
+  "scope": "Three additional GETs already captured. This script runs offline; only synthetic token/query data are used.",
+  "certificate": {
+    "authorized": true,
+    "authorizationError": null,
+    "hostnameMatch": true,
+    "protocol": "TLSv1.3",
+    "cipher": {
+      "name": "TLS_AES_128_GCM_SHA256",
+      "standardName": "TLS_AES_128_GCM_SHA256",
+      "version": "TLSv1.3"
+    },
+    "certificate": {
+      "subject": {
+        "C": "KR",
+        "ST": "Seoul",
+        "O": "LINA Life Insurance Company of Korea",
+        "CN": "www.lina.co.kr"
+      },
+      "issuer": {
+        "C": "GB",
+        "ST": "Greater Manchester",
+        "L": "Salford",
+        "O": "Sectigo Limited",
+        "CN": "Sectigo RSA Organization Validation Secure Server CA"
+      },
+      "subjectAltName": "DNS:www.lina.co.kr, DNS:lina.co.kr",
+      "validFrom": "Dec 30 00:00:00 2025 GMT",
+      "validTo": "Jan 30 23:59:59 2027 GMT",
+      "fingerprint256": "89:EF:16:B8:5A:5F:BB:B8:07:EF:89:39:1A:AF:92:6D:9F:96:3F:57:EB:B4:F9:58:B2:6F:E7:52:02:20:A7:A4"
+    },
+    "daysRemainingAtCollection": 94
+  },
+  "tokenStorage": {
+    "source": "A03.js",
+    "offset": 3771,
+    "extractedStatement": "sessionStorage&&(sessionStorage.setItem(\"token\",s.data.idToken),sessionStorage.setItem(\"refreshToken\",s.data.refreshToken),document.cookie=\"x-lina-at-001=\".concat(s.data.idToken,\"; path=/; expires=0; samesite=strict; secure;\"),document.cookie=\"x-lina-at-002=\".concat(s.data.refreshToken,\"; path=/; expires=0; samesite=strict; secure;\"),localStorage.setItem(\"lastActiveTime\",Math.ceil((new Date).getTime()/1e3).toString()))",
+    "syntheticSessionStorage": {
+      "token": "AUDIT_FAKE_ID_TOKEN",
+      "refreshToken": "AUDIT_FAKE_REFRESH_TOKEN"
+    },
+    "syntheticCookieAssignments": [
+      "x-lina-at-001=AUDIT_FAKE_ID_TOKEN; path=/; expires=0; samesite=strict; secure;",
+      "x-lina-at-002=AUDIT_FAKE_REFRESH_TOKEN; path=/; expires=0; samesite=strict; secure;"
+    ],
+    "realLoginOrTokensUsed": false,
+    "browserCookieAndServerLifecycleTested": false
+  },
+  "rawQueryStorage": {
+    "source": "R07.txt",
+    "cases": [
+      {
+        "href": "https://www.lina.co.kr/?utm_source=audit&token=AUDIT_FAKE_TOKEN&email=fake%40example.invalid#AUDIT_FAKE_FRAGMENT",
+        "storage": {
+          "X_UTM_PARAM": "utm_source=audit&token=AUDIT_FAKE_TOKEN&email=fake%40example.invalid#AUDIT_FAKE_FRAGMENT",
+          "X_UTM_SOURCE": "audit"
+        },
+        "logs": [
+          "UTM_ARR == >>  utm_source=audit",
+          "UTM_ARR == >>  token=AUDIT_FAKE_TOKEN",
+          "UTM_ARR == >>  email=fake%40example.invalid#AUDIT_FAKE_FRAGMENT",
+          "new browser ~"
+        ]
+      },
+      {
+        "href": "https://www.lina.co.kr/?not_utm_source=audit&code=AUDIT_FAKE_CODE",
+        "storage": {
+          "X_UTM_PARAM": "not_utm_source=audit&code=AUDIT_FAKE_CODE",
+          "X_UTM_SOURCE": "audit"
+        },
+        "logs": [
+          "UTM_ARR == >>  not_utm_source=audit",
+          "UTM_ARR == >>  code=AUDIT_FAKE_CODE",
+          "new browser ~"
+        ]
+      }
+    ]
+  },
+  "rawHtmlSink": {
+    "source": "A03.js",
+    "marker": "domProps:{innerHTML:t._s(t.messageState.messageInfo.message)}",
+    "offset": 28929,
+    "untrustedInputPathVerified": false
+  },
+  "scriptLoading": {
+    "source": [
+      "R07.txt",
+      "R08.txt"
+    ],
+    "referencedUrlsAcrossBranches": [
+      "https://www.googletagmanager.com/gtm.js?id=GTM-NW4QDN65",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-W7FKMGX2",
+      "https://www.googletagmanager.com/gtag/js?id=G-0K0ZYG493N",
+      "https://www.googletagmanager.com/gtag/js?id=G-FKVTFL0D0Q",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-5MNQXK3K",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-NGBB95X"
+    ],
+    "integrityAssignmentPresentInReviewedLoader": false,
+    "remoteScriptsExecutedOrDownloaded": false
+  },
+  "excerpts": [
+    {
+      "marker": "refreshLogin(s)",
+      "offset": 3595,
+      "excerpt": "rap((function(e){for(;;)switch(e.prev=e.next){case 0:return s=t.tokenInfo.refreshToken,e.next=3,r.A.refreshLogin(s).then(function(){var e=Object(n.a)(regeneratorRuntime.mark((function e(s){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return sessionStorage&&(sessionStorage.setItem(\"token\",s.data.idToken),sessionSto"
+    },
+    {
+      "marker": "getTokenCookie:function",
+      "offset": 68832,
+      "excerpt": "Dto.telYn?1:0,trdYn:\"Y\"===t.mktgAsntDto.trdYn?1:0}});case 12:case\"end\":return e.stop()}}),e)})))()},getTokenCookie:function(t){for(var e=t+\"=\",s=document.cookie.split(\";\"),n=0;n<s.length;n++){for(var a=s[n];\" \"===a.charAt(0);)a=a.substring(1,a.length);if(0===a.indexOf(e))return a.substring(e.length,a.length)}return\"\"},getDebtInfo:function(){var t=t"
+    },
+    {
+      "marker": "domProps:{innerHTML:t._s(t.messageState.messageInfo.message)}",
+      "offset": 28929,
+      "excerpt": "[t._v(\"\\n        [\"+t._s(t.messageState.messageInfo.title)+\"]\\n      \")]:t._e(),t._v(\" \"),s(\"span\",{domProps:{innerHTML:t._s(t.messageState.messageInfo.message)}}),t._v(\" \"),t.errorData?s(\"base-input\",{attrs:{type:\"textarea\",readonly:!0,value:t.errorData}}):t._e()],2),t._v(\" \"),s(\"div\",{staticClass:\"btn-group\",attrs:{id:\"global-message-btn-group\"}}"
+    }
+  ]
+}

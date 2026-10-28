@@ -1,0 +1,51 @@
+console.log('@@@@@@@@@@@@@@@@@@@@ common head script', window.LINA_SYSTEM, window.LINA_SERVER_TYPE, window.LINA_HOSTNAME, window.LINA_PATHNAME, window.LINA_IS_MOBILE)
+if (window.LINA_SYSTEM === 'home') {
+
+  gtag('config', 'UA-71692474-2', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'UA-169198305-4', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'AW-627209194', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'G-H55X4Y2LH7', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'G-PY77EHDXW8', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'G-0K0ZYG493N', { cookie_flags: 'SameSite=None;Secure' });
+
+  addHeadScript('https://www.googletagmanager.com/gtm.js?id=GTM-NW4QDN65');
+  addHeadScript('https://www.googletagmanager.com/gtm.js?id=GTM-W7FKMGX2');
+  // G-0K0ZYG493N
+  addHeadScript('https://www.googletagmanager.com/gtag/js?id=G-0K0ZYG493N');
+
+} else if (window.LINA_SYSTEM === 'dtc') {
+
+  gtag('config', 'UA-88968157-1', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'UA-88968157-2', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'UA-84826529-3', { cookie_flags: 'SameSite=None;Secure' });
+  gtag('config', 'G-FKVTFL0D0Q', { cookie_flags: 'SameSite=None;Secure' });
+
+  // G-FKVTFL0D0Q
+  addHeadScript('https://www.googletagmanager.com/gtag/js?id=G-FKVTFL0D0Q');
+
+  addHeadScript('https://www.googletagmanager.com/gtm.js?id=GTM-NW4QDN65');
+
+  addHeadScript('https://www.googletagmanager.com/gtm.js?id=GTM-5MNQXK3K');
+  // GTM-NGBB95X    Google Tag Manager
+  addHeadScript('https://www.googletagmanager.com/gtm.js?id=GTM-NGBB95X');
+
+  // Facebook Pixel
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+  // fbq('init', '443797052898202'); // e-lina
+  // fbq('init', '688209285385025'); // mall
+  fbq('track', 'PageView'); // mall
+
+
+
+}
+
+/*
+
+*/

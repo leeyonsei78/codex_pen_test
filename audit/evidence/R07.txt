@@ -1,0 +1,329 @@
+/**
+ * clientId 생성
+ */
+function uuidv4() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  )
+}
+
+let X_CLIENT_ID = null
+function setClientId(isClient = false) {
+  if (!isClient) {
+    X_CLIENT_ID = uuidv4().replaceAll('-', '')
+  } else if (getClientId()) {
+    X_CLIENT_ID = getClientId()
+  } else {
+    localStorage.setItem('X_CLIENT_ID', X_CLIENT_ID)
+  }
+}
+
+function getClientId() {
+  return localStorage.getItem('X_CLIENT_ID')
+}
+
+/** utm 정보 localstorage 에 저장하도록 추가 개선 2024.01 */
+const FULL_URL = window.location.href
+const UTM = FULL_URL.split('?')[1]
+const UTM_ARR = UTM ? UTM.split('&') : []
+let UTM_SOURCE = ''
+for(var i=0; UTM_ARR.length>i; i++){
+  console.log('UTM_ARR == >> ', UTM_ARR[i])
+  if(UTM_ARR[i].includes('utm_source')){
+    UTM_SOURCE = UTM_ARR[i].split('=')[1]
+  }
+}
+function setUtmParam(){
+  // <0> 이전 URL 이 없을때 utm 정보 신규 적재 (새 탭 또는 새 브라우저로 인식)
+  if(!document.referrer){
+    console.log('new browser ~')
+    if(FULL_URL.indexOf('utm_source')>-1) {
+      localStorage.setItem('X_UTM_PARAM', UTM)
+      localStorage.setItem('X_UTM_SOURCE', UTM_SOURCE)
+    } else {
+      // utm 정보 없을 경우 빈값으로 저장 (localstorage 는 브라우저를 새로 켜도 살아있어서 초기화 처리)
+      localStorage.setItem('X_UTM_PARAM', '')
+      localStorage.setItem('X_UTM_SOURCE', '')
+    }
+  }
+}
+
+function setFstEcid(fstEcid){
+  // localStorage.setItem('FIRST_ECID', fstEcid)
+  sessionStorage.setItem('FIRST_ECID', fstEcid)
+}
+
+function getFstEcid(){
+  return sessionStorage.getItem('FIRST_ECID')
+}
+
+function setUserId(usrId){
+  // localStorage.setItem('FIRST_ECID', fstEcid)
+  sessionStorage.setItem('USER_ID', usrId)
+}
+
+function getUserId(){
+  return sessionStorage.getItem('USER_ID')
+}
+
+setClientId()
+document.addEventListener('DOMContentLoaded', ready)
+function ready() {
+  setClientId(true)
+  setUtmParam()
+}
+
+let _testAddScriptSrcs = '|';
+// eslint-disable-next-line no-unused-vars
+function addHeadScript(src, async = true, onloadFunc) {
+  console.log('addHeadScript src='+src)
+  if (!_testAddScriptSrcs.includes(src + '|')) {
+    const el = document.createElement('script')
+    el.type = 'text/javascript'
+    el.async = async
+    el.src = src
+    if(onloadFunc != null && $.isFunction( onloadFunc )) {
+      el.addEventListener("load", function() {
+        console.log('onloadFunc call(load) '+src)
+        onloadFunc()
+      })
+    }
+    document.head.appendChild(el)
+    _testAddScriptSrcs += src + '|';
+  } else if(onloadFunc != null && $.isFunction( onloadFunc )) {
+    console.log('onloadFunc call '+src)
+    onloadFunc()
+  }
+  // else {}
+}
+// eslint-disable-next-line no-unused-vars
+function addBodyScript(src, async = true, onloadFunc) {
+  if (!_testAddScriptSrcs.includes(src + '|')) {
+    const el = document.createElement('script')
+    el.type = 'text/javascript'
+    el.async = async
+    el.src = src
+    if(onloadFunc != null && $.isFunction( onloadFunc )) {
+      el.addEventListener("load", function() {
+        console.log('onloadFunc call(load) '+src)
+        onloadFunc()
+      })
+    }
+    document.body.appendChild(el)
+    _testAddScriptSrcs += src + '|';
+  } else if(onloadFunc != null && $.isFunction( onloadFunc )) {
+    console.log('onloadFunc call '+src)
+    onloadFunc()
+  }
+  // else {}
+}
+
+/* vue(window 변수처리) , LINA_SYSTEM 구분 */
+window.LINA_HOSTNAME = location ? location.hostname : window.location.hostname
+window.LINA_PATHNAME = location ? location.pathname : window.location.pathname
+window.LINA_SYSTEM = 'home'
+window.LINA_IS_MOBILE = false
+if (window.LINA_HOSTNAME.includes('direct')) {
+  window.LINA_SYSTEM = 'dtc'
+  if (window.LINA_HOSTNAME.includes('mdirect')) {
+    window.LINA_IS_MOBILE = true
+  }
+} else {
+  window.LINA_SYSTEM = 'home'
+  if (window.LINA_HOSTNAME.includes('m.')) {
+    window.LINA_IS_MOBILE = true
+  }
+}
+
+/* GA AA 에러 방지용 */
+// eslint-disable-next-line no-var,no-unused-vars
+var digitalData = {
+  "page": {
+    "pageInfo" : {
+      "pageName": ""
+    }
+  }
+}
+// eslint-disable-next-line no-var,no-unused-vars
+var dataLayer = []
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('set', {cookie_flags: 'SameSite=None;Secure'});
+
+/* var _fnctr 에러로 미리 추가함. */
+window._fnctr = function(str){
+  let ret = "";
+  if(str != null && str !== ""){
+    ret = str.replace(/\r/g,"").replace(/\n/g,"").replace(/\t/g," ");
+  }
+  return ret;
+}
+
+
+let commonData = {};
+let virCommonData = {};
+let isGTMLoad = false;
+
+/*
+- 매개변수 제거 함수
+- 매개변수 값이 "" / null / undefined일 시 해당 필드를 객체에서 제거합니다.
+*/
+function removeEmptyElement(removeValue) {
+  let returnValue = {};
+  for (key in removeValue) {
+    if (removeValue[key] === '' || removeValue[key] === null || removeValue[key] === undefined) {
+      delete removeValue[key];
+    }
+  }
+  returnValue = removeValue;
+
+  return returnValue;
+}
+
+/*
+- dataLayer 초기화 함수
+- 해당 함수는 dataLayer를 초기화하여 이전 데이터의 중복 전송을 방지합니다.
+*/
+function resetDataLayer(targetObject) {
+  let setGTM = {};
+  for (key in targetObject) {
+    setGTM[key] = undefined;
+  }
+
+  return dataLayer.push(setGTM);
+}
+
+
+/*
+- 페이지뷰 전송 함수
+- 화면 데이터를 전송합니다.
+*/
+function sendGAPage(object) {
+  try {
+    object = removeEmptyElement(object);
+    commonData = {...object};
+
+    object.event = 'ga_page';
+    dataLayer.push(object);
+
+  } catch (e) {
+    console.log('sendGAPage 함수 ERROR');
+    console.log(e.message);
+  }
+}
+
+/*
+- 가상 페이지뷰 전송 함수
+- 가상 페이지 데이터를 전송합니다.
+- 해당 함수는 가상 페이지 전용 함수입니다.
+*/
+function sendGAVirPage(virObject) {
+  try {
+    virObject = removeEmptyElement(virObject);
+    virCommonData = { ...virObject };
+    virObject.event = 'ga_virtual';
+    dataLayer.push(virObject);
+    resetDataLayer(virObject);
+  } catch (e) {
+    console.log('sendVirPage 함수 ERROR');
+    console.log(e.message);
+  }
+}
+
+/*
+- 이벤트 전송 함수 - 객체
+- 해당 함수는 매개변수를 객체로 받아 사용합니다.
+- 가상 페이지에서 사용 시 isVirtual 매개변수를 반드시 설정해야 합니다.
+*/
+function sendGAEvent(object, isVirtual) {
+  try {
+    let GAData = removeEmptyElement(object);
+    console.log(object);
+    GAData.event = 'ga_event';
+    isVirtual ? (GAData = { ...virCommonData, ...GAData }) : (GAData = { ...commonData, ...GAData });
+    dataLayer.push(GAData);
+    resetDataLayer(GAData);
+  } catch (e) {
+    console.log('sendGAEvent 함수 ERROR');
+    console.log(e.message);
+  }
+}
+
+function sendGAClickEvent(page, area, label){
+  this.sendGAEvent({
+    event_name: "click_event",
+    ep_click_page: page,
+    ep_click_area: area,
+    ep_click_label: label
+  }, false)
+}
+function sendGAClickObjectEvent(object, page, area){
+  this.sendGAEvent({
+    event_name: 'click_event',
+    ep_click_page: page,
+    ep_click_area: area,
+    ep_click_label: object.getAttribute('alt')
+  }, false)
+}
+
+
+/*
+- 이벤트 전송 함수 - 속성
+- 해당 함수는 HTML attribute에서 이벤트 매개변수를 추출하여 데이터를 정의합니다.
+- 가상 페이지에서 사용 시 isVirtual 매개변수를 반드시 설정해야 합니다.
+*/
+function sendGAAttrEvent(event, isVirtual) {
+  try {
+    const ELE = event.currentTarget;
+    const ATTR = ELE.getAttributeNames();
+    let GAData = {};
+    for (var i = 0; i < ATTR.length; i++) {
+      if (ATTR[i].includes('ep_')) {
+        GAData[ATTR[i]] = ELE.getAttribute(ATTR[i]);
+      }
+    }
+    GAData['event_name'] = ELE.getAttribute('event_name');
+
+    GAData.event = 'ga_event';
+    isVirtual ? (GAData = { ...virCommonData, ...GAData }) : (GAData = { ...commonData, ...GAData });
+    dataLayer.push(GAData);
+    resetDataLayer(GAData);
+
+  } catch (e) {
+    console.log('sendGAAttrEvent 함수 ERROR');
+    console.log(e.message);
+  }
+}
+
+/*
+- 전자상거래 전송 함수
+- 전자상거래 데이터를 전송합니다.
+- 가상 페이지에서 사용 시 isVirtual 매개변수를 반드시 설정해야 합니다.
+*/
+function sendGAEcommerce(eventData, transaction, items, isVirtual) {
+  try {
+    eventData = removeEmptyElement(eventData);
+    transaction = removeEmptyElement(transaction);
+    for (var i in items) items[i] = removeEmptyElement(items[i]);
+
+    let GAData = {
+      event: 'ga_ecommerce',
+      ...eventData,
+      ecommerce: {
+        ...transaction,
+        items,
+      },
+    };
+    isVirtual ? (GAData = { ...virCommonData, ...GAData }) : (GAData = { ...commonData, ...GAData });
+    dataLayer.push(GAData);
+    resetDataLayer(GAData);
+
+  } catch (e) {
+    console.log('sendGAEcommerce 함수 ERROR');
+    console.log(e.message);
+  }
+}
+
+
+
+

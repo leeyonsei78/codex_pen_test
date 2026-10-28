@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-28T13:56:47.464Z",
+  "source": "R01.html",
+  "helperSha256": "de383e630667c8aa6aee6945cfac0357c2ee52dddf6c7b629aa3ba933195ba7b",
+  "scope": "Pure helper behavior only; no remote XSS or application sink verified.",
+  "cases": [
+    {
+      "name": "benign HTML passes through blacklist",
+      "input": "<b>audit</b>",
+      "functionName": "excapeHtmlOrReturn",
+      "expected": "<b>audit</b>",
+      "actual": "<b>audit</b>",
+      "reproduced": true
+    },
+    {
+      "name": "unlisted inert event attribute passes through",
+      "input": "<b onclick=\"void 0\">audit</b>",
+      "functionName": "excapeHtmlOrReturn",
+      "expected": "<b onclick=\"void 0\">audit</b>",
+      "actual": "<b onclick=\"void 0\">audit</b>",
+      "reproduced": true
+    },
+    {
+      "name": "invalid quote entity",
+      "input": "\"",
+      "functionName": "escapeHtml",
+      "expected": "&qout;",
+      "actual": "&qout;",
+      "reproduced": true
+    },
+    {
+      "name": "replacement order double encodes angle bracket",
+      "input": "<",
+      "functionName": "escapeHtml",
+      "expected": "&amp;lt;",
+      "actual": "&amp;lt;",
+      "reproduced": true
+    }
+  ]
+}

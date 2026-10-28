@@ -1,0 +1,163 @@
+{
+  "at": "2026-10-28T14:23:21.197Z",
+  "scope": "Offline statement/VDOM-data reproduction using synthetic responses and stub helpers. No browser HTML parse or script execution, no real API calls or token use.",
+  "evidence": [
+    {
+      "file": "path-evidence/P01.js",
+      "bytes": 22756,
+      "sha256": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8"
+    },
+    {
+      "file": "path-evidence/P02.js",
+      "bytes": 15286,
+      "sha256": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767"
+    },
+    {
+      "file": "path-evidence/P03.js",
+      "bytes": 52928,
+      "sha256": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698"
+    },
+    {
+      "file": "path-evidence/P04.js",
+      "bytes": 55033,
+      "sha256": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6"
+    },
+    {
+      "file": "path-evidence/P05.js",
+      "bytes": 35014,
+      "sha256": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786"
+    },
+    {
+      "file": "path-evidence/P06.js",
+      "bytes": 676702,
+      "sha256": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21"
+    },
+    {
+      "file": "path-evidence/common/P01.js",
+      "bytes": 5744,
+      "sha256": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c"
+    },
+    {
+      "file": "path-evidence/common/P02.js",
+      "bytes": 49161,
+      "sha256": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee"
+    },
+    {
+      "file": "path-evidence/common/P03.js",
+      "bytes": 31676,
+      "sha256": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101"
+    },
+    {
+      "file": "path-evidence/common/P04.js",
+      "bytes": 98198,
+      "sha256": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef"
+    }
+  ],
+  "requestCount": 10,
+  "totalCapturedBytes": 1042498,
+  "apiMessageToHtml": {
+    "cases": [
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_LOCAL_CODE",
+          "message": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>"
+        },
+        "storedMessage": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>",
+        "htmlSinkValue": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>"
+      },
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_LOCAL_CODE",
+          "message": "일시적인 오류입니다."
+        },
+        "storedMessage": "일시적인 오류입니다.",
+        "htmlSinkValue": "일시적인 오류입니다."
+      },
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_IDENTICAL",
+          "message": "AUDIT_IDENTICAL"
+        },
+        "storedMessage": "오류가 발생했습니다",
+        "htmlSinkValue": "오류가 발생했습니다"
+      }
+    ],
+    "actualAttackerControlVerified": false,
+    "browserXssExecuted": false
+  },
+  "tokenRotation": {
+    "originalNewResponseValue": "AUDIT_FAKE_NEW_REFRESH",
+    "actualSelectedValue": "AUDIT_FAKE_PREVIOUS_REFRESH",
+    "serverRotationPolicyVerified": false
+  },
+  "axiosXsrf": {
+    "version": "0.21.4",
+    "cases": [
+      {
+        "sameOrigin": false,
+        "withCredentials": true,
+        "syntheticHeaderValue": "AUDIT_FAKE_XSRF"
+      },
+      {
+        "sameOrigin": false,
+        "withCredentials": false,
+        "syntheticHeaderValue": null
+      },
+      {
+        "sameOrigin": true,
+        "withCredentials": false,
+        "syntheticHeaderValue": "AUDIT_FAKE_XSRF"
+      }
+    ],
+    "realCookieOrExternalDestinationUsed": false,
+    "applicationExploitConditionsVerified": false
+  },
+  "logout": {
+    "serverLogoutMethodCallPresent": true,
+    "serverInvalidationVerified": false
+  },
+  "reviewedRegions": [
+    {
+      "file": "common/P03.js",
+      "offset": 1735,
+      "source": "m=null!==(c=null==d?void 0:d.message)&&void 0!==c?c:\"\"",
+      "sha256": "dc369929c1589f1dd15cdd0592e7bd72b57c9adb4182da7d59414cb561269ad3"
+    },
+    {
+      "file": "common/P03.js",
+      "offset": 5903,
+      "source": "d.errorCode!==d.message&&Object.keys(d).includes(\"message\")||(m=\"오류가 발생했습니다\"),null!==(l=m)&&void 0!==l&&l.includes(\"Endpoint request timed out\")&&(m=\"고객님 죄송합니다.<br>거래처리 중 일시적인 오류가 발생했습니다.<br>이용에 불편을 드려 죄송합니다.[ENDPOINT]\")",
+      "sha256": "f02b10475f8e7de3d0e7ae18fb7e10f5953bc6a4d8a68d4e25b18971a31b1965"
+    },
+    {
+      "file": "common/P03.js",
+      "offset": 6210,
+      "source": "x={message:m,errorData:{txId:T?d.txId:\"\",stackTrace:T?d.stackTrace:\"\"},positive:d.errorCode&&(d.errorCode.startsWith(\"MEMB91\")||d.errorCode.startsWith(\"MEMB92\")||d.errorCode.startsWith(\"CNTRAS\"))?{callback:function(){e.app.router.push(\"/cyber\")}}:{}}",
+      "sha256": "e5281b4368ba5aee74fe10d29c01a0f59a41b4eb4e7a68764179213fa7d7b10e"
+    },
+    {
+      "file": "common/P04.js",
+      "offset": 2262,
+      "source": "function r(t,e){var n=Object.keys(t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(t);e&&(a=a.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),n.push.apply(n,a)}return n}",
+      "sha256": "f5ef3c8fa1f02b9898d7d6d5d25ee8c6a1cce11879d7169f47ddd57bb2a29b3e"
+    },
+    {
+      "file": "common/P04.js",
+      "offset": 2971,
+      "source": "showMessageState:function(t,e){t.messageState=function(t){for(var e=1;e<arguments.length;e++){var n=null!=arguments[e]?arguments[e]:{};e%2?r(Object(n),!0).forEach((function(e){Object(a.a)(t,e,n[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(n)):r(Object(n)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(n,e))}))}return t}({visible:!0},e)}",
+      "sha256": "2562a31ab8287010db7986dbd4b1d3c912742f935db2ea2bdbe7a7996b2aa3cd"
+    },
+    {
+      "file": "P01.js",
+      "offset": 7954,
+      "source": "var g=(t.withCredentials||c(y))&&t.xsrfCookieName?i.read(t.xsrfCookieName):void 0;g&&(p[t.xsrfHeaderName]=g)",
+      "sha256": "31b718052db137e494c34ef01372156b870a3d04166bc1b1996502078f5702b1"
+    }
+  ],
+  "verdict": {
+    "serverIntrusion": "NOT_VERIFIED",
+    "accountTakeover": "NOT_VERIFIED",
+    "apiMessageToHtmlDataFlow": "REPRODUCED_OFFLINE",
+    "safeToRelease": "NOT_DETERMINED"
+  }
+}

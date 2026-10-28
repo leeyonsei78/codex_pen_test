@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-28T14:32:56.927Z",
+  "scope": "Offline request configuration only. No requests, browser preflight, real tokens or attacker-controlled application entry points were used.",
+  "reviewedSource": {
+    "file": "path-evidence/common/P03.js",
+    "offset": 427,
+    "source": "var n=e.store,r=n.state.authStore.uuid,a=/[\\\\/](public|api)[\\\\/]/.test(t.url);if(t.baseURL=e.$config.VUE_APP_API_DOMAIN,a){var o=n.state.authStore.tokenInfo.idToken;\"\"!==o&&null!==o&&(t.headers.Authorization=\"\".concat(o))}"
+  },
+  "axiosHelpers": {
+    "joinUrl": "function(t,e){return t&&!n(e)?o(t,e):e}",
+    "isAbsolute": "function(t){return/^([a-z][a-z\\d\\+\\-\\.]*:)?\\/\\//i.test(t)}",
+    "combineUrls": "function(t,e){return e?t.replace(/\\/+$/,\"\")+\"/\"+e.replace(/^\\/+/,\"\"):t}"
+  },
+  "cases": [
+    {
+      "inputUrl": "/api/local-only",
+      "originalEffectiveUrl": "https://api.example.invalid/api/local-only",
+      "originalAuthorization": "AUDIT_FAKE_ID_TOKEN",
+      "outsideApprovedOrigin": false,
+      "fixedGuard": {
+        "allowed": true,
+        "url": "https://api.example.invalid/api/local-only"
+      }
+    },
+    {
+      "inputUrl": "/public/local-only",
+      "originalEffectiveUrl": "https://api.example.invalid/public/local-only",
+      "originalAuthorization": "AUDIT_FAKE_ID_TOKEN",
+      "outsideApprovedOrigin": false,
+      "fixedGuard": {
+        "allowed": true,
+        "url": "https://api.example.invalid/public/local-only"
+      }
+    },
+    {
+      "inputUrl": "https://audit.example.invalid/api/local-only",
+      "originalEffectiveUrl": "https://audit.example.invalid/api/local-only",
+      "originalAuthorization": "AUDIT_FAKE_ID_TOKEN",
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    },
+    {
+      "inputUrl": "//audit.example.invalid/public/local-only",
+      "originalEffectiveUrl": "//audit.example.invalid/public/local-only",
+      "originalAuthorization": "AUDIT_FAKE_ID_TOKEN",
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    },
+    {
+      "inputUrl": "https://audit.example.invalid/local-only",
+      "originalEffectiveUrl": "https://audit.example.invalid/local-only",
+      "originalAuthorization": null,
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    }
+  ],
+  "actualAttackerUrlControlVerified": false,
+  "actualNetworkHeaderTransmissionVerified": false,
+  "realCredentialsUsed": false
+}

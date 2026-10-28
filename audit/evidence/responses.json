@@ -1,0 +1,470 @@
+[
+  {
+    "id": "R01",
+    "url": "https://www.lina.co.kr/",
+    "method": "GET",
+    "at": "2026-10-28T13:53:13.286Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "none",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Wed, 28 Oct 2026 13:53:13 GMT",
+      "etag": "\"86ca-z9JnsY3Ra/XxqJ0DutdpQmqj2UU\"",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "A0of9v3DyJqPdxlUowkWrTrRQHLaoPSOZ3_4oaiTDH9jlMjB3JDK6A==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:13 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:13 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 34506,
+    "sha256": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+    "bodyFile": "R01.html"
+  },
+  {
+    "id": "R02",
+    "url": "http://www.lina.co.kr/",
+    "method": "GET",
+    "at": "2026-10-28T13:53:14.519Z",
+    "status": 301,
+    "headers": {
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "connection": "keep-alive",
+      "content-length": "167",
+      "content-type": "text/html",
+      "date": "Wed, 28 Oct 2026 13:53:14 GMT",
+      "location": "https://www.lina.co.kr/",
+      "server": "CloudFront",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "qZmNI1MoTJhcUcm4ZFAwb2COlicRlitAllu04BZWWi0rpAfzYy_HPg==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Redirect from cloudfront"
+    },
+    "cookies": [],
+    "bytes": 167,
+    "sha256": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+    "bodyFile": "R02.html"
+  },
+  {
+    "id": "R03",
+    "url": "https://www.lina.co.kr/login",
+    "method": "GET",
+    "at": "2026-10-28T13:53:15.564Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "none",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Wed, 28 Oct 2026 13:53:16 GMT",
+      "etag": "\"86d9-dJqQqgvWkLgjuADM7Xucy6dMVhY\"",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "3CUmIj2JnTP5ZT7l8RMPnEvh2x8byCljNKuvdmOGdJZVD3TPqj5MVA==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:16 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:16 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 34521,
+    "sha256": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+    "bodyFile": "R03.html"
+  },
+  {
+    "id": "R04",
+    "url": "https://www.lina.co.kr/company",
+    "method": "GET",
+    "at": "2026-10-28T13:53:16.736Z",
+    "status": 404,
+    "headers": {
+      "accept-ranges": "none",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Wed, 28 Oct 2026 13:53:17 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "GPqlQJGnboTUAI1sSzGDLougp4_q3Hy7oAQ9fsxS5zf6swPDwYTSXg==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Error from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:17 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:17 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 34576,
+    "sha256": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+    "bodyFile": "R04.html"
+  },
+  {
+    "id": "R05",
+    "url": "https://www.lina.co.kr/lib/jquery-3.7.1.js",
+    "method": "GET",
+    "at": "2026-10-28T13:53:17.848Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "application/javascript; charset=UTF-8",
+      "date": "Wed, 28 Oct 2026 13:53:18 GMT",
+      "etag": "W/\"45a82-1a180e01ac8\"",
+      "last-modified": "Wed, 28 Oct 2026 04:58:53 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "lSAgh1FjDbsJ8Kpg7jGwtrdSm3yEfOxSQNptQKXNWP3JDz7vzvfKmw==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:18 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:18 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 285314,
+    "sha256": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+    "bodyFile": "R05.txt"
+  },
+  {
+    "id": "R06",
+    "url": "https://www.lina.co.kr/lib/jquery/1.12.4/jquery.min.js",
+    "method": "GET",
+    "at": "2026-10-28T13:53:18.985Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "application/javascript; charset=UTF-8",
+      "date": "Wed, 28 Oct 2026 13:53:19 GMT",
+      "etag": "W/\"17b8b-1a180e01ac8\"",
+      "last-modified": "Wed, 28 Oct 2026 04:58:53 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "AodAekIYRr91u3DGceQJNOqQbTwLtSYGJGZICzcjgfJV0wSzuDyUEQ==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:19 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:19 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 97163,
+    "sha256": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+    "bodyFile": "R06.txt"
+  },
+  {
+    "id": "R07",
+    "url": "https://www.lina.co.kr/external/load.js",
+    "method": "GET",
+    "at": "2026-10-28T13:53:20.111Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "application/javascript; charset=UTF-8",
+      "date": "Wed, 28 Oct 2026 13:53:20 GMT",
+      "etag": "W/\"22c5-1a180e01ac8\"",
+      "last-modified": "Wed, 28 Oct 2026 04:58:53 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "0idYfIw3Xzbj4iFp2Y4EjVuED5zC13GfzANzmUrlczRQWrsorVsNRg==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:20 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:20 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 8901,
+    "sha256": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+    "bodyFile": "R07.txt"
+  },
+  {
+    "id": "R08",
+    "url": "https://www.lina.co.kr/external/script/head_prd.js",
+    "method": "GET",
+    "at": "2026-10-28T13:53:21.170Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "application/javascript; charset=UTF-8",
+      "date": "Wed, 28 Oct 2026 13:53:21 GMT",
+      "etag": "W/\"89b-1a180e01ac8\"",
+      "last-modified": "Wed, 28 Oct 2026 04:58:53 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "0VJKy-9Pm8gzVDCNFZzT1mH3Fe4ms14wwZuCBb0ZwuejiZEHjA6Dsg==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:21 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:21 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 2203,
+    "sha256": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+    "bodyFile": "R08.txt"
+  },
+  {
+    "id": "R09",
+    "url": "https://www.lina.co.kr/external/script/body_prd.js",
+    "method": "GET",
+    "at": "2026-10-28T13:53:22.248Z",
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "application/javascript; charset=UTF-8",
+      "date": "Wed, 28 Oct 2026 13:53:22 GMT",
+      "etag": "W/\"20d-1a180e01ac8\"",
+      "last-modified": "Wed, 28 Oct 2026 04:58:53 GMT",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "YTBwQyxuEdrM81e7T3aGTmBZdEH0iQyyCMlB60VNQGuDYa0gDqBmlA==",
+      "x-amz-cf-pop": "ICN57-P1",
+      "x-cache": "Miss from cloudfront",
+      "x-content-type-options": "nosniff"
+    },
+    "cookies": [
+      {
+        "name": "AWSALB",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:22 GMT",
+          "Path=/"
+        ]
+      },
+      {
+        "name": "AWSALBCORS",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Expires=Wed, 04 Nov 2026 13:53:22 GMT",
+          "Path=/",
+          "SameSite=None",
+          "Secure"
+        ]
+      },
+      {
+        "name": "TS011388cf",
+        "value": "[REDACTED]",
+        "attributes": [
+          "Path=/"
+        ]
+      }
+    ],
+    "bytes": 525,
+    "sha256": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+    "bodyFile": "R09.txt"
+  }
+]

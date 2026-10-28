@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-28T14:00:26.768Z",
+  "scope": "Captured public HTML only; not a release approval, browser test, dependency audit or authorization test.",
+  "checks": [
+    {
+      "id": "R01-HSTS",
+      "passed": true,
+      "message": "Observed HSTS max-age is one year"
+    },
+    {
+      "id": "R01-NOSNIFF",
+      "passed": true,
+      "message": "MIME sniffing disabled"
+    },
+    {
+      "id": "R01-NO-STORE",
+      "passed": true,
+      "message": "HTML response forbids storage by conforming caches"
+    },
+    {
+      "id": "R01-FRAME-POLICY",
+      "passed": false,
+      "message": "Strict frame policy present in HTTP response"
+    },
+    {
+      "id": "R03-HSTS",
+      "passed": true,
+      "message": "Observed HSTS max-age is one year"
+    },
+    {
+      "id": "R03-NOSNIFF",
+      "passed": true,
+      "message": "MIME sniffing disabled"
+    },
+    {
+      "id": "R03-NO-STORE",
+      "passed": true,
+      "message": "HTML response forbids storage by conforming caches"
+    },
+    {
+      "id": "R03-FRAME-POLICY",
+      "passed": false,
+      "message": "Strict frame policy present in HTTP response"
+    },
+    {
+      "id": "HTTP-TO-HTTPS",
+      "passed": true,
+      "message": "HTTP home redirects to canonical HTTPS home"
+    },
+    {
+      "id": "R01-NO-LEGACY-JQUERY",
+      "passed": false,
+      "message": "HTML no longer references captured legacy jQuery path"
+    },
+    {
+      "id": "R01-NO-INTERNAL-CONFIG",
+      "passed": false,
+      "message": "Captured private config markers absent from HTML"
+    },
+    {
+      "id": "R03-NO-LEGACY-JQUERY",
+      "passed": false,
+      "message": "HTML no longer references captured legacy jQuery path"
+    },
+    {
+      "id": "R03-NO-INTERNAL-CONFIG",
+      "passed": false,
+      "message": "Captured private config markers absent from HTML"
+    }
+  ],
+  "passed": 7,
+  "failed": 6
+}

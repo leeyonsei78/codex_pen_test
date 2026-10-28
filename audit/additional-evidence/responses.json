@@ -1,0 +1,175 @@
+[
+  {
+    "id": "A01",
+    "url": "https://www.lina.co.kr/",
+    "method": "GET",
+    "at": "2026-10-28T14:06:43.427Z",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "content-length": "34506",
+      "connection": "close",
+      "date": "Wed, 28 Oct 2026 14:06:43 GMT",
+      "vary": "Accept-Encoding",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "x-content-type-options": "nosniff",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+      "etag": "\"86ca-n4/Rw+dq1n9qyR/gw+1G9PCmDOA\"",
+      "accept-ranges": "none",
+      "x-cache": "Miss from cloudfront",
+      "via": "1.1 c9d601fa70fd6862de531284734f9f36.cloudfront.net (CloudFront)",
+      "x-amz-cf-pop": "ICN57-P1",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-amz-cf-id": "4MtT8RIfAjUzPuRmCEPXC_gqLXMXZjs3rzuN8swXgHvQscm220GK6Q=="
+    },
+    "tls": {
+      "authorized": true,
+      "authorizationError": null,
+      "hostnameMatch": true,
+      "protocol": "TLSv1.3",
+      "cipher": {
+        "name": "TLS_AES_128_GCM_SHA256",
+        "standardName": "TLS_AES_128_GCM_SHA256",
+        "version": "TLSv1.3"
+      },
+      "certificate": {
+        "subject": {
+          "C": "KR",
+          "ST": "Seoul",
+          "O": "LINA Life Insurance Company of Korea",
+          "CN": "www.lina.co.kr"
+        },
+        "issuer": {
+          "C": "GB",
+          "ST": "Greater Manchester",
+          "L": "Salford",
+          "O": "Sectigo Limited",
+          "CN": "Sectigo RSA Organization Validation Secure Server CA"
+        },
+        "subjectAltName": "DNS:www.lina.co.kr, DNS:lina.co.kr",
+        "validFrom": "Dec 30 00:00:00 2025 GMT",
+        "validTo": "Jan 30 23:59:59 2027 GMT",
+        "fingerprint256": "89:EF:16:B8:5A:5F:BB:B8:07:EF:89:39:1A:AF:92:6D:9F:96:3F:57:EB:B4:F9:58:B2:6F:E7:52:02:20:A7:A4"
+      }
+    },
+    "bytes": 34506,
+    "sha256": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+    "bodyFile": "A01.html"
+  },
+  {
+    "id": "A02",
+    "url": "https://www.lina.co.kr/_nuxt/04d919052cf557e38e0e.js",
+    "method": "GET",
+    "at": "2026-10-28T14:06:44.674Z",
+    "status": 200,
+    "headers": {
+      "content-type": "application/javascript; charset=UTF-8",
+      "content-length": "87327",
+      "connection": "close",
+      "date": "Wed, 28 Oct 2026 14:06:45 GMT",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "x-content-type-options": "nosniff",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains ; preload",
+      "accept-ranges": "bytes",
+      "last-modified": "Wed, 28 Oct 2026 05:05:09 GMT",
+      "etag": "W/\"1551f-1a180e5d788\"",
+      "vary": "Accept-Encoding, Origin",
+      "x-cache": "Miss from cloudfront",
+      "via": "1.1 d82d6a408b2f0fd658ed37c1479699d8.cloudfront.net (CloudFront)",
+      "x-amz-cf-pop": "ICN57-P1",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-amz-cf-id": "0d79wtD6Tw59UsQG9fiPmnOBhydjiw-hml4v74XBXIFKxCOig05QCQ=="
+    },
+    "tls": {
+      "authorized": true,
+      "authorizationError": null,
+      "hostnameMatch": true,
+      "protocol": "TLSv1.3",
+      "cipher": {
+        "name": "TLS_AES_128_GCM_SHA256",
+        "standardName": "TLS_AES_128_GCM_SHA256",
+        "version": "TLSv1.3"
+      },
+      "certificate": {
+        "subject": {
+          "C": "KR",
+          "ST": "Seoul",
+          "O": "LINA Life Insurance Company of Korea",
+          "CN": "www.lina.co.kr"
+        },
+        "issuer": {
+          "C": "GB",
+          "ST": "Greater Manchester",
+          "L": "Salford",
+          "O": "Sectigo Limited",
+          "CN": "Sectigo RSA Organization Validation Secure Server CA"
+        },
+        "subjectAltName": "DNS:www.lina.co.kr, DNS:lina.co.kr",
+        "validFrom": "Dec 30 00:00:00 2025 GMT",
+        "validTo": "Jan 30 23:59:59 2027 GMT",
+        "fingerprint256": "89:EF:16:B8:5A:5F:BB:B8:07:EF:89:39:1A:AF:92:6D:9F:96:3F:57:EB:B4:F9:58:B2:6F:E7:52:02:20:A7:A4"
+      }
+    },
+    "bytes": 87327,
+    "sha256": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+    "bodyFile": "A02.js"
+  },
+  {
+    "id": "A03",
+    "url": "https://www.lina.co.kr/_nuxt/5a2f219c4df0d3402586.js",
+    "method": "GET",
+    "at": "2026-10-28T14:06:45.777Z",
+    "status": 200,
+    "headers": {
+      "content-type": "application/javascript; charset=UTF-8",
+      "content-length": "98422",
+      "connection": "close",
+      "date": "Wed, 28 Oct 2026 14:06:46 GMT",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "x-content-type-options": "nosniff",
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains ; preload",
+      "accept-ranges": "bytes",
+      "last-modified": "Wed, 28 Oct 2026 05:05:09 GMT",
+      "etag": "W/\"18076-1a180e5d788\"",
+      "vary": "Accept-Encoding, Origin",
+      "x-cache": "Miss from cloudfront",
+      "via": "1.1 6c019d7a6e17048f8ffdf934304a76fa.cloudfront.net (CloudFront)",
+      "x-amz-cf-pop": "ICN57-P1",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-amz-cf-id": "bIThh5zqJ4p0Y5Y1wyBAgIxvWfkYJoeli0F-owjZOsa9_NGF8UG4Cw=="
+    },
+    "tls": {
+      "authorized": true,
+      "authorizationError": null,
+      "hostnameMatch": true,
+      "protocol": "TLSv1.3",
+      "cipher": {
+        "name": "TLS_AES_128_GCM_SHA256",
+        "standardName": "TLS_AES_128_GCM_SHA256",
+        "version": "TLSv1.3"
+      },
+      "certificate": {
+        "subject": {
+          "C": "KR",
+          "ST": "Seoul",
+          "O": "LINA Life Insurance Company of Korea",
+          "CN": "www.lina.co.kr"
+        },
+        "issuer": {
+          "C": "GB",
+          "ST": "Greater Manchester",
+          "L": "Salford",
+          "O": "Sectigo Limited",
+          "CN": "Sectigo RSA Organization Validation Secure Server CA"
+        },
+        "subjectAltName": "DNS:www.lina.co.kr, DNS:lina.co.kr",
+        "validFrom": "Dec 30 00:00:00 2025 GMT",
+        "validTo": "Jan 30 23:59:59 2027 GMT",
+        "fingerprint256": "89:EF:16:B8:5A:5F:BB:B8:07:EF:89:39:1A:AF:92:6D:9F:96:3F:57:EB:B4:F9:58:B2:6F:E7:52:02:20:A7:A4"
+      }
+    },
+    "bytes": 98422,
+    "sha256": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+    "bodyFile": "A03.js"
+  }
+]

@@ -1,0 +1,17 @@
+console.log('@@@@@@@@@@@@@@@@@@@@ common body script', window.LINA_SYSTEM, window.LINA_SERVER_TYPE, window.LINA_HOSTNAME, window.LINA_PATHNAME, window.LINA_IS_MOBILE)
+if (window.LINA_SYSTEM === 'home') {
+
+} else if (window.LINA_SYSTEM === 'dtc') {
+
+
+  // 네이버 GFA
+  addBodyScript('https://wcs.naver.net/wcslog.js', true, function() {
+    if (typeof wcs_add == 'undefined') wcs_add={};
+    wcs_add["wa"] = "s_133c15adcb3d";
+    if (typeof _nasa == 'undefined') var _nasa={};
+    wcs.inflow();
+    wcs_do(_nasa);
+  })
+
+
+}
