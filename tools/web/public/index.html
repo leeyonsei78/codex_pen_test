@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사이트 보안 점검</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <h1>사이트 보안 점검</h1>
+    <p class="note">공개 응답(헤더, 쿠키, 스크립트 참조)만 읽기 전용 GET으로 확인합니다. 로그인·접근제어·서버 입력 검증은 점검하지 않으며, 결과가 없다고 안전하다는 뜻은 아닙니다.</p>
+    <form id="form">
+      <label>사이트 주소
+        <input id="target" type="url" placeholder="https://example.com" required autocomplete="off">
+      </label>
+      <label>점검할 경로 (쉼표로 구분, 최대 5개)
+        <input id="paths" type="text" value="/" autocomplete="off">
+      </label>
+      <label>이전 결과 JSON (선택, 비교용)
+        <input id="baseline" type="file" accept="application/json,.json">
+      </label>
+      <label class="check"><input id="authorized" type="checkbox" required> 이 사이트를 점검할 권한이 있음을 확인합니다</label>
+      <button id="run" type="submit">점검 시작</button>
+    </form>
+    <p id="status" role="status"></p>
+    <section id="result" hidden>
+      <h2>결과</h2>
+      <p id="meta"></p>
+      <div id="diff"></div>
+      <table>
+        <thead><tr><th>ID</th><th>위험도</th><th>내용</th><th>위치</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p><button id="dl-json" type="button">JSON 저장 (다음 비교용)</button> <button id="dl-md" type="button">보고서(.md) 저장</button></p>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { audit, checkHeaderQuality, checkCaching, checkExternalResources, checkMixedContent, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
+import { audit, diffFindings, toMarkdown, isPrivateAddress, isBlockedHostname, checkHeaderQuality, checkCaching, checkExternalResources, checkMixedContent, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
 
 test('헤더 누락 탐지', () => {
   const ids = checkHeaders({}).map(f => f.id);
@@ -41,7 +41,7 @@ test('로컬 서버 통합 점검 (같은 origin만 접근)', async () => {
   });
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   try {
-    const result = await audit({ target: `http://127.0.0.1:${server.address().port}`, paths: ['/'] });
+    const result = await audit({ target: `http://127.0.0.1:${server.address().port}`, paths: ['/'], allowPrivate: true });
     const ids = result.findings.map(f => f.id);
     for (const id of ['HDR-FRAME', 'LIB-JQ-DUP', 'LIB-JQ-OLD', 'COOKIE']) assert.ok(ids.includes(id), id);
     assert.ok(!hits.some(h => h.includes('evil')));
@@ -68,4 +68,34 @@ test('캐시/SRI/혼합 콘텐츠', () => {
   assert.equal(checkExternalResources(html, 'https://site.example').length, 1);
   assert.equal(checkMixedContent(html, true).length, 1);
   assert.equal(checkMixedContent(html, false).length, 0);
+});
+
+test('사설/예약 주소 판정', () => {
+  for (const ip of ['127.0.0.1', '10.1.2.3', '172.16.0.1', '192.168.1.1', '169.254.169.254', '100.64.0.1', '0.0.0.0', '::1', 'fd00::1', 'fe80::1', '::ffff:7f00:1', '::ffff:10.0.0.1', '[::1]']) {
+    assert.ok(isPrivateAddress(ip), ip);
+  }
+  for (const ip of ['8.8.8.8', '1.1.1.1', '172.32.0.1', '2606:4700:4700::1111']) assert.ok(!isPrivateAddress(ip), ip);
+  assert.ok(isBlockedHostname('localhost') && isBlockedHostname('a.localhost') && isBlockedHostname('[::1]'));
+  assert.ok(!isBlockedHostname('example.com'));
+});
+
+test('기본값은 로컬 대상 차단', async () => {
+  const r = await audit({ target: 'http://127.0.0.1:9', paths: ['/'] });
+  assert.ok(r.findings.some(f => f.id === 'ERR' && /차단/.test(f.title)));
+  assert.equal(r.requests, 0);
+});
+
+test('baseline 비교', () => {
+  const f = (id, where) => ({ id, where, severity: 'low', title: id });
+  const prev = { target: 'https://a', at: 'T0', findings: [f('A', '/'), f('B', '/'), f('ERR', '/x')] };
+  const curr = { target: 'https://a', findings: [f('B', '/'), f('C', '/')] };
+  const d = diffFindings(prev, curr);
+  assert.deepEqual(d.new.map(x => x.id), ['C']);
+  assert.deepEqual(d.resolved.map(x => x.id), ['A']);
+  assert.deepEqual(d.unchanged.map(x => x.id), ['B']);
+  assert.equal(d.incomplete, false);
+  assert.equal(diffFindings(prev, { target: 'https://b', findings: [f('ERR', '/')] }).incomplete, true);
+  assert.throws(() => diffFindings({}, curr));
+  const md = toMarkdown({ target: 'https://a', at: 'T1', requests: 1, records: [], findings: curr.findings, diff: d });
+  assert.match(md, /신규 1건 \/ 해결 1건 \/ 유지 1건/);
 });

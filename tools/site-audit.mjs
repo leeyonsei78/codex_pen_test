@@ -4,12 +4,18 @@
 // 사용 예:
 //   node tools/site-audit.mjs --target https://example.com --i-am-authorized
 //   node tools/site-audit.mjs --target http://127.0.0.1:8080 --paths /,/login --out report.md
+//   --baseline prev.json       : 이전 --json 결과와 비교해 신규/해결/유지 표시 (종료 코드는 신규 발견만 기준)
+//   --allow-private            : localhost/사설망 대상 허용 (기본은 차단, 본인 개발 환경 점검용)
 //   --fail-on low|medium|none  : 해당 위험도 이상 발견 시 종료 코드 1 (기본 medium)
 //
 // 안전 장치: 점검 허가를 확인하는 --i-am-authorized 필수, GET만 사용, 쿠키/인증정보 미전송,
 // 리다이렉트 미추적, 같은 origin만 접근, 요청 간 1초 이상 간격, 요청 20초/응답 3MiB/총 요청 수 제한,
 // 429/5xx 시 중지. 크롤링·경로 대입·공격 문자열 전송·폼 제출은 하지 않습니다.
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
+import http from 'node:http';
+import https from 'node:https';
+import net from 'node:net';
+import dns from 'node:dns';
 import { createHash } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
 import { parseArgs } from 'node:util';
@@ -152,26 +158,90 @@ export function checkRiskyPatterns(source, label) {
 
 // ---------- 수집 ----------
 
-async function get(url, state) {
-  if (state.count >= MAX_REQUESTS) throw new Error('요청 수 상한 도달');
-  if (state.count) await delay(1000);
-  state.count++;
-  const res = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(20000), headers: { 'user-agent': 'site-audit/1.0 (authorized passive review)' } });
-  const buf = Buffer.from(await res.arrayBuffer());
-  if (buf.length > MAX_BODY) throw new Error(`응답이 ${MAX_BODY} 바이트 초과: ${url}`);
-  if (res.status === 429 || res.status >= 500) state.stop = `${url} → ${res.status}`;
-  return {
-    url, status: res.status,
-    headers: Object.fromEntries([...res.headers].filter(([k]) => k !== 'set-cookie')),
-    setCookies: res.headers.getSetCookie(),
-    body: buf.toString('utf8'),
-    sha256: createHash('sha256').update(buf).digest('hex'),
-  };
+export function isPrivateAddress(ip) {
+  const addr = ip.replace(/^\[|\]$/g, '').toLowerCase();
+  if (net.isIPv4(addr)) {
+    const [a, b] = addr.split('.').map(Number);
+    return a === 0 || a === 10 || a === 127 || a >= 224
+      || (a === 100 && b >= 64 && b <= 127) || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31)
+      || (a === 192 && (b === 168 || b === 0)) || (a === 198 && (b === 18 || b === 19));
+  }
+  if (net.isIPv6(addr)) {
+    if (addr === '::' || addr === '::1') return true;
+    const dotted = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/.exec(addr);
+    if (dotted) return isPrivateAddress(dotted[1]);
+    const hex = /^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/.exec(addr);
+    if (hex) {
+      const hi = parseInt(hex[1], 16), lo = parseInt(hex[2], 16);
+      return isPrivateAddress(`${hi >> 8}.${hi & 255}.${lo >> 8}.${lo & 255}`);
+    }
+    return /^f[cd]/.test(addr) || /^fe[89ab]/.test(addr) || addr.startsWith('64:ff9b:') || addr.startsWith('ff');
+  }
+  return true; // 알 수 없는 형식은 차단
 }
 
-export async function audit({ target, paths }) {
+export function isBlockedHostname(hostname) {
+  const host = hostname.replace(/^\[|\]$/g, '').toLowerCase();
+  if (host === 'localhost' || host.endsWith('.localhost')) return true;
+  return net.isIP(host) !== 0 && isPrivateAddress(host);
+}
+
+// DNS 리바인딩 방지: 실제 연결에 쓰이는 주소를 연결 시점에 검사한다.
+function guardedLookup(hostname, options, cb) {
+  if (typeof options === 'function') { cb = options; options = {}; }
+  dns.lookup(hostname, options, (err, address, family) => {
+    if (err) return cb(err);
+    const list = Array.isArray(address) ? address : [{ address, family }];
+    const bad = list.find(x => isPrivateAddress(x.address));
+    if (bad) return cb(Object.assign(new Error(`내부망/예약 주소(${bad.address}) 접근 차단`), { code: 'EBLOCKED' }));
+    cb(null, address, family);
+  });
+}
+
+function get(url, state) {
+  const u = new URL(url);
+  if (!state.allowPrivate && isBlockedHostname(u.hostname)) {
+    return Promise.reject(new Error(`내부망/로컬 주소 접근 차단: ${u.hostname}`));
+  }
+  if (state.count >= MAX_REQUESTS) return Promise.reject(new Error('요청 수 상한 도달'));
+  const first = state.count === 0;
+  state.count++;
+  return (first ? Promise.resolve() : delay(1000)).then(() => new Promise((resolve, reject) => {
+    const mod = u.protocol === 'https:' ? https : http;
+    const req = mod.request(u, {
+      method: 'GET',
+      headers: { 'user-agent': 'site-audit/1.0 (authorized passive review)' },
+      lookup: state.allowPrivate ? undefined : guardedLookup,
+    }, res => {
+      const chunks = [];
+      let size = 0;
+      res.on('data', c => {
+        size += c.length;
+        if (size > MAX_BODY) { req.destroy(new Error(`응답이 ${MAX_BODY} 바이트 초과: ${url}`)); return; }
+        chunks.push(c);
+      });
+      res.on('error', reject);
+      res.on('end', () => {
+        const buf = Buffer.concat(chunks);
+        const { 'set-cookie': setCookies = [], ...headers } = res.headers;
+        if (res.statusCode === 429 || res.statusCode >= 500) state.stop = `${url} → ${res.statusCode}`;
+        resolve({
+          url, status: res.statusCode, headers, setCookies,
+          body: buf.toString('utf8'),
+          sha256: createHash('sha256').update(buf).digest('hex'),
+        });
+      });
+    });
+    const timer = setTimeout(() => req.destroy(new Error(`시간 초과(20초): ${url}`)), 20000);
+    req.on('close', () => clearTimeout(timer));
+    req.on('error', reject);
+    req.end();
+  }));
+}
+
+export async function audit({ target, paths, allowPrivate = false }) {
   const base = new URL(target);
-  const state = { count: 0, stop: null };
+  const state = { count: 0, stop: null, allowPrivate };
   const findings = [];
   const records = [];
   const add = (page, list) => list.forEach(x => findings.push({ ...x, where: page }));
@@ -237,10 +307,37 @@ export async function audit({ target, paths }) {
   return { target: base.origin, at: new Date().toISOString(), requests: state.count, records, findings };
 }
 
+// 이전 결과(JSON)와 비교. 키는 id + 위치. ERR/STOPPED는 일시적 오류라 비교 대상에서 제외한다.
+export function diffFindings(previous, current) {
+  if (!previous || !Array.isArray(previous.findings)) throw new Error('baseline에 findings 배열이 없습니다');
+  const key = f => `${f.id}|${f.where}`;
+  const comparable = list => list.filter(f => f.id !== 'ERR' && f.id !== 'STOPPED');
+  const prevMap = new Map(comparable(previous.findings).map(f => [key(f), f]));
+  const currMap = new Map(comparable(current.findings).map(f => [key(f), f]));
+  return {
+    new: [...currMap].filter(([k]) => !prevMap.has(k)).map(([, f]) => f),
+    resolved: [...prevMap].filter(([k]) => !currMap.has(k)).map(([, f]) => f),
+    unchanged: [...currMap].filter(([k]) => prevMap.has(k)).map(([, f]) => f),
+    incomplete: current.findings.some(f => f.id === 'ERR' || f.id === 'STOPPED'),
+    targetChanged: Boolean(previous.target) && previous.target !== current.target,
+    previousAt: previous.at ?? null,
+  };
+}
+
 export function toMarkdown(result) {
   const order = { medium: 0, low: 1, info: 2 };
   const rows = [...result.findings].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9))
     .map(x => `| ${x.id} | ${x.severity} | ${x.title} | ${x.where} |`).join('\n');
+  const d = result.diff;
+  const diffSection = d ? `## 이전 점검 대비 변화 (기준: ${d.previousAt ?? '시각 미상'})
+
+- 신규 ${d.new.length}건 / 해결 ${d.resolved.length}건 / 유지 ${d.unchanged.length}건
+${d.targetChanged ? '- 경고: 기준 결과와 대상이 다릅니다.\n' : ''}${d.incomplete ? '- 경고: 이번 점검에서 일부 요청이 실패하거나 중지되어 "해결" 판정이 부정확할 수 있습니다.\n' : ''}
+| 구분 | ID | 위험도 | 내용 | 위치 |
+|---|---|---|---|---|
+${[...d.new.map(x => ['신규', x]), ...d.resolved.map(x => ['해결', x])].map(([t, x]) => `| ${t} | ${x.id} | ${x.severity} | ${x.title} | ${x.where} |`).join('\n') || '| - | - | - | 변화 없음 | - |'}
+
+` : '';
   return `# 공개 응답 보안 점검 결과
 
 - 대상: ${result.target}
@@ -249,6 +346,8 @@ export function toMarkdown(result) {
 
 > 수동 점검 결과입니다. 취약점 악용을 시도하지 않았으며, 심각도는 수정 우선순위를 위한 잠정 값입니다.
 > 발견이 없다고 안전하다는 뜻이 아닙니다. 로그인·접근제어·서버 입력 검증은 점검 범위 밖입니다.
+
+${diffSection}## 전체 발견 사항
 
 | ID | 잠정 위험도 | 내용 | 위치 |
 |---|---|---|---|
@@ -272,6 +371,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       out: { type: 'string' },
       json: { type: 'string' },
       'fail-on': { type: 'string', default: 'medium' },
+      baseline: { type: 'string' },
+      'allow-private': { type: 'boolean', default: false },
       'i-am-authorized': { type: 'boolean', default: false },
     },
   });
@@ -280,11 +381,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.error('점검 허가를 받은 대상에만 사용하세요. 확인했다면 --i-am-authorized 를 추가하세요.');
     process.exit(2);
   }
-  const result = await audit({ target: values.target, paths: values.paths.split(',').map(s => s.trim()).filter(Boolean) });
+  const result = await audit({ target: values.target, paths: values.paths.split(',').map(s => s.trim()).filter(Boolean), allowPrivate: values['allow-private'] });
+  if (values.baseline) result.diff = diffFindings(JSON.parse(await readFile(values.baseline, 'utf8')), result);
   const md = toMarkdown(result);
   if (values.out) await writeFile(values.out, md); else console.log(md);
   if (values.json) await writeFile(values.json, JSON.stringify(result, null, 2));
   const rank = { info: 0, low: 1, medium: 2, none: 99 };
   const threshold = rank[values['fail-on']] ?? 2;
-  process.exit(result.findings.some(f => (rank[f.severity] ?? 0) >= threshold) ? 1 : 0);
+  // --baseline 사용 시에는 이전에 없던 신규 발견만 종료 코드에 반영한다.
+  const judged = result.diff ? result.diff.new : result.findings;
+  process.exit(judged.some(f => (rank[f.severity] ?? 0) >= threshold) ? 1 : 0);
 }
