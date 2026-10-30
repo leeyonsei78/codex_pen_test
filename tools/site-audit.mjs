@@ -5,6 +5,7 @@
 //   node tools/site-audit.mjs --target https://example.com --i-am-authorized
 //   node tools/site-audit.mjs --target http://127.0.0.1:8080 --paths /,/login --out report.md
 //   --baseline prev.json       : 이전 --json 결과와 비교해 신규/해결/유지 표시 (종료 코드는 신규 발견만 기준)
+//   --snapshot responses.json  : 저장된 증적(audit/evidence/responses.json)을 오프라인 분석 (네트워크 요청 없음, 허가 플래그 불필요)
 //   --allow-private            : localhost/사설망 대상 허용 (기본은 차단, 본인 개발 환경 점검용)
 //   --fail-on low|medium|none  : 해당 위험도 이상 발견 시 종료 코드 1 (기본 medium)
 //
@@ -15,6 +16,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import http from 'node:http';
 import https from 'node:https';
 import net from 'node:net';
+import { basename, dirname, join, resolve } from 'node:path';
 import dns from 'node:dns';
 import { createHash } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
@@ -37,6 +39,7 @@ export function checkHeaders(headers) {
   if (!headers['strict-transport-security']) f.push({ id: 'HDR-HSTS', severity: 'low', title: 'Strict-Transport-Security 헤더 없음 (HTTPS 응답 기준)' });
   if ((headers['x-content-type-options'] ?? '').toLowerCase() !== 'nosniff') f.push({ id: 'HDR-NOSNIFF', severity: 'low', title: 'X-Content-Type-Options: nosniff 없음' });
   if (!headers['referrer-policy']) f.push({ id: 'HDR-REFERRER', severity: 'low', title: 'Referrer-Policy 헤더 없음' });
+  if (!headers['permissions-policy']) f.push({ id: 'HDR-PERMISSIONS', severity: 'low', title: 'Permissions-Policy 헤더 없음 (카메라·마이크·위치 등 불필요한 브라우저 기능 제한)' });
   return f;
 }
 
@@ -132,10 +135,12 @@ export function checkDuplicateJquery(srcs) {
     : [];
 }
 
-const PRIVATE_HOST = /\b(?:localhost|127\.\d+\.\d+\.\d+|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+|[\w-]+\.(?:internal|local|intra|corp))\b(?::\d+)?/gi;
+// URL 형태(scheme://host)만 검사해 `host.includes('localhost')` 같은 코드 비교 오탐을 피한다. \u002F 이스케이프도 해석한다.
+const INTERNAL_URL = /https?:\/\/(?:[^\s"'<>\/@]*@)?(localhost|127\.\d+\.\d+\.\d+|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+|169\.254\.\d+\.\d+|[\w.-]+\.(?:internal|local|intra|corp|svc(?:\.cluster\.local)?))(?::\d+)?/gi;
 
 export function checkInternalAddresses(html) {
-  const hits = [...new Set(html.match(PRIVATE_HOST) ?? [])];
+  const text = html.replace(/\\u002F/gi, '/');
+  const hits = [...new Set([...text.matchAll(INTERNAL_URL)].map(m => m[0]))];
   return hits.length
     ? [{ id: 'CFG-INTERNAL', severity: 'low', title: `공개 응답에 내부망/로컬로 보이는 주소 포함: ${hits.slice(0, 5).join(', ')}` }]
     : [];
@@ -240,8 +245,14 @@ function get(url, state) {
 }
 
 export async function audit({ target, paths, allowPrivate = false }) {
-  const base = new URL(target);
   const state = { count: 0, stop: null, allowPrivate };
+  return analyze({ target, paths, fetchRecord: url => get(url, state), state });
+}
+
+// 수집 방식과 분석을 분리: fetchRecord(url) → {url,status,headers,setCookies,body,sha256}
+export async function analyze({ target, paths, fetchRecord, state = { count: 0, stop: null }, observedAt }) {
+  const base = new URL(target);
+  const get = (url) => fetchRecord(url);
   const findings = [];
   const records = [];
   const add = (page, list) => list.forEach(x => findings.push({ ...x, where: page }));
@@ -250,7 +261,7 @@ export async function audit({ target, paths, allowPrivate = false }) {
   if (base.protocol === 'https:') {
     const plain = new URL('/', base); plain.protocol = 'http:';
     try {
-      const r = await get(plain.href, state);
+      const r = await get(plain.href);
       const loc = r.headers.location ?? '';
       if (!(r.status >= 300 && r.status < 400 && loc.startsWith('https://'))) {
         add(plain.href, [{ id: 'TLS-REDIRECT', severity: 'medium', title: `HTTP 요청이 HTTPS로 리다이렉트되지 않음 (status ${r.status})` }]);
@@ -265,7 +276,7 @@ export async function audit({ target, paths, allowPrivate = false }) {
     const url = new URL(p, base);
     if (url.origin !== base.origin) continue;
     let r;
-    try { r = await get(url.href, state); } catch (e) { findings.push({ id: 'ERR', severity: 'info', where: url.href, title: e.message }); continue; }
+    try { r = await get(url.href); } catch (e) { findings.push({ id: 'ERR', severity: 'info', where: url.href, title: e.message }); continue; }
     records.push({ url: r.url, status: r.status, sha256: r.sha256 });
     const isHtml = (r.headers['content-type'] ?? '').includes('html');
     add(r.url, checkHeaders(r.headers));
@@ -289,13 +300,13 @@ export async function audit({ target, paths, allowPrivate = false }) {
   for (const s of scripts) {
     if (state.stop) break;
     try {
-      const r = await get(s, state);
+      const r = await get(s);
       records.push({ url: r.url, status: r.status, sha256: r.sha256 });
       const lib = detectLibraryVersion(r.body);
       if (lib?.name === 'jquery' && jqueryVulnerable(lib.version)) {
         findings.push({ id: 'LIB-JQ-OLD', severity: 'medium', where: s, title: `jQuery ${lib.version.join('.')} — CVE-2020-11022/11023 영향 범위(<3.5.0). 신뢰할 수 없는 HTML이 .html()/.append()에 전달될 때만 악용 가능` });
       }
-      add(s, checkRiskyPatterns(r.body, new URL(s).pathname));
+      if (!lib) add(s, checkRiskyPatterns(r.body, new URL(s).pathname)); // 알려진 라이브러리 자체 코드는 제외
     } catch (e) { findings.push({ id: 'ERR', severity: 'info', where: s, title: e.message }); }
   }
   const seen = new Set();
@@ -304,7 +315,7 @@ export async function audit({ target, paths, allowPrivate = false }) {
     if (seen.has(k)) findings.splice(i, 1); else seen.add(k);
   }
   if (state.stop) findings.push({ id: 'STOPPED', severity: 'info', where: '-', title: `서버 오류/제한 응답으로 점검 중지: ${state.stop}` });
-  return { target: base.origin, at: new Date().toISOString(), requests: state.count, records, findings };
+  return { target: base.origin, at: observedAt ?? new Date().toISOString(), requests: state.count, records, findings };
 }
 
 // 이전 결과(JSON)와 비교. 키는 id + 위치. ERR/STOPPED는 일시적 오류라 비교 대상에서 제외한다.
@@ -324,10 +335,66 @@ export function diffFindings(previous, current) {
   };
 }
 
+// 저장된 증적(audit/evidence/responses.json 형식)을 오프라인으로 분석한다. 네트워크 요청 없음.
+export async function auditSnapshot(responsesFile, { target, paths }) {
+  const records = JSON.parse(await readFile(responsesFile, 'utf8'));
+  const dir = dirname(resolve(responsesFile));
+  const byUrl = new Map(records.map(r => [r.url, r]));
+  const fetchRecord = async url => {
+    const r = byUrl.get(url);
+    if (!r) throw new Error('저장된 증적에 없음');
+    return {
+      url: r.url, status: r.status, headers: r.headers ?? {},
+      setCookies: (r.cookies ?? []).map(c => [`${c.name}=x`, ...(c.attributes ?? [])].join('; ')),
+      body: r.bodyFile ? await readFile(join(dir, basename(r.bodyFile)), 'utf8') : '',
+      sha256: r.sha256,
+    };
+  };
+  const times = records.map(r => r.at).filter(Boolean).sort();
+  const result = await analyze({ target, paths, fetchRecord, state: { count: 0, stop: null }, observedAt: times[0] });
+  result.requests = 0;
+  result.source = `snapshot:${responsesFile}`;
+  result.findings = result.findings.filter(f => !(f.id === 'ERR' && /저장된 증적에 없음/.test(f.title)));
+  return result;
+}
+
+// 발견 ID별 조치 가이드: 담당 / 조치 / 검증. IT·보안팀 전달용.
+export const REMEDIATION = {
+  'HDR-FRAME': { owner: '인프라/CDN/웹서버', fix: "최종 응답 계층(CDN·WAF·웹서버 중 한 곳)에서 `Content-Security-Policy: frame-ancestors 'self'`와 `X-Frame-Options: SAMEORIGIN` 적용(프레임 불필요 시 'none'/DENY). 제휴 iframe이 필요하면 정확한 HTTPS origin만 허용.", verify: '`curl -sI <URL>`로 두 헤더 확인, 허용 안 된 origin의 iframe이 브라우저에서 차단되는지 확인' },
+  'HDR-CSP': { owner: '프론트엔드 + 보안팀', fix: '먼저 `Content-Security-Policy-Report-Only`로 배포해 위반 보고를 수집하고, 인라인 스크립트는 nonce/hash로 전환한 뒤 enforce. 외부 분석/인증 연동 도메인을 허용 목록에 반영.', verify: '위반 보고가 정상 기능에서 0건이 된 뒤 enforce 전환, 본 도구로 CSP-* 항목 재점검' },
+  'HDR-HSTS': { owner: '인프라/CDN', fix: '`Strict-Transport-Security: max-age=31536000; includeSubDomains` 적용(preload는 모든 하위 도메인 HTTPS 확인 후).', verify: '`curl -sI https://<host>`' },
+  'HDR-NOSNIFF': { owner: '인프라/웹서버', fix: '`X-Content-Type-Options: nosniff` 추가.', verify: '`curl -sI`' },
+  'HDR-REFERRER': { owner: '인프라/웹서버', fix: '`Referrer-Policy: strict-origin-when-cross-origin`(또는 더 엄격) 적용. URL에 민감값이 있으면 코드에서도 제거.', verify: '`curl -sI`' },
+  'HDR-PERMISSIONS': { owner: '인프라/웹서버', fix: '`Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()` 등 사용하지 않는 기능을 비활성화(본인인증·전자서명 등 필요한 기능은 제외).', verify: '`curl -sI`, 해당 기능 회귀 테스트' },
+  'CSP-UNSAFE-INLINE': { owner: '프론트엔드', fix: "인라인 스크립트를 외부 파일로 옮기거나 nonce/hash를 사용하고 'unsafe-inline' 제거.", verify: 'Report-Only 위반 0건 확인 후 enforce' },
+  'CSP-UNSAFE-EVAL': { owner: '프론트엔드', fix: "eval/new Function 사용 라이브러리를 교체하거나 빌드 설정을 변경해 'unsafe-eval' 제거.", verify: 'CSP 적용 후 콘솔 오류 확인' },
+  'CSP-WILDCARD': { owner: '보안팀', fix: 'script-src/default-src의 `*` 제거, 필요한 도메인만 명시.', verify: '본 도구 재점검' },
+  'CSP-NO-SCRIPT': { owner: '보안팀', fix: 'default-src 또는 script-src 지시문 추가.', verify: '본 도구 재점검' },
+  'HSTS-SHORT': { owner: '인프라/CDN', fix: 'max-age를 15552000(180일) 이상, 권장 31536000으로 상향.', verify: '`curl -sI`' },
+  'INFO-VERSION': { owner: '인프라', fix: 'Server/X-Powered-By 등의 버전 표기 제거 또는 일반화.', verify: '`curl -sI`' },
+  'CORS-WILDCARD-CRED': { owner: '백엔드', fix: 'Allow-Origin을 신뢰하는 origin 허용 목록으로 제한하고 `*`와 credentials 동시 사용 금지.', verify: '허용되지 않은 Origin 헤더로 요청 시 거부되는지 확인' },
+  'CORS-WILDCARD': { owner: '백엔드', fix: '공개 리소스가 아니면 허용 origin을 제한.', verify: '`curl -sI -H "Origin: https://example.org"`' },
+  'CACHE-SENSITIVE': { owner: '인프라/백엔드', fix: '인증·개인정보 페이지에 `Cache-Control: no-store` 적용(CDN 캐시 규칙 포함).', verify: '`curl -sI` 후 CDN 캐시 상태 헤더 확인' },
+  'SRI-MISSING': { owner: '프론트엔드', fix: '외부 도메인 스크립트/스타일에 integrity+crossorigin 추가하거나 자체 호스팅. 동적으로 바뀌는 서드파티 태그는 SRI가 불가하므로 CSP와 공급자 관리를 병행.', verify: '페이지 로드 시 SRI 오류 없음' },
+  'MIXED-CONTENT': { owner: '프론트엔드', fix: 'http:// 리소스를 https:// 로 변경하고 `upgrade-insecure-requests` 고려.', verify: '브라우저 콘솔 혼합 콘텐츠 경고 0건' },
+  'COOKIE': { owner: '백엔드/인프라', fix: '세션·인증 쿠키는 Secure; HttpOnly; SameSite=Lax(또는 Strict) 설정. 로드밸런서(AWSALB 등) 쿠키는 장비 설정에서 속성을 조정하거나 위험 평가 후 예외로 문서화.', verify: '`curl -sI`의 Set-Cookie 속성' },
+  'COOKIE-NONE-INSECURE': { owner: '백엔드/인프라', fix: 'SameSite=None 쿠키에는 반드시 Secure를 함께 설정.', verify: '`curl -sI`' },
+  'TLS-REDIRECT': { owner: '인프라/CDN', fix: 'HTTP→HTTPS 301 리다이렉트 적용.', verify: '`curl -sI http://<host>`' },
+  'CFG-INTERNAL': { owner: '프론트엔드/백엔드', fix: '내부 서비스 주소를 서버 전용 설정으로 분리하고 HTML·SSR 상태·클라이언트 번들에 직렬화하지 않음(Nuxt: privateRuntimeConfig). 이미 노출된 값이 외부에서 접근 가능한지 네트워크 정책 확인.', verify: '페이지 소스에 내부 주소가 없는지 본 도구로 재점검' },
+  'LIB-JQ-DUP': { owner: '프론트엔드', fix: 'HTML 템플릿/Nuxt head/CMS 삽입 코드에서 중복 jQuery 참조를 제거하고 한 버전만 로드.', verify: '네트워크 탭에서 jQuery 1회 로드, 관련 플러그인 회귀 테스트' },
+  'LIB-JQ-OLD': { owner: '프론트엔드', fix: 'jQuery 3.5.0 이상(현재 3.7.1)으로 통일하고 1.x 제거. 레거시 플러그인은 호환 버전으로 교체.', verify: '본 도구 재점검, 브라우저 `jQuery.fn.jquery` 확인' },
+  'JS-ENTITY-TYPO': { owner: '프론트엔드', fix: "`&qout;`을 `&quot;`로 수정하고, 자체 이스케이프 함수 대신 프레임워크 기본 이스케이프 사용. 치환 순서는 `&`를 먼저 처리.", verify: '단위 테스트(audit/fixes/safe-html.mjs 참고)' },
+  'JS-BLACKLIST': { owner: '프론트엔드', fix: '블랙리스트 방식 정화를 제거하고 텍스트는 textContent/프레임워크 이스케이프, 필요한 HTML만 검증된 sanitizer 허용 목록으로 처리.', verify: 'XSS 회귀 테스트' },
+  'JS-HTML-SINK': { owner: '프론트엔드', fix: 'v-html/innerHTML에 들어가는 값의 출처를 추적하고, 서버 오류 메시지·쿼리 값·CMS 값은 텍스트로 출력.', verify: '코드 리뷰 + XSS 회귀 테스트' },
+  'JS-TOKEN-STORAGE': { owner: '프론트엔드/백엔드', fix: '가능하면 인증 토큰을 HttpOnly+Secure+SameSite 쿠키로 이전하고, 불가하면 CSP 강화와 토큰 수명 단축으로 XSS 시 피해를 줄임.', verify: '로그인 흐름 회귀 테스트' },
+};
+
 export function toMarkdown(result) {
   const order = { medium: 0, low: 1, info: 2 };
   const rows = [...result.findings].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9))
     .map(x => `| ${x.id} | ${x.severity} | ${x.title} | ${x.where} |`).join('\n');
+  const ids = [...new Set(result.findings.map(f => f.id))].filter(id => REMEDIATION[id]);
+  const guideSection = ids.length ? `## 조치 가이드 (IT·보안팀 전달용)\n\n| ID | 담당 | 조치 | 검증 |\n|---|---|---|---|\n${ids.map(id => `| ${id} | ${REMEDIATION[id].owner} | ${REMEDIATION[id].fix} | ${REMEDIATION[id].verify} |`).join('\n')}\n\n` : '';
   const d = result.diff;
   const diffSection = d ? `## 이전 점검 대비 변화 (기준: ${d.previousAt ?? '시각 미상'})
 
@@ -353,7 +420,7 @@ ${diffSection}## 전체 발견 사항
 |---|---|---|---|
 ${rows || '| - | - | 발견 사항 없음 | - |'}
 
-## 응답 증적
+${guideSection}## 응답 증적
 
 | URL | 상태 | SHA-256 |
 |---|---|---|
@@ -372,16 +439,20 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       json: { type: 'string' },
       'fail-on': { type: 'string', default: 'medium' },
       baseline: { type: 'string' },
+      snapshot: { type: 'string' },
       'allow-private': { type: 'boolean', default: false },
       'i-am-authorized': { type: 'boolean', default: false },
     },
   });
   if (!values.target) { console.error('--target <URL> 필요'); process.exit(2); }
-  if (!values['i-am-authorized']) {
+  if (!values['i-am-authorized'] && !values.snapshot) {
     console.error('점검 허가를 받은 대상에만 사용하세요. 확인했다면 --i-am-authorized 를 추가하세요.');
     process.exit(2);
   }
-  const result = await audit({ target: values.target, paths: values.paths.split(',').map(s => s.trim()).filter(Boolean), allowPrivate: values['allow-private'] });
+  const paths = values.paths.split(',').map(s => s.trim()).filter(Boolean);
+  const result = values.snapshot
+    ? await auditSnapshot(values.snapshot, { target: values.target, paths })
+    : await audit({ target: values.target, paths, allowPrivate: values['allow-private'] });
   if (values.baseline) result.diff = diffFindings(JSON.parse(await readFile(values.baseline, 'utf8')), result);
   const md = toMarkdown(result);
   if (values.out) await writeFile(values.out, md); else console.log(md);

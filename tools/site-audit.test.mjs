@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { audit, diffFindings, toMarkdown, isPrivateAddress, isBlockedHostname, checkHeaderQuality, checkCaching, checkExternalResources, checkMixedContent, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
+import { mkdtemp, writeFile, rm } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, relative } from 'node:path';
+import { auditSnapshot, REMEDIATION, audit, diffFindings, toMarkdown, isPrivateAddress, isBlockedHostname, checkHeaderQuality, checkCaching, checkExternalResources, checkMixedContent, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
 
 test('헤더 누락 탐지', () => {
   const ids = checkHeaders({}).map(f => f.id);
@@ -24,6 +28,9 @@ test('jQuery 버전', () => {
 test('내부 주소·패턴', () => {
   assert.equal(checkInternalAddresses('api: http://10.0.0.5:8080/x').length, 1);
   assert.equal(checkInternalAddresses('https://example.com').length, 0);
+  assert.equal(checkInternalAddresses("if (!host.includes('localhost')) {}").length, 0, '코드 비교는 오탐');
+  assert.equal(checkInternalAddresses('"http:\\u002F\\u002Fldc-api-common.service-ldc.svc:8080"').length, 1, '이스케이프된 내부 서비스 주소');
+  assert.equal(checkInternalAddresses('http://localhost:3000/api').length, 1);
   assert.ok(checkRiskyPatterns('s.replace(/"/g,"&qout;")', 'x').some(f => f.id === 'JS-ENTITY-TYPO'));
 });
 
@@ -98,4 +105,33 @@ test('baseline 비교', () => {
   assert.throws(() => diffFindings({}, curr));
   const md = toMarkdown({ target: 'https://a', at: 'T1', requests: 1, records: [], findings: curr.findings, diff: d });
   assert.match(md, /신규 1건 \/ 해결 1건 \/ 유지 1건/);
+});
+
+test('스냅샷 오프라인 분석과 조치 가이드', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'snap-'));
+  try {
+    await writeFile(join(dir, 'R01.html'), '<script src="/lib/jquery-3.7.1.js"></script><script src="/lib/jquery/1.12.4/jquery.min.js"></script>');
+    await writeFile(join(dir, 'R02.txt'), '/*! jQuery v1.12.4 */');
+    await writeFile(join(dir, 'responses.json'), JSON.stringify([
+      { id: 'R01', url: 'https://x.example/', status: 200, headers: { 'content-type': 'text/html' }, cookies: [{ name: 'sid', attributes: ['Path=/'] }], bodyFile: 'R01.html', sha256: 'a', at: '2026-01-01T00:00:00Z' },
+      { id: 'R02', url: 'https://x.example/lib/jquery/1.12.4/jquery.min.js', status: 200, headers: {}, bodyFile: 'R02.txt', sha256: 'b', at: '2026-01-01T00:00:01Z' },
+    ]));
+    const r = await auditSnapshot(join(dir, 'responses.json'), { target: 'https://x.example', paths: ['/'] });
+    const ids = r.findings.map(f => f.id);
+    for (const id of ['HDR-FRAME', 'LIB-JQ-DUP', 'LIB-JQ-OLD', 'COOKIE']) assert.ok(ids.includes(id), id);
+    assert.equal(r.requests, 0);
+    const rel = await auditSnapshot(relative(process.cwd(), join(dir, 'responses.json')), { target: 'https://x.example', paths: ['/'] });
+    assert.ok(!rel.findings.some(f => f.id === 'ERR'), '상대 경로에서도 증적을 읽어야 함');
+    assert.equal(r.at, '2026-01-01T00:00:00Z');
+    assert.ok(!ids.includes('ERR'));
+    const md = toMarkdown(r);
+    assert.match(md, /조치 가이드/);
+    assert.match(md, /frame-ancestors/);
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+test('모든 점검 ID에는 조치 가이드가 있다', () => {
+  const src = readFileSync(new URL('./site-audit.mjs', import.meta.url), 'utf8');
+  const ids = [...new Set([...src.matchAll(/id: '([A-Z][A-Z0-9-]+)'/g)].map(m => m[1]))].filter(id => !['ERR', 'STOPPED', 'HDR-HSTS-NA'].includes(id));
+  for (const id of ids) assert.ok(REMEDIATION[id], `${id} 조치 가이드 누락`);
 });

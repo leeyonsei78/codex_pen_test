@@ -19,7 +19,10 @@ node tools/site-audit.mjs --target https://example.com --i-am-authorized \
 | `--paths` | 쉼표로 구분한 경로 (기본 `/`) |
 | `--baseline <json>` | 이전 `--json` 결과와 비교해 신규/해결/유지 표시 |
 | `--fail-on low\|medium\|none` | 해당 위험도 이상이면 종료 코드 1 (기본 medium) |
+| `--snapshot <responses.json>` | 저장된 증적(`audit/evidence/responses.json`)을 **오프라인** 분석. 네트워크 요청 없음, 허가 플래그 불필요 |
 | `--allow-private` | localhost/사설망 대상 허용 (기본 차단, 본인 개발 환경용) |
+
+보고서에는 발견 ID별 **조치 가이드**(담당·조치·검증)가 자동으로 붙어 IT·보안팀에 그대로 전달할 수 있습니다. 라이나생명 점검 결과와 개선 요청서는 `audit/remediation-handoff.ko.md`를 참고하세요.
 
 ## 웹 UI
 

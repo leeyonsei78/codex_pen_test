@@ -1,0 +1,32 @@
+{
+  "Comment": "lina.co.kr 보안 헤더 보강 (예시). 이미 적용된 HSTS·nosniff는 제외. 먼저 스테이징 배포에서 검증할 것.",
+  "SecurityHeadersConfig": {
+    "ContentSecurityPolicy": {
+      "ContentSecurityPolicy": "frame-ancestors 'self'",
+      "Override": true
+    },
+    "FrameOptions": {
+      "FrameOption": "SAMEORIGIN",
+      "Override": true
+    },
+    "ReferrerPolicy": {
+      "ReferrerPolicy": "strict-origin-when-cross-origin",
+      "Override": true
+    }
+  },
+  "CustomHeadersConfig": {
+    "Quantity": 2,
+    "Items": [
+      {
+        "Header": "Permissions-Policy",
+        "Value": "geolocation=(), payment=(), usb=()",
+        "Override": true
+      },
+      {
+        "Header": "Content-Security-Policy-Report-Only",
+        "Value": "default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'self'",
+        "Override": true
+      }
+    ]
+  }
+}
