@@ -4,6 +4,7 @@
 // 사용 예:
 //   node tools/site-audit.mjs --target https://example.com --i-am-authorized
 //   node tools/site-audit.mjs --target http://127.0.0.1:8080 --paths /,/login --out report.md
+//   --fail-on low|medium|none  : 해당 위험도 이상 발견 시 종료 코드 1 (기본 medium)
 //
 // 안전 장치: 점검 허가를 확인하는 --i-am-authorized 필수, GET만 사용, 쿠키/인증정보 미전송,
 // 리다이렉트 미추적, 같은 origin만 접근, 요청 간 1초 이상 간격, 요청 20초/응답 3MiB/총 요청 수 제한,
@@ -33,6 +34,60 @@ export function checkHeaders(headers) {
   return f;
 }
 
+export function checkHeaderQuality(headers) {
+  const f = [];
+  const csp = headers['content-security-policy'] ?? '';
+  if (csp) {
+    if (/'unsafe-inline'/.test(csp) && !/'nonce-|'sha(?:256|384|512)-/.test(csp)) f.push({ id: 'CSP-UNSAFE-INLINE', severity: 'medium', title: "CSP에 'unsafe-inline' 허용 (nonce/hash 없음) — XSS 완화 효과 약함" });
+    if (/'unsafe-eval'/.test(csp)) f.push({ id: 'CSP-UNSAFE-EVAL', severity: 'low', title: "CSP에 'unsafe-eval' 허용" });
+    if (/(?:script-src|default-src)[^;]*(?:^|\s)\*(?:\s|;|$)/.test(csp)) f.push({ id: 'CSP-WILDCARD', severity: 'medium', title: 'CSP script-src/default-src에 와일드카드(*) 허용' });
+    if (!/(?:script-src|default-src)/.test(csp)) f.push({ id: 'CSP-NO-SCRIPT', severity: 'low', title: 'CSP에 script-src/default-src 지시문 없음' });
+  }
+  const hsts = headers['strict-transport-security'];
+  if (hsts) {
+    const age = Number(/max-age=(\d+)/i.exec(hsts)?.[1] ?? 0);
+    if (age < 15552000) f.push({ id: 'HSTS-SHORT', severity: 'low', title: `HSTS max-age가 ${age}초 (권장 15552000초 이상)` });
+  }
+  for (const h of ['server', 'x-powered-by', 'x-aspnet-version']) {
+    const v = headers[h];
+    if (v && /\d+\.\d+/.test(v)) f.push({ id: 'INFO-VERSION', severity: 'low', title: `${h} 헤더에 버전 정보 노출: ${v}` });
+  }
+  if (headers['access-control-allow-origin'] === '*' && /true/i.test(headers['access-control-allow-credentials'] ?? '')) {
+    f.push({ id: 'CORS-WILDCARD-CRED', severity: 'medium', title: 'CORS: Allow-Origin * 와 Allow-Credentials true 동시 설정' });
+  } else if (headers['access-control-allow-origin'] === '*') {
+    f.push({ id: 'CORS-WILDCARD', severity: 'info', title: 'CORS: Allow-Origin * (공개 리소스가 아니면 제한 필요)' });
+  }
+  return f;
+}
+
+export function checkCaching(headers, pathname) {
+  if (!/login|signin|account|mypage|admin|auth/i.test(pathname)) return [];
+  const cc = (headers['cache-control'] ?? '').toLowerCase();
+  return /no-store/.test(cc) ? [] : [{ id: 'CACHE-SENSITIVE', severity: 'low', title: `인증 관련 경로(${pathname})에 Cache-Control: no-store 없음 (현재: ${cc || '없음'})` }];
+}
+
+export function checkExternalResources(html, baseOrigin) {
+  const f = [];
+  const noSri = [];
+  for (const m of html.matchAll(/<(script|link)\b[^>]*>/gi)) {
+    const tag = m[0];
+    const url = /(?:src|href)\s*=\s*["']([^"']+)["']/i.exec(tag)?.[1];
+    if (!url || !/^(?:https?:)?\/\//i.test(url)) continue;
+    if (m[1].toLowerCase() === 'link' && !/rel\s*=\s*["']?stylesheet/i.test(tag)) continue;
+    let origin;
+    try { origin = new URL(url, baseOrigin).origin; } catch { continue; }
+    if (origin !== baseOrigin && !/\bintegrity\s*=/i.test(tag)) noSri.push(url);
+  }
+  if (noSri.length) f.push({ id: 'SRI-MISSING', severity: 'low', title: `외부 도메인 리소스 ${noSri.length}건에 integrity(SRI) 없음: ${[...new Set(noSri)].slice(0, 4).join(', ')}` });
+  return f;
+}
+
+export function checkMixedContent(html, isHttps) {
+  if (!isHttps) return [];
+  const hits = [...new Set([...html.matchAll(/(?:src|href|action)\s*=\s*["'](http:\/\/[^"']+)["']/gi)].map(m => m[1]))];
+  return hits.length ? [{ id: 'MIXED-CONTENT', severity: 'medium', title: `HTTPS 페이지에서 HTTP 리소스 참조 ${hits.length}건: ${hits.slice(0, 3).join(', ')}` }] : [];
+}
+
 export function checkCookies(setCookies, isHttps) {
   const f = [];
   for (const raw of setCookies) {
@@ -43,6 +98,7 @@ export function checkCookies(setCookies, isHttps) {
     if (isHttps && !lower.includes('secure')) miss.push('Secure');
     if (!lower.includes('httponly')) miss.push('HttpOnly');
     if (!lower.some(a => a.startsWith('samesite='))) miss.push('SameSite');
+    if (lower.includes('samesite=none') && !lower.includes('secure')) f.push({ id: 'COOKIE-NONE-INSECURE', severity: 'medium', title: `쿠키 ${name}: SameSite=None인데 Secure 없음` });
     if (miss.length) f.push({ id: 'COOKIE', severity: 'low', title: `쿠키 ${name}: ${miss.join(', ')} 속성 없음 (세션 쿠키가 아니면 HttpOnly는 무방할 수 있음)` });
   }
   return f;
@@ -143,12 +199,16 @@ export async function audit({ target, paths }) {
     records.push({ url: r.url, status: r.status, sha256: r.sha256 });
     const isHtml = (r.headers['content-type'] ?? '').includes('html');
     add(r.url, checkHeaders(r.headers));
+    add(r.url, checkHeaderQuality(r.headers));
+    add(r.url, checkCaching(r.headers, url.pathname));
     if (base.protocol !== 'https:') findings.push({ id: 'HDR-HSTS-NA', severity: 'info', where: r.url, title: 'HTTP 대상이므로 HSTS는 평가하지 않음' });
     add(r.url, checkCookies(r.setCookies, base.protocol === 'https:'));
     if (isHtml) {
       const srcs = extractScriptSrcs(r.body);
       add(r.url, checkDuplicateJquery(srcs));
       add(r.url, checkInternalAddresses(r.body));
+      add(r.url, checkExternalResources(r.body, base.origin));
+      add(r.url, checkMixedContent(r.body, base.protocol === 'https:'));
       add(r.url, checkRiskyPatterns(r.body, 'inline'));
       for (const s of srcs) {
         const u = new URL(s, url);
@@ -167,6 +227,11 @@ export async function audit({ target, paths }) {
       }
       add(s, checkRiskyPatterns(r.body, new URL(s).pathname));
     } catch (e) { findings.push({ id: 'ERR', severity: 'info', where: s, title: e.message }); }
+  }
+  const seen = new Set();
+  for (let i = findings.length - 1; i >= 0; i--) {
+    const k = `${findings[i].id}|${findings[i].where}|${findings[i].title}`;
+    if (seen.has(k)) findings.splice(i, 1); else seen.add(k);
   }
   if (state.stop) findings.push({ id: 'STOPPED', severity: 'info', where: '-', title: `서버 오류/제한 응답으로 점검 중지: ${state.stop}` });
   return { target: base.origin, at: new Date().toISOString(), requests: state.count, records, findings };
@@ -206,6 +271,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       paths: { type: 'string', default: '/' },
       out: { type: 'string' },
       json: { type: 'string' },
+      'fail-on': { type: 'string', default: 'medium' },
       'i-am-authorized': { type: 'boolean', default: false },
     },
   });
@@ -218,5 +284,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const md = toMarkdown(result);
   if (values.out) await writeFile(values.out, md); else console.log(md);
   if (values.json) await writeFile(values.json, JSON.stringify(result, null, 2));
-  process.exit(result.findings.some(f => f.severity === 'medium') ? 1 : 0);
+  const rank = { info: 0, low: 1, medium: 2, none: 99 };
+  const threshold = rank[values['fail-on']] ?? 2;
+  process.exit(result.findings.some(f => (rank[f.severity] ?? 0) >= threshold) ? 1 : 0);
 }

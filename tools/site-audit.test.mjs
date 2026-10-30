@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { audit, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
+import { audit, checkHeaderQuality, checkCaching, checkExternalResources, checkMixedContent, checkHeaders, checkCookies, detectLibraryVersion, jqueryVulnerable, checkInternalAddresses, checkRiskyPatterns } from './site-audit.mjs';
 
 test('헤더 누락 탐지', () => {
   const ids = checkHeaders({}).map(f => f.id);
@@ -46,4 +46,26 @@ test('로컬 서버 통합 점검 (같은 origin만 접근)', async () => {
     for (const id of ['HDR-FRAME', 'LIB-JQ-DUP', 'LIB-JQ-OLD', 'COOKIE']) assert.ok(ids.includes(id), id);
     assert.ok(!hits.some(h => h.includes('evil')));
   } finally { server.close(); }
+});
+
+test('헤더 품질: CSP/HSTS/버전/CORS', () => {
+  const ids = checkHeaderQuality({
+    'content-security-policy': "default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    'strict-transport-security': 'max-age=100',
+    server: 'nginx/1.18.0',
+    'access-control-allow-origin': '*',
+    'access-control-allow-credentials': 'true',
+  }).map(f => f.id);
+  for (const id of ['CSP-UNSAFE-INLINE', 'CSP-UNSAFE-EVAL', 'CSP-WILDCARD', 'HSTS-SHORT', 'INFO-VERSION', 'CORS-WILDCARD-CRED']) assert.ok(ids.includes(id), id);
+  assert.equal(checkHeaderQuality({ 'strict-transport-security': 'max-age=31536000', server: 'nginx' }).length, 0);
+});
+
+test('캐시/SRI/혼합 콘텐츠', () => {
+  assert.equal(checkCaching({}, '/login').length, 1);
+  assert.equal(checkCaching({ 'cache-control': 'no-store' }, '/login').length, 0);
+  assert.equal(checkCaching({}, '/company').length, 0);
+  const html = '<script src="https://cdn.example/a.js"></script><script src="https://cdn.example/b.js" integrity="sha384-x"></script><img src="http://x.example/i.png">';
+  assert.equal(checkExternalResources(html, 'https://site.example').length, 1);
+  assert.equal(checkMixedContent(html, true).length, 1);
+  assert.equal(checkMixedContent(html, false).length, 0);
 });
