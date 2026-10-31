@@ -1,0 +1,45 @@
+{
+  "target": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01",
+  "marker": "AUDIT_SAFE_20261030_Q7",
+  "mode": "PUBLIC_GET_ONLY_NO_REDIRECT_NO_CREDENTIALS",
+  "records": [
+    {
+      "name": "baseline",
+      "url": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01",
+      "requestedAt": "2026-10-30T10:18:40.093Z",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html;charset=UTF-8",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "cache-control": "max-age=0, s-maxage=86400"
+      },
+      "bytes": 122209,
+      "sha256": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+      "markerReflected": false,
+      "bodyFile": "baseline.html"
+    },
+    {
+      "name": "marker",
+      "url": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01&audit_probe=AUDIT_SAFE_20261030_Q7",
+      "requestedAt": "2026-10-30T10:18:41.472Z",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html;charset=UTF-8",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "cache-control": "max-age=0, s-maxage=86400"
+      },
+      "bytes": 122209,
+      "sha256": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+      "markerReflected": false,
+      "bodyFile": "marker.html"
+    }
+  ],
+  "limits": [
+    "No exploit payload, browser execution, authenticated API or AI endpoint testing.",
+    "Marker absence does not establish lack of XSS or other vulnerabilities."
+  ]
+}

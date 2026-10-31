@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content = "text/html; charset=utf-8">
+		<meta http-equiv="Cache-control" content = "no-cache">
+		<meta http-equiv="Pragma" content = "no-cache">
+		<title>INISAFE Web/CrossWeb EX Install</title>
+		<!-- web6이면 6.js, 7이면 7.를 로딩한다. -->
+		<script type="text/javascript" src="../crosswebex6.js"></script>
+		<script type="text/javascript">
+			// 수동 로딩하고자 하는 경우 cwOnloadDisable 함수를 실행 절대 onload 함수 내부에서 실행금지
+			cwOnloadDisable();
+
+			window.onload = function(){
+				
+				if(CROSSWEBEX_UTIL.typeExtension()){
+					extDown.style.display = "block";
+				}
+				
+				if(CROSSWEBEX_UTIL.isLinux()){
+					linuxDown.style.display = "block";
+				} else {
+					cliDown.style.display = "block";
+				}
+				CROSSWEBEX_INSTALL.cwInstallCheck("installCheckCallback");
+			};
+			
+			function installCheckCallback(result){
+				if(result){
+					alert("설치가 완료 되었습니다.\n이전 페이지로 돌아갑니다.");
+					window.history.back();
+				} else {
+					if(!CROSSWEBEX_CHECK.chkInfoStatus.status){
+						var info = CROSSWEBEX_CHECK.chkInfoStatus.info[0];
+						if(CROSSWEBEX_UTIL.typeExtension()){
+							if(!info.extension){
+								extDown.style.display = "block";
+							} else {
+								extDown.style.display = "none";
+							}
+						}
+						if(!info.EX || !info.client){
+							if(CROSSWEBEX_UTIL.isLinux()){
+								linuxDown.style.display = "block";
+							} else {
+								cliDown.style.display = "block";
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="extDown" style="display:none;">
+			CrossWebEX 확장기능 다운로드/설치 : <input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'extension')" value="Extension Install">
+			<br><br>
+		</div>
+		<div id="cliDown" style="display:none;">
+			CrossWebEX 다운로드/설치 : <input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'EX')" value="Client Download">
+			<br><br>
+		</div>
+		<br><br>
+		<div id="linuxDown" style="display:none;">
+			CrossWebEX 다운로드/설치 : 
+			<br>
+			<input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'EX', crosswebexInfo.exProtocolInfo.exUbuntu32ProtocolDownURL)" value="Ubuntu 32bit Download">
+			&nbsp;
+			<input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'EX', crosswebexInfo.exProtocolInfo.exUbuntu64ProtocolDownURL)" value="Ubuntu 64bit Download">
+			&nbsp;
+			<input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'EX', crosswebexInfo.exProtocolInfo.exFedora32ProtocolDownURL)" value="Fedora 32bit Download">
+			&nbsp;
+			<input type="button" onclick="CROSSWEBEX_INSTALL.download('crosswebex', 'EX', crosswebexInfo.exProtocolInfo.exFedora64ProtocolDownURL)" value="Fedora 64bit Download">
+			&nbsp;
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,29 @@
+{
+  "url": "https://www.lina.co.kr/nmall/P00172_02.htm?t=S1_2508_A_02",
+  "requestedAt": "2026-10-30T10:38:18.721Z",
+  "mode": "ONE_NORMAL_GET_NO_REDIRECT_NO_PAYLOAD",
+  "status": 200,
+  "headers": {
+    "content-type": "text/html;charset=UTF-8",
+    "x-frame-options": "DENY",
+    "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "cache-control": "max-age=0, s-maxage=86400"
+  },
+  "bytes": 121622,
+  "sha256": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+  "htmlReview": {
+    "cspMetaObserved": false,
+    "scriptSources": [
+      "/cms/upload/MALL/web/com/js/88/jquery-3.4.1.min.js",
+      "/cms/upload/PRODUCT/web/homepage/148/product.js",
+      "/cms/upload/MALL/web/com/js/88/bohumnai.js",
+      "/cms/upload/MALL/web/com/js/88/mall_common.js",
+      "/cms/upload/MALL/web/com/js/88/common.js",
+      "/cms/upload/PRODUCT/web/homepage/148/load.js",
+      "/cms/upload/MALL/web/com/js/88/prodmall_init.js",
+      "https://www.lina.co.kr/cms/upload/MALL/web/gnb/S1/34/gnb_pc.js"
+    ],
+    "limits": "Static UTF-8 text scan; script names do not establish executed versions; no referenced resources requested"
+  }
+}

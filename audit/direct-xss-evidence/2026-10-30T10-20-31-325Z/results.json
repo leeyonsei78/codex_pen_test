@@ -1,0 +1,37 @@
+{
+  "target": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01",
+  "marker": "AUDIT_XSS_20261030_R9",
+  "payload": "\"'><svg onload=console.info('AUDIT_XSS_20261030_R9')>",
+  "records": [
+    {
+      "parameter": "audit_probe",
+      "url": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01&audit_probe=%22%27%3E%3Csvg+onload%3Dconsole.info%28%27AUDIT_XSS_20261030_R9%27%29%3E",
+      "requestedAt": "2026-10-30T10:20:31.328Z",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html;charset=UTF-8",
+        "x-frame-options": "DENY"
+      },
+      "bytes": 122209,
+      "sha256": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+      "markerReflected": false,
+      "rawPayloadReflected": false,
+      "bodyFile": "audit_probe.html"
+    },
+    {
+      "parameter": "t",
+      "url": "https://direct.e-lina.co.kr/emall/P00303.htm?t=S1_2106_A_01%22%27%3E%3Csvg+onload%3Dconsole.info%28%27AUDIT_XSS_20261030_R9%27%29%3E",
+      "requestedAt": "2026-10-30T10:20:32.989Z",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html"
+      },
+      "stopped": "Non-success status: no redirect, retry or further probes"
+    }
+  ],
+  "limits": [
+    "No browser execution: cannot establish DOM XSS or script execution.",
+    "No AI endpoint identified or tested.",
+    "No WAF evasion, retry or traffic expansion."
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "reviewedAt": "2026-10-30T09:54:12.048Z",
+  "mode": "OFFLINE_FAKE_DOM_NO_NETWORK",
+  "chatbotLoader": {
+    "file": "additional-evidence/A03.js",
+    "offset": 81996,
+    "excerpt": "addChatbotJs:function(){var t=this;return Object(n.a)(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,Object(a.a)(t.$config.VUE_APP_CDN_DOMAIN+\"/upload/PRODUCT/web/chatbot/chatbot.js\");case 2:case\"end\":return e.stop()}}),e)})))()}}},r=(s(3135),s(29)),o=Object(r.a)(i,(function(){var t=this,e=t.$createElement,s=t._self._c||e;return s(\"div\",{sta",
+    "status": "Loader reference found; chatbot implementation and LLM usage unverified"
+  },
+  "limits": [
+    "Keyword inventory is not proof of AI absence.",
+    "Fake DOM does not execute scripts or model browser CSP.",
+    "Attacker control of caller input is unverified.",
+    "Saved evidence is not a current deployment assessment."
+  ],
+  "files": [
+    {
+      "path": "evidence/R01.html",
+      "bytes": 34506,
+      "sha256": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R02.html",
+      "bytes": 167,
+      "sha256": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R03.html",
+      "bytes": 34521,
+      "sha256": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R04.html",
+      "bytes": 34576,
+      "sha256": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R05.txt",
+      "bytes": 285314,
+      "sha256": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R06.txt",
+      "bytes": 97163,
+      "sha256": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R07.txt",
+      "bytes": 8901,
+      "sha256": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R08.txt",
+      "bytes": 2203,
+      "sha256": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+      "aiIndicators": []
+    },
+    {
+      "path": "evidence/R09.txt",
+      "bytes": 525,
+      "sha256": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+      "aiIndicators": []
+    },
+    {
+      "path": "additional-evidence/A01.html",
+      "bytes": 34506,
+      "sha256": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+      "aiIndicators": []
+    },
+    {
+      "path": "additional-evidence/A02.js",
+      "bytes": 87327,
+      "sha256": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+      "aiIndicators": []
+    },
+    {
+      "path": "additional-evidence/A03.js",
+      "bytes": 98422,
+      "sha256": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+      "aiIndicators": [
+        "chatbot"
+      ]
+    },
+    {
+      "path": "path-evidence/P01.js",
+      "bytes": 22756,
+      "sha256": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/P02.js",
+      "bytes": 15286,
+      "sha256": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/P03.js",
+      "bytes": 52928,
+      "sha256": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/P04.js",
+      "bytes": 55033,
+      "sha256": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/P05.js",
+      "bytes": 35014,
+      "sha256": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/P06.js",
+      "bytes": 676702,
+      "sha256": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/common/P01.js",
+      "bytes": 5744,
+      "sha256": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/common/P02.js",
+      "bytes": 49161,
+      "sha256": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/common/P03.js",
+      "bytes": 31676,
+      "sha256": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+      "aiIndicators": []
+    },
+    {
+      "path": "path-evidence/common/P04.js",
+      "bytes": 98198,
+      "sha256": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+      "aiIndicators": []
+    }
+  ],
+  "scriptLoaderCases": [
+    {
+      "functionName": "addHeadScript",
+      "input": "/audit-local-only.js",
+      "assignedScriptSources": [
+        "/audit-local-only.js"
+      ],
+      "sourceOffset": 1956,
+      "sourceLine": 78
+    },
+    {
+      "functionName": "addHeadScript",
+      "input": "https://audit.example.invalid/local-only.js",
+      "assignedScriptSources": [
+        "https://audit.example.invalid/local-only.js"
+      ],
+      "sourceOffset": 1956,
+      "sourceLine": 78
+    },
+    {
+      "functionName": "addHeadScript",
+      "input": "//audit.example.invalid/local-only.js",
+      "assignedScriptSources": [
+        "//audit.example.invalid/local-only.js"
+      ],
+      "sourceOffset": 1956,
+      "sourceLine": 78
+    },
+    {
+      "functionName": "addBodyScript",
+      "input": "/audit-local-only.js",
+      "assignedScriptSources": [
+        "/audit-local-only.js"
+      ],
+      "sourceOffset": 2665,
+      "sourceLine": 100
+    },
+    {
+      "functionName": "addBodyScript",
+      "input": "https://audit.example.invalid/local-only.js",
+      "assignedScriptSources": [
+        "https://audit.example.invalid/local-only.js"
+      ],
+      "sourceOffset": 2665,
+      "sourceLine": 100
+    },
+    {
+      "functionName": "addBodyScript",
+      "input": "//audit.example.invalid/local-only.js",
+      "assignedScriptSources": [
+        "//audit.example.invalid/local-only.js"
+      ],
+      "sourceOffset": 2665,
+      "sourceLine": 100
+    }
+  ]
+}

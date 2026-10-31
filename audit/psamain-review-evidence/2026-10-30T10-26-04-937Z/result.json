@@ -1,0 +1,21 @@
+{
+  "url": "https://www.lina.co.kr/mall/PSAMAIN.htm?t=S1_2309_A_01",
+  "requestedAt": "2026-10-30T10:26:04.940Z",
+  "mode": "ONE_NORMAL_GET_NO_REDIRECT_NO_PAYLOAD",
+  "status": 200,
+  "headers": {
+    "content-type": "text/html;charset=UTF-8",
+    "x-frame-options": "DENY",
+    "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "cache-control": "max-age=0, s-maxage=86400"
+  },
+  "bytes": 263784,
+  "sha256": "f6b3866322ce57955525daeafb1c4b434d98a26e4874a38aa057e324a67cbbcc",
+  "htmlReview": {
+    "cspMetaObserved": false,
+    "scriptTagCount": 12,
+    "iframeTagCount": 0,
+    "limits": "Static UTF-8 text scan only; no browser execution or referenced resource requests"
+  }
+}

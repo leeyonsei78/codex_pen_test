@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>배네피아 연동 | 라이나생명</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.lina.co.kr/favicon.ico">
+<link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://www.lina.co.kr/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/gap/GM/uiux_common_n.css">
+<link rel="stylesheet" type="text/css" href="/css/gap/GM/popup_n.css">
+<link rel="stylesheet" type="text/css" href="/css/gap/GM/gpn_common_n.css">
+<link rel="stylesheet" href="/gap/serviceEndpoint/VestPIN_mobile/vikie/css/vikie.css">
+
+<script type="text/javascript" src="/webfw/naw/naw-4.x.js"></script>
+<script src="/script/gap/GM/lib/jquery.min.js"></script>
+<script src="/script/gap/GM/lib/jquery-ui-1.12.1.min.js"></script>
+<script src="/script/gap/GM/lib/slick.min.js"></script>
+<script src="/script/gap/GM/lib/swiper.min.js"></script>
+<script src="/script/gap/GM/lib/ui_plugins.js"></script>
+<script src="/script/gap/GM/uiux_common_n.js"></script>
+<script src="/script/gap/GM/appBridge.js"></script>
+<script src="/script/gap/GM/gpCore.js"></script>
+
+<script src="/gap/serviceEndpoint/VestPIN/js/hibiscusClient.js"></script>
+<script src="/gap/serviceEndpoint/VestPIN/js/jsrose_crypto.min.js"></script>
+<script src="/gap/serviceEndpoint/VestPIN_mobile/vikie/js/vikie.js"></script>
+<script src="/gap/serviceEndpoint/VestPIN/js/vestpin.js"></script>
+
+<script type="text/javascript">
+/****************************************************************************************************************
+ * 01. 업무구분 : GA모바일 청약 > 앱설정
+ * 02. 화면명   : 앱설정 [GPN650M2]
+ * 03. 화면설명 : 앱설정 페이지.
+ * 04. 작성일   : 
+ * 05. 작성자   : 
+ * 06. 수정이력 :
+ ****************************************************************************************************************
+ * 수정일          이름      사유
+ ****************************************************************************************************************
+ ***************************************************************************************************************/
+(function(user) {
+    var vestPIN, config, options, serverURL, serverAPIURL;  
+    naw({
+        properties: {
+            enableGlobalKey: false
+        },
+        library : {
+            template : {
+                gridX:{}
+            },
+            widget : { 
+                filedownload : function(){ 
+               }  
+           } 
+        },
+        dataset : {         
+            dsResult : {},    
+            dsParam : {} 
+        },
+        ready : {
+            bizcode : function() {
+            },
+            event : function() {
+                // 이전버튼                
+                $('#getBenepiaToken').on('click', function() {                    
+                    user.fnTest();
+                });            
+            },
+            activate : function() {
+                user.fnSetInit();
+            },
+            complete : function() {
+            },
+            message : function(msgObj) {
+            },
+            hasNotMessage : function() {
+            },
+            close : function() {
+                return true;
+            }
+        }
+    },user)
+})
+({
+    //*****************************************************************************************
+    //* 기 능 : [GA모바일청약] 화면 이동 설정 값 및 Default Set
+    //*****************************************************************************************
+    fnSetInit : function() {
+        //화면정보 체크
+        // 테스트 용은 비활성화
+        //if ( !onsite.gfnInitGP($self)) return;        
+    },
+    fnTest : function(){
+        // 트랜젝션 처리
+        var svcId      = "GAN701SVC_selectSingle";  //
+        var inDs       = "";                      // 입력 데이타셋
+        var outDs      = "dsResult=" + gvCignaParam;// 출력 데이타셋
+    
+        var callbackFunc = user.fnCallBack;
+    
+        var dsParam = {};
+        
+        dsParam["gaCd"] = gvUserId; // 설계사사번
+        dsParam["custCoCd"] = '00XX'; // 고객사코드
+        
+        if($("#gaCd").val()!==""){
+            dsParam["gaCd"] = $("#gaCd").val(); // 설계사사번    
+        }
+        
+        if($('#custCoCd').val()!==""){
+            dsParam["custCoCd"] = $('#custCoCd').val(); // 고객사코드
+        }else{
+            dsParam["custCoCd"] = "XXOO"; // 고객사코드
+        }
+        
+        onsite.gfnTransaction ($self, svcId, "GAN701SVC", "selectSingle", inDs, outDs, dsParam, callbackFunc, "", "", "", true);
+    },
+    
+    fnCallBack : function(sSvcID, nErrorCode, sErrorMsg) {
+
+        if (nErrorCode < 0) {
+            if (nErrorCode == -1) {
+                return;
+            } else { // nErrorCode(-9)
+                onsite.gfnShowMessage(this);
+                return;
+            }                       
+        } else {
+            var bascMsg = "";
+            var msgCd   = "";
+
+            switch(sSvcID) {
+                case "GAN701SVC_selectSingle":
+                    
+                    //onsite.trace("GAN701SVC_selectSingle 결과 : "+dsResult.getData(0, "resData"));
+                    
+                    gpCore.modalAlert({
+                        message: "토큰값",
+                        description: dsResult.getData(0, "tokenKey")
+                    });
+                    break;
+            }
+        }
+    }           
+});  
+
+</script> 
+</head>
+<body>
+    <div id="wrapper">
+        <header class="ga_header center detail">
+            <div class="header_top">
+                <div>
+                    <a href="#none" class="prev_btn"><span class="offscreen">이전</span></a>
+                    <h1>라이나 멤버쉽 테스트</h1>
+                    <a href="#none" class="btn_home"><span class="offscreen">홈</span></a>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <div class="content no_pd">
+                <div class="ly_setting">
+                    <div class="title">
+                        <strong>라이나 멤버쉽 테스트</strong>
+                        <p>멤버쉽 연동 테스트(GA->베네피아)</p>
+                    </div>
+                      <div class="input">
+                      <span class="dv">
+                          <input id="gaCd" class="i_txt" type="text" placeholder="사번입력" spellcheck="false"></input>
+                          <input id="custCoCd" class="i_txt" type="text" placeholder="고객사코드" spellcheck="false"></input>
+                      </span>                        
+                      </div>
+                    <ul class="btn_group">
+                        <li>
+                                                        
+                            <button id="getBenepiaToken" type="" name="">
+                                <label for="">베네피아 sso 토큰 값 가져오기(login/authcaremall.bene)</label>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

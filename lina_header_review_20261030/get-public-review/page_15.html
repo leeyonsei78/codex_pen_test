@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html style="height: 100%; overflow: hidden;" lang="ko_KR">
+    <head> 
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="Cache-control" content="no-cache"> 
+        <meta http-equiv="Expires" content="-1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=yes">
+        <meta charset="UTF-8">
+        <title>라이나GA업무지원시스템</title> 
+        <!-- SR2401-48642-01 [GA채널] Google Analytics Tag 적용요청 
+        	 2021-11-04   김정화    [SR2111-06992-02] Adobe Analytics로 채널속도측정
+        <script src="https://assets.adobedtm.com/fd9eea4992f3/6e29231b2b5a/launch-ace9f638ac3a.min.js" async></script> 
+        <script type="text/javascript">
+            var digitalData = digitalData || {};
+            digitalData = {
+                    page:{
+                         pageInfo:{ 
+                             pageName:'로그인 화면',
+                             siteSection:'메인',
+                             siteSubsection:'로그인 후'
+                         }
+                    }
+            }
+        </script>
+        -->
+        <link rel="stylesheet" type="text/css" href="../../css/gap/layout.css">
+        <link rel="stylesheet" type="text/css" href="../../css/gap/layout2.css">
+        <link rel="stylesheet" type="text/css" href="../../css/gap/menu.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/gap/gridX.css"> 
+        <link rel="stylesheet" type="text/css" href="../../../css/gap/common-4.x.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/gap/gapLogin.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/gap/reform21.css">
+
+        <link rel="stylesheet" type="text/css" href="../../../script/gap/GA/lib/swiper.css">
+        <script src="../../../script/gap/GA/lib/swiper.js"></script>
+        <script src="../../../script/gap/GA/lisaUI.js"></script>
+        <script src="../../../script/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+/*
+ * 01. 업무구분 : GA > 로그인
+ * 02. 화면명   : nawmain
+ * 03. 화면설명 : GA 메인화면
+ * 04. 작성일   : 2016-10-11
+ * 05. 작성자   : 작성자
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일       이  름    사유
+ *********************************************************************
+ *     2021-11-04   김정화    [SR2111-06992-02] Adobe Analytics로 채널속도측정
+ *     2022-06-21   제다정    [SR2205-41772-07] Trasition Day1 대주주변경_GA 시스템_서식 외)
+ *     2022-12-07   제다정    [SR2212-07113-01] A-LISA 메인 개선 건
+ *     2023-12-22   윤준서    [SR2312-12723-02] 내고객추천 홍보 팝업 개발
+ *     2025-02-18   이주영    [SR2502-20982-01] A-LISA 유투브 아이콘 삭제
+ *     2025-07-03   이주영    [SR2506-28281-03] 설계사지원센터 등록문구시간 변경
+ *********************************************************************
+*/
+        
+    var isFwkMode = true;
+ 	var isPlayedHls = true;
+    //naw cache 영역
+    var cacheArea = new Object();
+</script> 
+        <script type="text/javascript" src="../../webfw/naw/naw-4.x.js"></script> 
+        <script type="text/javascript" src="../../webfw/fwkconfig-4.2.x.js"></script> 
+        <script type="text/javascript" src="../../../script/gap/GA/gaCommon.js"></script> 
+        <script type="text/javascript">
+
+		// 202603 추가 : Producer 360
+		function fnProducer360() {
+			var producerUrl = "https://kdpuserportal-dev.linakorea.com/board/community/notice";
+			if (naw.isTest) {
+				producerUrl = "https://kdpuserportal-test.linakorea.com/board/community/notice";
+			} else if (naw.isProd) {
+				producerUrl = "https://kdpuserportal.linakorea.com/dashboard/producer";
+			}
+			
+			window.open(producerUrl);
+		}
+        
+(function(user) {
+    //1. fwkcontrol-4.2.x.js template 동적 조합 함수 호출
+    user.createFwkTmpl();
+
+    naw({
+        //2. properties 정의
+        properties: {
+            // hasNotMessage영역에서 GlobalKey의 사용 여부를 지정
+            // enableGlobalKey를 true로 지정하면 GlobalKey를 사용하여 조회키 영역을 자동으로 GlobalKey로 셋팅
+            // enableGlobalKey를 false로 지정하면 조회키 영역을 셋팅하지 않음
+            enableGlobalKey: false
+        },
+        library : {
+            //3. fwkcontrol-4.x.js 의 template 호출
+            template : fwk.template,
+            //4. fwkcontrol-4.x.js 의 loadWidget 호출
+            widget : fwk.loadWidget
+        },
+        ready : {
+            dataset : function(){
+                // 화면에서 사용할 DataSet 객체를 생성하는 코드 작성 
+                naw.config.auth.loadable=true;
+                
+            },            
+            bizcode : function() {
+                // 공통 코드 등의 bizCode 관련 코드 작성
+            },
+            event : fwk.event,
+            complete : fwk.complete,
+            activate : function() {
+                //Framework Mode 에서 화면이 active 될 때 코드 작성
+               if (naw.isProd) {
+					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+					})(window,document,'script','dataLayer','GTM-TMCHZSZB');
+				}
+			
+				if (naw.isTest) {
+					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+					})(window,document,'script','dataLayer','GTM-TK5NJJ4F');
+				}
+				
+				if ( naw.isDev || naw.isLocal ) {
+					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+					})(window,document,'script','dataLayer','GTM-WC2BCL6X');
+				}
+                
+            	/* 페이지 로딩, 재오픈, 새로고침시 */
+            	var sendGTAG = {
+            		  'event': "lina_page",
+            	};
+            	
+            	try {
+       			  onsite.trace(JSON.stringify(sendGTAG));
+            	  dataLayer.push(sendGTAG);
+            	} catch (e) {
+            	  onsite.trace('sendGA4 ERROR');
+            	  onsite.trace(e.message);
+            	}
+
+            	/* 페이지 내 클릭이벤트로 호출할 경우 */
+            	window.addEventListener("click", function (event){
+					var target_id = "";
+					if (Element.prototype.closest) {
+						target_id = event.target.closest(".ga4");
+						if(target_id!=null) {
+							target_id = target_id.id;
+						} else {
+							target_id = event.target.id;
+						}
+					} else {
+						target_id = $($(event.target)).closest('.ga4');
+						if(target_id!=null) {
+							target_id = $(target_id).attr("id");
+							
+							if (typeof target_id == "string") {
+								target_id = target_id
+							} else {
+								target_id = event.target.id;
+							}
+						} else {
+							target_id = event.target.id;
+						}
+					}
+
+					if (target_id != null && target_id.indexOf("MN") > -1 && $("#" + target_id).attr("class").indexOf("mega-hover") > -1) {
+						return;
+					}
+
+       				//if(target_id != null && target_id != '') {
+               			var sendGTAG = {
+                 				  'event': "lina_click",
+                 				  'cl_cls': $("#" + target_id).attr("class"),
+                 				  'cl_id': target_id,
+                 				  'cl_tg': '',
+                 				  'cl_text': $("#" + target_id).html(),
+                 				  'cl_url': $("#" + target_id).attr("data-url")
+               			}
+               		  
+               			try {
+               				onsite.trace(JSON.stringify(sendGTAG));
+               				dataLayer.push(sendGTAG);
+               			} catch (e) {
+               				onsite.trace('sendGA4 ERROR');
+               				onsite.trace(e.message);
+               			}
+       				//}
+            	});
+            	
+            	// 202603 추가 : Producer 360
+            	var url = location.href;
+    			if (url.indexOf("gadev.lina.co.kr") < 0 
+    			 && url.indexOf("gatest.lina.co.kr") < 0 
+    			 && url.indexOf("ga.lina.co.kr") < 0) {
+    				$("#btnProd360").show();
+    			}    
+
+            },
+            message : fwk.message,
+            hasNotMessage : function() {
+                // 화면 이동시 전달 메시지 없는 경우 처리
+            },                
+            close : function() {
+                //Framework Mode 에서 화면 닫을 때 코드 작성
+                //return : true(close), false(not close)
+                return true;
+            }
+        }
+    },user)
+
+})(fwk.user);
+</script> 
+<style>
+</style> 
+    </head>
+        <body class="page-sub">
+           <div class="layout-north pane pane-north" style="position: absolute; margin: 0px; inset: 0px 0px auto; width: auto; z-index: 1; display: block; visibility: visible; overflow: visible; border-bottom: 1px solid #d7d7d7;">
+            <!-- layout-north -->
+                <header class="base-header">
+                    <h1 class="logo">
+                        <a href="javascript:void(0)" id="CI">
+                            <span id="image-container">
+                                <img src="../../css/gap/img_renew/logo.png" alt="라이나 생명">
+                                <!-- 타사 ci 있을 경우 -->
+                                <!-- //타사 ci 있을 경우 -->
+                            </span>
+                       </a>
+                    </h1>
+
+                    <div class="header-movie-wrap" style="display: none;">
+                        <a href="#">&nbsp;영상자료 등록</a>
+                    </div>
+
+                    <!-- util --><!-- A-LISA 메뉴개선: 마크업 추가(.header-util-wrap) -->
+                    <div id="headerUtilWrap" class="header-util-wrap">
+                    	<button type="button" id="btnProd360" onclick="fnProducer360();" style="border: 1px solid #150f96;color: #150f96;background-color: #FFFFFF;padding: 2px 4px;margin-right:3px;display:none;">Producer 360</button>
+                        <!--
+                            지점명, 우수설계사아이콘, 이름, 직책(설계사, 지점장, 매니저), 설계사코드, 유효기간(+), 로그아웃
+                        -->
+                        <span class="util-office-name"></span>
+                        <span class="util-user-name"></span>
+                        <span class="util-user-position"></span>
+                        <span class="util-user-code"><span id="utilUserId"></span></span>
+                        <span class="util-login-timer">
+                            <span id="sessionTime" class="timer"></span>
+                            <span id="extendSession"></span>
+                        </span>
+                        <button type="button" class="btn-logout"><span id="pLogout">로그아웃</span></button>
+                    </div>
+                    <!--// util -->
+
+                    <!-- menu -->
+                    <div class="menu-bottom" id="menu-bottom">
+                        <div class="menu-header" style="width: 931px;">
+                            <div class="menu-scroller-left state-disabled" style="visibility: hidden;"></div>
+                            <div id="menuDiv" class="menu" style="width: 901px;">
+                                <div></div>
+                            </div>
+                            <div class="menu-scroller-right" style="visibility: hidden;"></div>
+                        </div>
+                    </div>
+                    <!--  //menu -->
+                    <div class="header-quick-wrap"><!-- A-LISA 메뉴개선: 마크업 추가(.header-quick-wrap) -->
+                        <!-- Quick menu -->
+                        <nav class="header-quick-menu">
+                            <a href="#" page="GAA100M0" id="GNB_QbtnAgree" title="사전동의서출력(모바일포함)" keytitle="고객·설계·청약 > 사전동의서(고객등록) > 사전동의서출력(모바일포함)" onClick="user.quickMenuMv(this)">사전동의서</a>
+                            <a href="#" page="GAB030M0" id="GNB_QbtnHistory" title="설계이력조회" keytitle="고객·설계·청약 > 설계관리 > 설계이력조회"  onClick="user.quickMenuMv(this)">설계이력조회</a>
+                            <a href="#" page="GAB075M0" id="GNB_QbtnContract" title="청약입력" keytitle="고객·설계·청약 > 청약관리·변경 > 청약입력"  onClick="user.quickMenuMv(this)">청약입력</a>
+                        </nav>
+                        <div class="modal-tip"><!-- 'on' 삭제하면 안보임 -->
+                            <p>가장 많이 찾는 메뉴가 보여집니다.</p>
+                            <button type="button" class="btn-close" onclick="this.parentNode.classList.remove('on')"><span class="a11y-hidden">창닫기</span></button>
+                        </div>
+                        <!--// Quick menu -->
+              
+                        <!-- 접속자 정보 & 즐겨찾기 -->
+                        <div class="header-user-info">
+                            <button type="button" class="btn-info-view"><span class="a11y-hidden">접속자 정보 보기</span></button>
+                            <section class="user-info-container">
+                                <article class="user-info-wrap">
+                                    <div class="user-info-header">
+                                        <div class="user-name"></div>
+                                    </div>
+                                    <dl class="user-info-body">
+                                        <div>
+                                            <dt>코드</dt>
+                                            <dd id="userInfoEmpNo"></dd>
+                                        </div>
+                                        <div id="userInfoAgncyDiv">
+                                            <dt>대리점</dt>
+                                            <dd id="userInfoAgncyNm"></dd>
+                                        </div>
+                                        <div id="userInfoDofDiv">
+                                            <dt id="userInfoDofTxt">지점</dt>
+                                            <dd id="userInfoDofNm"></dd>
+                                        </div>
+                                    </dl>
+                                </article>
+                            </section>
+                        </div>
+                        <!--// 접속자 정보 & 즐겨찾기 -->
+                    </div>
+                </div>
+                <div id="gaAutocomplete"></div>
+            </header>
+            <!-- mainContent -->
+            <div id="mainContent" class="pane pane-center" style="position: absolute; margin: 0px; z-index: 1; top: 112px; bottom: 1px; left: 0px; right: 0px; width: 1260px; height: 730px; visibility: visible; overflow: block; display: none;">
+                <div class="layout-west layout-pane layout-pane-west" id="accodionMenu" style="position: absolute; margin: 0px; right: auto; z-index: 1; display: block; visibility: visible; top: 0px; bottom: 0px; height: 730px; width: 235px; left: 0px;"></div>
+                <!-- layout-center -->
+                <div class="layout-center layout-pane layout-pane-center" style="position: absolute; margin: 0px; z-index: 1; overflow: hidden; padding: 0px; display: block; visibility: visible; top: 0px; bottom: 0px; right: 0px; width: 1018px; height: 730px; left: 236px;">
+                    <div class="empty-pnl5"></div>
+                    <div id="taskbarGroup" class="taskbarGroup-nonactive x-position-bottom">
+		                <div id="taskbar"></div>
+		            </div>
+                    <div class="layout-content state-hide" id="mdiWindows" style="display: block; position: relative; padding: 0px; height: 703px; visibility: visible;"></div>
+                </div>
+                <!-- main-bg -->
+                <div class="main-bg"></div>
+            </div>
+            <!-- layout-south -->
+            <div class="layout-south pane pane-south" style="position: absolute; margin: 0px; top: auto; width: auto; z-index: 1; bottom: 0px; left: 0px; right: 0px; display: block; visibility: visible; height: 1px;"></div>
+            <!-- taskbarViewDialog -->
+            <div class="div-slider state-hidden" id="taskbarViewDialog"></div>
+            <!-- layout-slider-->
+            <div class="layout-slider state-hidden" id="slideMessage"></div>
+            <!-- <main class="base-body">
+                <iframe src="nawmain_iframe.html" class="page-iframe" ></iframe>
+            </main> -->
+           
+            <!-- <div class="gapInit" style="display: none;"> -->
+            <main class="base-body gapInit" id="gapInit">
+                <div class="page-main">
+                    <div class="base-wrap">
+                        <div class="main-row n1">
+                            <div class="main-col n1">
+                                <!-- 20250115_메인 배너 관리 메뉴 텍스트 유형 개발 -->
+                                <div class="swiper-container main-swiper mainBnr" id="swiperContainerMain">
+                                    <ul class="swiper-wrapper" id="swiperWrapperMain"></ul>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <!--//  20250115_메인 배너 관리 메뉴 텍스트 유형 개발 -->
+                            </div>
+
+                            <!-- [SR2502-16912] 1:N 지점장 매니저 업로드 로직 변경 -->
+                            <div class="main-col part">
+                                <div class="part-info-area">
+                                    <strong class="hello-txt">
+                                        <b><span class="loginNm"></span></b>님 반갑습니다.
+                                    </strong>
+                                    <dl class="info-person" style="visibility: hidden;">
+                                        <div>
+                                            <dt>지점장</dt>
+                                            <dd><strong id="branchManger"></strong><span id="branchMangerTel"></span></dd>
+                                        </div>
+                                        <div id="eduMangerWrap">
+                                            <dt>부지점장</dt>
+                                            <dd><strong id="branchManger3"></strong><span id="branchManger3Tel"></span></dd>
+                                        </div>
+                                        <div id="dsnMangerWrap">
+                                            <dt>설계매니저</dt>
+                                            <dd><strong id="branchManger2"></strong><span id="branchManger2Tel"></span></dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="result-status-area">
+                                    <div class="tit-wrap">
+                                        <h3 class="h3">실적현황 <span>* 전월 실적 : 전월 1일자~마감 실적 기준</span></h3>
+                                        <a href="javascript:void(0)" class="btn-more" id="p_my"><span>더보기</span></a>
+                                        <div class="status-box">
+                                            <div class="items">
+                                                <strong class="title">청약 건 수</strong>
+                                                <ul>
+                                                    <li class="active"><a href="javascript:void(0)" id="rsMoreC">당월</a> <strong id="thmmPrpsCnt">-</strong></li>
+                                                    <li><a href="javascript:void(0)" id="rsMoreL">전월</a> <strong id="lmmPrpsCnt">-</strong>&nbsp;건</li>
+                                                </ul>
+                                            </div>
+                                            <div class="items">
+                                                <strong class="title">월 보험료</strong>
+                                                <ul>
+                                                    <li class="active"><a href="javascript:void(0)" id="rsMoreC1">당월</a> <strong id="thmmTtlPrm">-</strong></li>
+                                                    <li><a href="javascript:void(0)" id="rsMoreL1">전월</a> <strong id="lmmTtlPrm">-</strong>&nbsp;천원</li>
+                                                </ul>
+                                            </div>
+                                            <div class="items">
+                                                <strong class="title">CMP환산성적</strong>
+                                                <ul>
+                                                    <li class="active"><a href="javascript:void(0)" id="rsMoreC2">당월</a> <strong id="thmmCmpRes">-</strong></li>
+                                                    <li><a href="javascript:void(0)" id="rsMoreL2">전월</a> <strong id="lmmCmpRes">-</strong>&nbsp;천원</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //[SR2502-16912] 1:N 지점장 매니저 업로드 로직 변경 -->
+                        </div>
+
+                        <div class="main-row n2">
+                            <div class="main-col n1">
+								<!-- SR2505-21531-04 A-lisa 내 영업자료실 홍보를 위한 홈화면 개선 -->
+								<div class="insure-wrap">
+									<div class="item-video-box" id="mainVdoInfoVdo"></div>
+									<div class="item-contents-box">
+										<strong id="mainVdoInfoPrdNm"></strong>
+										<div class="item-contents">
+											<div class="insure-info">
+												<dl>
+													<dt id="mainVdoInfoAnceTitlNm"></dt>
+													<dd>
+														<button type="button" class="btn-open" data-href="#modal1" id="salesPop01">안내장</button>
+														<button type="button" class="btn-open" data-href="#modal2" id="salesPop02">리플렛</button>
+														<button type="button" class="btn-open" data-href="#modal3" id="salesPop04">소식지</button>
+													</dd>
+												</dl>
+												<button type="button" id="p_Prod">설계하기</button>
+											</div>
+											<div class="sales_QR">
+												<b>영업자료실</b>
+												<img src="../../css/gap/img_login/qr_sales_20250319.png" alt="QR 이미지">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--// SR2505-21531-04 A-lisa 내 영업자료실 홍보를 위한 홈화면 개선 -->
+                            </div>
+                            <div class="main-col n2 type-list">
+                                <div class="tit-wrap">
+                                    <h3 class="h3">공지사항</h3>
+                                    <a href="javascript:void(0)" class="btn-more ga4" id="p_notice_mr">더보기</a>
+                                </div>
+                                <ul class="list-wrap" id="noticeCont">
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="main-row n3-1">
+                            <div class="main-col n1">
+								<div class="main-col2 n1">
+									<div class="tit-wrap">
+										<h3 class="h3">가입설계이력</h3>
+										<a href="javascript:void(0)" id="p_svcBtn_list1" class="btn-more"><span>더보기</span></a>
+									</div>
+									<div id="ppsdsnGrid" class="tbl-base" style="height:232px">
+										<div class="tbl-header">
+											<table>
+												<caption>가입설계이력 정보입니다.</caption>
+												<colgroup>
+													<col style="width:74px">
+													<col style="width:75px">
+													<col style="width:75px">
+													<col style="width:100px">
+													<col style="width:275px">
+													<col style="width:auto">
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">설계일자</th>
+														<th scope="col">설계사</th>
+														<th scope="col">피보험자</th>
+														<th scope="col">보험료</th>
+														<th scope="col">상품명</th>
+														<th scope="col">진행상태</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+
+										<div class="tbl-body">
+											<table id= "ppsdsnGrid">
+												<colgroup>
+													<col style="width:74px">
+													<col style="width:75px">
+													<col style="width:75px">
+													<col style="width:100px">
+													<col style="width:275px">
+													<col style="width:auto">
+												</colgroup>
+												<tbody id="ppsdsnTbody">
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+								</div>
+								<div class="main-col2 n2">
+									<div class="tit-wrap">
+										<h3 class="h3">청약입력이력</h3>
+										<a href="javascript:void(0)" id="p_svcBtn_list2" class="btn-more"><span>더보기</span></a>
+									</div>
+									<div id="prpsGrid" class="tbl-base" style="height:232px">
+										<div class="tbl-header">
+											<table>
+												<caption>청약입력이력 정보입니다.</caption>
+												<colgroup>
+													<col style="width:74px">
+													<col style="width:75px">
+													<col style="width:75px">
+													<col style="width:100px">
+													<col style="width:275px">
+													<col style="width:auto">
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">청약일자</th>
+														<th scope="col">설계사</th>
+														<th scope="col">피보험자</th>
+														<th scope="col">보험료</th>
+														<th scope="col">상품명</th>
+														<th scope="col">진행상태</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+										<div class="tbl-body">
+											<table>
+												<colgroup>
+													<col style="width:74px">
+													<col style="width:75px">
+													<col style="width:75px">
+													<col style="width:100px">
+													<col style="width:275px">
+													<col style="width:auto">
+												</colgroup>
+												<tbody id="prpsTbody">
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+                            </div>
+
+							<div class="main-col n2 type-list2">
+								<div class="main-col2 n1">
+									<div class="tit-wrap">
+										<h3 class="h3">사전동의접수조회</h3>
+										<a href="javascript:void(0)" id="p_svcBtn_mr1" class="btn-more"><span>더보기</span></a>
+									</div>
+									<ul id="ulBefAsnt" class="list-wrap">
+									</ul>
+								</div>
+								<div class="main-col2 n2">
+									<div class="tit-wrap">
+										<h3 class="h3">모바일청약이력</h3>
+										<a href="javascript:void(0)" id="p_svcBtn_mr2" class="btn-more"><span>더보기</span></a>
+									</div>
+									<ul id="ulMblPrps" class="list-wrap">
+									</ul>
+								</div>
+								<div class="main-col2 n3">
+									<div class="tit-wrap">
+										<h3 class="h3">내고객추천</h3>
+										<a href="javascript:void(0)" id="p_svcBtn_mr3" class="btn-more"><span>더보기</span></a>
+									</div>
+									<ul id="ulCampList" class="list-wrap">
+									</ul>
+								</div>
+							</div>
+						</div>
+
+                        <div class="main-row n4">
+                            <div class="main-col n1">
+                                <dl class="contactinfo">
+                                    <div class="contactinfo-item n1" title="GA설계사 지원 센터 업무가 궁금하시다면 클릭해 주세요!" id="btnRGaPlnrAidCenter">
+                                        <dt><a href="javascript:void(0)">GA설계사 지원 센터</a></dt>
+                                        <dd><em>1588-2215</em> (평일 9:00~20:00)</dd>
+                                    </div>
+                                    <div class="contactinfo-item n2" id="btnRDwldBefAsnt">
+                                        <dt><a href="javascript:void(0);">고객사전동의 전용팩스</a></dt>
+                                        <dd><em>02-6944-1224</em> (24시간 가능)</dd>
+                                    </div>
+                                </dl>
+                                <!--<button type="button" class=btn-print id="btnRPrntBefAsnt"><span>출력</span></button>  -->
+                            </div>
+                            <div class="main-col n2">
+                                <div class="util-wrap">
+									<!-- SR2507-18273-03-GA A-LISA 시스템매뉴얼 개편 관련 개발사항 -->
+									<button type="button" class="ns1 btn-link ga4" id="p_ChomeDwld"><span>크롬<br>다운로드</span></button>
+									<button type="button" class="ns2 btn-link ga4" id="p_PdfDwld"><span>PDF<br>뷰어설치</span></button>
+									<button type="button" class="ns3 btn-link ga4" id="p_GenBoard"><span>설계/청약<br>매뉴얼</span></button>
+									<button type="button" class="ns4 btn-link ga4" id="p_PrtBtnAgree"><span>사전동의<br>출력</span></button>
+									<button type="button" class="ns5 btn-link ga4" id="p_PrtBtnForm"><span>서류양식<br>출력</span></button>
+									<button type="button" class="l1 btn-link ga4" id="p_BtnAppDL"><span>라이나G</span></button>
+                        			<!--button type="button" class="n5 btn-link ga4" id="p_PrtBtnAgree"><span>사전동의<br>출력</span></button>
+                        			<button type="button" class="n1 btn-link ga4" id="p_PrtBtnForm"><span>서류양식<br>출력</span></button>
+                        			<button type="button" class="n2 btn-link ga4" id="p_PrtBtnStorage"><span>자료실</span></button-->
+									<!--// SR2507-18273-03-GA A-LISA 시스템매뉴얼 개편 관련 개발사항 -->
+                                	<!-- 20221222 추가 -->
+                        			<!--button type="button" class="l1 btn-link" id="p_BtnAppDL"><span id="p_BtnAppDL">라이나G</span></button-->
+                        			<!-- <button type="button" class="l2 btn-link" id="btnCareMbrShip"><span>케어멤버십</span></button> --><!-- 2024-03-15;SR2403-19613-01;메인화면 – 케어멤버십 바로가기 제거 -->
+                        			<!-- <button type="button" class="l3 btn-link" id="p_BtnYoutube"><span id="p_BtnYoutube">GA 유튜브</span></button> --><!-- [SR2502-20982-01] A-LISA 유투브 아이콘 삭제 -->
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="main-row n4" style="margin:0 !important; padding:0 !important;">        
+                            <div class="gapInit-addrInfo main-col n1">
+                                        서울특별시 종로구 삼봉로 48(청진동 188) 라이나타워 &nbsp;&nbsp;&nbsp;&nbsp; 대표이사 조지은 사업자등록번호 : 104-81-85673
+                                <br>CopyrightⓒLINA Korea, a Chubb Company. All rights reserved. For more information, Contact webmaster@lina.co.kr
+                            </div>
+                            <div id="hdnAreaPnl" class="main-col n2">
+                                <div id="hdnAreaPnIn"></div>
+                            </div>
+                        </div>
+                      </div>
+                   </div>
+                </main>
+
+			<!-- 202507 추가 : 안내장 POPUP -->
+      <div class="ui-modal" id="modal1">
+        <div class="ui-modal-wrap smint-wrap w400">
+          <div class="ui-modal-header">
+            <h1>영업자료</h1>
+            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+          </div>
+          <div class="ui-modal-body">
+            <div class="inner">
+              <!-- content -->
+              <div class="sales-data">
+								<div class="smint-menu">
+									<div class="top-info">
+										<div class="ti-img" id="salesPop01_thumb">
+										</div>
+										<dl class="ti-txt">
+											<dt id="salesPop01_anceTitlNm"></dt>
+											<dd id="salesPop01_affchCtnt"></dd>
+										</dl>
+									</div>
+									<div class="top-menu">
+										<div class="tm-inner">
+											<a href="#s1"><span>상품특징</span></a>
+											<a href="#s2"><span>보장내용</span></a>
+											<a href="#s3"><span>가입안내</span></a>
+										</div>
+									</div>
+								</div>
+								<div class="info-wrap">
+									<div class="acSection s1" id="s1">
+									</div>
+									<div class="acSection s2" id="s2">
+									</div>
+									<div class="acSection s3" id="s3">
+										<div class="acSub-menu">
+											<div class="sm-inner">
+												<a href="#ss1"><span>가입내용</span></a>
+												<a href="#ss2"><span>보험료예시</span></a>
+												<a href="#ss3"><span>해약환급금예시</span></a>
+											</div>
+										</div>
+										<div class="subInfo-wrap">
+											<div class="subInfo-box">
+												<div class="subSection ss1" id="ss1">
+												</div>
+												<div class="subSection ss2" id="ss2">
+												</div>
+												<div class="subSection ss3" id="ss3">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="img-info" id="salesPop01_s4">
+									</div>
+								</div>
+							</div>
+              <!--// content -->
+            </div>
+          </div>
+					<button class="topBtn">Top으로 가기</button>
+        </div>
+      </div>
+      <!--// 202507 추가 : 안내장 POPUP -->
+
+			<!-- 202507 추가 : 리플렛 POPUP -->
+      <div class="ui-modal" id="modal2">
+        <div class="ui-modal-wrap insure-info-wrap">
+          <div class="ui-modal-header">
+            <h1>영업자료</h1>
+            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+          </div>
+          <div class="ui-modal-body">
+            <div class="inner">
+              <!-- content -->
+							<div class="sales-data">
+								<div class="top-title">
+										<h2 id="salesPop02_PrdNm"></h2>
+								</div>
+								<div class="img-info-wrap" id="salesPop02_Img">
+								</div>
+							</div>
+              <!--// content -->
+            </div>
+          </div>
+					<button class="topBtn">Top으로 가기</button>
+        </div>
+      </div>
+      <!--// 202507 추가 : 리플렛 POPUP -->
+
+			<!-- 202507 추가 : 소식지 POPUP -->
+      <div class="ui-modal" id="modal3">
+        <div class="ui-modal-wrap insure-info-wrap">
+          <div class="ui-modal-header">
+            <h1>영업자료</h1>
+            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+          </div>
+          <div class="ui-modal-body">
+            <div class="inner">
+              <!-- content -->
+							<div class="sales-data">
+								<div class="top-title">
+										<h2 id="salesPop04_PrdNm"></h2>
+								</div>
+								<div class="img-info-wrap" id="salesPop04_Img">
+								</div>
+							</div>
+              <!--// content -->
+            </div>
+          </div>
+					<button class="topBtn">Top으로 가기</button>
+        </div>
+      </div>
+      <!--// 202507 추가 : 소식지 POPUP -->
+
+				<!-- 20240723 : 메인 팝업 스와이프 -->
+				<div class="modal-spot slidePopupWrap rcmdPopup recommendCustomer_bnr" id="swiper-wrapper_pop_on">
+					<div class="modal-spot-wrap">
+				    <div class="popup-contents">
+				      <div class="modal-spot-cookie">
+				        <button type="button" class="todayBtn" id="PoNotToday"><span>오늘 하루 보지 않음</span></button>   <!-- 20240819 버튼변경 -->
+				        <button type="button" class="btn-close" id="PoClose">
+				          <span>닫기</span>
+				        </button>
+				      </div>
+				      <div class="swiper slide-popup">
+				        <div class="swiper-wrapper" id="swiper-wrapper_pop">
+				        </div>
+				        <button type="button" class="swiper-button-next"><span class="a11y-hidden">다음</span></button>
+				        <button type="button" class="swiper-button-prev"><span class="a11y-hidden">이전</span></button>
+				        <div class="swiper-pagination"></div>
+				      </div>
+				    </div>        
+				  </div>
+				</div>
+				<!-- //20240723 : 메인 팝업 스와이프 -->
+				
+				<!-- 20241010 교육자료 관리 준수 확약서 POPUP -->
+				<div class="ui-modal" id="submtModal1">
+				  <div class="ui-modal-wrap">
+				    <div class="ui-modal-header">
+				      <h1>미승인 교육자료 사용방지 및 교육자료 관리 준수 확약서</h1>
+				      <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+				    </div>
+				    <div class="ui-modal-body">
+				      <div class="inner">
+				        <!-- content -->
+				        <div class="indemnity-report">
+				          <p class="txt-info">
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" id="tiUserNm" data-text="">
+				              <span class="text-shadow" id="tsUserNm"></span>
+				            </span>
+				            (이하 '본인')은 보험대면영업규정 제 10조 5항에 따른 「대면모집종사자 교육자료 제공, 이용, 관리 통제 지침」 사항을 다음의 내용과 같이 확약합니다.
+				          </p>
+				          <div class="tbl-base type-data">
+				            <table>
+				                <caption>구분,내용,확인 양식 정보입니다.</caption>
+				                <colgroup>
+				                <col style="width:18%">
+				                <col style="width:auto">
+				                <col style="width:15%">
+				                </colgroup>
+				                <thead>
+				                    <tr>
+				                      <th scope="col">구분</th>
+				                      <th scope="col">내용</th>
+				                      <th scope="col">확인</th>
+				                    </tr>
+				                </thead>
+				                <tbody>
+				                    <tr>
+				                      <th scope="row">교육자료 종류</th>
+				                      <td>
+				                        <ul class="list-items">
+				                          <li>상품 교육을 목적으로 제작 된 교재 / 교안</li>
+				                          <li>상품 교육을 목적으로 제작 된 동영상</li>
+				                          <li>전산 교육 교재 / 교안</li>
+				                          <li>상품 내용을 숙지시키기 위한 목적으로 제작된 자료</li>
+				                          <li>기타 대면보험모집인 교육을 목적으로 제작된 자료</li>
+				                        </ul>
+				                      </td>
+				                      <td>
+				                        <span class="inp-write">
+				                          <input type="text" class="text-inp" data-text="확인">
+				                          <span class="text-shadow">확인</span>
+				                        </span>
+				                      </td>
+				                    </tr>
+				                    <tr>
+				                      <th scope="row">교육자료 사용</th>
+				                      <td>
+				                        <ul class="list-items">
+				                          <li>교육자료를 제공받은 부서나 대면보험모집조직은 임원직/모집인 교육 목적 외에는 사용할 수 없다.</li>
+				                          <li>교육자료에 기재된 유효기간 내 사용 가능하다. 단, 상품개정 및 보장내용 등이 변경된 경우 유효기간과 무관하게 최신 자료를 사용해야 하며, 이전 교육자료는 폐기한다.</li>
+  										  <li>다른 형태의 교안이 필요한 경우에는 준법감시팀과 사전 협의 후 사용하여야 한다.</li>
+				                        </ul>  
+				                      </td>
+				                      <td>
+				                        <span class="inp-write">
+				                          <input type="text" class="text-inp" data-text="확인">
+				                          <span class="text-shadow">확인</span>
+				                        </span>
+				                      </td>
+				                  </tr>
+				                  <tr>
+				                    <th scope="row">교육자료 제출</th>
+				                    <td>
+				                      <ul class="list-items">
+				                        <li>지점장은 매월 사용 교육자료를 제출하여야 한다.</li>
+				                      </ul> 
+				                      <p>제출시기: D-2 <br>※ D일:매월 1일 or 신상품 출시일 or 신규한도 정책 반영일</p>
+				                    </td>
+				                    <td>
+				                      <span class="inp-write">
+				                        <input type="text" class="text-inp" data-text="확인">
+				                        <span class="text-shadow">확인</span>
+				                      </span>
+				                    </td>
+				                </tr>
+				                </tbody>
+				              </table>
+				          </div>
+				          <p class="txt-info">※ 교육자료는 심의부서의 심의를 받아 관리번호를 부여받고 사용<br> 담당 교육매니저 및 설계매니저도 해당내용을 준수하도록 관리함에 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="동의">
+				              <span class="text-shadow">동의</span>
+				            </span>합니다. <br>
+				          </p>
+				          <p class="txt-info">아래에 서명함으로서 본인은 상기 사항에 대하여 충분히 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="인지">
+				              <span class="text-shadow">인지</span>
+				            </span>하였으며, 성실히 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="준수하였음">
+				              <span class="text-shadow">준수하였음</span>
+				            </span>을 확인합니다.
+				          </p>
+				          <span class="date" id="submtDate"></span>
+				          <dl class="user-data">
+				            <div>
+				              <dt>소속</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiOrgNm" data-text="">
+				                  <span class="text-shadow" id="tsOrgNm"></span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>사번</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserId" data-text="">
+				                  <span class="text-shadow" id="tsUserId"></span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>성명</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserNm2" data-text="">
+				                  <span class="text-shadow" id="tsUserNm2"></span>
+				                </span>
+				              </dd>
+				            </div>
+				          </dl>
+				          <span class="copyright">라이나생명보험 주식회사 귀중</span>
+				        </div>
+				        <!--// content -->
+				      </div>
+				    </div>
+				    <div class="ui-modal-bottom">
+				      <div class="cookie-box">
+				        <input class="a11y-hidden" type="checkbox" id="todayChk">
+				        <label class="lb-check" for="todayChk"><span>오늘 하루 보지 않기</span></label>
+				      </div>
+				      <button type="button" class="btn-close"><span>닫기</span></button>  
+				      <button type="button" class="btn" disabled=true><span>제출하기</span></button>
+				    </div>
+				  </div>
+				</div>
+				<!--// 교육자료 관리 준수 확약서 POPUP -->
+				
+				<!-- 개인정보 파기 확약서 POPUP -->
+				<div class="ui-modal" id="submtModal2">
+				  <div class="ui-modal-wrap">
+				    <div class="ui-modal-header">
+				      <h1>개인정보 파기에 대한 확약서</h1>
+				      <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+				    </div>
+				    <div class="ui-modal-body">
+				      <div class="inner">
+				        <!-- content -->
+				        <div class="indemnity-report">
+				          <p class="txt-info">
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" id="tiUserNm3" data-text="">
+				              <span class="text-shadow" id="tsUserNm3"></span>
+				            </span>
+				            (이하 '본인')은 라이나생명보험주식회사(이하 '회사')로부터 위탁받은 업무의 이행을 위해 회사로부터 제공받은 개인정보 중 담당 업무가 변경되었거나, 이용목적이 달성된 개인정보의 파기와 관련해서 아래 사항을 확약합니다.
+				          </p>
+				          <ol class="list-items">
+				            <li>
+				              1. 본인은, 회사로부터 제공받은 개인정보를 개인정보보호법 제21조 및 동법 시행령 제16조에 따라<br> 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="복구가 불가능한 방법으로 모두 파기">
+				                <span class="text-shadow">복구가 불가능한 방법으로 모두 파기</span>
+				              </span>하였으며, 해당 정보에 대하여 어떠한 권리도 가지지 아니함을 확약한다.
+				            </li>
+				            <li>
+				              2. 본인은 회사의 업무 수행 목적 범위를 넘어 목적 외로 해당 개인정보를 이용하거나 이를 제3자에게 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="제공 또는 유출하지 아니하였음">
+				                <span class="text-shadow">제공 또는 유출하지 아니하였음</span>
+				              </span>을 확약한다.
+				            </li>
+				            <li>
+				              3. 본인은 회사업무 수행을 통해 알게 된 개인정보를 다른 사람에게 <span class="txt-bold">누설하거나 업무 수행 목적 외의 용도로 제공하거나 이용하지</span> 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="아니하였음">
+				                <span class="text-shadow">아니하였음</span>
+				              </span>을 확약한다.
+				            </li>
+				            <li>
+				              4. 본인은 업무와 관련하여 알았거나 알게 된 모든 개인정보 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="서류, 파일, 이메일, 캡처, 녹취 등 ">
+				                <span class="text-shadow">서류, 파일, 이메일, 캡처, 녹취 등</span>
+				              </span>를 <span class="txt-bold">개인적인 용도로 보관 또는 외부 반출</span>
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="하지 않았음 ">
+				                <span class="text-shadow">하지 않았음</span>
+				              </span>을 확약한다.
+				            </li>
+				          </ol>
+				          <p class="txt-info">
+				            아래에 서명함으로서 본인은 상기 사항에 대하여 충분히 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="인지">
+				              <span class="text-shadow">인지</span>
+				            </span>하였으며, 성실히 준수하였음을 확인합니다.
+				          </p><br>
+				          <p class="txt-info">
+				            이를 위반한 경우 내부통제 부서의 업무 프로세스에 적극 협조할 것이며, 관계 법령에 따른 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="민·형사상의 모든 책임">
+				              <span class="text-shadow">민·형사상의 모든 책임</span>
+				            </span>을 부담할 것과 회사에 끼친 손해에 대한 배상을 포함하여 회사가 정하는 적절한 조치에 성실히 따를 것을 동의합니다.
+				          </p><br>
+				          <span class="date" id="submtDate2"></span>
+				          <dl class="user-data">
+				            <div>
+				              <dt>소속</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiOrgNm2" data-text="">
+				                  <span class="text-shadow" id="tsOrgNm2"></span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>사번</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserId2" data-text="">
+				                  <span class="text-shadow" id="tsUserId2" ></span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>성명</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserNm4" data-text="">
+				                  <span class="text-shadow" id="tsUserNm4"></span>
+				                </span>
+				              </dd>
+				            </div>
+				          </dl>
+				          <span class="copyright">라이나생명보험 주식회사 귀중</span>
+				        </div>
+				        <!--// content -->
+				      </div>
+				    </div>
+				    <div class="ui-modal-bottom">
+				      <div class="cookie-box">
+				        <input class="a11y-hidden" type="checkbox" id="todayChk2">
+				        <label class="lb-check" for="todayChk2"><span>오늘 하루 보지 않기</span></label>
+				      </div>
+				      <button type="button" class="btn-close"><span>닫기</span></button>  
+				      <button type="button" class="btn" disabled=true><span>제출하기</span></button>
+				    </div>
+				  </div>
+				</div>
+				<!--// 개인정보 파기 확약서 POPUP -->
+				
+		      <!-- 컨설턴트 위촉 계약서 POPUP -->
+		      <div class="ui-modal" id="renwCont01">
+		        <div class="ui-modal-wrap">
+		          <div class="ui-modal-header">
+		            <h1>컨설턴트 갱신계약서</h1>
+		            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+		          </div>
+		          <div class="ui-modal-body" id="gaDscAidDcd1"><!-- 계약서(설계지원) -->
+		            <div class="inner">
+		              <!-- content -->
+		              <div class="indemnity-report">
+		                <p class="txt-info">
+		                  라이나생명보험주식회사(이하 '라이나'라 한다)와
+		                  <span class="inp-write">
+		                    <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                    <span class="text-shadow txtMngrNm">홍길동</span>
+		                  </span>
+		                  (이하 '컨설턴트'이라 한다)은 다음과 같이 컨설턴트 위촉계약(이하 '본 계약'이라 한다)을 체결한다.
+		                </p>
+		                <p class="txt-info mt20"><strong>제 1 조 (목적)</strong></p>
+		                <p class="txt-info mt10">'라이나'는 GA대리점(이하 “GA대리점”이라 한다)에 대한 상품설계 지원 등 제3조에서 정한 업무를 '컨설턴트'에게 위탁하고자 하며, '컨설턴트'는 자신이 가진 전문적인 지식을 이용하여 이를 수행하고자 하는 바(이하 '컨설팅업무'라 한다), 본 계약은 이와 관련하여 컨설팅업무의 범위와 내용을 명확히 하고 각 당사자의 권리와 의무 및 역할을 정하는데 그 목적이 있다.</p>
+		                <p class="txt-info mt20"><strong>제 2 조 (지위)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 '라이나'와 고용계약을 체결함이 없이 독립된 사업자로서 '라이나'가 위탁한 컨설팅업무를 처리한다.
+		                  </li>
+		                  <li>
+		                    ②  '컨설턴트'는 본 계약 이외에 '라이나'가 그 소속 임직원을 대상으로 제정 및 시행하는 제규정에 구속되지 아니하며, 컨설팅업무의 수행시간 및 장소에도 제한을 받지 아니한다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 3 조 (컨설팅업무의 내용)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 라이나가 지정한 GA대리점을 대상으로 다음 각호의 컨설팅업무를 처리한다.</p>
+		                <ol class="list-items mt10">
+		                  <li>①  GA대리점 소속 설계사에 대한 교육 및 SR강의 지원 (상품, 불완전판매예방 등)</li>
+		                  <li>②  GA대리점 소속 설계사에 대한 상품설계 지원</li>
+		                  <li>③  기타 상품설계 지원 도중 발생하는 상품 설명 등의 업무</li>
+		                  <li>④  기타 양 당사자가 별도 협의한 업무</li>
+		                </ol>
+		                <p class="txt-info"><strong>제 4 조 (상호협조)</strong></p>
+		                <p class="txt-info mt10">'라이나'는 '컨설턴트'에게 본 계약에 따른 컨설팅업무 수행 시 필요한 정보와 자료를 제공하고 '컨설턴트'는 '라이나'와 약정한 컨설팅업무의 내용에 관하여 신의성실의 원칙에 따라 컨설팅업무를 처리하여야 한다.</p>
+		                <p class="txt-info mt20"><strong>제 5 조 (수수료의 산정 및 지급)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '라이나'는 '컨설턴트'의 본 계약에 따른 컨설팅업무 수행에 대한 대가로 [별지4. 컨설턴트 수수료 지급기준]에 따라 위촉수수료(이하 '위촉수수료'라 한다)를 산정하여 매월 지급한다.
+		                  </li>
+		                  <li>
+		                    ②  컨설턴트 위촉 계약서의 [별지4. 컨설턴트 수수료 지급 기준] '위촉수수료A'에 대하여는 매월 24일에 '컨설턴트'가 지정한 '컨설턴트' 명의의 계좌로 현금지급하기로 하며, 지급일이 영업일이 아닌 경우 그 직전 영업일에 지급하기로 한다. 
+		                  </li>
+		                  <li>
+		                    ③  '컨설턴트'가 '라이나'로부터 지급받은 위촉수수료와 관련하여 '컨설턴트'에게 부과되는 일체의 제세공과금은 '컨설턴트'가 부담하며, '라이나'는 위촉수수료 지급시 제세공과금을 원천징수 후 지급한다.
+		                  </li>
+		                  <li>
+		                    ④  컨설팅업무 수행과 관련하여 발생하는 실비에 대하여는 '라이나'의 승인에 따라 지급할 수 있다.
+		                  </li>
+		                  <li>
+		                  	⑤  위촉계약이 월 중에 시작 또는 종료하는 경우 위촉수수료는 일할 계산하여 지급한다.
+		                  </li>
+		                  <li>
+		                  	⑥  '라이나'는 본 조 제1항 내지 제4항의 대가를 지급하는 외에 '컨설턴트'에 대하여 여하한 명목의 금전도 지급할 의무가 없다.
+		                  </li>
+		                  <li>
+		                  	⑦  본 계약 제6조에서 정한 계약기간 동안 양 당사자의 별도 서면에 의한 합의를 통해 [별지4. 컨설턴트 수수료 지급 기준]은 변경될 수 있다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 6 조 (계약기간)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  본 계약의 계약기간은 
+		                    <span class="inp-write">
+		                      <input type="text" class="text-inp gdTxtRenwPrd" data-text="XXXX년XX월XX일 부터 XXXX년XX월XX일">
+		                      <span class="text-shadow txtRenwPrd">XXXX년XX월XX일 부터 XXXX년XX월XX일</span>
+		                    </span> 까지로 한다.
+		                  </li>
+		                  <li>
+		                    ②  양 당사자의 별도 서면에 의한 합의가 없는 한 본 조 제1항 계약기간의 만료로 본 계약은 당연 종료된다.    
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 7 조 (보증)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 자신이 본 계약 컨설팅업무를 수행함에 있어 충분히 자격이 있는 전문가임을 보장한다.</p>
+		                <p class="txt-info mt20"><strong>제 8 조 (준수사항)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 본 계약상의 업무를 수행함에 있어서 관련법령을 준수하고, '라이나'의 이미지와 명성을 손상시키는 일체의 행위를 하여서는 아니 된다. 
+		                  </li>
+		                  <li>
+		                    ②  '컨설턴트'는 컨설팅업무 수행 시 보험계약법(상법), 보험업법, 보험업감독규정 등 관련법규 및 위탁업무와 관련된 '라이나'의 규정, 지침, 업무절차 등을 준수하여야 한다.
+		                  </li>
+		                  <li>
+		                    ③  '컨설턴트'는 컨설팅업무 수행과 관련하여 교육 등 관련자료를 제작하는 경우 사전에 '라이나'의 승인을 얻은 후 사용하여야 한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 9 조 (비밀준수의무)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    1.  '컨설턴트'는 '라이나'로부터 본 계약의 컨설팅업무 수행을 위하여 제공받은 자료를 비롯하여 본 계약과 관련한 일체의 사항을 본 계약 이외의 용도로 사용하거나 제3자에게 누설할 수 없으며, 본 조에 대한 '컨설턴트'의 의무는 계약기간은 물론 계약기간 종료 후에도 존속한다.
+		                  </li>
+		                  <li>
+		                    2.  '컨설턴트'가 본 의무의 위반으로 인하여 '라이나'가 손해를 입었을 경우 '컨설턴트'는 '라이나'에게 비용을 포함한 일체의 손해에 대하여 배상 책임을 부담한다.
+		                  </li>
+		                  <li>
+		                    3.  본 계약 종료 시 '컨설턴트'는 '라이나'에 속한 일체의 서류, 물품 등을 지체 없이 반납하여야 한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 10 조(위촉업무의 일시 중지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 부득이한 사유로 컨설팅업무를 지속할 수 없을 경우에 3개월 범위 내에서 '라이나'에 컨설팅업무의 일시 중지를 요청할 수 있다.
+		                  </li>
+		                  <li>
+		                    ②  '라이나'는 상기의 사유로 컨설팅업무가 일시 중지된 경우에는 중지된 기간에 대하여 제5조의 위촉수수료를 지급하지 아니한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 11 조 (계약의 해지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  일방에게 다음 각 호의 사유가 발생한 경우에 귀책사유 없는 당사자는 본 계약기간에도 불구하고 상대방 당사자에게 서면 통지함으로써 본 계약을 해지할 수 있다.
+		                    <ol class="list-items-ml">
+		                      <li>1.  본 계약의 협조 내지 준수사항, 의무이행 등을 태만히 하여 일방의 업무 수행 혹은 그 영업활동에 중대한 지장을 초래한 경우</li>
+		                      <li>2.  어느 일방의 주요재산에 보전처분 결정이 내려지거나, 그에 대해 강제집행이 개시되거나, 혹은 파산, 부도처리, 회생절차개시 등의 사유가 발생하여 더 이상의 계약유지가 곤란하다고 인정될 경우</li>
+		                      <li>3.  '컨설턴트'가 신체적·정신적 질병 또는 장해 등으로 일주일 이상 정상적인 컨설팅업무 수행이 불가능한 경우 </li>
+		                      <li>4.  어느 일방의 고의 또는 과실로 인하여 상대 당사자에게 손해가 발생한 경우</li>
+		                      <li>5.  '컨설턴트'가 컨설팅업무를 수행할 능력이 없다는 점이 충분히 입증된 경우</li>
+		                      <li>6.  GA대리점으로부터 컨설턴트가 본 계약 제3조의 컨설팅업무를 수행함에 있어 관련 법령 및 본 계약상의 의무를 위반하였다는 이유로 다음 각 목에서 정한 바와 같이 컨설턴트 교체요청이 접수된 경우
+		                        <ol class="list-items-ml">
+		                          <li>가. 최근 3개월 이내 2회 이상 또는 최근 1년 이내 5회 이상 ‘컨설턴트’ 교체요청이 접수된 경우 </li>
+		                          <li>나. 최근 1년 이내에 3개 이상의 GA대리점으로부터 ‘컨설턴트’ 교체 요청이 접수된 경우</li>
+		                        </ol>
+		                      </li>
+		                      <li>7.  본 계약을 위반하고 그 시정을 요구하는 상대 당사자의 통지를 받은 날로부터 7일 이내에 정당한 사유 없이 해당 위반사항을 시정하지 아니한 경우</li>
+		                    </ol>
+		                  </li>
+		                  <li>
+		                    ②  본 조 제1항에도 불구하고 '라이나'는 해지 1개월 전에 '컨설턴트'에 대한 서면통지로써 손해배상 없이 본 계약을 해지할 수 있다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 12 조 (손해배상)</strong></p>
+		                <p class="txt-info mt10">본 계약의 어느 일방 당사자가 본 계약을 위반하여 상대방에게 손해를 입힌 경우, 계약위반에 대해 책임 있는 당사자는 그로 인하여 상대방 당사자에게 발생한 모든 손해를 배상하여야 한다.</p>
+		                <p class="txt-info mt20"><strong>제 13 조 (부패 및 뇌물방지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  각 당사자는 본 계약상 거래 또는 각 당사자가 참여하는 다른 사업상 거래와 관련하여, 직·간접적으로 다음 각 호에 해당하는 자에게 재산적 가치 있는 금품 등을 지급 또는 양도한 바 없으며, 차후에도 그러하지 않을 것임을 확약한다.
+		                        <ol class="list-items-ml">
+			                        <li>
+			                        	1.  공무원 (중앙행정기관/지방자치단체 또는 국제 공공기관이 소유한 기관의 임직원 포함), 정당의 관료 또는 공직 후보자
+			                        </li>
+			                        <li>
+			                        	2.  기타 부패방지 및 국민권익위원회의 설치와 운영에 관한 법률 기타 뇌물 및 부패방지법규(이하 “관련법규”)에 따라 그에 대한 금품 등의 지급 또는 양도가 금지되는 자를 대행하는 개인이나 기관
+			                        </li>		
+		                        </ol>
+		                  </li>
+	                      <li>
+	                      	②  양 당사자 모두 관련 법규를 완전히 숙지하여야 하며, 본 계약상 거래와 관련하여 관련법규를 위반하거나 상대방이 관련법규를 위반하도록 방조하는 행위를 하지 않아야 할 의무가 있다.
+	                      </li>
+	                      <li>
+	                      	③  양 당사자 모두 관련법규의 적용을 받는 어떠한 자에게도 적법하지 않은 뇌물을 수수하거나 임무에 위배하여 재물을 수수하거나 불법적인 리베이트를 지급하거나 기타 적법하지 않은 사업 획득을 목적으로 뇌물 수수를 수용, 묵인, 요구하는 행위를 하여서는 아니 된다.
+	                      </li>
+	                      <li>
+	                      	④  각 당사자는 상대방의 요청이 있는 경우 장부와 기록을 포함하여 본 조항 준수를 증명하거나 뒷받침하는 서면자료를 상대방에게 공개 및 제공해야 하며 그러한 자료를 요청하는 당사자의 요청을 불합리하게 거부하지 않아야 한다.
+	                      </li>
+	                      <li>
+	                      	⑤  본 계약 제11조 조항에도 불구하고 양 당사자 중 한쪽은 다른 당사자가 본 조항을 위반한 것으로 판명되는 경우 본 계약을 해지할 수 있다.
+	                      </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 14 조 (권리의무의 양도 등)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 '라이나'의 서면에 의한 사전동의 없이는 본 계약상의 지위 및 본 계약의 체결로 인하여 발생한 어떠한 권리도 제3자에게 양도할 수 없다. </p>
+		                <p class="txt-info mt20"><strong>제 15 조 (지식재산권 등)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    1.  본 계약에 따른 컨설팅업무 산출물의 소유권 및 지식재산권 등의 일체의 권리는 '라이나'에게 귀속한다.
+		                  </li>
+		                  <li>
+		                    2.  본 계약의 컨설팅업무 수행과 관련하여 제3자로부터 제기되는 일체의 분쟁은 '컨설턴트'가 본인의 비용으로 해결한다. 단, '라이나'는 제3자의 권리침해에 대한 청구 등이 있을 경우 이를 즉시 '컨설턴트'에게 통보한다.
+		                  </li>
+		                  <li>
+		                    3.  본 조의 사항은 본 계약이 종료된 경우에도 계속하여 효력을 가진다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 16 조 (해석) </strong></p>
+		                <p class="txt-info mt10">본 계약서에 포함되지 아니한 사항은 양 당사자가 상호 협의하여 결정하기로 하며 본 계약의 해석에 관하여 이의가 있을 경우 그 해석은 관련 법령 및 일반 상관습에 따르기로 한다.</p>
+		                <p class="txt-info mt20"><strong>제 17 조 (재판관할)</strong></p>
+		                <p class="txt-info mt10">양 당사자간에 본 계약과 관련한 분쟁이 발생한 경우, 당사자들은 협의를 통하여 그 분쟁을 해결하기 위해 최대한 노력하여야 한다. 단, 분쟁이 상호협의로 해결되지 못하는 경우, 서울중앙지방법원을 제1심 관할법원으로 하여 분쟁을 해결한다.</p>
+		                <p class="txt-info mt20">상기 내용을 증명하기 위하여 '라이나'와 '컨설턴트'는 계약서 2부를 작성하여 각각 기명날인 한 후, 1부씩 이를 보관한다.</p>
+		                <p class="txt-info mt20">
+			                <span class="date">
+			                본 계약은 전자적 방식으로
+			                	<span class="inp-write">
+			                		<input type="text" class="text-inp gdTxtRenwObjSbmtDt" data-text="XXXX년XX월XX일">
+			                		<span class="text-shadow txtRenwObjSbmtDt">XXXX년XX월XX일</span>
+		                		</span>
+	                		체결되었습니다.
+			                </span>
+		                </p>
+		                <div class="btn-check-area">
+		                  <button type="button" class="btn-check btnShowAppdx"><span>별지확인</span></button>
+		                </div>
+		                <div class="user-data-area">
+		                  <div>
+		                    <p class="txt-info">'라이나'</p>
+		                    <div class="txt-info">
+		                      서울시 종로구 삼봉로 48 <br>
+		                      라이나타워 22층
+		                    </div>
+		                    <div class="txt-info">
+		                      라이나생명보험주식회사<br>
+		                      대표이사 조지은    (인) 
+		                    </div>
+		                  </div>
+		                  <div>
+		                    <p class="txt-info">'컨설턴트'</p>
+		                    <dl class="user-data">
+		                      <div class="address-input">
+		                        <dt>주소</dt>
+		                        <dd>
+		                          <span class="inp-write address">
+		                            <!-- <input type="text" class="text-inp" data-text="주소입력"> -->
+		                            <textarea name="address" class="text-inp txtMngrAddr"></textarea>
+		                          </span>
+		                        </dd>
+		                      </div>
+		                      <div>
+		                        <dt>이름</dt>
+		                        <dd>
+		                          <span class="inp-write">
+		                            <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                            <span class="text-shadow txtMngrNm1">홍길동</span>
+		                          </span> (인)
+		                        </dd>
+		                      </div>
+		                    </dl>
+		                  </div>
+		                </div>
+		                <span class="copyright">라이나생명보험 주식회사 귀중</span>
+		              </div>
+		              <!--// content -->
+		            </div>
+		          </div><!--// gaDscAidDcd1 -->
+		          <div class="ui-modal-body" id="gaDscAidDcd2"><!-- 계약서(교육지원) -->
+		            <div class="inner">
+		              <!-- content -->
+		              <div class="indemnity-report">
+		                <p class="txt-info">
+		                  라이나생명보험주식회사(이하 '라이나'라 한다)와
+		                  <span class="inp-write">
+		                    <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                    <span class="text-shadow txtMngrNm">홍길동</span>
+		                  </span>
+		                  (이하 '컨설턴트'이라 한다)은 다음과 같이 컨설턴트 위촉계약(이하 '본 계약'이라 한다)을 체결한다.
+		                </p>
+		                <p class="txt-info mt20"><strong>제 1 조 (목적)</strong></p>
+		                <p class="txt-info mt10">'라이나'는 GA대리점(이하 “GA대리점”이라 한다)에 대한 교육 등 제3조에서 정한 업무를 '컨설턴트'에게 위탁하고자 하며, '컨설턴트'는 자신이 가진 전문적인 지식을 이용하여 이를 수행하고자 하는 바(이하 '컨설팅업무'라 한다), 본 계약은 이와 관련하여 컨설팅업무의 범위와 내용을 명확히 하고 각 당사자의 권리와 의무 및 역할을 정하는데 그 목적이 있다.</p>
+		                <p class="txt-info mt20"><strong>제 2 조 (지위)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 '라이나'와 고용계약을 체결함이 없이 독립된 사업자로서 '라이나'가 위탁한 컨설팅업무를 처리한다.
+		                  </li>
+		                  <li>
+		                    ②  '컨설턴트'는 본 계약 이외에 '라이나'가 그 소속 임직원을 대상으로 제정 및 시행하는 제규정에 구속되지 아니하며, 컨설팅업무의 수행시간 및 장소에도 제한을 받지 아니한다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 3 조 (컨설팅업무의 내용)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 라이나가 지정한 GA대리점을 대상으로 다음 각호의 컨설팅업무를 처리한다.</p>
+		                <ol class="list-items mt10">
+			                <li>
+			                    <ol class="list-items-ml">
+				                  <li>1.  GA대리점 소속 설계사에 대한 교육 및 SR강의 지원 (상품, 불완전판매예방 등)</li>
+				                  <li>2.  GA대리점 소속 설계사에 대한 상품설계 지원</li>
+				                  <li>3.  기타 상품설계 지원 도중 발생하는 상품 설명 등의 업무</li>
+				                  <li>4.  소속 지점(본부)의 목표 달성 전략 수립 지원 및 GA Relationship 형성 지원</li>
+				                  <li>5.  기타 양 당사자가 별도 협의한 업무</li>
+			                    </ol>
+			                </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 4 조 (상호협조)</strong></p>
+		                <p class="txt-info mt10">'라이나'는 '컨설턴트'에게 본 계약에 따른 컨설팅업무 수행 시 필요한 정보와 자료를 제공하고 '컨설턴트'는 '라이나'와 약정한 컨설팅업무의 내용에 관하여 신의성실의 원칙에 따라 컨설팅업무를 처리하여야 한다.</p>
+		                <p class="txt-info mt20"><strong>제 5 조 (수수료의 산정 및 지급)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  ‘라이나’는 ‘컨설턴트’의 본 계약에 따른 컨설팅업무 수행에 대한 대가로 [별지5. 컨설턴트 수수료 지급기준]에 따라 위촉수수료(이하 ‘위촉수수료’라 한다)를 산정하여 매월 지급한다.
+		                  </li>
+		                  <li>
+		                    ②  컨설턴트 위촉 계약서의 [별지5. 컨설턴트 수수료 지급 기준] ‘위촉수수료’에 대하여는 매월 24일에 ‘컨설턴트’가 지정한 ‘컨설턴트’ 명의의 계좌로 현금지급하기로 하며, 지급일이 영업일이 아닌 경우 그 직전 영업일에 지급하기로 한다. 
+		                  </li>
+		                  <li>
+		                    ③  ‘컨설턴트’가 ‘라이나’로부터 지급받은 위촉수수료와 관련하여 ‘컨설턴트’에게 부과되는 일체의 제세공과금은 ‘컨설턴트’가 부담하며, ‘라이나’는 위촉수수료 지급시 제세공과금을 원천징수 후 지급한다.
+		                  </li>
+		                  <li>
+		                    ④  컨설팅업무 수행과 관련하여 발생하는 실비에 대하여는 ‘라이나’의 승인에 따라 지급할 수 있다.
+		                  </li>
+		                  <li>
+		                  	⑤  위촉계약이 월 중에 시작 또는 종료하는 경우 위촉수수료는 일할 계산하여 한다.
+		                  </li>
+		                  <li>
+		                  	⑥  ‘라이나’는 본 조 제1항 내지 제4항의 대가를 지급하는 외에 ‘컨설턴트’에 대하여 여하한 명목의 금전도 지급할 의무가 없다.
+		                  </li>
+		                  <li>
+		                  	⑦  본 계약 제6조에서 정한 계약기간 동안 양 당사자의 별도 서면에 의한 합의를 통해 [별지5. 컨설턴트 수수료 지급 기준]은 변경될 수 있다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 6 조 (계약기간)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  본 계약의 계약기간은 
+		                    <span class="inp-write">
+		                      <input type="text" class="text-inp gdTxtRenwPrd" data-text="XXXX년XX월XX일 부터 XXXX년XX월XX일">
+		                      <span class="text-shadow txtRenwPrd">XXXX년XX월XX일 부터 XXXX년XX월XX일</span>
+		                    </span> 까지로 한다.
+		                  </li>
+		                  <li>
+		                    ②  양 당사자의 별도 서면에 의한 합의가 없는 한 본 조 제1항 계약기간의 만료로 본 계약은 당연 종료된다.    
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 7 조 (보증)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 자신이 본 계약 컨설팅업무를 수행함에 있어 충분히 자격이 있는 전문가임을 보장한다.</p>
+		                <p class="txt-info mt20"><strong>제 8 조 (준수사항)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 본 계약상의 업무를 수행함에 있어서 관련법령을 준수하고, '라이나'의 이미지와 명성을 손상시키는 일체의 행위를 하여서는 아니 된다. 
+		                  </li>
+		                  <li>
+		                    ②  '컨설턴트'는 컨설팅업무 수행 시 보험계약법(상법), 보험업법, 보험업감독규정 등 관련법규 및 위탁업무와 관련된 '라이나'의 규정, 지침, 업무절차 등을 준수하여야 한다.
+		                  </li>
+		                  <li>
+		                    ③  '컨설턴트'는 컨설팅업무 수행과 관련하여 교육 등 관련자료를 제작하는 경우 사전에 '라이나'의 승인을 얻은 후 사용하여야 한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 9 조 (비밀준수의무)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 '라이나'로부터 본 계약의 컨설팅업무 수행을 위하여 제공받은 자료를 비롯하여 본 계약과 관련한 일체의 사항을 본 계약 이외의 용도로 사용하거나 제3자에게 누설할 수 없으며, 본 조에 대한 '컨설턴트'의 의무는 계약기간은 물론 계약기간 종료 후에도 존속한다.
+		                  </li>
+		                  <li>
+		                    ②  '컨설턴트'가 본 의무의 위반으로 인하여 '라이나'가 손해를 입었을 경우 '컨설턴트'는 '라이나'에게 비용을 포함한 일체의 손해에 대하여 배상 책임을 부담한다.
+		                  </li>
+		                  <li>
+		                    ③  본 계약 종료 시 '컨설턴트'는 '라이나'에 속한 일체의 서류, 물품 등을 지체 없이 반납하여야 한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 10 조(위촉업무의 일시 중지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  '컨설턴트'는 부득이한 사유로 컨설팅업무를 지속할 수 없을 경우에 3개월 범위 내에서 '라이나'에 컨설팅업무의 일시 중지를 요청할 수 있다.
+		                  </li>
+		                  <li>
+		                    ②  '라이나'는 상기의 사유로 컨설팅업무가 일시 중지된 경우에는 중지된 기간에 대하여 제5조의 위촉수수료를 지급하지 아니한다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 11 조 (계약의 해지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  일방에게 다음 각 호의 사유가 발생한 경우에 귀책사유 없는 당사자는 본 계약기간에도 불구하고 상대방 당사자에게 서면 통지함으로써 본 계약을 해지할 수 있다.
+		                    <ol class="list-items-ml">
+		                      <li>1.  본 계약의 협조 내지 준수사항, 의무이행 등을 태만히 하여 일방의 업무 수행 혹은 그 영업활동에 중대한 지장을 초래한 경우</li>
+		                      <li>2.  어느 일방의 주요재산에 보전처분 결정이 내려지거나, 그에 대해 강제집행이 개시되거나, 혹은 파산, 부도처리, 회생절차개시 등의 사유가 발생하여 더 이상의 계약유지가 곤란하다고 인정될 경우</li>
+		                      <li>3.  '컨설턴트'가 신체적·정신적 질병 또는 장해 등으로 일주일 이상 정상적인 컨설팅업무 수행이 불가능한 경우 </li>
+		                      <li>4.  어느 일방의 고의 또는 과실로 인하여 상대 당사자에게 손해가 발생한 경우</li>
+		                      <li>5.  '컨설턴트'가 컨설팅업무를 수행할 능력이 없다는 점이 충분히 입증된 경우</li>
+		                      <li>6.  GA대리점으로부터 컨설턴트가 본 계약 제3조의 컨설팅업무를 수행함에 있어 관련 법령 및 본 계약상의 의무를 위반하였다는 이유로 다음 각 목에서 정한 바와 같이 컨설턴트 교체요청이 접수된 경우
+		                        <ol class="list-items-ml">
+		                          <li>가. 최근 3개월 이내 2회 이상 또는 최근 1년 이내 5회 이상 ‘컨설턴트’ 교체요청이 접수된 경우 </li>
+		                          <li>나. 최근 1년 이내에 3개 이상의 GA대리점으로부터 ‘컨설턴트’ 교체 요청이 접수된 경우</li>
+		                        </ol>
+		                      </li>
+		                      <li>7.  본 계약을 위반하고 그 시정을 요구하는 상대 당사자의 통지를 받은 날로부터 7일 이내에 정당한 사유 없이 해당 위반사항을 시정하지 아니한 경우</li>
+		                    </ol>
+		                  </li>
+		                  <li>
+		                    ②  본 조 제1항에도 불구하고 '라이나'는 해지 1개월 전에 '컨설턴트'에 대한 서면통지로써 손해배상 없이 본 계약을 해지할 수 있다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 12 조 (손해배상)</strong></p>
+		                <p class="txt-info mt10">본 계약의 어느 일방 당사자가 본 계약을 위반하여 상대방에게 손해를 입힌 경우, 계약위반에 대해 책임 있는 당사자는 그로 인하여 상대방 당사자에게 발생한 모든 손해를 배상하여야 한다.</p>
+		                <p class="txt-info mt20"><strong>제 13 조 (부패 및 뇌물방지)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  각 당사자는 본 계약상 거래 또는 각 당사자가 참여하는 다른 사업상 거래와 관련하여, 직·간접적으로 다음 각 호에 해당하는 자에게 재산적 가치 있는 금품 등을 지급 또는 양도한 바 없으며, 차후에도 그러하지 않을 것임을 확약한다.
+		                        <ol class="list-items-ml">
+			                        <li>
+			                        	1.  공무원 (중앙행정기관/지방자치단체 또는 국제 공공기관이 소유한 기관의 임직원 포함), 정당의 관료 또는 공직 후보자
+			                        </li>
+			                        <li>
+			                        	2.  기타 부패방지 및 국민권익위원회의 설치와 운영에 관한 법률 기타 뇌물 및 부패방지법규(이하 “관련법규”)에 따라 그에 대한 금품 등의 지급 또는 양도가 금지되는 자를 대행하는 개인이나 기관
+			                        </li>		
+		                        </ol>
+		                  </li>
+	                      <li>
+	                      	②  양 당사자 모두 관련 법규를 완전히 숙지하여야 하며, 본 계약상 거래와 관련하여 관련법규를 위반하거나 상대방이 관련법규를 위반하도록 방조하는 행위를 하지 않아야 할 의무가 있다.
+	                      </li>
+	                      <li>
+	                      	③  양 당사자 모두 관련법규의 적용을 받는 어떠한 자에게도 적법하지 않은 뇌물을 수수하거나 임무에 위배하여 재물을 수수하거나 불법적인 리베이트를 지급하거나 기타 적법하지 않은 사업 획득을 목적으로 뇌물 수수를 수용, 묵인, 요구하는 행위를 하여서는 아니 된다.
+	                      </li>
+	                      <li>
+	                      	④  각 당사자는 상대방의 요청이 있는 경우 장부와 기록을 포함하여 본 조항 준수를 증명하거나 뒷받침하는 서면자료를 상대방에게 공개 및 제공해야 하며 그러한 자료를 요청하는 당사자의 요청을 불합리하게 거부하지 않아야 한다.
+	                      </li>
+	                      <li>
+	                      	⑤  본 계약 제11조 조항에도 불구하고 양 당사자 중 한쪽은 다른 당사자가 본 조항을 위반한 것으로 판명되는 경우 본 계약을 해지할 수 있다.
+	                      </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 14 조 (권리의무의 양도 등)</strong></p>
+		                <p class="txt-info mt10">'컨설턴트'는 '라이나'의 서면에 의한 사전동의 없이는 본 계약상의 지위 및 본 계약의 체결로 인하여 발생한 어떠한 권리도 제3자에게 양도할 수 없다. </p>
+		                <p class="txt-info mt20"><strong>제 15 조 (지식재산권 등)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  본 계약에 따른 컨설팅업무 산출물의 소유권 및 지식재산권 등의 일체의 권리는 '라이나'에게 귀속한다.
+		                  </li>
+		                  <li>
+		                    ②  본 계약의 컨설팅업무 수행과 관련하여 제3자로부터 제기되는 일체의 분쟁은 '컨설턴트'가 본인의 비용으로 해결한다. 단, '라이나'는 제3자의 권리침해에 대한 청구 등이 있을 경우 이를 즉시 '컨설턴트'에게 통보한다.
+		                  </li>
+		                  <li>
+		                    ③  본 조의 사항은 본 계약이 종료된 경우에도 계속하여 효력을 가진다.
+		                  </li>
+		                </ol>
+		                <p class="txt-info"><strong>제 16 조 (해석) </strong></p>
+		                <p class="txt-info mt10">본 계약서에 포함되지 아니한 사항은 양 당사자가 상호 협의하여 결정하기로 하며 본 계약의 해석에 관하여 이의가 있을 경우 그 해석은 관련 법령 및 일반 상관습에 따르기로 한다.</p>
+		                <p class="txt-info mt20"><strong>제 17 조 (재판관할)</strong></p>
+		                <p class="txt-info mt10">양 당사자간에 본 계약과 관련한 분쟁이 발생한 경우, 당사자들은 협의를 통하여 그 분쟁을 해결하기 위해 최대한 노력하여야 한다. 단, 분쟁이 상호협의로 해결되지 못하는 경우, 서울중앙지방법원을 제1심 관할법원으로 하여 분쟁을 해결한다.</p>
+		                <p class="txt-info mt20">상기 내용을 증명하기 위하여 '라이나'와 '컨설턴트'는 계약서 2부를 작성하여 각각 기명날인 한 후, 1부씩 이를 보관한다.</p>
+		                <p class="txt-info mt20">
+			                <span class="date">
+			                본 계약은 전자적 방식으로
+			                	<span class="inp-write">
+			                		<input type="text" class="text-inp gdTxtRenwObjSbmtDt" data-text="XXXX년XX월XX일">
+			                		<span class="text-shadow txtRenwObjSbmtDt">XXXX년XX월XX일</span>
+		                		</span>
+	                		체결되었습니다.
+			                </span> 
+		                </p>
+		                <div class="btn-check-area">
+		                  <button type="button" class="btn-check btnShowAppdx"><span>별지확인</span></button>
+		                </div>
+		                <div class="user-data-area">
+		                  <div>
+		                    <p class="txt-info">'라이나'</p>
+		                    <div class="txt-info">
+		                      서울시 종로구 삼봉로 48 <br>
+		                      라이나타워 22층
+		                    </div>
+		                    <div class="txt-info">
+		                      라이나생명보험주식회사<br>
+		                      대표이사 조지은    (인) 
+		                    </div>
+		                  </div>
+		                  <div>
+		                    <p class="txt-info">'컨설턴트'</p>
+		                    <dl class="user-data">
+		                      <div class="address-input">
+		                        <dt>주소</dt>
+		                        <dd>
+		                          <span class="inp-write address">
+		                            <!-- <input type="text" class="text-inp" data-text="주소입력"> -->
+		                            <textarea name="address" class="text-inp txtMngrAddr"></textarea>
+		                          </span>
+		                        </dd>
+		                      </div>
+		                      <div>
+		                        <dt>이름</dt>
+		                        <dd>
+		                          <span class="inp-write">
+		                            <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                            <span class="text-shadow txtMngrNm1">홍길동</span>
+		                          </span> (인)
+		                        </dd>
+		                      </div>
+		                    </dl>
+		                  </div>
+		                </div>
+		                <span class="copyright">라이나생명보험 주식회사 귀중</span>
+		              </div>
+		              <!--// content -->
+		            </div>
+		          </div><!--// gaDscAidDcd2 -->
+		          <div class="ui-modal-bottom">
+		            <button type="button" class="btn btnShowPdf"><span>계약서 PDF 저장</span></button>
+		            <button type="button" class="btn btnSubmit"><span>제출하기</span></button>
+		            <button type="button" class="btn-close"><span>닫기</span></button>
+		          </div>
+		        </div>
+		      </div><!--//  renwCont01-->
+		      <!--// 컨설턴트 위촉 계약서 POPUP -->
+		      <!-- 컨설턴트 합의서 POPUP -->
+		      <div class="ui-modal" id="renwCont02">
+		        <div class="ui-modal-wrap">
+		          <div class="ui-modal-header">
+		            <h1>합의서</h1>
+		            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+		            <input id="hdRenwPrd" hidden>
+		          </div>
+		          <div class="ui-modal-body">
+		            <div class="inner">
+		              <!-- content -->
+		              <div class="indemnity-report">
+		                <p class="txt-info">
+		                  라이나생명보험주식회사(이하 '라이나'라 한다)와
+		                  <span class="inp-write">
+		                    <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                    <span class="text-shadow txtMngrNm">홍길동</span>
+		                  </span>
+		                  (이하 '컨설턴트'이라 한다)는 양 당사자가
+		                    <span class="inp-write">
+		                      <input type="text" class="text-inp gdTxtContCnclsDt" data-text="XXXX년XX월XX일">
+		                      <span class="text-shadow txtContCnclsDt">XXXX년XX월XX일</span>
+		                    </span>
+		                  체결한 “컨설턴트 위촉계약서”(이하 “기본계약”이라 한다)와 관련하여 다음과 같이 합의(이하 “본 합의”라 한다)한다.
+		                </p>
+		                <p class="txt-info mt20"><strong>제 1 조 (목적)</strong></p>
+		                <p class="txt-info mt10">“본 합의”는 “기본계약”과 관련하여 위촉수수료 지급기준을 변경하고자 하는데 그 목적이 있다.</p>
+		                <p class="txt-info mt20"><strong>제 2 조 (합의사항)</strong></p>
+		                <p class="txt-info mt10">양 당사자는 “기본계약” [별지 컨설턴트 수수료 지급 기준]의 “수수료 지급기준”을 “본 합의”의 [별첨]과 같이 변경하기로 합의한다.</p>
+		                <p class="txt-info mt20"><strong>제 3 조 (합의의 효력 등)</strong></p>
+		                <ol class="list-items mt10">
+		                  <li>
+		                    ①  “본 합의”에서 정한 사항은
+		                    <span class="inp-write">
+		                      <input type="text" class="text-inp gdTxtEfctOccuDt" data-text="XXXX년XX월XX일">
+		                      <span class="text-shadow txtEfctOccuDt">XXXX년XX월XX일</span>
+		                    </span>
+		                    부터 효력을 갖는다.
+		                  </li>
+		                  <li>
+		                    ②  “본 합의”에서 정하지 아니한 사항에 대해서는 “기본계약”에서 정한 바에 따른다. 
+		                  </li>
+		                </ol>
+		                <p class="txt-info mt20">“본 합의”의 성립을 증명하기 위하여 “라이나”와 “컨설턴트”는 본 합의서 2부를 작성하여 양 당사자가 기명 날인한 후 각각 1부씩 보관한다. </p>
+		                <p class="txt-info mt20">
+			                <span class="date">
+			                본 계약은 전자적 방식으로
+			                	<span class="inp-write">
+			                		<input type="text" class="text-inp gdTxtRenwObjSbmtDt" data-text="XXXX년XX월XX일">
+			                		<span class="text-shadow txtRenwObjSbmtDt">XXXX년XX월XX일</span>
+		                		</span>
+	                		체결되었습니다.
+			                </span> 
+		                </p>
+		                <div class="user-data-area">
+		                  <div>
+		                    <p class="txt-info">'라이나'</p>
+		                    <div class="txt-info">
+		                      서울시 종로구 삼봉로 48 <br>
+		                      라이나타워 22층
+		                    </div>
+		                    <div class="txt-info">
+		                      라이나생명보험주식회사<br>
+		                      대표이사 조지은    (인) 
+		                    </div>
+		                  </div>
+		                  <div>
+		                    <p class="txt-info">'컨설턴트'</p>
+		                    <dl class="user-data">
+		                      <div class="address-input">
+		                        <dt>주소</dt>
+		                        <dd>
+		                          <span class="inp-write address">
+		                            <!-- <input type="text" class="text-inp" data-text="주소입력"> -->
+		                            <textarea name="address" class="text-inp txtMngrAddr"></textarea>
+		                          </span>
+		                        </dd>
+		                      </div>
+		                      <div>
+		                        <dt>이름</dt>
+		                        <dd>
+		                          <span class="inp-write">
+		                            <input type="text" class="text-inp gdTxtMngrNm" data-text="홍길동">
+		                            <span class="text-shadow txtMngrNm1">홍길동</span>
+		                          </span> (인)
+		                        </dd>
+		                      </div>
+		                    </dl>
+		                  </div>
+		                </div>
+		                <span class="copyright">라이나생명보험 주식회사 귀중</span>
+		              </div>
+		              <!--// content -->
+		            </div>
+		          </div>
+		          <div class="ui-modal-bottom">
+		            <button type="button" class="btn btnShowAppdx"><span>수수료규정 확인</span></button>
+		            <button type="button" class="btn btnShowPdf"><span>PDF 저장</span></button>
+		            <button type="button" class="btn btnSubmit"><span>제출하기</span></button>
+		            <button type="button" class="btn-close"><span>닫기</span></button>
+		          </div>
+		        </div>
+		      </div><!--// renwCont02 -->
+		      <!--// 컨설턴트 합의서 POPUP -->
+		      <!-- 2차인증 메세지 POPUP -->
+		      <div class="ui-modal" id="renwCont2ndCrtf">
+		        <div class="ui-modal-wrap short">
+		          <div class="ui-modal-header">
+		            <h1>계약서 확인</h1>
+		            <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+		          </div>
+		          <div class="ui-modal-body">
+		            <div class="inner">
+		              <!-- content -->
+		              <div class="indemnity-report">
+		                <p class="txt-info">상기 계약 내용에 대하여 충분히 인지하였으며,<br>이에 대하여 본인 G코드를 입력함으로써 해당 내용을<br>성실히 준수할 것을 사인합니다.</p>
+		                <div class="gcode-area">
+		                  <dl class="user-data">
+		                    <div>
+		                      <dt>G코드 입력</dt>
+		                      <dd>
+		                        <span class="inp-write">
+		                          <input type="text" class="text-inp gdTxtMngrEno" data-text="G12346790">
+		                          <span class="text-shadow txtMngrEno">G12346790</span>
+		                        </span>
+		                      </dd>
+		                    </div>
+		                  </dl>
+		                </div>
+		              </div>
+		              <!--// content -->
+		            </div>
+		          </div>
+		          <div class="ui-modal-bottom">
+		            <button type="button" class="btn"><span>확인</span></button>
+		          </div>
+		        </div>
+		      </div>
+		      <!--// 2차인증 메세지 POPUP -->
+		      
+		      <!-- 202604 개인정보 파기에 대한 확약서 POPUP -->
+				<div class="ui-modal" id="submtModal3">
+				  <div class="ui-modal-wrap">
+				    <div class="ui-modal-header">
+				      <h1>개인정보 파기에 대한 확약서</h1>
+				      <button type="button" class="btn-close"><span class="a11y-hidden">닫기</span></button>
+				    </div>
+				    <div class="ui-modal-body">
+				      <div class="inner">
+				        <!-- content -->
+				        <div class="indemnity-report">
+				          <p class="txt-info">
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" id="tiUserNm5" data-text="">
+				              <span class="text-shadow" id="tsUserNm5"></span>
+				            </span>
+				            (이하 '본인')은 라이나생명보험주식회사(이하 '회사')로부터 제공받은 개인정보 중 담당 업무가 변경되었거나, 이용목적이 달성된 개인정보의 파기와 관련해서 아래 사항을 확약합니다.
+				          </p>
+				          <ol class="list-items">
+				            <li>
+				              1. 본인은, 회사로부터 제공받은 개인정보를 개인정보보호법 제21조 및 동법 시행령 제16조에 따라<br> 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="복구가 불가능한 방법으로 모두 파기">
+				                <span class="text-shadow">복구가 불가능한 방법으로 모두 파기</span>
+				              </span>하였으며, 해당 정보에 대하여 어떠한 권리도 가지지 아니함을 확약한다.
+				            </li>
+				            <li>
+				              2. 본인은 회사의 업무 수행 목적 범위를 넘어 목적 외로 해당 개인정보를 이용하거나 이를 제3자에게 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="제공 또는 유출하지 아니하였음">
+				                <span class="text-shadow">제공 또는 유출하지 아니하였음</span>
+				              </span>을 확약한다.
+				            </li>
+				            <li>
+				              3. 본인은 회사업무 수행을 통해 알게 된 개인정보를 다른 사람에게 <span class="txt-bold">누설하거나 업무 수행 목적 외의 용도로 제공하거나 이용하지</span> 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="아니하였음">
+				                <span class="text-shadow">아니하였음</span>
+				              </span>을 확약한다.
+				            </li>
+				            <li>
+				              4. 본인은 업무와 관련하여 알았거나 알게 된 모든 개인정보 
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="서류, 파일, 이메일, 캡처, 녹취 등 ">
+				                <span class="text-shadow">서류, 파일, 이메일, 캡처, 녹취 등</span>
+				              </span>를 <span class="txt-bold">개인적인 용도로 보관 또는 외부 반출</span>
+				              <span class="inp-write">
+				                <input type="text" class="text-inp" data-text="하지 않았음 ">
+				                <span class="text-shadow">하지 않았음</span>
+				              </span>을 확약한다.
+				            </li>
+				          </ol>
+				          <p class="txt-info">
+				            아래에 서명함으로서 본인은 상기 사항에 대하여 충분히 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="인지">
+				              <span class="text-shadow">인지</span>
+				            </span>하였으며, 성실히 준수하였음을 확인합니다.
+				          </p><br>
+				          <p class="txt-info">
+				            이를 위반한 경우 내부통제 부서의 업무 프로세스에 적극 협조할 것이며, 관계 법령에 따른 
+				            <span class="inp-write">
+				              <input type="text" class="text-inp" data-text="민·형사상의 모든 책임">
+				              <span class="text-shadow">민·형사상의 모든 책임</span>
+				            </span>을 부담할 것과 회사에 끼친 손해에 대한 배상을 포함하여 회사가 정하는 적절한 조치에 성실히 따를 것을 동의합니다.
+				          </p><br>
+				          <span class="date" id="submtDate3"></span>
+				          <dl class="user-data">
+				            <div>
+				              <dt>소속</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiOrgNm3" data-text="하이브리드">
+				                  <span class="text-shadow" id="tsOrgNm3">하이브리드</span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>사번</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserId3" data-text="">
+				                  <span class="text-shadow" id="tsUserId3" ></span>
+				                </span>
+				              </dd>
+				            </div>
+				            <div>
+				              <dt>성명</dt>
+				              <dd>
+				                <span class="inp-write">
+				                  <input type="text" class="text-inp" id="tiUserNm6" data-text="">
+				                  <span class="text-shadow" id="tsUserNm6"></span>
+				                </span>
+				              </dd>
+				            </div>
+				          </dl>
+				          <span class="copyright">라이나생명보험 주식회사 귀중</span>
+				        </div>
+				        <!--// content -->
+				      </div>
+				    </div>
+				    <div class="ui-modal-bottom">
+				      <div class="cookie-box">
+				        <input class="a11y-hidden" type="checkbox" id="todayChk3">
+				        <label class="lb-check" for="todayChk3"><span>오늘 하루 보지 않기</span></label>
+				      </div>
+				      <button type="button" class="btn-close"><span>닫기</span></button>  
+				      <button type="button" class="btn" disabled=true><span>제출하기</span></button>
+				    </div>
+				  </div>
+				</div>
+				<!--// 개인정보 파기에 대한 확약서 POPUP -->
+				
+                <!-- 20250115 메인 배너 관리 메뉴 텍스트 유형 개발-->
+                <div class="modal-spot new-main-popup new_recommend">
+                    <div class="modal-spot-wrap">
+                        <div class="swiper mainPopup-swiper">
+                            <ul class="swiper-wrapper" id="swiperWrapperPop"></ul>
+                            <div class="swiper-btns">
+                                <button type="button" class="swiper-button-prev">
+                                    <span class="a11y-hidden">이전</span>
+                                </button>
+                                <button type="button" class="swiper-button-next">
+                                    <span class="a11y-hidden">다음</span>
+                                </button>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+            
+                        <div class="spot-cookie-inner">
+                            <input type="checkbox" id="todayCookie" class="a11y-hidden">
+                            <label for="todayCookie" class="lb-check" id="mainNewPopupNotToday">
+                                <span>오늘 하루 보지 않기</span>
+                            </label>
+                            <button type="button" class="btn-close" id="mainNewPopupClose">
+                                <span>닫기</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 20250115 메인 배너 관리 메뉴 텍스트 유형 개발-->
+                <div class="extra-dimensions">
+                    <input type="text" id="hidLoginNm" data-nx="{type:'nm'}">
+                    <main></main>
+                </div>
+                
+                <div id="wrap"></div>
+        <script>
+            'use strict';
+
+        	// 20240819 메인 팝업 딤 클릭시 팝업 닫기
+        	document.addEventListener("click", function(e){
+        		const slidePopupWrap = document.querySelector('.slidePopupWrap');
+        		if(e.target === slidePopupWrap) {
+        			slidePopupWrap.classList.remove('on');
+        		}
+        	});
+        	
+
+            //실행
+            document.addEventListener("DOMContentLoaded", function(){
+                
+                //LISAUI.menu.init();
+                //tab
+                LISAUI.tab.init({
+                    name: 'info',
+                    current: 'info1'
+                });
+                /*
+                LISAUI.tab.toggle({
+                    name: 'info2',
+                    current: 'cr1'
+                });
+                */
+                LISAUI.tab.init({
+                    name: 'plan',
+                    current: 'plan1'
+                });
+                LISAUI.userInfo.init();	// 접속자 정보 // A-LISA 메뉴개선: 기능 추가
+                
+
+				// 202507 추가 ------------------------------------------------------------------------------------
+				// 202507 추가 : 모달팝업
+				// 모달 열기
+				var modalOpen = document.querySelectorAll('.btn-open');
+				for (var i = 0; i < modalOpen.length; i++) {
+					modalOpen[i].onclick = function () {
+						var targetID = this.getAttribute('data-href');
+						var modal = document.querySelector(targetID);
+						modal.className += ' topFix';
+						if (!modal) {
+							return;
+						}
+						if (modal.className.indexOf('on') === -1) {
+							modal.className += ' on';
+						}
+						modal.style.display = 'block';
+					};
+				}
+
+				// 모달 닫기
+				var modalClose = document.querySelectorAll('.ui-modal .btn-close');
+					for (var j = 0; j < modalClose.length; j++) {
+					modalClose[j].onclick = function () {
+						var node = this;
+						while (node) {
+							if (node.className && typeof node.className === 'string' &&
+							node.className.split(/\s+/).indexOf('ui-modal') !== -1) {
+								node.style.display = 'none';
+								node.className = node.className.replace(/\bon\b/g, '').replace(/\s+/g, ' ').trim();
+								return;
+							}
+							node = node.parentNode;
+						}
+					};
+				}
+
+				
+				// 모달팝업 내 top 버튼
+				var modals = document.querySelectorAll('.ui-modal');
+
+				for (var i = 0; i < modals.length; i++) {
+					(function (modalWrap) {
+						var scrollArea = modalWrap.querySelector('.ui-modal-body .inner');
+						var topBtn = modalWrap.querySelector('.topBtn');
+
+						if (!scrollArea || !topBtn) return;
+
+						scrollArea.onscroll = function () {
+							if (scrollArea.scrollTop > 5) {
+								if (topBtn.className.indexOf('show') === -1) {
+									topBtn.className += ' show';
+								}
+							} else {
+								var newClassName = topBtn.className.replace(/\bshow\b/g, '');
+								topBtn.className = newClassName.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
+							}
+						};
+
+						function smoothScrollIE(container, to, duration) {
+							if (!container) return;
+
+							var start = container.scrollTop;
+							var change = to - start;
+							var currentTime = 0;
+							var increment = 20;
+
+							var animateScroll = function() {
+								currentTime += increment;
+								var val = easeInOutQuad(currentTime, start, change, duration);
+								container.scrollTop = val;
+								if (currentTime < duration) {
+									setTimeout(animateScroll, increment);
+								}
+							};
+
+							animateScroll();
+
+							function easeInOutQuad(t, b, c, d) {
+								t /= d / 2;
+								if (t < 1) return c / 2 * t * t + b;
+								t--;
+								return -c / 2 * (t * (t - 2) - 1) + b;
+							}
+						}
+
+						topBtn.onclick = function () {
+							smoothScrollIE(scrollArea, 0, 400);
+						};
+					})(modals[i]);
+				}
+
+				
+				// 202507 추가 : 모달팝업 내 메뉴 이동 mainMenu
+				function mainMenu(){
+					if ($('.smint-menu .top-menu').length) {
+						$('.smint-menu .top-menu').smintMenu({
+							'scrollSpeed': 1000,
+							'scrollContainer': '.smint-wrap .inner'
+						});
+					}
+
+					$('.info-wrap .acSection').each(function(i) {
+						$(this).attr({
+							id: 's'+(i+1),
+							tabindex : 0
+						});
+					});
+				}
+
+				(function(){
+					$.fn.smintMenu = function(options){
+						var settings = $.extend({
+							'scrollSpeed' : 500,
+							'mySelector' : '.acSection',
+							'scrollContainer': '.smint-wrap .inner'
+						}, options);
+
+						$(this).addClass('smint');
+
+						var optionLocs = [],
+								smint = $('.top-menu.smint'),
+								smintA = $('.top-menu.smint a'),
+								scrollBox = typeof settings.scrollContainer === 'string' ? $(settings.scrollContainer) : $(settings.scrollContainer);
+
+						if (smintA.length > 0) {
+							smintA[0].classList.add('active');
+						}
+
+						$('.top-menu a').on('click', function(e){
+							var index = $(this).index();
+							$(this).parent().addClass('move');
+							$('.top-menu a').removeClass('active');
+							$(this).addClass('active');
+							e.preventDefault();
+
+							var hash = $(this).attr('href').split('#')[1];
+							var $target = $(settings.mySelector + '.' + hash);
+							if (!$target.length) return;
+
+							var infoHeight = $('.top-info').outerHeight();
+							var goTo = $target.position().top + infoHeight + 1;
+
+							$('html, body').stop();
+							scrollBox.stop().animate({ scrollTop : goTo }, settings.scrollSpeed, function(){
+								$('.top-menu .tm-inner.move').removeClass('move');
+								$('#'+hash).focus();
+								scrollBox.scrollTop(goTo);
+							});
+						});
+
+						var stickMenu = function(){
+							var menuHeight = $('.top-menu.smint').height();
+							var infoHeight = $('.top-info').outerHeight();
+							var miHeight = menuHeight + infoHeight;
+							var scrollTop = $('.smint-wrap .inner').scrollTop() + menuHeight;
+
+							if (scrollTop-menuHeight > infoHeight) {
+								smint.addClass('fxd');
+								$('.smint-wrap .inner').css('padding-top', menuHeight);
+							} else {
+								smint.removeClass('fxd');
+								$('.smint-wrap .inner').css('padding-top', '0');
+							}
+
+							optionLocs = [];
+
+							smintA.each(function(index) {
+								if($('.top-menu .tm-inner').hasClass('move')) return;
+
+								var id = $(this).attr('href').split('#')[1];
+								var $sec = $(settings.mySelector + '.' + id);
+								if (!$sec.length) return;
+
+								optionLocs.push([
+									$sec.position().top,
+									$sec.position().top + $sec.outerHeight(),
+									id
+								]);
+
+								if (optionLocs[index][0] <= scrollTop - miHeight && scrollTop - miHeight <= optionLocs[index][1]) {
+									smintA.removeClass('active');
+									$("a[href='#" + id + "']").addClass('active');
+								}
+							});
+						};
+
+						scrollBox.on('scroll.top-menu', function() {
+							stickMenu();
+						});
+					};
+				})();
+				mainMenu();
+
+				// 202507 추가 : 모달팝업 내 메뉴 이동 subMeun
+				function subMeun(){
+					if ($('.acSub-menu').length) {
+						$('.acSub-menu').smint({
+							'scrollSpeed': 1000,
+							'scrollContainer': '.smint-wrap .inner'
+						});
+					}
+
+					$('.subInfo-wrap .subSection').each(function(i) {
+						$(this).attr({
+							id: 'ss'+(i+1),
+							tabindex : 0
+						});
+					});
+				}
+
+				(function(){
+					$.fn.smint = function(options){
+						var settings = $.extend({
+							'scrollSpeed' : 500,
+							'mySelector' : '.subSection',
+							'scrollContainer': '.smint-wrap .inner'
+						}, options);
+
+						$(this).addClass('smint');
+
+						var optionLocs = [],
+								smint = $('.acSub-menu.smint'),
+								smintA = $('.acSub-menu.smint a'),
+								scrollBox = typeof settings.scrollContainer === 'string' ? $(settings.scrollContainer) : $(settings.scrollContainer);
+
+						if (smintA.length > 0) {
+							smintA[0].classList.add('active');
+						}
+
+						$('.acSub-menu a').on('click', function(e){
+							var index = $(this).index();
+							$(this).parent().addClass('move');
+							$('.acSub-menu a').removeClass('active');
+							$(this).addClass('active');
+							e.preventDefault();
+						
+							var hash = $(this).attr('href').split('#')[1];
+							var $target = $(settings.mySelector + '.' + hash);
+							if (!$target.length) return;
+
+							var menuHeight = $('.acSub-menu.smint').outerHeight();
+							var infoHeight = $('.top-info').outerHeight();
+							var miHeight = infoHeight - menuHeight;
+							var goTo = $target.position().top + $target.parent().parent().position().top + miHeight + 2;
+
+							$('html, body').stop();
+							scrollBox.stop().animate({ scrollTop : goTo }, settings.scrollSpeed, function(){
+								$('.acSub-menu .sm-inner.move').removeClass('move');
+								$('#'+hash).focus();
+								scrollBox.scrollTop(goTo);
+							});
+						});
+
+						var stickMenu = function(){
+							var menuHeight = $('.acSub-menu.smint').outerHeight();
+							var infoHeight = $('.top-info').outerHeight();
+							var miHeight = infoHeight - menuHeight;
+							var scrollTop = $('.smint-wrap .inner').scrollTop() + menuHeight;
+							var scrollTopPos = $('.subInfo-wrap').position().top + miHeight;
+
+							if (scrollTop - menuHeight > scrollTopPos) {
+								smint.addClass('fxd');
+								$('.subInfo-box').css('padding-top', menuHeight);
+							} else {
+								smint.removeClass('fxd');
+								$('.subInfo-box').css('padding-top', '0');
+							}
+
+							optionLocs = [];
+
+							smintA.each(function(index) {
+								if($('.acSub-menu .sm-inner').hasClass('move')) return;
+
+								var id = $(this).attr('href').split('#')[1];
+								var $sec = $(settings.mySelector + '.' + id);
+								if (!$sec.length) return;
+
+								optionLocs.push([
+									$sec.position().top + $('.subInfo-wrap').position().top + menuHeight,
+									$sec.position().top + $('.subInfo-wrap').position().top + menuHeight + $sec.outerHeight(),
+									id
+								]);
+
+								if (optionLocs[index][0] <= scrollTop - miHeight && scrollTop - miHeight <= optionLocs[index][1]) {
+									smintA.removeClass('active');
+									$("a[href='#" + id + "']").addClass('active');
+								}
+							});
+						};
+
+						scrollBox.on('scroll.top-menu', function() {
+							stickMenu();
+						});
+					};
+				})();
+				subMeun();
+
+				// 202507 추가 End ------------------------------------------------------------------------------------ 
+            });
+        </script>
+        
+        <!-- SR2401-13123-01 ALISA 메인화면_트래킹 코드 삽입 -->
+        <!-- 2025-08-14;SR2508-17113-01;[GA] 미사용 코드 beusable 삭제
+        <script type="text/javascript">
+        	(function(w, d, a){
+        	    w.__beusablerumclient__ = {
+        	        load : function(src){
+        	            var b = d.createElement("script");
+        	            b.src = src; b.async=true; b.type = "text/javascript";
+        	            d.getElementsByTagName("head")[0].appendChild(b);
+        	        }
+        	    };w.__beusablerumclient__.load(a + "?url=" + encodeURIComponent(d.URL));
+        	})(window, document, "//rum.beusable.net/load/b240115e091514u446");
+        </script>
+        -->
+    </body>
+</html>

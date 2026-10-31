@@ -1,0 +1,1189 @@
+{
+  "records": [
+    {
+      "id": 1,
+      "url": "https://www.lina.co.kr/",
+      "time": "2026-10-30T11:36:40.646Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34506",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:36:40 GMT",
+        "etag": "\"86ca-/tU0fWrBeBJPQSV1eJwmrH/MNGc\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "via": "1.1 a71a8b9de67e7f85c25619daebd4c7bc.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "gMDQviUgPalQOEpRA_xrI7glpkvGq77HhsUJz9hmbdFx6MT8cYceDQ==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:40 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:40 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 2,
+      "url": "https://m.lina.co.kr/",
+      "time": "2026-10-30T11:36:41.829Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "cache-control": "no-cache, no-store",
+        "connection": "close",
+        "content-length": "45433",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:36:41 GMT",
+        "etag": "\"b179-EwEO/D2qW5WXDz58wl0JjU2I3Rs\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+        "vary": "Accept-Encoding",
+        "via": "1.1 b88e9a96b701de8a266c771593552144.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "_Y7ZW_Nu5Gv84oaEtL4GL8l4ato5T-wDLzfGYLCK6R95JQ_NOthJiQ==",
+        "x-amz-cf-pop": "ICN57-P5",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:41 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:41 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS016346d7",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 3,
+      "url": "https://ga.lina.co.kr/",
+      "time": "2026-10-30T11:36:43.055Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "417",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:43 GMT",
+        "etag": "\"1a1-546420a0d8f80\"",
+        "last-modified": "Tue, 17 Jan 2017 03:38:54 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 4,
+      "url": "https://srm.lina.co.kr/",
+      "time": "2026-10-30T11:36:44.169Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-language": "ko-KR",
+        "content-length": "20",
+        "content-security-policy": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:36:44 GMT",
+        "expires": "Fri, 30 Oct 2026 11:36:44 GMT",
+        "pragma": "no-cache",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff, nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block, 1"
+      },
+      "cookies": [
+        {
+          "name": "JSESSIONID",
+          "attributes": [
+            "Path=/",
+            "Secure",
+            "HttpOnly",
+            "SameSite=Lax",
+            "HttpOnly",
+            "Secure",
+            "SameSite=None"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 5,
+      "url": "https://direct.lina.co.kr/",
+      "time": "2026-10-30T11:36:45.509Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34939",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:36:45 GMT",
+        "etag": "\"887b-G5xMagh7CPBj5KthajbnJv34azs\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding, Origin",
+        "via": "1.1 c35780d32cb2af0d5eea7954530369ae.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "mobmg5YvbTiXTHaQbzVyexHmtMfhbR2CsKZXACE4I-RBD5NzENhfDA==",
+        "x-amz-cf-pop": "ICN80-P4",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:45 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:45 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 6,
+      "url": "https://mdirect.lina.co.kr/",
+      "time": "2026-10-30T11:36:46.627Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "cache-control": "no-cache, no-store",
+        "connection": "close",
+        "content-length": "48492",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:36:46 GMT",
+        "etag": "\"bd6c-aLUvSVL9rtPDD15IxjxgLRc6VGg\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+        "vary": "Accept-Encoding, Origin",
+        "via": "1.1 a2af666718a9c7965dc893e87a9016a2.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "LmUrCCDNSvNUb53yasYcCK0X9Y-xluVg7XwgBWnMZxma-k1h5pPXvw==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:46 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:46 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 7,
+      "url": "https://blog.lina.co.kr/",
+      "time": "2026-10-30T11:36:47.813Z",
+      "method": "HEAD",
+      "error": {
+        "message": "fetch failed",
+        "code": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR"
+      }
+    },
+    {
+      "id": 8,
+      "url": "https://blog.direct.lina.co.kr/",
+      "time": "2026-10-30T11:36:48.888Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "alt-svc": "clear",
+        "cache-control": "max-age=300, must-revalidate",
+        "connection": "close",
+        "content-encoding": "br",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:36:49 GMT",
+        "host-header": "WordPress.com",
+        "last-modified": "Fri, 30 Oct 2026 11:36:49 GMT",
+        "link": "<https://blog.direct.lina.co.kr/wp-json/>; rel=\"https://api.w.org/\", <https://wp.me/hjM09>; rel=shortlink",
+        "server": "nginx",
+        "server-timing": "a8c-cdn, dc;desc=nrt, cache;desc=MISS;dur=797.0",
+        "strict-transport-security": "max-age=31536000",
+        "vary": "Accept-Encoding, accept, content-type, cookie",
+        "x-ac": "26.nrt _atomic_bur MISS",
+        "x-hacker": "Want root?  Visit join.a8c.com and mention this header.",
+        "x-nananana": "Batcache-Set",
+        "x-remembering": "Eric Binnion <https://friendsofericbinnion.wordpress.com/>"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 9,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN999M0.html",
+      "time": "2026-10-30T11:36:50.932Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "7330",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:50 GMT",
+        "etag": "\"1ca2-5e791d935a900\"",
+        "last-modified": "Wed, 31 Aug 2022 23:28:04 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 10,
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P1C.html",
+      "time": "2026-10-30T11:36:52.067Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "6746",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:52 GMT",
+        "etag": "\"1a5a-5f81756844ac0\"",
+        "last-modified": "Thu, 30 Mar 2023 05:26:43 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 11,
+      "url": "https://ga.lina.co.kr/help/gap/GA/setupguide.pdf",
+      "time": "2026-10-30T11:36:53.125Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "1419087",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "application/pdf",
+        "date": "Fri, 30 Oct 2026 11:36:53 GMT",
+        "etag": "\"15a74f-54cdb5938d980\"",
+        "last-modified": "Tue, 11 Apr 2017 03:04:22 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 12,
+      "url": "https://ga.lina.co.kr/webfw/html/nawlogout2.html",
+      "time": "2026-10-30T11:36:54.191Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "5400",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:54 GMT",
+        "etag": "\"1518-5e2bc0a0e6d80\"",
+        "last-modified": "Fri, 01 Jul 2022 10:42:14 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 13,
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P14.html",
+      "time": "2026-10-30T11:36:55.345Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "10811",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:55 GMT",
+        "etag": "\"2a3b-614f646681300\"",
+        "last-modified": "Sun, 31 Mar 2024 15:10:36 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 14,
+      "url": "https://ga.lina.co.kr/wizvera/veraport/install20/install_lina.html",
+      "time": "2026-10-30T11:36:56.406Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "45560",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:56 GMT",
+        "etag": "\"b1f8-63a0823db7c00\"",
+        "last-modified": "Wed, 16 Jul 2025 09:01:36 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 15,
+      "url": "https://ga.lina.co.kr/webfw/html/nawmain.html",
+      "time": "2026-10-30T11:36:57.501Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "119510",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:36:57 GMT",
+        "etag": "\"1d2d6-65008d512bf40\"",
+        "last-modified": "Wed, 22 Apr 2026 09:05:25 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 16,
+      "url": "https://srm.lina.co.kr/login.do",
+      "time": "2026-10-30T11:36:58.619Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-language": "ko-KR",
+        "content-length": "20",
+        "content-security-policy": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:36:58 GMT",
+        "expires": "Fri, 30 Oct 2026 11:36:58 GMT",
+        "pragma": "no-cache",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff, nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block, 1"
+      },
+      "cookies": [
+        {
+          "name": "JSESSIONID",
+          "attributes": [
+            "Path=/",
+            "Secure",
+            "HttpOnly",
+            "SameSite=Lax",
+            "HttpOnly",
+            "Secure",
+            "SameSite=None"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 17,
+      "url": "https://www.lina.co.kr/service/health-screening",
+      "time": "2026-10-30T11:36:59.749Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34545",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:36:59 GMT",
+        "etag": "\"86f1-4JTwZbwxrP6zEtIIjyT4AxbSGHg\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "via": "1.1 a9b4d3b48eedb5e4a6371b17d76513da.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "nDiMwcYNqknKOjZ-_HHr_FnCCPn7nSuJfuCOIGTj2i87al_VDSvu6w==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:59 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:36:59 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 18,
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1596",
+      "time": "2026-10-30T11:37:00.807Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34533",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:37:00 GMT",
+        "etag": "\"86e5-2TZ5O5vvpKzX4uEQxwiTJ7hJ6fE\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "via": "1.1 8d1c49cd4a0614933a92673a319c7faa.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "0wSq9_qltpf8yOMP2CCUpj17Qk_FiNCUt8AEMm-h2ncWfE2TdlaVXQ==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:00 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:00 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 19,
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1464",
+      "time": "2026-10-30T11:37:01.890Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34533",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:37:01 GMT",
+        "etag": "\"86e5-dmUuPy6UkUzUa1ASvsHJa9wND2M\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "via": "1.1 4e8af7765ea5dc2a52186666d2f5c314.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "iOSyAkD44EJVI8tYgWjElKttsbUGkUsO__sHNfxoJfybW5qf3vXdJg==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:01 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:01 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 20,
+      "url": "https://direct.lina.co.kr/event/detail?evtSeq=1266",
+      "time": "2026-10-30T11:37:02.998Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "34963",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:37:02 GMT",
+        "etag": "\"8893-xjbipoIEskqC/1lIHHBXvnfC21o\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "vary": "Accept-Encoding, Origin",
+        "via": "1.1 a20c4427da269a03abfc31828ab7ab72.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "wV1hZh-SVD59LzRNLc5Tk2vKR1697CBQ3Ejh_0qsp7Anx6dqp7TpSQ==",
+        "x-amz-cf-pop": "ICN80-P4",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:02 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:02 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 21,
+      "url": "https://ga.lina.co.kr/webfw/html/nawcheck.html",
+      "time": "2026-10-30T11:37:04.118Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "11523",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:04 GMT",
+        "etag": "\"2d03-53cd6ee1b7cc0\"",
+        "last-modified": "Mon, 19 Sep 2016 07:04:59 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 22,
+      "url": "https://ga.lina.co.kr/gap/serviceEndpoint/initech/extension/install/install.html",
+      "time": "2026-10-30T11:37:05.179Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-language": "ko-KR",
+        "content-length": "2964",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:05 GMT",
+        "last-modified": "Mon, 03 Aug 2015 07:17:02 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 23,
+      "url": "https://www.lina.co.kr/lib/wizvera/delfino/install20/install.html?P_name=Delfino&module=G3&url=close",
+      "time": "2026-10-30T11:37:06.294Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "close",
+        "content-length": "4531",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:37:06 GMT",
+        "etag": "W/\"11b3-1a180e01eb0\"",
+        "last-modified": "Wed, 28 Oct 2026 04:58:54 GMT",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+        "vary": "Accept-Encoding",
+        "via": "1.1 6ab9eca30c889a219dffcd606909ef58.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "LXxpB6N5JWATREA19f5Fua9497qZMcK6LdQtZafiqZ7L85wRHeyDJA==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:06 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:06 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 24,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN610M0.html",
+      "time": "2026-10-30T11:37:07.398Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "31939",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:07 GMT",
+        "etag": "\"7cc3-65d3c5f1693c0\"",
+        "last-modified": "Wed, 07 Oct 2026 09:02:15 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 25,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN602M0.html",
+      "time": "2026-10-30T11:37:08.441Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "19412",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:08 GMT",
+        "etag": "\"4bd4-62a93c4962fc0\"",
+        "last-modified": "Tue, 31 Dec 2024 16:53:27 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 26,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GMU661M0.html?preWinId=GMU661M1&tkn=",
+      "time": "2026-10-30T11:37:09.509Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "close",
+        "content-length": "70949",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:09 GMT",
+        "etag": "\"11525-60bd2cf773e00\"",
+        "last-modified": "Wed, 06 Dec 2023 08:05:12 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 27,
+      "url": "https://srm.lina.co.kr/spLogin.do",
+      "time": "2026-10-30T11:37:10.566Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-language": "ko-KR",
+        "content-length": "20",
+        "content-security-policy": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:37:10 GMT",
+        "expires": "Fri, 30 Oct 2026 11:37:10 GMT",
+        "pragma": "no-cache",
+        "vary": "Accept-Encoding",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [
+        {
+          "name": "JSESSIONID",
+          "attributes": [
+            "Path=/",
+            "Secure",
+            "HttpOnly",
+            "HttpOnly",
+            "Secure",
+            "SameSite=None"
+          ]
+        }
+      ],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 28,
+      "url": "https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/terms_181205.pdf",
+      "time": "2026-10-30T11:37:11.663Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "connection": "close",
+        "content-length": "584058",
+        "content-type": "application/pdf",
+        "date": "Fri, 30 Oct 2026 11:37:12 GMT",
+        "etag": "\"382c1920046d72390c1d41fb3a067447\"",
+        "last-modified": "Wed, 31 May 2023 04:22:06 GMT",
+        "server": "AmazonS3",
+        "strict-transport-security": "max-age=31536000",
+        "vary": "Origin",
+        "via": "1.1 c9d601fa70fd6862de531284734f9f36.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "4odYF8t-tfGwtgIgTkGGsNj8BVvP4z1NtAU1SC25fmIi2ko2c3EGwg==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-version-id": "null",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 29,
+      "url": "https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/comparison_181205.pdf",
+      "time": "2026-10-30T11:37:12.843Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "connection": "close",
+        "content-length": "391273",
+        "content-type": "application/pdf",
+        "date": "Fri, 30 Oct 2026 11:37:13 GMT",
+        "etag": "\"673a2d0d207d7444fe7565f8d6d83476\"",
+        "last-modified": "Wed, 31 May 2023 04:22:06 GMT",
+        "server": "AmazonS3",
+        "strict-transport-security": "max-age=31536000",
+        "vary": "Origin",
+        "via": "1.1 8b053c8cc2324080523c2a42b16088de.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "frWtshYiKyT4llPPk31cYVNq-vpNhWMilq1mGnMryeG1v4WLFFUFbQ==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-version-id": "null",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 30,
+      "url": "https://m.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/email_pdf/finance_service_clause_170614.pdf",
+      "time": "2026-10-30T11:37:13.948Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "close",
+        "content-length": "344661",
+        "content-type": "application/pdf",
+        "date": "Fri, 30 Oct 2026 11:37:14 GMT",
+        "etag": "\"6362a42d87211003570a2539a5ee5f2c\"",
+        "last-modified": "Wed, 31 May 2023 04:22:06 GMT",
+        "server": "AmazonS3",
+        "strict-transport-security": "max-age=31536000",
+        "vary": "Origin",
+        "via": "1.1 0a311f4b1a24ec1bb616391bb5bef318.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "zgX6ipHWTiFePPLxrKYtWRAnR6aDYpxdteGcFDZWmKGz9gD6EwijUg==",
+        "x-amz-cf-pop": "ICN57-P5",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-version-id": "null",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 31,
+      "url": "https://m.lina.co.kr/upload/docs/claim/exam/A1294.pdf",
+      "time": "2026-10-30T11:37:15.053Z",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "age": "1583",
+        "connection": "close",
+        "content-encoding": "br",
+        "content-type": "application/pdf",
+        "date": "Fri, 30 Oct 2026 11:10:52 GMT",
+        "etag": "W/\"d2e406466862e654817b59a63fe53b69\"",
+        "last-modified": "Wed, 31 May 2023 04:22:58 GMT",
+        "server": "AmazonS3",
+        "strict-transport-security": "max-age=31536000",
+        "vary": "Accept-Encoding, Origin",
+        "via": "1.1 801cd5a1ed5abecf586d9f00fbf82766.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "qNl4Q59CdaQl4TSmGKe9261VgzkdpI0rgAQt7dWYxsUPoVxFCKwbCw==",
+        "x-amz-cf-pop": "ICN57-P5",
+        "x-amz-server-side-encryption": "AES256",
+        "x-amz-version-id": "null",
+        "x-cache": "Hit from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 32,
+      "url": "http://www.lina.co.kr/",
+      "time": "2026-10-30T11:37:16.098Z",
+      "method": "HEAD",
+      "status": 301,
+      "headers": {
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "connection": "close",
+        "content-length": "167",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:16 GMT",
+        "location": "https://www.lina.co.kr/",
+        "server": "CloudFront",
+        "via": "1.1 d7b911451ac5880a1bff3e540ab26408.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "_N42Hxqw8i_769B82B5sQiRxOTUjRHriEjBZqZiXWWnSKJ16G3aVpw==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Redirect from cloudfront"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 33,
+      "url": "http://m.lina.co.kr/",
+      "time": "2026-10-30T11:37:17.137Z",
+      "method": "HEAD",
+      "status": 301,
+      "headers": {
+        "connection": "close",
+        "content-length": "167",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:17 GMT",
+        "location": "https://m.lina.co.kr/",
+        "server": "CloudFront",
+        "via": "1.1 4434189a5ee7ecea21442d2872701dfa.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "2L1APkBC8-ieGcR2qRfO3Hzj_zfWFmFQhDtfkdHSlG09-SZlNpcE3A==",
+        "x-amz-cf-pop": "ICN57-P5",
+        "x-cache": "Redirect from cloudfront"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 34,
+      "url": "http://ga.lina.co.kr/",
+      "time": "2026-10-30T11:37:18.283Z",
+      "method": "HEAD",
+      "status": 302,
+      "headers": {
+        "connection": "close",
+        "content-type": "text/html; charset=iso-8859-1",
+        "date": "Fri, 30 Oct 2026 11:37:18 GMT",
+        "location": "https://ga.lina.co.kr/"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 35,
+      "url": "http://srm.lina.co.kr/",
+      "time": "2026-10-30T11:37:19.325Z",
+      "method": "HEAD",
+      "status": 403,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "connection": "close",
+        "content-length": "372",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:19 GMT",
+        "expires": "Fri, 30 Oct 2026 11:37:19 GMT",
+        "mime-version": "1.0",
+        "pragma": "no-cache"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 36,
+      "url": "http://direct.lina.co.kr/",
+      "time": "2026-10-30T11:37:20.364Z",
+      "method": "HEAD",
+      "status": 301,
+      "headers": {
+        "connection": "close",
+        "content-length": "167",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:20 GMT",
+        "location": "https://direct.lina.co.kr/",
+        "server": "CloudFront",
+        "vary": "Origin",
+        "via": "1.1 9ede1af694c04d5bf51f5e36e780d97e.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "aAUKKqSLg4VWvKssu4O-aIgDDRTwmEFakTgtP_J5VO9fSVU2DWZ9rQ==",
+        "x-amz-cf-pop": "ICN80-P4",
+        "x-cache": "Redirect from cloudfront"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 37,
+      "url": "http://mdirect.lina.co.kr/",
+      "time": "2026-10-30T11:37:21.391Z",
+      "method": "HEAD",
+      "status": 301,
+      "headers": {
+        "connection": "close",
+        "content-length": "167",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:21 GMT",
+        "location": "https://mdirect.lina.co.kr/",
+        "server": "CloudFront",
+        "vary": "Origin",
+        "via": "1.1 737fbbc122df1d18e97adb6b86213cba.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "RD9bm5Zm3BZXvIW2M58FzxW0NpfHEmU3MOM_B8MNcVY2CqUWRW7wyg==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Redirect from cloudfront"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 38,
+      "url": "http://blog.lina.co.kr/",
+      "time": "2026-10-30T11:37:22.421Z",
+      "method": "HEAD",
+      "status": 403,
+      "headers": {
+        "connection": "close",
+        "content-encoding": "gzip",
+        "content-type": "text/html; charset=iso-8859-1",
+        "date": "Fri, 30 Oct 2026 11:37:22 GMT",
+        "server": "openresty",
+        "vary": "Accept-Encoding"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    },
+    {
+      "id": 39,
+      "url": "http://blog.direct.lina.co.kr/",
+      "time": "2026-10-30T11:37:23.446Z",
+      "method": "HEAD",
+      "status": 301,
+      "headers": {
+        "alt-svc": "clear",
+        "connection": "close",
+        "content-length": "162",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:23 GMT",
+        "location": "https://blog.direct.lina.co.kr/",
+        "server": "nginx",
+        "server-timing": "a8c-cdn, dc;desc=hkg, cache;desc=BYPASS;dur=0.0",
+        "x-remembering": "Eric Binnion <https://friendsofericbinnion.wordpress.com/>"
+      },
+      "cookies": [],
+      "note": "HEAD only; no redirect following or authenticated session"
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "records": [
+    {
+      "id": 1,
+      "url": "https://www.lina.co.kr/",
+      "time": "2026-10-30T11:37:24.915Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "none",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "keep-alive",
+        "content-encoding": "gzip",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 11:37:24 GMT",
+        "etag": "\"86ca-QW/krJOJcVj7LOEGcE/HNqQRixQ\"",
+        "strict-transport-security": "max-age=31536000 ; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "via": "1.1 15c59bb4e96b9cb0116bdf4812de5066.cloudfront.net (CloudFront)",
+        "x-amz-cf-id": "tzNJWqp6OJHW5XFSE5dNn_cQT6ivTry35XD9Nrql86mpXRcKgK16tg==",
+        "x-amz-cf-pop": "ICN57-P1",
+        "x-cache": "Miss from cloudfront",
+        "x-content-type-options": "nosniff"
+      },
+      "cookies": [
+        {
+          "name": "AWSALB",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:24 GMT",
+            "Path=/"
+          ]
+        },
+        {
+          "name": "AWSALBCORS",
+          "attributes": [
+            "Expires=Fri, 06 Nov 2026 11:37:24 GMT",
+            "Path=/",
+            "SameSite=None",
+            "Secure"
+          ]
+        },
+        {
+          "name": "TS011388cf",
+          "attributes": [
+            "Path=/"
+          ]
+        }
+      ],
+      "bytes": 34506,
+      "sha256": "e313ef954d6955d5793f7c5cba215429d54335f4466456a7111e1be667da2ef8",
+      "bodyFile": "page_1.html",
+      "static": {
+        "scripts": [
+          "/lib/jquery-3.7.1.js",
+          "/external/load.js",
+          "/lib/jquery/1.12.4/jquery.min.js",
+          "https://www.lina.co.kr/cms/upload/CONTROL/control.js?1793360244943",
+          "/external/script/head_prd.js",
+          "/_nuxt/04d919052cf557e38e0e.js",
+          "/_nuxt/5a2f219c4df0d3402586.js",
+          "/_nuxt/2a8103eec42a841f25c6.js",
+          "/_nuxt/2ab0b35cc936bafd2929.js",
+          "/_nuxt/42548c4181c780646c31.js",
+          "/_nuxt/d56af464ab60e1d39fa3.js",
+          "/_nuxt/0e69cfdc0f0ab763c695.js",
+          "/_nuxt/34be8180f44ce1866df1.js",
+          "/_nuxt/b5e0abad2e762ddaf1aa.js",
+          "/_nuxt/23b513eaa18e2dacceae.js",
+          "/_nuxt/e7eeba41f9f3d9963d32.js",
+          "/_nuxt/2be8502b56ee0edcca93.js",
+          "/_nuxt/8979f89f7f4690b39173.js",
+          "/_nuxt/d321f727a25a030385f6.js",
+          "/_nuxt/a3fc377c37fba1b38002.js",
+          "/_nuxt/d802c101a657f6526fb1.js",
+          "/_nuxt/f1c7650b0d944048e2aa.js",
+          "/_nuxt/ced986eba2eaf0295f7a.js",
+          "/_nuxt/17622a099759b640b893.js",
+          "/_nuxt/14acfd23a82ce2c7a2ba.js",
+          "/_nuxt/a0f9d003099976383d54.js",
+          "/_nuxt/5f44260745a0ae272b79.js",
+          "/_nuxt/84f3d3a2c7f4e72c41ff.js",
+          "/_nuxt/f86f4b4f58f5b1a51daa.js",
+          "/_nuxt/418809dbcf3ca5584e58.js",
+          "/_nuxt/d7e9531a0d54ed8d01fa.js",
+          "/_nuxt/7e76a1b991f3a69d71ff.js",
+          "/_nuxt/4d9115e1094dc082058b.js",
+          "/_nuxt/881a503e26c12d0a8bf9.js",
+          "/_nuxt/b9ec9b2b8f8f5eb59c2c.js",
+          "/_nuxt/31a5b58f7dc688907b07.js",
+          "/_nuxt/a902d4b35b772a17a087.js",
+          "/_nuxt/86be6db17213b34dbbaa.js",
+          "/_nuxt/ed3a30606bb6cb2037cf.js",
+          "/external/script/body_prd.js"
+        ],
+        "forms": 0
+      }
+    },
+    {
+      "id": 3,
+      "url": "https://ga.lina.co.kr/",
+      "time": "2026-10-30T11:37:26.583Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "Keep-Alive",
+        "content-length": "417",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:26 GMT",
+        "etag": "\"1a1-546420a0d8f80\"",
+        "keep-alive": "timeout=75, max=100",
+        "last-modified": "Tue, 17 Jan 2017 03:38:54 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "bytes": 417,
+      "sha256": "96036c195dac22da1b4172a0d459fd2d5c7f9a84d94a4d115426ed23976baca0",
+      "bodyFile": "page_3.html",
+      "static": {
+        "title": "NCRM AJAX DEMO",
+        "scripts": [],
+        "forms": 0
+      }
+    },
+    {
+      "id": 9,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN999M0.html",
+      "time": "2026-10-30T11:37:28.148Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "Keep-Alive",
+        "content-length": "7330",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:28 GMT",
+        "etag": "\"1ca2-5e791d935a900\"",
+        "keep-alive": "timeout=75, max=99",
+        "last-modified": "Wed, 31 Aug 2022 23:28:04 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "bytes": 7330,
+      "sha256": "ca1ff188b9098eb8532a4df1bf21ad6fa2dd321e54a8265fc958453e308c76ee",
+      "bodyFile": "page_9.html",
+      "static": {
+        "title": "배네피아 연동 | 라이나생명",
+        "scripts": [
+          "/webfw/naw/naw-4.x.js",
+          "/script/gap/GM/lib/jquery.min.js",
+          "/script/gap/GM/lib/jquery-ui-1.12.1.min.js",
+          "/script/gap/GM/lib/slick.min.js",
+          "/script/gap/GM/lib/swiper.min.js",
+          "/script/gap/GM/lib/ui_plugins.js",
+          "/script/gap/GM/uiux_common_n.js",
+          "/script/gap/GM/appBridge.js",
+          "/script/gap/GM/gpCore.js",
+          "/gap/serviceEndpoint/VestPIN/js/hibiscusClient.js",
+          "/gap/serviceEndpoint/VestPIN/js/jsrose_crypto.min.js",
+          "/gap/serviceEndpoint/VestPIN_mobile/vikie/js/vikie.js",
+          "/gap/serviceEndpoint/VestPIN/js/vestpin.js"
+        ],
+        "forms": 0
+      }
+    },
+    {
+      "id": 14,
+      "url": "https://ga.lina.co.kr/wizvera/veraport/install20/install_lina.html",
+      "time": "2026-10-30T11:37:29.684Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "Keep-Alive",
+        "content-length": "45560",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:29 GMT",
+        "etag": "\"b1f8-63a0823db7c00\"",
+        "keep-alive": "timeout=75, max=98",
+        "last-modified": "Wed, 16 Jul 2025 09:01:36 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "bytes": 45560,
+      "sha256": "b4586fe43227f5994e2fdd4b873b7b48fc4ab951d90eef3dd7962b982ef03453",
+      "bodyFile": "page_14.html",
+      "static": {
+        "title": "::: 프로그램 설치안내 :::",
+        "scripts": [
+          "../veraport20.js",
+          "../jquery/jquery-1.6.4.min.js",
+          "../veraport20_multi.js",
+          "../veraport20_handler.js",
+          "install_internal.js",
+          "install_config.js",
+          "../../../script/gap/GA/lisaUI.js",
+          "../../../script/gap/GA/lib/swiper.js",
+          "../../../webfw/naw/naw-4.x.js",
+          "../../../script/gap/GA/lisaUI.js",
+          "../../../script/gap/GA/lib/swiper.js",
+          "../../../script/gap/GA/gaCommon.js",
+          "../../../raon/raonnx/cmn/TouchEnNxChk.js",
+          "../../../raon/raonnx/cmn/json2.js",
+          "../../../raon/raonnx/cmn/TouchEnNx_exproto.js",
+          "../../../raon/raonnx/cmn/TouchEnNx_install.js",
+          "../../../raon/raonnx/cmn/TouchEnNx_daemon.js",
+          "../../../raon/raonnx/cmn/TouchEnNx_loader.js",
+          "../../../raon/raonnx/nxFw/js/nxfw_config.js",
+          "../../../raon/raonnx/nxFw/js/TouchEnNxFirewall_Interface.js",
+          "../../../raon/raonnx/nxFw/js/TouchEnNxFirewall.js",
+          "../../../raon/raonnx/ksbiz/js/ksbiz_config.js",
+          "../../../raon/raonnx/ksbiz/js/ksbiz_Interface.js",
+          "../../../raon/raonnx/ksbiz/js/ksbiz_extend.js",
+          "../../../raon/raonnx/ksbiz/js/ksbiz_internal.js",
+          "../../../raon/raonnx/ksbiz/js/ksbiz.js",
+          "../../../raon/raonnx/ksbiz/cxsign/xwckit.js"
+        ],
+        "forms": 0
+      }
+    },
+    {
+      "id": 15,
+      "url": "https://ga.lina.co.kr/webfw/html/nawmain.html",
+      "time": "2026-10-30T11:37:31.280Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "Keep-Alive",
+        "content-length": "119510",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:31 GMT",
+        "etag": "\"1d2d6-65008d512bf40\"",
+        "keep-alive": "timeout=75, max=97",
+        "last-modified": "Wed, 22 Apr 2026 09:05:25 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "bytes": 119510,
+      "sha256": "e05fc377d34e40188f6f6f97acb83e865c1d2caa152e8b7128135612f41e8632",
+      "bodyFile": "page_15.html",
+      "static": {
+        "title": "라이나GA업무지원시스템",
+        "scripts": [
+          "https://assets.adobedtm.com/fd9eea4992f3/6e29231b2b5a/launch-ace9f638ac3a.min.js",
+          "../../../script/gap/GA/lib/swiper.js",
+          "../../../script/gap/GA/lisaUI.js",
+          "../../../script/jquery.min.js",
+          "../../webfw/naw/naw-4.x.js",
+          "../../webfw/fwkconfig-4.2.x.js",
+          "../../../script/gap/GA/gaCommon.js"
+        ],
+        "forms": 0
+      }
+    },
+    {
+      "id": 16,
+      "url": "https://srm.lina.co.kr/login.do",
+      "time": "2026-10-30T11:37:32.916Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "connection": "keep-alive",
+        "content-language": "ko-KR",
+        "content-length": "677",
+        "content-security-policy": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Fri, 30 Oct 2026 11:37:32 GMT",
+        "expires": "Fri, 30 Oct 2026 11:37:32 GMT",
+        "pragma": "no-cache",
+        "x-content-type-options": "nosniff, nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "1; mode=block, 1"
+      },
+      "cookies": [
+        {
+          "name": "JSESSIONID",
+          "attributes": [
+            "Path=/",
+            "Secure",
+            "HttpOnly",
+            "HttpOnly",
+            "Secure",
+            "SameSite=None"
+          ]
+        }
+      ],
+      "bytes": 677,
+      "sha256": "3fd7a819040d5669a1b1abbf9ede32e6e272174655287cd0063b8d062d93711b",
+      "bodyFile": "page_16.html",
+      "static": {
+        "title": "라이나생명/라이나ONE 전자구매시스템",
+        "scripts": [],
+        "forms": 0
+      }
+    },
+    {
+      "id": 22,
+      "url": "https://ga.lina.co.kr/gap/serviceEndpoint/initech/extension/install/install.html",
+      "time": "2026-10-30T11:37:34.548Z",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "Keep-Alive",
+        "content-language": "ko-KR",
+        "content-length": "2964",
+        "content-security-policy": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' ",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 11:37:34 GMT",
+        "keep-alive": "timeout=75, max=96",
+        "last-modified": "Mon, 03 Aug 2015 07:17:02 GMT",
+        "pragma": "no-cache",
+        "referrer-policy": "no-referrer-when-downgrade",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;",
+        "x-content-type-options": "nosniff",
+        "x-xss-protection": "1; mode=block"
+      },
+      "cookies": [],
+      "bytes": 2964,
+      "sha256": "6cc5d25b36411caafd2692651204ecdafdf8bde63117392d24d2d742e280b7a1",
+      "bodyFile": "page_22.html",
+      "static": {
+        "title": "INISAFE Web/CrossWeb EX Install",
+        "scripts": [
+          "../crosswebex6.js"
+        ],
+        "forms": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,911 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Progma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <title>::: 프로그램 설치안내 :::</title>
+
+    <!-- 베라포트: 공통 -->
+    <script type="text/javascript">//_SITE_SystemLang="ENG";</script>
+    <script type="text/javascript">_SITE_CreateObject=false;</script>
+    <!-- script type="text/javascript" src="../jquery/json_parse.js"></script -->
+    <script type="text/javascript" src="../veraport20.js"></script>               <!-- 베라포트공통JS -->
+
+    <!-- 베라포트: 멀티OS용: jquery: 업무에 사용중인 다른 버전으로 교체하세요-->
+    <script type="text/javascript" src="../jquery/jquery-1.6.4.min.js"></script>  <!-- URL핸들러/멀티OS용 -->
+    <script type="text/javascript" src="../veraport20_multi.js"></script>         <!-- 멀티OS용JS -->
+    <script type="text/javascript" src="../veraport20_handler.js"></script>       <!-- URL핸들러용 JS -->
+    <link   type="text/css" href="../sitelogo/veraport20.css" rel="stylesheet" /> <!-- 멀티OS용UI_CSS -->
+
+    <!-- 베라포트: 통합설치용 -->
+    <script type="text/javascript" src="install_internal.js"></script>            <!-- 통합설치공통JS -->
+    <script type="text/javascript" src="install_config.js"></script>              <!-- 통합설치설정JS -->
+    <link   type="text/css" href="images/install_pc.css" rel="stylesheet" />      <!-- 통합설치샘플CSS -->
+    
+    <link href="../../../css/gap/layout.css" rel="stylesheet" type="text/css" /> 
+    <link href="../../../css/gap/menu.css" rel="stylesheet" type="text/css" /> 
+    
+    <link href="../../../css/gap/reform21.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/gap/install.css" rel="stylesheet" type="text/css" />
+    <script src="../../../script/gap/GA/lisaUI.js"></script>
+
+    <link href="../../../script/gap/GA/lib/swiper.css" rel="stylesheet" type="text/css" />
+    <script src="../../../script/gap/GA/lib/swiper.js"></script>
+	
+	<script type="text/javascript" src="../../../webfw/naw/naw-4.x.js"></script> 
+    <script type="text/javascript" src="../../../script/gap/GA/lisaUI.js"></script>
+    <script type="text/javascript" src="../../../script/gap/GA/lib/swiper.js"></script>
+    <script type="text/javascript" src="../../../script/gap/GA/gaCommon.js"></script>
+	
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/TouchEnNxChk.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/json2.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/TouchEnNx_exproto.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/TouchEnNx_install.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/TouchEnNx_daemon.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/cmn/TouchEnNx_loader.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/nxFw/js/nxfw_config.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/nxFw/js/TouchEnNxFirewall_Interface.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/nxFw/js/TouchEnNxFirewall.js'></script> 
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/js/ksbiz_config.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/js/ksbiz_Interface.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/js/ksbiz_extend.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/js/ksbiz_internal.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/js/ksbiz.js'></script>
+	<script type='text/javascript' charset='utf-8' src='../../../raon/raonnx/ksbiz/cxsign/xwckit.js'></script>
+	
+	
+
+    <!-- 아래 내용은 필요시 공통 스크립트(ex install_download.js)로 만들어서 사용하세요 -->
+    <script type="text/javascript"> 
+    (function(user) {
+
+        naw({
+            properties: {
+                // hasNotMessage영역에서 GlobalKey의 사용 여부를 지정
+                // enableGlobalKey를 true로 지정하면 GlobalKey를 사용하여 조회키 영역을 자동으로 GlobalKey로 셋팅
+                // enableGlobalKey를 false로 지정하면 조회키 영역을 셋팅하지 않음
+                enableGlobalKey: false
+            },
+            library : {
+                template : {
+                },
+                widget : {
+                }
+            },
+            dataset : {
+                dsEmplList : { 
+                    columns : [
+                        {name:"eno"     , type:"string", size:10 },
+                        {name:"emplNm"  , type:"string", size:40 },
+                        {name:"emplRrNo", type:"string", size:100},
+                        {name:"emplMpno", type:"string", size:100},
+                        {name:"rstCd"   , type:"string", size:1  }
+                    ]
+                },
+                dsPinUserList: {  
+                    columns : [
+                        {name:"nickName", type:"string",  size:256}, 
+                        {name:"hrid"    , type:"string",  size:256}, 
+                        {name:"authType", type:"string",  size:256}, 
+                    ]
+                },
+                dsAuthUser: {
+                
+                },
+                dsAuthRst: {
+                    columns : [
+                        {name:"nickName", type:"string"},
+                        {name:"auth"    , type:"boolean"}, 
+                        {name:"msg"     , type:"string"}, 
+                        {name:"errCnt"  , type:"integer"}
+                    ]
+                },
+                dsResultVrfc: {
+                    
+                },
+                dsResult: {
+                    columns : [
+                        {name:"recrdNxtYn", type:"string", size:1},
+                        {name:"trevcYn", type:"string", size:1},
+                        {name:"listCnt", type:"integer", size:5}
+                    ]
+                },
+                dsResultCd: {
+                    
+                },
+                dsPopupList:{
+                    
+                },
+                // 공통코드조회 (사고보험금/제지급 구비서류)
+                dsComnCdDetailList1: {
+                    columns : [
+                        {name:"chkYn", type:"string", size:1},
+                        {name:"comnCdId", type:"string", size:10},
+                        {name:"comnCdVl", type:"string", size:20},
+                        {name:"comnCdVlNm", type:"string", size:500},
+                        {name:"comnCdVlDesc", type:"string", size:1000},
+                        {name:"prntSeq", type:"string", size:10},
+                        {name:"vldStrtDt", type:"string", size:8},
+                        {name:"vldEndDt", type:"string", size:8},
+                        {name:"lrnkComnCdId", type:"string", size:10},
+                        {name:"delYn", type:"string", size:1}
+                    ],
+                    useClientLayout:true
+                },
+                dsResult2: {
+                    columns : [
+                        {name:"comnCdDetailListCnt", type:"integer", size:5}
+                    ]
+                },
+                /* 2020-05-22;최예은;SR2004-19872-01;ALISA 메인 페이지 서식 조회 */ 
+                dsDnFileInfoList: {
+                    columns : [
+                        {name:"bulbSrno"       , type:"string", size:5 },
+                        {name:"affchDcd"       , type:"string", size:5 },
+                        {name:"fileMgntNo"     , type:"string", size:20},
+                        {name:"filePathNm"     , type:"string", size:500},
+                        {name:"atchOrgcpFileNm", type:"string", size:100},
+                        {name:"atchSavFileNm"  , type:"string", size:100}
+                    ]
+                }
+            },
+            ready : {
+                bizcode : function() {
+                    // 공통 코드 등의 bizCode 관련 코드 작성
+                },
+                event : function() {
+
+                    naw("#docDown1").click(user.btnRBefAsnt_onclick);
+                    naw("#docDown2").click(user.btnRBefAsnt_onclick);
+                    naw("#docDown3").click(user.btnRBefAsnt_onclick);	// 사전동의서 다운로드
+                    naw("#docDown4").click(user.btnRBefAsnt_onclick);	// 청약지원 설계요청서 다운로드
+                    naw("#docDown5").click(user.btnRBefAsnt_onclick);	// 설계사 대리접수 보험금 청구서 다운로드
+                    naw("#docDown6").click(user.btnRBefAsnt_onclick);
+                    
+                },
+                complete : function() {
+                	user.fnSetDnFileInfo();
+                },
+                activate : function() {
+                    //Framework Mode 에서 화면이 active 될 때 코드 작성
+                },
+                message : function(msgObj) {
+                    // 화면 이동시 전달 메시지 처리
+                },
+                hasNotMessage : function() {
+                    // 화면 이동시 전달 메시지 없는 경우 처리
+                },                
+                close : function() {
+                    //Framework Mode 에서 화면 닫을 때 코드 작성
+                    //return : true(close), false(not close)
+                    return true;
+                }
+            }
+        },user)
+
+    })({
+
+    	/*------------------------------------------------------------------------------
+    	 * 기   능: 사전동의서 출력/다운로드
+    	 ------------------------------------------------------------------------------*/
+    	btnRBefAsnt_onclick :function(e) {
+    		
+    	    var id = $(this).attr("id");
+	   	  	onsite.trace("### btnR_onClick :: id[" + id + "]");
+	   	 	
+	   	  	if(id == "docDown1"){
+	   	  		
+		   	  	window.LISAUI.Modal.show({
+		            id: 'ALID15000',
+		            cls: 'type-cont' ,
+		            src: '../../../html/gap/GA/GAZ910P19.html', 
+		            title: 'GA 설계사 지원 센터'
+		        });
+		   	  	
+	   	  	} else if(id == "docDown2"){
+	   	  		
+	   	  		user.fnDownloadFile("7");
+	   	  		
+	   	  	} else if(id == "docDown3"){
+
+	   	  		user.fnDownloadFile("7");
+	   	  		
+	   	  	} else if(id == "docDown4"){
+
+	   	  		user.fnDownloadFile("6");
+	   	  		
+	   	  	} else if(id == "docDown5"){
+	   	  		
+		   	  	user.fnDownloadFile("A");
+	   	  	
+	   	 	} 
+    	},    	
+    	
+      	/*------------------------------------------------------------------------------
+      	* 기   능: ALISA 외부접속 메인 페이지 서식 조회
+      	* 2020-05-22;최예은;SR2004-19872-01;ALISA 메인 페이지 서식 조회
+      	------------------------------------------------------------------------------*/
+      	fnSetDnFileInfo :function() {
+      	    
+      	    var svcId = "GAZ910SVC_selectSingle9";
+      	    var inDs  = "";
+      	    var outDs = "dsDnFileInfoList=dsDnFileInfoList";
+      	    
+      	    onsite.gfnTransaction ($self, svcId, "GAZ910SVC", "selectSingle9", inDs, outDs);
+      	},    	
+
+      	/*------------------------------------------------------------------------------
+      	 * 기   능: ALISA 외부접속 메인 페이지 서식 다운로드
+      	 * 인   수: affchDcd 6-청약지원설계요청서출력, 7-사전동의서출력, 8-설치가이드, A-설계사 대리접수 보험금 청구서
+      	 * 2020-05-22;최예은;SR2004-19872-01;ALISA 메인 페이지 서식 조회
+      	 ------------------------------------------------------------------------------*/
+      	fnDownloadFile :function(affchDcd) {
+      	   	
+      	     for ( var i=0; i < dsDnFileInfoList.rowCount; i++ ) {
+      	        if ( dsDnFileInfoList.getData(i, "affchDcd") == affchDcd ) {
+      	                        
+      	            // 파일정보 가져오기            
+      	            sFilePathNm = dsDnFileInfoList.getData(i, "filePathNm");            // 파일경로명
+      	            sAtchOrgcpFileNm = dsDnFileInfoList.getData(i, "atchOrgcpFileNm");  // 첨부원본파일명
+      	            sAtchSavFileNm = dsDnFileInfoList.getData(i, "atchSavFileNm");      // 첨부저장파일명
+      	            onsite.trace("sFilePathNm=>"+sFilePathNm);
+      	            onsite.trace("sAtchOrgcpFileNm=>"+sAtchOrgcpFileNm);
+      	            onsite.trace("sAtchSavFileNm=>"+sAtchSavFileNm);
+      	  		            
+      	            if ( onsite.gfnIsNull(sFilePathNm) ) {
+      	                return false;
+      	            }
+      	          
+      	            // 파일다운로드 함수호출
+      	            var rtn = onsite.gfnGetAtchFileDownload1(sFilePathNm, sAtchOrgcpFileNm, sAtchSavFileNm, function(rtn){
+      	                if ( rtn ) onsite.trace("다운로드 완료.");
+      	                else onsite.trace("다운로드 실패.");
+      	            });
+      	           
+      	        }            
+      	    }    
+
+      	} ,
+      	
+      	/*------------------------------------------------------------------------------
+      	 * 기   능: 버튼 클릭 시 (퍼블리싱 내 작동 팝업)
+      	 ------------------------------------------------------------------------------*/
+      	btnR_onClick :function(e) {
+      	    alert();
+      	    var id = $(this).attr("id");    
+      	    onsite.trace("### btnR_onClick :: id[" + id + "]");
+      	}
+      	
+    });
+    
+    //통할설치 초기화 완료후 베라포트 설치여부 확인: G3만해당됨: 미사용시 지워주세요.
+    function SITE_vpInstalCheckResult(isInstall) {
+        //if (!isInstall) alert("통합설치프로그램이 설치되지 않았습니다.\n'통합설치프로그램다운로드'를 클릭하여 설치하시기 바랍니다.");
+        if (!isInstall && !(VP_platformInfo.Linux && !VP_platformInfo.Fedora && !VP_platformInfo.Ubuntu)) {
+            //if (typeof(fn_download_Veraport) == "function") fn_download_Veraport(''); //미설치시 설치파일 다운로드 처리
+        } 
+    }
+
+    //통할설치 초기화 완료 후 미설치제품 갯수 확인: G3만해당됨: 미사용시 지워주세요.
+    function SITE_vpUninstallCnt(unInstallCnt, isVpInstall) {
+        if (true) return; //TODO: 제거
+        if (isVpInstall) return; //베라포트 미설치시는 제외
+        if (unInstallCnt == 0) {
+            if (confirm(instMsg.result[instCode.RESULT_INST_OK])) fn_goHomePage(false);
+        } else {
+            //alert(unInstallCnt + "개의 보안프로그램이 미설치 되어 있습니다.\n전체설치를 클릭하여 설치하시기 바랍니다.");
+        }
+    }
+
+
+    //Veraport 다운로드 URL 설정
+    function fn_download_Veraport(pkgType) {
+        if ((pkgType == "RPM" || VP_platformInfo.Fedora) && VP_config.useHandler){
+            alert("브라우저를 종료 한후, 어플리케이션 메뉴에서 베라포트(Veraport)를 실행하세요.\n(또는 커맨드라인에서 veraport를 입력하여 실행하세요.)");
+        }
+        document.location = fn_getVpDownloadURL(pkgType, true);
+    }
+
+    function fn_download_noitce(objectName, pkgType, downURL) {
+        var notice = "설치 후에는 반드시 새로고침을 하거나 다시 접속해주세요.";
+        if (instConfig.isDebug) notice += "\n\n설치파일다운로드정보[" + objectName + "]["+VP_platformInfo.type+","+VP_platformInfo.name+"]["+pkgType+"]\n" + downURL;
+
+        alert(notice);
+        if (downURL != "") document.location = downURL;
+    }
+
+
+    //Raon Ksbiz (구간암호화) 다운로드 URL 설정 샘플\
+	
+    function fn_download_KeySharpNxBiz(pkgType) {
+	console.log('pkgType : ' +pkgType);
+        var _baseURL = document.location.protocol+"//"+document.location.host+"/raon/raonnx/ksbiz/module";
+        var downURL = _baseURL + "/KSbiz_Installer_32bit.exe";
+        
+        //SR2203-17382-04-GAPBIZ-ALISA NonActiveX 환경 구축;2022-03-31 전성배 ;
+        if (VP_platformInfo.x64) downURL = _baseURL + "/KSbiz_Installer_32bit.exe";
+
+        //멀티OS용 다운로드 설정
+        if ((pkgType == "DEV") || (pkgType == "" && VP_platformInfo.Ubuntu)) {
+            downURL = _baseURL + "/KSbiz_Installer_Ubuntu_32bit.deb";
+            if (VP_platformInfo.x64) downURL = _baseURL + "/KSbiz_Installer_Ubuntu_64bit.deb";
+        }
+        else if ((pkgType == "RPM") || (pkgType == "" && VP_platformInfo.Fedora)) {
+            downURL = _baseURL + "/KSbiz_Installer_Fedora_32bit.rpm";
+            if (VP_platformInfo.x64) downURL = _baseURL + "/KSbiz_Installer_Fedora_64bit.rpm";
+        }
+        else if (VP_platformInfo.Mac) {
+            downURL = _baseURL + "/KSbiz_Installer_Mac.pkg";
+        }
+
+        fn_download_noitce("KeySharpNxBiz", pkgType, downURL);
+    }
+
+	//TouchEnnxFirewall 다운로드 URL 설정 샘플
+    function fn_download_TouchEnnxFirewall(pkgType) {
+        var _baseURL = document.location.protocol+"//"+document.location.host+"/raon/raonnx/nxFw/module";
+        //var _baseURL = "http://help.wizvera.com/svc/wizvera/delfino";
+        var downURL = _baseURL + "/TEFW_Installer.exe";
+        
+        //SR2203-17382-04-GAPBIZ-ALISA NonActiveX 환경 구축;2022-03-31 전성배 ;
+        if (VP_platformInfo.x64) downURL = _baseURL + "/TEFW_Installer.exe";
+
+        fn_download_noitce("TouchEn nxFirewall", pkgType, downURL);
+    }
+	
+
+    
+    // 모두 설치 되었는지 판단해 본다. (k0mo)
+    // 미사용 될 듯함. 무조건 설치화면으로 진입하지 않는다.
+   	var timerId=null;
+    function onInit() {
+    	 timerId = window.setInterval(funcTimer, 2000);
+    	
+   		 console.log("my host : "+window.location.host);
+
+    	var url = findGetParameter("url");
+    	if(url!=null) {
+    		console.log("url : "+url);
+    		
+    		if(url.indexOf(window.location.host)==-1) {
+    			alert("설치 완료 후 이동할 페이지가 올바르지 않습니다. 메인으로 이동합니다.");
+    			window.location.href = "/";	
+    		}
+    	}
+    	
+    }
+	
+	var loadmodule = [];
+	try{
+		if(TouchEnNxConfig.use.nxfw){
+			if(typeof touchennxfwInfo != "object")	alert("include nxfw javascript");
+			if(typeof loadmodule[0] != "object")	loadmodule[0] = touchennxfwInfo;
+			else	loadmodule[loadmodule.length] = touchennxfwInfo;
+		}
+		if(TouchEnNxConfig.use.ksbiz){
+			if(typeof keysharpbizInfo != "object")	alert("include ksbiz javascript");
+			if(typeof loadmodule[0] != "object")	loadmodule[0] = keysharpbizInfo;
+			else	loadmodule[loadmodule.length] = keysharpbizInfo;
+		}						   
+		TouchEnNx.useModule = loadmodule;
+	}catch(e){
+		exlog("loadmodule check", "install_lina.html");
+	}
+	
+    function funcTimer() {
+
+    	//alert('timer start');
+		//20220506 라온시큐어 별도 제외 
+
+    	var installed_object = [
+    	            			"object_status_Veraport", 
+    	            			"object_status_KeySharpNxBiz", 
+    	            			"object_status_TouchEn nxFirewall",
+								"object_status_Extension"
+    	            			];
+
+    	//var isAllInstalled = true;
+       	//for(var i in installed_object) {
+       	//	if(document.getElementById(installed_object[i]).getElementsByClassName("install_yes")[0]==undefined) {
+       	//		isAllInstalled = false;
+       	//		console.log("Not Installed :"+installed_object[i]);
+       	//	}
+       	//}
+       	var isAllInstalled1;
+       	var isAllInstalled2;
+       	var isAllInstalled3;
+		var isAllInstalled4;
+		
+       	
+       	//if(document.getElementById(installed_object[0]).getElementsByClassName("install_yes")[0]==undefined) {
+		if(document.getElementById(installed_object[0]).querySelectorAll(".install_yes")[0]==undefined) {
+    		isAllInstalled1 = false;
+   		}else{
+   		
+   			isAllInstalled1 = true;
+   			
+   			var html = "<em class='state-txt state-yes'>설치됨</em>";
+   			$("#veraport_ins").html(html);
+    			
+    			
+   		}
+   		
+		//20220506 라온시큐어 별도 제외 
+   		//if(document.getElementById(installed_object[1]).getElementsByClassName("install_yes")[0]==undefined) {
+		/*if(document.getElementById(installed_object[1]).querySelectorAll(".install_yes")[0]==undefined) {
+   			isAllInstalled2 = false;
+   		}else{
+   			isAllInstalled2 = true;
+   		
+   			var html = "<em class='state-txt state-yes'>설치됨</em>";
+   			$("#KeySharpNxBiz_ins").html(html);
+   		}*/
+    	/*	
+   		//if(document.getElementById(installed_object[2]).getElementsByClassName("install_yes")[0]==undefined) {
+		if(document.getElementById(installed_object[2]).querySelectorAll(".install_yes")[0]==undefined) {
+   		//if( $("#object_status_TouchEn nxFirewall").find( ".install_yes" ).length == 1 ){
+   			isAllInstalled3 = false;
+   		}else{
+   		
+   			isAllInstalled3 = true;
+   			
+   			var html = "<em class='state-txt state-yes'>설치됨</em>";
+   			$("#TouchEn_ins").html(html);
+   		}*/
+		
+		//if(document.getElementById(installed_object[3]).getElementsByClassName("install_yes")[0]==undefined) {
+		/*if(document.getElementById(installed_object[3]).querySelectorAll(".install_yes")[0]==undefined) {
+   			isAllInstalled4 = false;
+   		}else{
+			if(document.getElementById('Extension_ins').getElementsByClassName("state-no")[0]==undefined) {
+				isAllInstalled4 = true;
+				var html = "<em class='state-txt state-yes'>설치됨</em>";
+				$("#TouchEn_Extension").html(html);
+			}else if(TOUCHENEX_UTIL.isWin()){
+				isAllInstalled4 = true;
+			}
+   		}*/
+		
+		
+		if(TouchEnNx.useModule.length > 0){
+		
+			//var TouchEnNxKeyInstall = setInterval(function(){
+				TOUCHENEX_CHECK.check(TouchEnNx.useModule, function(result){
+				var bizCheck = false;
+				var extensionCheck = true;
+					if (result.status) {
+						//설치 완료
+						isAllInstalled2 = true;
+						bizCheck = true;
+						var html = "<em class='state-txt state-yes'>설치됨</em>";
+						$("#KeySharpNxBiz_ins").html(html);
+						if(TOUCHENEX_UTIL.isWin()){
+							isAllInstalled3 = true;
+							var html = "<em class='state-txt state-yes'>설치됨</em>";
+							$("#TouchEn_ins").html(html);	
+						}else{
+							isAllInstalled3 = true;
+							document.getElementById("TouchEn_insTr").style.display = "none";
+						}
+						isAllInstalled4 = true;
+						window.location.href = "../../../html/gap/GA/GAZ911M0.html";
+
+					} else {
+						/** 솔루션 미설치 일 때*/
+						if(TOUCHENEX_UTIL.typeExtension() && !TOUCHENEX_usedaemon){
+							if(!result.info[0].extension){
+							$("#TouchEn_Extension").html(html);	
+							console.log('익스텐션 미설치');
+								isAllInstalled4 = false;
+								extensionCheck = false;
+								document.getElementById("KeySharpNxBiz_insExtensionTr").style.display = "";
+								document.getElementById("object_download_Extension").style.display = "";
+								/** 익스텐션 설치가 되어 있지 않을 경우 */
+							}else{
+							console.log('익스텐션 설치');
+								/** 익스텐션 설치 되어 있을 경우 */
+								isAllInstalled4 = true;
+								extensionCheck = true;
+								document.getElementById("KeySharpNxBiz_insExtensionTr").style.display = "";
+								var html = "<em class='state-txt state-yes'>설치됨</em>";
+								$("#Extension_ins").html(html);
+							}
+						}
+						for (var i = 0; i < result.info.length; i++) {
+							if(!result.info[i].isInstalled){
+								if(TouchEnNx.useModule[i].exModuleName == "nxfirewall"){
+									/** 방화벽 Client 미설치 */	
+									if(TOUCHENEX_UTIL.isWin()){
+										console.log('방화벽 미설치');
+										isAllInstalled3 = false;		
+										document.getElementById("object_download_TouchEn nxFirewall").style.display = "";
+									}else{
+										isAllInstalled3 = true;
+										document.getElementById("TouchEn_insTr").style.display = "none";
+									}
+								}
+								if(TouchEnNx.useModule[i].exModuleName == "biz"){
+									/** 공인인증 Client 미설치 */
+									console.log('Biz 미설치');
+									if(!TOUCHENEX_UTIL.isLinux()){
+										bizCheck = false;
+										isAllInstalled2 = false;
+										document.getElementById("object_download_KeySharpNxBiz").style.display = "";
+									} else {
+										bizCheck = false;
+										isAllInstalled2 = false;
+									}
+								}
+							}else{
+								if(TouchEnNx.useModule[i].exModuleName == "nxfirewall"){
+									if(TOUCHENEX_UTIL.isWin()){
+										console.log('방화벽 설치');
+										isAllInstalled3 = true;
+										var html = "<em class='state-txt state-yes'>설치됨</em>";
+										$("#TouchEn_ins").html(html);		
+									}else{
+										isAllInstalled3 = true;
+										document.getElementById("TouchEn_insTr").style.display = "none";
+									}
+								}
+								if(TouchEnNx.useModule[i].exModuleName == "biz"){
+									if (!TOUCHENEX_UTIL.isLinux())
+									{
+										console.log('Biz 윈도우 맥 설치');
+										bizCheck = true;
+										isAllInstalled2 = true;
+										var html = "<em class='state-txt state-yes'>설치됨</em>";
+										$("#KeySharpNxBiz_ins").html(html);
+									} else {
+									console.log('Biz 리눅스 설치');
+										bizCheck = true;
+										isAllInstalled2 = true;
+										var html = "<em class='state-txt state-yes'>설치됨</em>";
+										$("#KeySharpNxBiz_ins").html(html);
+									}
+								}																											  
+							}	
+						}		        	
+					}
+					console.log('bizCheck : ' + bizCheck);
+					console.log('extensionCheck : ' + extensionCheck);
+					if(!TOUCHENEX_UTIL.isWin() && bizCheck && extensionCheck){
+						window.location.href = "../../../html/gap/GA/GAZ911M0.html";
+					}
+				});
+			//},1000);
+		}
+		
+		
+       	
+   		console.log("isAllInstalled1 : "+isAllInstalled1);
+		console.log("isAllInstalled2 : "+isAllInstalled2);
+		console.log("isAllInstalled3 : "+isAllInstalled3);
+		console.log("isAllInstalled4 : "+isAllInstalled4);
+		
+		if(isAllInstalled2 && isAllInstalled3 && isAllInstalled4) {
+			if(timerId!=null) {
+				window.clearInterval(timerId);
+			}
+			
+			console.log("All Modules is installed");
+			console.log("=>"+findGetParameter("url"));
+			
+			// 모두 설치시 메인페이지로 이동
+			//window.location.href = "/";
+			// 모두 설치시 이전페이지로 이동
+			//alert("all is installed");
+			//window.history.back();
+			if ( findGetParameter("url") != null ) {
+
+	            /* 2024-03-14;SR2402-25602-08;Fortify 정기스캔 결과에 따른 취약점 조치 요청의 건 */
+				let getUrl = findGetParameter("url").split(window.location.host);
+
+				if ( getUrl.length > 1 ) {
+					window.location.href = "https://" + window.location.host + getUrl[getUrl.length - 1];
+
+				} else {
+			    	window.location.href = "../../../html/gap/GA/GAZ911M0.html";
+			    }
+
+			} else {
+				window.location.href = "../../../html/gap/GA/GAZ911M0.html";
+			}
+		}
+    }
+    
+    function findGetParameter(paramName) {
+    	var result = null,tmp = [];
+    	/*
+    	location.search.substr(1).split("&").forEach(
+    			function (item) {
+    				tmp = item.split("=");
+    				if(tmp[0]==paramName) {
+    					result = decodeURIComponent(tmp[1]);
+    					break;
+    				}
+    			}
+    	);
+    	*/
+    	
+    	var items = location.search.substr(1).split("&");
+    	for(var i=0;i<items.length;i++) {
+    		tmp = items[i].split("=");
+    		if(tmp[0]==paramName) {
+    			result = decodeURIComponent(tmp[1]);
+    			break;
+    		}
+    	}
+    	
+    	return result;
+    }
+    
+    </script>
+</head>
+<body class="wrap-install new-install" onload="javascript:onInit()"> <!-- 20241029 클래스 추가-->
+
+<!-- [필수]베라포트: ActiveX/Plugin 설치 확인 및 모듈 로딩/START-->
+<div id="VP_object_load"></div>
+<script type="text/javascript">timer_vpObjectLoad();</script>
+<!-- [필수]베라포트: ActiveX/Plugin 설치 확인 및 모듈 로딩/END -->
+	<!-- <h1 class="a11y-hidden">라이나생명</h1>  20241029 주석 -->
+	<!-- 20241029 영역 추가--> 
+	<section class="header-wrap no-border">
+		<div class="header-inner">
+			<h1 class="logo"><a href="#"><span class="a11y-hidden">라이나생명 로고</span></a></h1>
+		</div>
+	</section> 
+	<!--// 20241029 영역 추가--> 
+    <div class="container">  <!-- 20241029 클래스변경 -->
+		<h2 class="tit-page">안전한 사이트 이용을 위해 <em class="point-txt">보안프로그램</em>을 설치합니다.</h2>
+		<div id="VP_msg_installed" class="wrap-guide">
+			<ul class="list-guide">
+                <li><em class="point-txt">[통합설치 프로그램 다운로드]</em> 를 클릭하시면 자동으로 설치가 진행됩니다.</li>
+                <li>사용자 환경에 따라 오류 메시지가 발생할 경우에는 다운로드 안내창에서 ‘저장’을 눌러 PC에 다운로드하여 실행하시기 바랍니다.</li>
+                <li>각 설치 프로그램의 기능은 아래 표를 참조하여 주시기 바랍니다.</li>
+            </ul>
+            <div class="area-btn">
+	        	<button id="VP_btn_install" style="display:none;" class="btn-install" type="button" onclick="javascript:SITE_axInstallVP(instCode.TYPE_ALL, false);">전체설치</button>
+	        	<button type="button" class="btn-help" onclick="window.open('https://113366.com');">설치 원격지원</button>
+	        </div>
+        </div>
+        <div id="VP_msg_notinstall" class="wrap-guide">
+			<ul class="list-guide">
+				<li><em class="point-txt">[통합설치 프로그램 다운로드]</em> 를 클릭하시면 자동으로 설치가 진행됩니다.</li>
+				<li>사용자 환경에 따라 오류 메시지가 발생할 경우에는 다운로드 안내창에서 ‘저장’을 눌러 PC에 다운로드하여 실행하시기 바랍니다.</li>
+				<li>각 설치 프로그램의 기능은 아래 표를 참조하여 주시기 바랍니다.</li>
+			</ul>
+            <div class="area-btn">
+	        	<button id="VP_btn_download" style="display:none;" class="btn-install" type="button" onclick="javascript:fn_download_Veraport();">통합설치 프로그램 다운로드</button>
+	        	<button type="button" class="btn-help" onclick="window.open('https://113366.com');">설치 원격지원</button>
+	        </div>
+        </div>
+        <div id="VP_msg_unsupported" class="wrap-guide">
+			<ul class="list-guide">
+                <li><em class="point-txt">[통합설치 프로그램 다운로드]</em> 를 클릭하시면 자동으로 설치가 진행됩니다.</li>
+                <li>사용자 환경에 따라 오류 메시지가 발생할 경우에는 다운로드 안내창에서 ‘저장’을 눌러 PC에 다운로드하여 실행하시기 바랍니다.</li>
+                <li>각 설치 프로그램의 기능은 아래 표를 참조하여 주시기 바랍니다.</li>
+            </ul>
+            <div class="area-btn">
+	        	<button id="VP_btn_install" style="display:none;" class="btn-install" type="button" onclick="javascript:fn_download_Veraport();">통합설치 프로그램 다운로드</button>
+	        	<button type="button" class="btn-help" onclick="window.open('https://113366.com');">설치 원격지원</button>
+	        </div>
+        </div>
+        <script type="text/javascript">timer_vpMsgUpdate();</script> <!-- [필수]베라포트: 설치여부별 /안내메시지 변경 함수 -->
+	    <script type="text/javascript">timer_vpBtnUpdate();</script><!-- [필수]베라포트: 설치여부별 /전체설치,다운로드 버튼 변경 함수 -->
+	    <!-- 20241029 클래스 추가 테이블 구조 변경-->
+		<table class="tbl-base ty1">
+        	<caption>보안프로그램별 정보,설치상태를 표시하는 테이블</caption>
+                <colgroup>   
+				<col>  
+				<col width="160px">     
+				<col width="160px">
+			    </colgroup>
+			    <thead>
+					<th scope="col">프로그램명 및 기능</th>
+					<th scope="col">설치 상태</th>
+					<th scope="col">설치 파일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+					<th scope="row">
+						<strong>통합설치 프로그램 (VeraPort)</strong>
+						<p>웹표준 대체기술이 적용된 보안프로그램을 한번에 설치하기 위한 프로그램입니다.</p>
+					</th>
+					<!-- <td class="tal">웹표준 대체기술이 적용된 보안프로그램을 한번에 설치하기 위한 프로그램입니다.</td> -->
+                    <td id ="veraport_ins">
+                    	<em class='state-txt state-no'>미설치</em>
+                    </td>
+                    <td>
+						<a href='#' id='object_download_Veraport' style='display:none;' class='link-down' onclick="javascript:fn_download_Veraport('')">다운로드</a>
+						<a href='#' id='object_download_VeraportU' style='display:none;' class='link-down' onclick="javascript:fn_download_Veraport('DEV')">Ubuntu</a>
+						<a href='#' id='object_download_VeraportF' style='display:none;' class='link-down' onclick="javascript:fn_download_Veraport('RPM')">Fedora</a>
+                    </td>
+                    
+                    
+                </tr>
+                <tr>
+					<th scope="row">
+						<strong>라온 솔루션 (KeySharpNxBiz)</strong>
+						<p>키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 프로그램입니다.</p>
+					</th>
+					<!-- <td class="tal">키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 프로그램입니다.</td> -->
+                	<td id = "KeySharpNxBiz_ins">
+                		<em class='state-txt state-no'>미설치</em>
+                    </td>
+                    <td>
+						<a href='#' id='object_download_KeySharpNxBiz' style='display:none;' class='link-down' onclick="javascript:fn_download_KeySharpNxBiz('')">다운로드</a>
+						<a href='#' id='object_download_KeySharpNxBizU' style='display:none;' class='link-down' onclick="javascript:fn_download_KeySharpNxBiz('DEV')">Ubuntu</a>
+						<a href='#' id='object_download_KeySharpNxBizF' style='display:none;' class='link-down' onclick="javascript:fn_download_KeySharpNxBiz('RPM')">Fedora</a>
+                	</td>
+				</tr>
+				<tr id="KeySharpNxBiz_insExtensionTr" style='display:none;'>
+					<th scope="row">
+						<strong>라온 솔루션 (Extension)</strong>
+						<p>키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 확장프로그램입니다.</p>
+					</th>
+					<!-- <td class="tal">키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 확장프로그램입니다.</td> -->
+                	<td id = "Extension_ins">
+                		<em class='state-txt state-no'>미설치</em>
+                    </td>
+                    <td>
+						<a href='#' id='object_download_Extension' style='display:none;' class='link-down' onclick="javascript:TOUCHENEX_INSTALL.download('biz', 'extension');">확장등록</a>
+                	</td>          	
+                </tr>
+                <tr id="TouchEn_insTr" style=''>
+					<th scope="row">
+						<strong>개인 PC 방화벽(TouchEn nxFirewall)</strong>
+						<p>비인가된 접근을 차단하고 해킹툴 및 바이러스를 검색하여 치료해 주는 프로그램입니다.</p>
+					</th>
+					<!-- <td class="tal">비인가된 접근을 차단하고 해킹툴 및 바이러스를 검색하여 치료해 주는 프로그램입니다.</td> -->
+                    <td id = "TouchEn_ins">
+                    	<em class='state-txt state-no'>미설치</em>
+                    </td>
+                    <td>
+						<a href='#' id='object_download_TouchEn nxFirewall' style='display:none;' class='link-down' onclick="javascript:fn_download_TouchEnnxFirewall('')">다운로드</a>
+						<a href='#' id='object_download_TouchEn nxFirewallU' style='display:none;' class='link-down' onclick="javascript:fn_download_TouchEnnxFirewall('DEV')">Ubuntu</a>
+						<a href='#' id='object_download_TouchEn nxFirewallF' style='display:none;' class='link-down' onclick="javascript:fn_download_TouchEnnxFirewall('RPM')">Fedora</a>
+                    </td>
+                    
+                </tr>
+        	</tbody>        
+        </table> 
+		<!--// 20241029 클래스 추가 테이블 구조 변경-->   
+        <div id="contents" style="display:none">
+            <table class="tbl_install" summary="보안프로그램별 정보,설치상태를 표시하는 테이블">
+                <tr>
+                    <th width="23%">프로그램명</th>
+                    <th width="57%">기능</th>
+                    <th width="20%">설치상태</th>
+                </tr>
+                <tr>
+                    <td id="name"><b>통합설치 프로그램</b><br>(VeraPort)</td>
+                    <td id="info">
+                        <div id="plugin_Veraport" style="display:none;">보안프로그램을 한번에 설치하기 위한 프로그램입니다.</div>
+                        <div id="nonplugin_Veraport">웹표준 대체기술이 적용된 보안프로그램을 한번에 설치하기 위한 프로그램입니다.</div>
+                    </td>
+                    <td id="status">
+                        <div    id="object_status_Veraport">-</div> <!-- 설치됨/미설치/미지원 -->
+                        <div    id="object_default_Veraport"></div> <!-- 다운로드버튼이 없을경우 표시됨 -->
+                        <button id="object_download_Veraport"  style="display:none;" class="install" onclick="javascript:fn_download_Veraport('');">다운로드</button>
+                        <button id="object_download_VeraportU" style="display:none;" class="install" onclick="javascript:fn_download_Veraport('DEV');">Ubuntu</button>
+                        <button id="object_download_VeraportF" style="display:none;" class="install" onclick="javascript:fn_download_Veraport('RPM');">Fedora</button>
+                    </td>
+                    <script type="text/javascript">timer_objectUpdate(instCode.VERAPORT);</script> <!-- 베라포트: 설치여부별 /상태,다운로드 버튼 변경 함수 -->
+                    
+                </tr>                
+				<tr>
+                    <td id="name"><b>라온 솔루션 </b><br>(KeySharpNxBiz)</td>
+                    <td id="info">키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 프로그램입니다.</td>
+                    <td id="status">
+                        <div    id="object_status_KeySharpNxBiz">-</div>
+                        <div    id="object_default_KeySharpNxBiz"></div>
+                        <button id="object_download_KeySharpNxBiz"  style="display:none;" class="install" onclick="javascript:fn_download_KeySharpNxBiz('');">다운로드</button>
+                        <button id="object_download_KeySharpNxBizU" style="display:none;" class="install" onclick="javascript:fn_download_KeySharpNxBiz('DEV');">Ubuntu</button>
+                        <button id="object_download_KeySharpNxBizF" style="display:none;" class="install" onclick="javascript:fn_download_KeySharpNxBiz('RPM');">Fedora</button>
+                    </td>
+                    <script type="text/javascript">timer_objectUpdate("KeySharpNxBiz");</script> <!-- 제품별: 설치여부별 /상태,다운로드 버튼 변경 함수 -->
+                </tr>	
+				<tr>
+                    <td id="name"><b>라온 솔루션 </b><br>(Extension)</td>
+                    <td id="info">키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 확장프로그램입니다.</td>
+                    <td id="status">
+                        <div    id="object_status_Extension">-</div>
+                        <div    id="object_default_Extension"></div>
+                        <button id="object_download_Extension" style='display:none;' class='install' onclick="javascript:TOUCHENEX_INSTALL.download('biz', 'extension');">확장프로그램 등록</button>
+                    </td>
+					<script type="text/javascript">timer_objectUpdate("Extension");</script> <!-- 제품별: 설치여부별 /상태,다운로드 버튼 변경 함수 -->
+                </tr>
+                <tr>
+                    <td id="name"><b>개인PC방화벽</b><br>(TouchEn nxFirewall)</td>
+                    <td id="info">비인가된 접근을 차단하고 해킹툴 및 바이러스를 검색하고 치료해 주는 프로그램입니다.</td>
+                    <td id="status">
+                        <div    id="object_status_TouchEn nxFirewall">-</div>
+                        <div    id="object_default_TouchEn nxFirewall"></div>
+
+                        <button id="object_download_TouchEn nxFirewall"  style="display:none;" class="install" onclick="javascript:fn_download_TouchEnnxFirewall('');">다운로드</button>
+                        <button id="object_download_TouchEn nxFirewallU" style="display:none;" class="install" onclick="javascript:fn_download_TouchEnnxFirewall('DEV');">Ubuntu</button>
+                        <button id="object_download_TouchEn nxFirewallF" style="display:none;" class="install" onclick="javascript:fn_download_TouchEnnxFirewall('RPM');">Fedora</button>
+                    </td>
+                    <script type="text/javascript">timer_objectUpdate("TouchEn nxFirewall");</script> <!-- 제품별: 설치여부별 /상태,다운로드 버튼 변경 함수 -->
+                </tr>
+
+                
+            </table>
+        </div>
+        <div id="add-info" class="addInfo">  <!-- 20241029 클래스 변경 및 텍스트 수정 -->
+            <ul class="list-guide">
+            	<!-- 2024-05-27;SR2403-50282-15;24년 1Q Fortify 정기스캔 결과에 따른 취약점 조치 요청의 건-->
+                <li id="add-info1">접속PC정보:
+                    <script type="text/javascript">
+                    function fn_getSystemInfo() {
+                        var sysInfo  = "<em class='point-txt'>";
+                            sysInfo += "[" + VP_platformInfo.type + "," + VP_platformInfo.name + "]";
+                            sysInfo += "[" + VP_browserInfo.name  + "," + VP_browserInfo.version + "]";
+                            if (instConfig.P_name != "") sysInfo += "[" + instConfig.P_name + "]";
+                            sysInfo += "</em> " + navigator.userAgent;
+                        return sysInfo;
+                    }
+                    //document.write(fn_getSystemInfo());
+                    $("#add-info1").append(fn_getSystemInfo());
+                    </script>
+                </li>
+                <li>수동설치 후에는 반드시 <em class="point-txt">새로고침</em>을 하거나 다시 접속하시기 바랍니다.</li>
+				<li>설치완료 메시지가 반복적으로 나오는 경우는 브라우저 종료 및 해당프로그램 삭제 후 <em class="point-txt">재설치</em> 하시기 바랍니다.</li>
+            </ul>
+            <strong class="tit-etc">※ 프로그램 설치에 문제가 있으신가요?</strong>
+			<p class="txt-etc">시스템 설치에 어려움이 있으시거나, 접속 오류 발생 관련 문의사항이 있으시다면 <em class="point-txt">GA 전용 IT 헬프데스크 (02-3781-2006)</em>로 연락 부탁 드립니다.</p>
+        </div>
+        <!-- 20241029  클래스 변경 및 텍스트 변경 -->
+        <div class="support-wrap">
+			<div class="contactInfo">
+				<button type="button" class="n1" id ="docDown1">
+					<em>GA설계사 지원센터</em>1588-2215 <span>평일 9시~20시</span>
+				</button>
+				<button type="button" class="n2" id="docDown2">
+					<em>고객사전동의 전용팩스</em>02-6944-1224 <span>24시간 상시운영</span>
+				</button>
+			</div>
+
+			<div class="util">
+				<button type="button" class="btn_print" id="docDown3">
+					<span>사전동의서 다운로드</span>
+				</button>
+				<button type="button" class="n1" id="docDown4">
+					<span>청약지원 설계요청서 다운로드</span>
+				</button>
+				<button type="button" class="n2" id="docDown5">
+					<span>보험금 청구서(대리접수용) 다운로드</span>
+				</button>
+			</div>
+		</div>
+    </div>
+    <!--// 20241029  클래스 변경 및 텍스트 변경 -->
+	<div id="wrap" hidden></div>
+
+
+<!-- [필수]베라포트: 멀티OS용 설치화면/START -->
+<div id="dialog" style="display:none"></div>
+<div id="dialogex" style="display:none"></div>
+<script type="text/javascript">SITE_vpmInstallDialog();</script>
+<!-- [필수]베라포트: 멀티OS용 설치화면/END -->
+
+
+<!-- [필수]베라포트: 자동설치 및 차단감지/START-->
+<div id="VP_object_install"></div>
+<script type="text/javascript">SITE_vpObjectInstall();</script>
+<!-- [필수]베라포트: 자동설치 및 차단감지/END -->
+
+
+<!-- [필수]베라포트: non-Plugin 설치 확인/START-->
+<script type="text/javascript">if (VP_config.useHandler) execVP_isInstall(timer_vpHandlerLoad);</script>
+<!-- [필수]베라포트: non-Plugin 설치 확인/END -->
+
+</body>
+</html>

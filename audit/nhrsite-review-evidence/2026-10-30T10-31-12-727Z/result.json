@@ -1,0 +1,15 @@
+{
+  "url": "https://nhrsite.com/lina25/",
+  "requestedAt": "2026-10-30T10:31:12.730Z",
+  "mode": "ONE_NORMAL_GET_NO_REDIRECT_NO_PAYLOAD",
+  "status": 200,
+  "headers": {
+    "content-type": "text/html; charset=UTF-8"
+  },
+  "bytes": 239846,
+  "sha256": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+  "htmlReview": {
+    "cspMetaObserved": false,
+    "limits": "Static UTF-8 text scan only; no browser execution or referenced resource requests"
+  }
+}

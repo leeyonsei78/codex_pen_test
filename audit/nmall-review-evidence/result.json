@@ -1,0 +1,14 @@
+{
+  "url": "https://www.lina.co.kr/nmall/P00172_02.htm?t=S1_2508_A_02",
+  "requestedAt": "2026-10-30T10:22:42.753Z",
+  "mode": "ONE_NORMAL_GET_NO_REDIRECT_NO_PAYLOAD",
+  "status": 200,
+  "headers": {
+    "content-type": "text/html;charset=UTF-8",
+    "x-frame-options": "DENY",
+    "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+    "x-content-type-options": "nosniff"
+  },
+  "bytes": 121622,
+  "sha256": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97"
+}
