@@ -1,0 +1,546 @@
+<title>라이나 홈페이지 보안 점검</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: 공문형 머리표 → 결론(필터 카드) → 방법·대상 → 조치 순서 → 항목별 결과(펼침) → 결정·계획 → 용어. 단일 열 960px */
+  :root {
+    --bg:#f2f4f7; --surface:#ffffff; --surface-2:#edf0f4; --rule:#d2d8e0;
+    --ink:#18212c; --ink-muted:#56616f; --accent:#234f86; --accent-weak:#e5ecf5; --on-accent:#ffffff; --focus:#0b5fcc;
+    --ok:#1d7443; --ok-bg:#e3f3e9; --ok-br:#9fd2b3;
+    --fix:#94560a; --fix-bg:#fbeedc; --fix-br:#e2be86;
+    --tidy:#234f86; --tidy-bg:#e5ecf7; --tidy-br:#a8c0e6;
+    --design:#4b5466; --design-bg:#eceff4; --design-br:#c5ccd8;
+    --done-bg:#e5ecf7; --done-br:#a8c0e6; --unk-bg:#f4eddf; --unk-br:#cdb98f;
+    --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Nanum Gothic","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    --radius:12px; --maxw:960px;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg:#10151c; --surface:#171e28; --surface-2:#1d2531; --rule:#2c3646; --ink:#e6ebf3; --ink-muted:#9ba7b8;
+    --accent:#86aee6; --accent-weak:#1b2739; --on-accent:#0f1620; --focus:#74a9ff;
+    --ok:#6ed49a; --ok-bg:#13291d; --ok-br:#2f5c42; --fix:#e7b86a; --fix-bg:#2d2413; --fix-br:#6a5226;
+    --tidy:#8fb5ee; --tidy-bg:#172339; --tidy-br:#344f7c; --design:#abb5c6; --design-bg:#1c222d; --design-br:#39424f;
+    --done-bg:#172339; --done-br:#344f7c; --unk-bg:#2a2418; --unk-br:#5b4c2c; color-scheme:dark; } }
+  :root[data-theme="dark"] {
+    --bg:#10151c; --surface:#171e28; --surface-2:#1d2531; --rule:#2c3646; --ink:#e6ebf3; --ink-muted:#9ba7b8;
+    --accent:#86aee6; --accent-weak:#1b2739; --on-accent:#0f1620; --focus:#74a9ff;
+    --ok:#6ed49a; --ok-bg:#13291d; --ok-br:#2f5c42; --fix:#e7b86a; --fix-bg:#2d2413; --fix-br:#6a5226;
+    --tidy:#8fb5ee; --tidy-bg:#172339; --tidy-br:#344f7c; --design:#abb5c6; --design-bg:#1c222d; --design-br:#39424f;
+    --done-bg:#172339; --done-br:#344f7c; --unk-bg:#2a2418; --unk-br:#5b4c2c; color-scheme:dark; }
+
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.7; -webkit-text-size-adjust:100%; word-break:keep-all; overflow-wrap:break-word; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); padding-block:28px 72px; display:flex; flex-direction:column; gap:44px; }
+  .wrap > * { min-width:0; }
+  a { color:var(--focus); }
+  .skip { position:absolute; left:-9999px; top:0; z-index:20; background:var(--accent); color:var(--on-accent); padding:10px 16px; font-weight:700; border-radius:0 0 8px 0; }
+  .skip:focus { left:0; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline:3px solid var(--focus); outline-offset:2px; border-radius:6px; }
+  h1,h2,h3,h4 { text-wrap:balance; line-height:1.35; margin:0; }
+  h1 { font-size:clamp(1.5rem,1.1rem + 1.8vw,2rem); font-weight:800; letter-spacing:-.01em; }
+  h2 { font-size:1.28rem; font-weight:800; }
+  h3.sub { font-size:1.05rem; font-weight:800; margin:26px 0 10px; }
+  h4 { font-size:.92rem; font-weight:800; margin:18px 0 6px; color:var(--accent); }
+  p { margin:0 0 10px; } p:last-child { margin-bottom:0; }
+  ul,ol { margin:0 0 10px; padding-left:1.25rem; } li { margin:3px 0; }
+  code { font-family:var(--font-mono); font-size:.88em; background:var(--surface-2); border:1px solid var(--rule); border-radius:5px; padding:1px 5px; word-break:normal; overflow-wrap:anywhere; }
+  .muted { color:var(--ink-muted); font-size:.9rem; }
+  .section-head { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .section-note { color:var(--ink-muted); font-size:.95rem; max-width:70ch; }
+  section { scroll-margin-top:12px; }
+
+  .top { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:24px; display:flex; flex-direction:column; gap:14px; }
+  .eyebrow { margin:0; color:var(--accent); font-weight:700; font-size:.85rem; letter-spacing:.04em; }
+  .meta { margin:0; display:grid; gap:0; border-top:1px solid var(--rule); }
+  .meta > div { display:grid; grid-template-columns:7rem 1fr; gap:12px; padding:9px 0; border-bottom:1px solid var(--rule); }
+  .meta dt { font-weight:700; color:var(--ink-muted); font-size:.9rem; } .meta dd { margin:0; font-size:.95rem; }
+  .toc { display:flex; flex-wrap:wrap; gap:8px; }
+  .toc a { text-decoration:none; font-size:.88rem; font-weight:600; padding:5px 12px; border:1px solid var(--rule); border-radius:999px; background:var(--surface-2); color:var(--ink); }
+  .toc a:hover { border-color:var(--accent); color:var(--accent); }
+
+  .headline { background:var(--accent-weak); border:1px solid var(--tidy-br); border-radius:var(--radius); padding:20px 22px; font-size:1.08rem; font-weight:600; line-height:1.7; }
+  .points { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:16px 0; }
+  .pt { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:16px 18px; }
+  .pt h3 { font-size:.98rem; margin-bottom:6px; color:var(--accent); } .pt p { font-size:.95rem; }
+  .caution { background:var(--fix-bg); border:1px solid var(--fix-br); border-radius:var(--radius); padding:14px 18px; font-size:.95rem; }
+  .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px; }
+  .stat { text-align:left; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:14px 16px; cursor:pointer; display:flex; flex-direction:column; gap:2px; }
+  .stat:hover { border-color:var(--accent); }
+  .stat[aria-pressed="true"] { outline:3px solid var(--focus); outline-offset:1px; }
+  .stat .n { font-size:2rem; font-weight:800; line-height:1.1; font-variant-numeric:tabular-nums; }
+  .stat .l { font-weight:700; font-size:.95rem; } .stat .h { font-size:.8rem; color:var(--ink-muted); line-height:1.45; }
+  .stat.ok .n,.stat.ok .l { color:var(--ok); } .stat.fix .n,.stat.fix .l { color:var(--fix); }
+  .stat.tidy .n,.stat.tidy .l { color:var(--tidy); } .stat.design .n,.stat.design .l { color:var(--design); }
+
+  .lead { font-size:1.05rem; }
+  .steps-list { list-style:none; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; counter-reset:s; margin:14px 0 20px; }
+  .steps-list li { counter-increment:s; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:14px 16px 14px 52px; position:relative; margin:0; }
+  .steps-list li::before { content:counter(s); position:absolute; left:14px; top:14px; width:26px; height:26px; border-radius:50%; background:var(--accent); color:var(--on-accent); font-weight:800; display:grid; place-items:center; font-size:.85rem; }
+  .steps-list p { font-size:.92rem; margin-top:4px; color:var(--ink-muted); }
+  .two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } .two > div { min-width:0; }
+
+  figure.flow { margin:18px 0; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; align-items:stretch; }
+  figure.flow figcaption { font-weight:800; margin-bottom:12px; }
+  .box { border:1.5px solid var(--done-br); background:var(--done-bg); border-radius:10px; padding:12px 16px; display:flex; flex-direction:column; gap:3px; }
+  .box strong { font-size:1rem; } .box p { font-size:.92rem; color:var(--ink-muted); margin:0; }
+  .box .state { align-self:flex-start; font-size:.75rem; font-weight:800; letter-spacing:.03em; padding:1px 8px; border-radius:999px; background:var(--surface); border:1px solid currentColor; color:var(--accent); margin-bottom:3px; }
+  .box.unknown { background:var(--unk-bg); border:1.5px dashed var(--unk-br); } .box.unknown .state { color:var(--fix); }
+  .arrow { text-align:center; height:30px; position:relative; color:var(--ink-muted); line-height:30px; }
+  .arrow::before { content:""; position:absolute; left:50%; top:0; bottom:10px; border-left:2px solid var(--ink-muted); }
+  .arrow.dashed::before { border-left-style:dashed; } .arrow span { position:absolute; left:0; right:0; bottom:-6px; font-size:.8rem; }
+  .flow-note { font-size:.85rem; color:var(--ink-muted); margin-top:12px; }
+  .stepflow { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:10px; align-items:stretch; }
+  .stepflow li { flex:1 1 150px; background:var(--done-bg); border:1.5px solid var(--done-br); border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; gap:4px; margin:0; position:relative; }
+  .stepflow .sn { width:24px; height:24px; border-radius:50%; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-weight:800; font-size:.8rem; }
+  .stepflow .when { font-size:.82rem; color:var(--ink-muted); }
+
+  .answer { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:18px 20px; margin-bottom:8px; }
+  .answer h3 { font-size:1.02rem; margin-bottom:8px; color:var(--accent); }
+  .tbl { overflow-x:auto; margin:10px 0 14px; border:1px solid var(--rule); border-radius:var(--radius); background:var(--surface); }
+  table { border-collapse:collapse; width:100%; min-width:560px; font-size:.9rem; }
+  th,td { text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--rule); } tr:last-child td { border-bottom:0; }
+  th { background:var(--surface-2); font-size:.82rem; color:var(--ink-muted); white-space:nowrap; } td { overflow-wrap:anywhere; }
+  details.more, details.case, details.term, details.tech { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); margin:10px 0; }
+  details > summary { cursor:pointer; padding:12px 16px; font-weight:700; list-style:none; } details > summary::-webkit-details-marker { display:none; }
+  details > summary::after { content:"▾"; float:right; color:var(--ink-muted); } details[open] > summary::after { content:"▴"; }
+  details > *:not(summary) { margin-left:16px; margin-right:16px; } details > :last-child { margin-bottom:14px; }
+  details.more .tbl { margin:0 0 14px; }
+  .q { font-size:.92rem; background:var(--surface-2); padding:8px 12px; border-radius:8px; } .q span { font-weight:800; color:var(--accent); margin-right:6px; }
+  .terms { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 14px; align-items:start; }
+
+  ol.prio { list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; margin:0; }
+  ol.prio li { margin:0; }
+  a.pri { display:grid; grid-template-columns:34px 1fr auto; gap:14px; align-items:start; text-decoration:none; color:var(--ink); background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:14px 16px; }
+  a.pri:hover { border-color:var(--accent); }
+  a.pri .no { width:30px; height:30px; border-radius:50%; background:var(--accent); color:var(--on-accent); display:grid; place-items:center; font-weight:800; }
+  a.pri .body { display:flex; flex-direction:column; gap:2px; min-width:0; } a.pri .ids { font-size:.8rem; color:var(--ink-muted); } a.pri .why { font-size:.9rem; color:var(--ink-muted); }
+  a.pri .tgt { font-size:.82rem; font-weight:700; color:var(--accent); background:var(--accent-weak); border-radius:999px; padding:2px 10px; white-space:nowrap; }
+
+  .bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  #status { color:var(--ink-muted); font-size:.92rem; } .bulk { display:flex; gap:8px; flex-wrap:wrap; }
+  .btn { font:inherit; font-size:.88rem; font-weight:700; color:var(--accent); background:var(--surface); border:1px solid var(--accent); border-radius:8px; padding:6px 14px; cursor:pointer; }
+  .btn:hover { background:var(--accent-weak); }
+  .item { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); margin-bottom:10px; overflow:hidden; scroll-margin-top:12px; }
+  .item h3 { margin:0; }
+  .head { all:unset; box-sizing:border-box; width:100%; cursor:pointer; display:grid; grid-template-columns:auto auto 1fr auto; gap:10px; align-items:center; padding:14px 16px; }
+  .head:focus-visible { outline:3px solid var(--focus); outline-offset:-3px; }
+  .head:hover { background:var(--surface-2); }
+  .head .id { font-weight:800; color:var(--ink-muted); font-size:.85rem; font-variant-numeric:tabular-nums; }
+  .head .ttl { font-weight:700; line-height:1.5; } .caret { color:var(--ink-muted); transition:transform .15s; }
+  .head[aria-expanded="true"] .caret { transform:rotate(180deg); }
+  .tag { display:inline-block; font-size:.78rem; font-weight:800; padding:2px 10px; border-radius:999px; border:1px solid; white-space:nowrap; }
+  .tag.ok { color:var(--ok); background:var(--ok-bg); border-color:var(--ok-br); } .tag.fix { color:var(--fix); background:var(--fix-bg); border-color:var(--fix-br); }
+  .tag.tidy { color:var(--tidy); background:var(--tidy-bg); border-color:var(--tidy-br); } .tag.design { color:var(--design); background:var(--design-bg); border-color:var(--design-br); }
+  .panel { padding:4px 20px 20px; border-top:1px solid var(--rule); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 4px; }
+  .chip { font-size:.78rem; background:var(--surface-2); border:1px solid var(--rule); border-radius:999px; padding:2px 10px; color:var(--ink-muted); }
+  .analogy { background:var(--accent-weak); border-radius:10px; padding:12px 16px; margin:12px 0; }
+  .analogy span { display:inline-block; font-weight:800; font-size:.78rem; color:var(--on-accent); background:var(--accent); border-radius:999px; padding:1px 10px; margin-bottom:6px; }
+  details.tech { margin-top:16px; background:var(--surface-2); } details.tech > summary { font-size:.92rem; }
+  .code { margin:8px 0; border:1px solid var(--rule); border-radius:10px; overflow:hidden; background:var(--surface); }
+  .code-head { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:6px 10px 6px 14px; background:var(--surface-2); font-size:.8rem; color:var(--ink-muted); }
+  .code pre { margin:0; padding:10px 14px; overflow-x:auto; font-family:var(--font-mono); font-size:.85rem; } .code pre code { background:none; border:0; padding:0; }
+  .copy { font:inherit; font-size:.78rem; font-weight:700; padding:3px 10px; border-radius:6px; border:1px solid var(--accent); background:var(--surface); color:var(--accent); cursor:pointer; }
+
+  .cases { margin:12px 0; } details.case p { font-size:.95rem; }
+  .decisions { display:flex; flex-direction:column; gap:14px; }
+  .decision { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:16px 20px 18px; }
+  .decision header { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:8px; }
+  .decision h3 { font-size:1.02rem; flex:1 1 260px; } .dno { font-weight:800; color:var(--on-accent); background:var(--accent); border-radius:6px; padding:1px 9px; font-size:.82rem; }
+  .rec { font-size:.8rem; font-weight:800; color:var(--ok); background:var(--ok-bg); border:1px solid var(--ok-br); border-radius:999px; padding:2px 10px; }
+  .foot { border-top:1px solid var(--rule); padding-top:16px; color:var(--ink-muted); font-size:.85rem; }
+
+  @media (max-width:760px) {
+    .stats { grid-template-columns:repeat(2,minmax(0,1fr)); } .points,.steps-list,.two,.terms { grid-template-columns:minmax(0,1fr); }
+    .meta > div { grid-template-columns:1fr; gap:2px; } .head { grid-template-columns:auto 1fr auto; } .head .id { display:none; }
+    .head .ttl { grid-column:1 / -1; order:3; } a.pri { grid-template-columns:30px 1fr; } a.pri .tgt { grid-column:2; justify-self:start; }
+    .top { padding:18px; } .panel { padding:4px 14px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+  @media print { body { background:#fff; } .toc,.bulk,.skip,.copy,.stats { display:none !important; } .panel[hidden] { display:block !important; } }
+</style>
+<div class="wrap"><a class="skip" href="#conclusion">본문 바로가기</a>
+<header class="top"><p class="eyebrow">외부 공개 정보 점검 결과 · 의사결정권자용</p><h1>라이나생명 공개 홈페이지 보안 점검 결과 및 조치 계획</h1><dl class="meta"><div><dt>수신</dt><dd>정보보호 책임자, 의사결정권자, 홈페이지 개발·운영 담당자</dd></div><div><dt>제목</dt><dd>라이나생명 공개 홈페이지 보안 점검 결과 및 조치 계획</dd></div><div><dt>점검 대상</dt><dd><code>https://www.lina.co.kr</code> 공개 홈페이지 (화면 4개, 프로그램 파일 17개, 모두 21개 주소)</dd></div><div><dt>점검 시점</dt><dd>응답 수집 2026-10-28 · 이 개정판 작성 2026-11-06 (개정 시 운영 사이트를 다시 점검하지 않음)</dd></div><div><dt>점검 방식</dt><dd>일반 방문자가 볼 수 있는 공개 정보만 읽기 전용으로 수집하고, 의심 코드는 가짜 데이터로 컴퓨터 안에서만 시험</dd></div><div><dt>유의</dt><dd>침해사고 조사 보고서가 아니며 출시 승인서도 아닙니다. 실제 침입이나 고객정보 유출은 확인하지 못했고, 서버 안쪽은 점검하지 못했습니다.</dd></div></dl>
+<nav aria-label="보고서 목차" class="toc"><a href="#conclusion">결론</a><a href="#method">점검 방법</a><a href="#scope">점검 대상</a><a href="#priority">조치 순서</a><a href="#details">항목별 결과</a><a href="#decision">결정 사항</a><a href="#plan">진행 계획</a><a href="#glossary">용어 풀이</a></nav></header>
+<section id="conclusion" aria-labelledby="h-conclusion"><div class="section-head"><h2 id="h-conclusion">결론</h2></div>
+<div class="headline"><p>홈페이지 화면과 프로그램 코드에서 지금 고쳐야 할 약점이 확인되었습니다. 다만 실제로 침입을 당했거나 고객정보가 새어 나간 증거는 찾지 못했습니다. 서버 안쪽은 아직 살펴보지 못했기 때문에 "안전하다"고도 말할 수 없습니다.</p></div>
+<div class="points"><div class="pt"><h3>확인한 것</h3><p>홈페이지 화면과 그 화면이 불러오는 프로그램 코드에서 개선이 필요한 점 10건(F-01~F-10)을 확인했습니다. 이 중 5건은 설정이나 코드 한 곳을 바꾸는 수준이라 먼저 고칠 것으로 분류했습니다. F-03과 F-07은 같은 경로의 문제라 함께 고칩니다.</p></div><div class="pt"><h3>확인하지 못한 것</h3><p>실제 침입, 로그인 정보 탈취, 고객정보 유출은 확인하지 못했습니다. 이것은 "없다"는 증명이 아니라 "이번 방법으로는 확인되지 않았다"는 뜻입니다.</p></div><div class="pt"><h3>아직 보지 못한 것</h3><p>로그인 이후의 서버 인증, 고객별 접근 권한, 청약 정보를 담은 시스템, 대량 조회 차단, 이상 징후 탐지는 점검하지 못했습니다. 안전성을 판단하려면 이 부분의 검증이 가장 중요합니다.</p></div><div class="pt"><h3>결정이 필요한 것</h3><p>먼저 고칠 5건의 착수 승인, 서버 검증에 필요한 자료와 시험 환경 제공, 별도 목록의 8개 사이트(23개 주소) 점검 범위 승인이 필요합니다. 아래 "결정이 필요한 사항"에 정리했습니다.</p></div></div>
+<p class="caution"><strong>읽기 전에</strong> 이 보고서만으로 "안전하다"거나 "출시해도 된다"고 승인할 수 없습니다. 반대로 "이미 침해되었다"는 뜻도 아닙니다. 2026-10-28에 수집한 응답이 기준이므로 그 이후 이미 고쳐진 항목이 있을 수 있습니다. 조치 전에 현재 상태를 먼저 확인하십시오.</p>
+<p class="section-note">아래 숫자를 누르면 해당 항목만 "항목별 결과"에 표시됩니다. 항목은 모두 13개입니다. (F-01~F-10 10건과 정상 관측 3건)</p>
+<div class="stats"><button type="button" class="stat ok" data-filter="ok" aria-pressed="false"><span class="n">3</span><span class="l"><span aria-hidden="true">✓</span> 정상 관측</span><span class="h">확인했을 때 문제가 보이지 않은 부분</span></button><button type="button" class="stat fix" data-filter="fix" aria-pressed="false"><span class="n">5</span><span class="l"><span aria-hidden="true">▲</span> 먼저 고칠 것</span><span class="h">수정이 쉽고 효과가 큰 항목. 목표 D+10</span></button><button type="button" class="stat tidy" data-filter="tidy" aria-pressed="false"><span class="n">3</span><span class="l"><span aria-hidden="true">◆</span> 함께 정리할 것</span><span class="h">낮은 위험이거나 부품 교체가 필요한 항목</span></button><button type="button" class="stat design" data-filter="design" aria-pressed="false"><span class="n">2</span><span class="l"><span aria-hidden="true">●</span> 설계·서버 확인</span><span class="h">서버 정책을 확인해야 판단할 수 있는 항목. 목표 D+20</span></button></div></section>
+<section id="method" aria-labelledby="h-method"><div class="section-head"><h2 id="h-method">이 점검은 어떻게 했나</h2></div>
+<p class="lead">쉽게 비유하면 <strong>건물을 밖에서 둘러보는 외관 점검</strong>입니다. 누구나 지나가며 볼 수 있는 간판, 출입문 표지, 창문 상태를 확인하는 것이고, 문을 두드리거나 열쇠를 넣어 보거나 안으로 들어가지는 않았습니다.</p>
+<ol class="steps-list"><li><strong>공개 정보 받아오기</strong><p>브라우저로 홈페이지에 접속할 때와 같은 방식(읽기 전용)으로 화면 구성, 응답에 붙은 안내문(헤더), 화면이 불러오는 프로그램 코드를 받아 저장했습니다. 로그인, 입력, 제출은 하지 않았습니다.</p></li><li><strong>읽고 비교하기</strong><p>저장한 내용을 보안 기준과 비교했습니다. 예를 들어 "이 화면을 다른 사이트에 끼워 넣지 못하게 하는 표지가 있는가", "공개된 약점이 있는 오래된 부품을 쓰는가"를 봤습니다.</p></li><li><strong>의심 부분을 컴퓨터 안에서 시험하기</strong><p>의심스러운 코드는 실제 사이트에 보내지 않고, 가짜(합성) 데이터를 넣어 내 컴퓨터 안에서만 실행해 보았습니다. 이렇게 하면 실제 서비스에 영향을 주지 않고 "코드가 이렇게 동작한다"는 근거를 얻을 수 있습니다.</p></li><li><strong>수정 예시 만들기</strong><p>고치는 방법을 보여 주는 예시 코드를 만들고 컴퓨터 안에서 시험했습니다. 이것은 예시일 뿐이며 실제 서비스에는 적용되지 않았습니다.</p></li></ol>
+<figure class="flow"><figcaption>도식 1 · 점검 범위와 남아 있는 확인 영역</figcaption><div class="box done"><span class="state">점검함</span><strong>공개 홈페이지와 참조 프로그램 파일</strong><p>화면 구성(HTML), 응답 안내문(헤더), 프로그램 코드(JS)를 읽기 전용으로 수집하고 검토했습니다.</p></div><div class="arrow solid" aria-hidden="true"><span>▼</span></div><div class="box partial"><span class="state">일부 재현</span><strong>브라우저 안의 데이터 흐름</strong><p>의심 구문을 가짜 데이터로 컴퓨터 안에서 재현했습니다. 실제 브라우저에서의 동작은 검증하지 못했습니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>로그인·업무 서버(API)</strong><p>서버 소스와 전용 시험 계정이 있어야 확인할 수 있습니다. 실제 서버 통제는 미확인입니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>청약 정보·DB·내부 업무 시스템</strong><p>자산 목록, 설정, 로그가 있어야 확인할 수 있습니다. 미확인입니다.</p></div><p class="flow-note">실선 화살표(▼)는 자료 검토 또는 컴퓨터 안 재현으로 확인한 범위, 점선 화살표(▽)는 별도 자료와 검증이 있어야 넘어갈 수 있는 경계입니다. 실제 네트워크 구성을 그린 그림은 아닙니다.</p></figure>
+<div class="two did"><div><h4>수행한 작업</h4><ul><li>정상 접속 방식(GET)으로 공개 화면과 직접 참조 프로그램 파일 수집</li><li>저장한 응답, 안내문(헤더), 파일 지문(해시), 프로그램 코드 일부 분석</li><li>가짜 데이터로 의심 구문을 컴퓨터 안에서 재현</li><li>수정 예시 코드를 컴퓨터 안에서 시험</li></ul></div><div><h4>수행하지 않은 작업</h4><ul><li>로그인, 실제 고객 정보 접근</li><li>서버 공격, 침투, 부하 시험</li><li>브라우저에서 실제 XSS(악성 코드 실행)나 인증 정보 전송 검증</li><li>실제 서비스 코드 수정, 운영 배포, 서버 설정 점검</li></ul></div></div></section>
+<section id="scope" aria-labelledby="h-scope"><div class="section-head"><h2 id="h-scope">점검 대상</h2></div>
+<div class="answer"><h3>점검 대상 확인 결과</h3><p>이번 보안 점검의 대상은 <strong>공식 홈페이지 <code>www.lina.co.kr</code> 한 곳</strong>입니다. 홈페이지 화면 4개와, 그 화면이 직접 불러오는 프로그램 파일 17개(겹치는 것을 빼고 21개 주소)를 점검했습니다.</p><p>별도 조사로 정리된 <strong>8개 사이트·23개 세부 주소 목록은 이번 점검 대상에 포함되지 않았습니다.</strong> 그 목록은 검색 결과와 화면 확인을 바탕으로 만든 조사 목록이며, 이번 보안 점검 때 해당 주소에 접속해 점검하지 않았습니다.</p><p>따라서 이 보고서는 "라이나 전체"가 아니라 "공식 홈페이지의 공개 화면"에 대한 결과입니다. 아래 두 번째 목록은 앞으로 점검할 후속 대상입니다.</p></div>
+<h3 class="sub">이번에 실제로 점검한 주소 (www.lina.co.kr, 21개)</h3>
+<div class="tbl"><table class=""><thead><tr><th scope="col">번호</th><th scope="col">구분</th><th scope="col">주소</th><th scope="col">확인한 내용</th></tr></thead><tbody><tr><td>1</td><td>홈페이지 첫 화면</td><td>https://www.lina.co.kr/</td><td>정상(200)</td></tr><tr><td>2</td><td>보안 연결 전환 확인</td><td>http://www.lina.co.kr/</td><td>보안 연결(https)로 자동 이동(301)</td></tr><tr><td>3</td><td>로그인 화면</td><td>https://www.lina.co.kr/login</td><td>정상(200)</td></tr><tr><td>4</td><td>존재하지 않는 주소 시험</td><td>https://www.lina.co.kr/company</td><td>찾을 수 없음(404) 화면의 보안 설정 확인</td></tr></tbody></table></div><div class="tbl"><table class=""><thead><tr><th scope="col">구분</th><th scope="col">파일</th><th scope="col">비고</th></tr></thead><tbody><tr><td>공용 프로그램 부품</td><td>jQuery 3.7.1 (<code>/lib/jquery-3.7.1.js</code>)</td><td>새 버전</td></tr><tr><td>공용 프로그램 부품</td><td>jQuery 1.12.4 (<code>/lib/jquery/1.12.4/jquery.min.js</code>)</td><td>오래된 버전 (F-01)</td></tr><tr><td>외부 연동 스크립트</td><td><code>/external/load.js</code>, <code>/external/script/head_prd.js</code>, <code>/external/script/body_prd.js</code></td><td>광고 유입 처리 등 (F-06)</td></tr><tr><td>화면 구성 프로그램</td><td><code>/_nuxt/</code> 아래 프로그램 묶음 12개</td><td>로그인, 오류 처리, 통신 부품 (F-03~F-10)</td></tr></tbody></table></div><p class="muted">모두 <code>www.lina.co.kr</code> 도메인이며, 응답 헤더와 파일 지문(SHA-256)을 기록으로 보관했습니다. 다른 도메인(분석 서비스 등)과 내부 주소에는 접속하지 않았습니다.</p>
+<h3 class="sub">후속 점검 대상: 이번에 점검하지 않은 사이트와 주소</h3>
+<p>아래는 별도 조사로 정리된 사이트와 주소입니다. <strong>이번 보안 점검에서는 접속하거나 점검하지 않았습니다.</strong> "확인 내용"은 검색 결과나 화면 확인 기록이며 현재 서버 응답과 다를 수 있습니다. "우선순위"는 점검 순서를 위한 잠정 권고이고 취약점의 심각도가 아닙니다. 종료된 이벤트나 과거 약관 페이지는 기록 보존용일 수 있어 방치된 시스템으로 단정하지 않습니다.</p>
+<div class="tbl"><table class=""><thead><tr><th scope="col">번호</th><th scope="col">사이트</th><th scope="col">주소</th><th scope="col">이 목록의 확인 내용</th><th scope="col">이번 보안 점검</th></tr></thead><tbody><tr><td>1</td><td>공식 홈페이지</td><td>https://www.lina.co.kr/</td><td>현재 홈페이지 화면 확인</td><td>일부 점검 (홈·로그인·참조 파일)</td></tr><tr><td>2</td><td>모바일 홈페이지</td><td>https://m.lina.co.kr/</td><td>현재 상품 배너 확인</td><td>미점검</td></tr><tr><td>3</td><td>GA 업무지원 시스템</td><td>https://ga.lina.co.kr/</td><td>업무·인증·설치·테스트 경로 확인</td><td>미점검</td></tr><tr><td>4</td><td>전자구매 시스템</td><td>https://srm.lina.co.kr/</td><td>공식 홈페이지의 협력사 로그인 연결 확인</td><td>미점검</td></tr><tr><td>5</td><td>다이렉트 사이트</td><td>https://direct.lina.co.kr/</td><td>종료 이벤트 상세 화면 확인</td><td>미점검</td></tr><tr><td>6</td><td>모바일 다이렉트</td><td>https://mdirect.lina.co.kr/</td><td>상품 목록 경로 검색 확인</td><td>미점검</td></tr><tr><td>7</td><td>공식 블로그</td><td>https://blog.lina.co.kr/</td><td>검색 확인. 직접 조회 시간 초과</td><td>미점검</td></tr><tr><td>8</td><td>다이렉트 공식 블로그</td><td>https://blog.direct.lina.co.kr/</td><td>게시물 목록 조회 확인</td><td>미점검</td></tr></tbody></table></div>
+<details class="more"><summary>세부 주소 23개 전체 보기 (우선순위 높음 3 · 중간 14 · 낮음 6)</summary><div class="tbl"><table class=""><thead><tr><th scope="col">번호</th><th scope="col">구분·이름</th><th scope="col">주소</th><th scope="col">목록의 확인 내용</th><th scope="col">우선순위(잠정)·권고</th></tr></thead><tbody><tr><td>1</td><td>테스트 · GA 멤버십 연동 테스트</td><td>https://ga.lina.co.kr/html/gap/GM/GPN999M0.html</td><td>검색 확인. 테스트 입력 항목과 SSO 관련 기능 표시. 사용 여부 미확인.</td><td>높음 · 운영 목적과 외부 공개 필요성 확인</td></tr><tr><td>2</td><td>인증 안내 · A-LISA 로그인 변경 안내</td><td>https://ga.lina.co.kr/html/gap/GA/GAZ910P1C.html</td><td>2022년 로그인 방식 변경 안내 검색 확인. 현재 유효성 미확인.</td><td>중간 · 현행 인증 안내와 비교 후 최신화</td></tr><tr><td>3</td><td>설치 자료 · GA 설치 가이드 PDF</td><td>https://ga.lina.co.kr/help/gap/GA/setupguide.pdf</td><td>과거 로그인·설치 안내 검색 확인. 현행 적용 여부 미확인.</td><td>높음 · 인증 관련 정보와 공개 적정성 검토</td></tr><tr><td>4</td><td>세션 관리 · GA 자동 로그아웃</td><td>https://ga.lina.co.kr/webfw/html/nawlogout2.html</td><td>자동 로그아웃 안내 화면 검색 확인. 미사용 근거 없음.</td><td>중간 · 현행 시스템 연결·세션 동작 확인</td></tr><tr><td>5</td><td>설치 안내 · A-LISA 설치 프로그램</td><td>https://ga.lina.co.kr/html/gap/GA/GAZ910P14.html</td><td>설치 가이드·브라우저·PDF 뷰어 안내 검색 확인. 사용 여부 미확인.</td><td>중간 · 배포 경로와 프로그램 지원 상태 확인</td></tr><tr><td>6</td><td>보안 프로그램 · GA VeraPort 설치</td><td>https://ga.lina.co.kr/wizvera/veraport/install20/install_lina.html</td><td>보안 프로그램 설치 안내 검색 확인. 배포 버전·현행 필요성 미확인.</td><td>중간 · 실제 버전·서명·지원 상태 확인</td></tr><tr><td>7</td><td>업무시스템 · GA 업무지원 메인</td><td>https://ga.lina.co.kr/webfw/html/nawmain.html</td><td>이전 기록에서 업무 메뉴 검색 확인. 업무 데이터 노출·미사용 여부 미확인.</td><td>높음 · 인증 전 노출 범위와 권한검증 확인</td></tr><tr><td>8</td><td>구매시스템 · 전자구매 로그인</td><td>https://srm.lina.co.kr/login.do</td><td>이전 기록에서 외부 IP 제한 메시지 확인. 현재 사용 여부 미확인.</td><td>중간 · 운영 여부와 IP 제한 정책 확인</td></tr><tr><td>9</td><td>종료 서비스 · 건강검진 서비스</td><td>https://www.lina.co.kr/service/health-screening</td><td>직접 화면 확인. “서비스가 종료되었습니다” 안내 표시.</td><td>중간 · 종료 경로 유지 목적·안내 적정성 확인</td></tr><tr><td>10</td><td>종료 이벤트 · 2025 소비자보호 우수사례 공모전</td><td>https://www.lina.co.kr/event/detail?evtSeq=1596</td><td>직접 화면 확인. 종료 안내 표시. 행사 기간 2025-03-13~2025-03-31.</td><td>낮음 · 기록 보존 여부와 종료 표시 유지 확인</td></tr><tr><td>11</td><td>종료 이벤트 · 고객 아이디어 공모전</td><td>https://www.lina.co.kr/event/detail?evtSeq=1464</td><td>직접 화면 확인. 종료 안내 표시. 행사 기간 2024-12-20~2025-01-17.</td><td>낮음 · 기록 보존 여부와 종료 표시 유지 확인</td></tr><tr><td>12</td><td>종료 이벤트 · 2024년 7월 가입감사 이벤트</td><td>https://direct.lina.co.kr/event/detail?evtSeq=1266</td><td>직접 화면 확인. 종료 안내 표시. 행사 기간 2024-07-01~2024-07-31.</td><td>낮음 · 과거 상품 연결과 종료 표시 검토</td></tr><tr><td>13</td><td>브라우저 설치 · GA Chrome 실행 및 설치</td><td>https://ga.lina.co.kr/webfw/html/nawcheck.html</td><td>조회 자료에서 Chrome 실행·32/64비트 설치 안내 확인. 사용 여부 미확인.</td><td>중간 · 현행 필요성과 설치 파일 최신성 확인</td></tr><tr><td>14</td><td>인증 프로그램 · GA INISAFE CrossWebEX 설치</td><td>https://ga.lina.co.kr/gap/serviceEndpoint/initech/extension/install/install.html</td><td>조회 자료에서 확장기능·프로그램 설치 화면 확인. 필요성 미확인.</td><td>중간 · 현행 연동과 배포 버전 확인</td></tr><tr><td>15</td><td>인증 프로그램 · 홈페이지 Delfino 설치</td><td>https://www.lina.co.kr/lib/wizvera/delfino/install20/install.html?P_name=Delfino&amp;module=G3&amp;url=close</td><td>검색에서 설치 화면 확인. 직접 재조회 실패로 현재 접근 상태 보류.</td><td>중간 · 재접속 확인 후 현행 배포와 비교</td></tr><tr><td>16</td><td>GA 로그인 · 생체인증 로그인</td><td>https://ga.lina.co.kr/html/gap/GM/GPN610M0.html</td><td>조회 자료에서 로그인·생체인증·권한 선택 확인. 미사용 근거 없음.</td><td>중간 · 현행 인증 흐름과 연결 여부 확인</td></tr><tr><td>17</td><td>GA 로그인 설정 · 설계사 정보 입력</td><td>https://ga.lina.co.kr/html/gap/GM/GPN602M0.html</td><td>조회 자료에서 사용자정보 입력 안내 확인. 미사용 근거 없음.</td><td>중간 · 인증 흐름과 개인정보 처리 범위 확인</td></tr><tr><td>18</td><td>GA 본인인증 · 본인인증 입력 화면</td><td>https://ga.lina.co.kr/html/gap/GM/GMU661M0.html?preWinId=GMU661M1&amp;tkn=</td><td>검색에서 휴대폰·카카오·신용카드 인증 화면 확인. 기능 실행 안 함.</td><td>중간 · 정상 진입 흐름과 접근통제 확인</td></tr><tr><td>19</td><td>구매시스템 · 전자구매 협력사 로그인</td><td>https://srm.lina.co.kr/spLogin.do</td><td>현재 공식 홈페이지에서 연결하는 주소. 미사용 근거 없음.</td><td>중간 · 공식 진입점과 접근 제한 유지 확인</td></tr><tr><td>20</td><td>과거 약관 · 2018년 전자금융서비스 약관 PDF</td><td>https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/terms_181205.pdf</td><td>과거 인증 방식 관련 자료 검색 확인. 이력 보존 목적일 수 있음.</td><td>낮음 · 과거 약관 표시와 보존 의무 확인</td></tr><tr><td>21</td><td>과거 약관 · 2018년 약관 비교 자료 PDF</td><td>https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/comparison_181205.pdf</td><td>PC·모바일 인증 방식 변경 비교 자료 검색 확인. 사용 여부 미확인.</td><td>낮음 · 자료 보존 목적과 최신 약관 연결 확인</td></tr><tr><td>22</td><td>모바일 과거 약관 · 2017년 전자금융서비스 약관 PDF</td><td>https://m.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/email_pdf/finance_service_clause_170614.pdf</td><td>과거 인증 방식·구형 안내 경로가 포함된 자료 검색 확인.</td><td>낮음 · 이력 자료 여부와 구형 링크 검토</td></tr><tr><td>23</td><td>모바일 서식 · 간병인지원 서비스 신청서 PDF</td><td>https://m.lina.co.kr/upload/docs/claim/exam/A1294.pdf</td><td>공개 서식 검색 확인. 현행 사용 여부 미확인.</td><td>중간 · 현행 서식과 비교하여 유지·교체 결정</td></tr></tbody></table></div></details>
+<p class="muted">이 목록은 <code>lina.co.kr</code> 아래 모든 호스트와 경로를 수집한 자산 목록이 아닙니다. 검색에 노출되지 않은 경로와 내부 전용 시스템은 빠져 있을 수 있습니다. 누락 확인에는 DNS·인증서 관리대장, WAF·CDN 서비스 목록과의 대조가 필요합니다. 목록 정리 기준일은 2026-10-30입니다.</p></section>
+<section id="priority" aria-labelledby="h-priority"><div class="section-head"><h2 id="h-priority">권장 조치 순서</h2><p class="section-note">아래 순서는 "고치기 쉽고 효과가 큰 것"부터 정렬한 제안입니다. 목표 기간의 D는 착수와 필요한 자료 제공이 끝난 날이며, 영업일 기준 제안이고 약속된 완료일이 아닙니다. 실제 담당과 일정은 시스템 소유 부서가 확정합니다.</p></div><ol class="prio"><li><a class="pri" href="#item-F-07" data-open="F-07"><span class="no">1</span><span class="body"><strong>오류 안내 문구를 글자로만 출력</strong><span class="ids">F-07 · F-03</span><span class="why">한 곳을 고치면 악성 코드가 화면에서 실행될 수 있는 경로를 막습니다.</span></span><span class="tgt">D+10</span></a></li><li><a class="pri" href="#item-F-10" data-open="F-10"><span class="no">2</span><span class="body"><strong>로그인 증표를 보내기 전 받는 곳 확인</strong><span class="ids">F-10</span><span class="why">작은 검사 하나로 증표가 엉뚱한 곳으로 가는 것을 막습니다.</span></span><span class="tgt">D+10</span></a></li><li><a class="pri" href="#item-F-02" data-open="F-02"><span class="no">3</span><span class="body"><strong>화면 삽입 제한과 실행 출처 제한 설정</strong><span class="ids">F-02</span><span class="why">코드 수정 없이 응답 설정만으로 방어 한 겹을 더합니다.</span></span><span class="tgt">D+10</span></a></li><li><a class="pri" href="#item-F-01" data-open="F-01"><span class="no">4</span><span class="body"><strong>오래된 프로그램 부품 정리</strong><span class="ids">F-01 · F-09</span><span class="why">공개된 약점이 있는 구버전을 없애 위험 조건을 줄입니다.</span></span><span class="tgt">D+10</span></a></li><li><a class="pri" href="#item-F-04" data-open="F-04"><span class="no">5</span><span class="body"><strong>공개 설정과 저장 정보 정리</strong><span class="ids">F-04 · F-06</span><span class="why">내부 정보 노출과 불필요한 저장을 줄입니다. 위험은 낮습니다.</span></span><span class="tgt">D+10</span></a></li><li><a class="pri" href="#item-F-05" data-open="F-05"><span class="no">6</span><span class="body"><strong>로그인 증표 보관·갱신 방식 확인</strong><span class="ids">F-05 · F-08</span><span class="why">서버 정책을 알아야 결정할 수 있어 인증 담당과 협의가 필요합니다.</span></span><span class="tgt">D+20</span></a></li><li><a class="pri" href="#server" data-open="SRV"><span class="no">7</span><span class="body"><strong>서버 안쪽 검증 (인증, 권한, 반출 제한, 탐지)</strong><span class="ids">서버 검증</span><span class="why">고객정보 보호에 가장 중요하지만 소스·시험 환경 같은 자료를 받아야 시작할 수 있습니다.</span></span><span class="tgt">자료 확보 후</span></a></li></ol></section>
+<section id="details" aria-labelledby="h-details"><div class="section-head"><h2 id="h-details">항목별 결과</h2><p class="section-note">각 항목을 눌러 쉬운 설명, 비유, 확인한 것과 못 한 것, 해야 할 일을 볼 수 있습니다. 보안 용어가 낯설면 "용어 풀이"를 참고하십시오.</p></div>
+<div class="bar"><div id="status" role="status" aria-live="polite"></div>
+<div class="bulk"><button type="button" id="clear" class="btn" hidden>필터 해제</button><button type="button" id="open-all" class="btn">모두 펼치기</button><button type="button" id="close-all" class="btn">모두 접기</button></div></div>
+<div id="list">
+<article class="item" id="item-F-07" data-group="fix">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-07">
+    <span class="tag fix"><span aria-hidden="true">▲</span> 먼저 고칠 것</span>
+    <span class="id">F-07</span>
+    <span class="ttl">서버 오류 문구가 &quot;글자&quot;가 아니라 &quot;HTML&quot;로 화면에 삽입됨</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-07" hidden>
+<div class="chips"><span class="chip">원 판정 · 수정 우선순위 높음</span><span class="chip">담당 · 프런트엔드·백엔드</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>서버가 보낸 오류 안내 문구가 공통 처리 단계를 거쳐 화면의 안내 메시지 영역에 <strong>HTML 형태 그대로</strong> 삽입되는 구조입니다. 문구 안에 서식 코드(예: <code>&lt;b&gt;굵게&lt;/b&gt;</code>)가 있으면 그것이 그대로 화면 요소가 됩니다.</p>
+<div class="analogy"><span>비유</span><p>민원 접수 쪽지를 읽어 보지 않고 <strong>그대로 안내방송에 내보내는 것</strong>과 같습니다. 쪽지에 악의적인 지시문이 적혀 있어도 방송이 그대로 읽어 버립니다. 안전하게 하려면 쪽지를 "글자 그대로" 읽어야 합니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>프로그램 코드에서 다음 경로를 확인했습니다. 서버 오류 메시지 → 공통 처리부 → 화면 상태 보관소 → 화면에 HTML로 표시.</li><li>가짜(합성) 오류 데이터를 넣고 컴퓨터 안에서 실행했을 때 HTML 문자열이 걸러지지 않고 그대로 유지되었습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>외부 사람이 서버의 오류 문구에 원하는 글을 넣을 수 있는지 확인하지 못했습니다. 서버가 항상 정해진 문구만 보낸다면 악용되지 않습니다.</li><li>브라우저에서 실제로 악성 코드가 실행되거나 로그인 정보를 읽는 데까지 이어지는지는 시험하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>외부 입력이나 외부 시스템의 데이터가 오류 문구에 섞여 들어오면, 방문자 화면에서 악성 코드가 실행되는 <strong>XSS</strong>로 이어질 수 있습니다. 현재는 앞 단계(HTML 전달)까지만 확인했고, 뒤 단계는 확인하지 못했습니다.</p>
+<h4>해야 할 일</h4><ol><li>안내 문구는 HTML이 아니라 <strong>텍스트로 출력</strong>합니다. 줄바꿈이 필요하면 화면 스타일로 처리합니다.</li><li>승인된 오류 코드만 정해 둔 안내 문구로 바꿔 보여 주고, 서버가 보낸 원본 메시지와 오류 상세는 화면에 전달하지 않습니다.</li><li>서버가 사용자 입력을 오류 문구에 섞어 돌려주는지 백엔드 코드를 함께 점검합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>격리된 시험 환경에서 <code>&lt;b&gt;시험&lt;/b&gt;</code>, <code>&lt;img onerror=...&gt;</code> 같은 시험 문구가 화면에 글자로만 보입니다.</li><li>정상적인 업무 안내 문구는 그대로 표시됩니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>전역 메시지 렌더링이 <code>domProps: { innerHTML: ...messageState.messageInfo.message }</code> 형태로 확인됨.</li><li>Axios 오류 인터셉터가 <code>response.data.message</code>를 상태 보관소(Vuex)에 전달하며 이 구간에 정화(sanitize) 처리가 없음.</li><li><code>v-html</code>/<code>innerHTML</code> 사용처를 전수 조사하고, 신뢰할 수 없는 값(서버 오류문, 쿼리 값, CMS 값)은 텍스트로 출력.</li></ul><p class="muted">근거 3  침입 경로 검토 기록 (F-07~F-09): 오류 메시지 경로, 토큰 갱신, Axios 동작 분석 결과</p></details></div>
+</article>
+<article class="item" id="item-F-03" data-group="fix">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-03">
+    <span class="tag fix"><span aria-hidden="true">▲</span> 먼저 고칠 것</span>
+    <span class="id">F-03</span>
+    <span class="ttl">자체 제작 &quot;문자 안전 변환 함수&quot;에 오류가 있음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-03" hidden>
+<div class="chips"><span class="chip">원 판정 · 방어 함수 결함 확인 (F-07과 같은 경로, 중복 합산 제외)</span><span class="chip">담당 · 프런트엔드</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>사이트에는 위험한 글자를 안전하게 바꿔 주는 자체 함수가 있습니다. 점검해 보니 이 함수는 (1) 금지 목록에 없는 위험 문구는 그대로 통과시키고, (2) 따옴표 변환에 오타(<code>&amp;qout;</code>, 올바른 표기는 <code>&amp;quot;</code>)가 있고, (3) 변환 순서 때문에 같은 글자를 두 번 바꿔(이중 인코딩) 화면이 깨집니다.</p>
+<div class="analogy"><span>비유</span><p><strong>출입 금지 명단에 이름이 있는 사람만 막는 경비원</strong>과 같습니다. 명단에 없는 낯선 사람은 그냥 통과합니다. 안전한 방식은 반대로 "허용된 사람만 들여보내는 것"입니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>가짜 데이터로 컴퓨터 안에서 4건을 재현했습니다. 정상 HTML 통과, 금지 목록에 없는 이벤트 속성 통과, 따옴표 오타, 이중 변환.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>이 함수를 실제 화면의 어느 부분에서 호출하는지(실제 연결 지점)는 확인하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>이 함수를 "안전장치"로 믿고 사용하는 곳이 있다면 그 보호가 약합니다. 호출부가 없다면 당장의 영향은 없지만, 앞으로 잘못 쓰일 수 있습니다.</p>
+<h4>해야 할 일</h4><ol><li>일반 문구는 HTML 변환에 의존하지 말고 텍스트로 출력합니다.</li><li>서식이 꼭 필요한 부분만 검증된 정화 방식(허용 목록 방식)으로 처리합니다.</li><li>실제 소스에서 이 함수의 호출 위치를 찾아 F-07과 함께 점검합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>위험 문구가 화면에 글자로만 표시됩니다.</li><li>함수 호출 위치 목록과 교체 결과가 기록됩니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>함수명 <code>excapeHtmlOrReturn</code>(철자 오류 포함), <code>escapeHtml</code>. 블랙리스트 방식이며 <code>&amp;</code>를 나중에 치환해 <code>&lt;</code> 가 <code>&amp;amp;lt;</code> 로 이중 인코딩됨.</li></ul><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-F-10" data-group="fix">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-10">
+    <span class="tag fix"><span aria-hidden="true">▲</span> 먼저 고칠 것</span>
+    <span class="id">F-10</span>
+    <span class="ttl">로그인 증표(토큰)를 붙이기 전에 &quot;받는 곳&quot;을 정확히 확인하지 않음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-10" hidden>
+<div class="chips"><span class="chip">원 판정 · 수정 우선순위 높음 · 조건부 인증정보 노출 위험</span><span class="chip">담당 · 프런트엔드·인증</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>서버에 요청을 보낼 때 로그인 증표를 함께 보냅니다. 그런데 요청 주소에 <code>/api/</code> 또는 <code>/public/</code>라는 글자가 들어 있으면 <strong>받는 곳이 어디든 증표를 붙이는</strong> 구조입니다. 받는 곳이 우리 서버가 맞는지 정확히 비교하지 않습니다.</p>
+<div class="analogy"><span>비유</span><p>출입증을 "회사 이름이 적힌 봉투"라는 이유만으로 <strong>아무에게나 내미는 것</strong>과 같습니다. 받는 사람이 누구인지(주소의 정확한 출처)를 확인하고 나서 건네야 합니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>가짜 주소 5건으로 컴퓨터 안에서 시험했습니다. 외부 사이트 주소라도 경로에 <code>/api/</code>가 들어 있으면 가짜 증표가 요청에 붙었습니다.</li><li>이것은 컴퓨터 메모리 안의 요청 설정 결과이며 실제 전송이 아닙니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>공격자가 요청 주소를 바꿀 수 있는 화면이나 기능이 실제로 있는지 확인하지 못했습니다.</li><li>브라우저가 실제로 그 요청을 보내는지(브라우저의 교차 출처 제한 포함)는 시험하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>주소를 바꿀 수 있는 지점이 있다면 로그인 증표가 의도하지 않은 외부로 전달될 수 있습니다. 그런 지점이 없다면 지금은 성립하지 않을 수 있습니다. <strong>실제 유출이나 계정 탈취는 확인되지 않았습니다.</strong></p>
+<h4>해야 할 일</h4><ol><li>증표를 붙이기 전에 최종 주소를 표준 방식으로 해석해, 프로토콜·도메인·포트가 <strong>승인된 API 주소와 정확히 같을 때만</strong> 붙입니다.</li><li>검사한 바로 그 주소로 요청을 보냅니다(검사와 전송 주소가 달라지지 않게).</li><li>승인된 API 주소 목록은 환경별 설정으로 관리합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>외부 주소, <code>//도메인</code> 형태, <code>계정@주소</code> 형태에서 증표가 붙지 않음을 시험으로 확인합니다.</li><li>정상 API 호출은 그대로 동작합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>요청 인터셉터가 URL 문자열에 <code>/api/|/public/</code> 구간이 있는지 정규식으로만 판단. Axios의 URL 결합 함수는 절대 URL을 baseURL로 제한하지 않음.</li><li>수정: <code>new URL()</code>로 파싱한 뒤 origin(scheme·host·port) 비교. HTTPS 전용, userinfo URL 거부.</li></ul><p class="muted">근거 4  금융권 비교와 목적지 검사 기록 (F-10): 인증 정보 전송 목적지 검사 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-F-02" data-group="fix">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-02">
+    <span class="tag fix"><span aria-hidden="true">▲</span> 먼저 고칠 것</span>
+    <span class="id">F-02</span>
+    <span class="ttl">다른 사이트 안에 우리 화면을 끼워 넣는 것을 막는 &quot;표지&quot;가 없음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-02" hidden>
+<div class="chips"><span class="chip">원 판정 · 중 위험 (잠정)</span><span class="chip">담당 · 웹 운영·보안</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>웹사이트는 화면을 보낼 때 "이 화면을 다른 사이트 안에 끼워 넣지 마세요", "허용한 출처의 프로그램만 실행하세요" 같은 <strong>안내문(보안 헤더)</strong> 을 함께 보낼 수 있습니다. 점검 결과 홈페이지, 로그인, 오류 화면 응답에서 이 안내문 두 가지(<code>X-Frame-Options</code>, <code>CSP</code>)가 보이지 않았습니다.</p>
+<div class="analogy"><span>비유</span><p>악성 사이트가 우리 로그인 화면을 <strong>보이지 않는 투명 유리판</strong>처럼 자기 화면 위에 덮어 둡니다. 방문자는 "경품 받기" 버튼을 누른다고 생각하지만, 실제로는 유리 아래에 있는 우리 화면의 버튼(예: 동의, 신청)을 누르게 됩니다. 이 수법을 <strong>클릭재킹</strong>이라 합니다. 안내문은 "이 화면은 액자(다른 사이트)에 넣지 마세요"라는 경고 표지입니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>수집한 홈, 로그인, 404 오류 응답 3곳 모두에서 <code>X-Frame-Options</code>와 <code>CSP</code>(<code>frame-ancestors</code> 포함)가 없었습니다. 화면 안에 넣는 대체 설정도 없었습니다.</li><li>참고로 HTTPS 강제(<code>HSTS</code>)와 <code>nosniff</code>는 이미 적용되어 있었습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>실제로 클릭재킹을 시도해 보지 않았습니다(재현하지 않음).</li><li>로그인 화면에 추가 인증이나 화면 삽입 감지 코드 같은 다른 보호가 있는지는 보지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>표지가 없다고 곧바로 사고가 난 것은 아닙니다. 다만 방어 한 겹이 비어 있는 상태입니다. 또한 <code>CSP</code>(허용된 출처의 프로그램만 실행하는 규칙)가 없으면, 다른 약점(예: F-07)이 있을 때 피해가 커질 수 있습니다. <code>CSP</code>가 없다는 사실만으로 XSS가 있다는 뜻은 아닙니다.</p>
+<h4>해야 할 일</h4><ol><li>우리 화면을 넣어도 되는 곳(자사 사이트, 제휴사)을 정합니다.</li><li>최종 응답을 내보내는 곳(CDN 또는 웹서버)에서 <code>frame-ancestors</code> 설정을 적용합니다. 제휴사가 필요하면 정확한 주소만 허용합니다.</li><li>전체 <code>CSP</code>는 "보고만 하는 모드(Report-Only)"로 먼저 적용해 정상 기능이 막히지 않는지 본 뒤 강제로 전환합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>정상 화면과 오류 화면 모두 응답 헤더에 설정이 보입니다.</li><li>제휴 사이트에 넣은 화면은 정상 동작하고, 허용되지 않은 사이트에서는 차단됩니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>Content-Security-Policy: frame-ancestors 'self'</code> 및 <code>X-Frame-Options: SAMEORIGIN</code>. <code>frame-ancestors</code>는 HTML meta로 적용할 수 없고 HTTP 응답 헤더로만 가능.</li><li>여러 계층(CDN, WAF, 프록시, 앱)의 CSP가 서로 덮어쓰거나 충돌하지 않는지 최종 응답 기준으로 확인.</li></ul><div class="code"><div class="code-head"><span>현재 상태 확인 (수정 전에는 아무것도 나오지 않는 것이 이 항목의 근거입니다)</span><button type="button" class="copy" data-target="code-F-02">복사</button></div><pre id="code-F-02"><code>curl -sI https://www.lina.co.kr/ | grep -iE &#x27;content-security-policy|x-frame-options&#x27;</code></pre></div><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-F-01" data-group="fix">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-01">
+    <span class="tag fix"><span aria-hidden="true">▲</span> 먼저 고칠 것</span>
+    <span class="id">F-01</span>
+    <span class="ttl">오래된 부품(jQuery 1.12.4)이 새 부품과 함께 로드됨</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-01" hidden>
+<div class="chips"><span class="chip">원 판정 · 중 위험 (잠정)</span><span class="chip">담당 · 프런트엔드 개발·운영</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>화면 동작에 쓰는 공용 프로그램 부품(jQuery)이 <strong>두 가지 버전으로 동시에</strong> 불러와집니다. 새 계열(3.7.1) 뒤에 2016년에 배포된 1.12.4가 한 번 더 불러와지는데, 이 구버전은 공개된 보안 약점(CVE-2020-11022, CVE-2020-11023)의 영향 범위에 들어갑니다.</p>
+<div class="analogy"><span>비유</span><p>새 자물쇠를 달아 놓고 <strong>그 위에 낡은 자물쇠를 한 번 더 거는 것</strong>과 비슷합니다. 나중에 달린 낡은 자물쇠가 문을 여닫는 방식을 덮어쓸 수 있습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>홈과 로그인 화면에서 3.7.1 다음에 1.12.4가 불러와지는 것을 확인했습니다.</li><li>내려받은 파일 안의 버전 표기도 1.12.4로 일치했습니다. 공식 권고상 1.12.4는 두 약점의 영향 범위(3.5.0 미만)에 포함됩니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>이 부품의 HTML 삽입 기능에 신뢰할 수 없는 글이 실제로 전달되는 코드가 있는지 확인하지 못했습니다.</li><li>브라우저가 최종적으로 어느 버전을 쓰는지(나중에 불러온 쪽이 덮어쓰는지)는 실행해 보지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>구버전이 있다는 사실만으로 침입이 가능한 것은 아닙니다. 다만 외부에서 들어온 글이 화면에 삽입되는 곳이 있다면 이 약점이 악용 조건이 될 수 있습니다. F-07과 겹치면 위험이 커집니다.</p>
+<h4>해야 할 일</h4><ol><li>중복 참조를 없애고 보안 지원이 되는 <strong>한 가지 버전으로 통합</strong>합니다.</li><li>구버전에 의존하는 오래된 기능(본인확인, 전자서명, 팝업 등)을 먼저 찾아 호환되는 버전으로 맞춥니다.</li><li>사용 부품 목록(SBOM)과 잠금 파일을 확보해 구버전이 다시 들어오지 않게 관리합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>브라우저 네트워크 창에서 jQuery가 한 번만 로드되고 실행 버전이 3.5.0 이상입니다.</li><li>로그인, 전자서명, 팝업 등 관련 기능의 회귀 시험이 통과합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>/lib/jquery-3.7.1.js</code> 뒤에 <code>/lib/jquery/1.12.4/jquery.min.js</code>를 동기 <code>&lt;script&gt;</code>로 참조. 후속 스크립트의 <code>noConflict</code> 사용 여부는 미검토.</li></ul><div class="code"><div class="code-head"><span>브라우저 개발자 도구(F12) 콘솔에서 실행 버전 확인</span><button type="button" class="copy" data-target="code-F-01">복사</button></div><pre id="code-F-01"><code>jQuery.fn.jquery</code></pre></div><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-F-09" data-group="tidy">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-09">
+    <span class="tag tidy"><span aria-hidden="true">◆</span> 함께 정리할 것</span>
+    <span class="id">F-09</span>
+    <span class="ttl">구형 통신 부품(Axios 0.21.4)이 다른 사이트로도 확인 값을 복사할 수 있음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-09" hidden>
+<div class="chips"><span class="chip">원 판정 · 의존성 개선 필요</span><span class="chip">담당 · 프런트엔드·인증</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>화면이 서버와 통신할 때 쓰는 부품(Axios)의 구버전을 사용합니다. 이 버전은 조건에 따라 <strong>위조 요청 방지용 확인 값(XSRF)을 다른 사이트로 가는 요청에도 복사해 붙이는</strong> 동작이 있고, 공식 수정 버전(0.28.0 등, CVE-2023-45857 관련)에서 고쳐진 동작입니다.</p>
+<div class="analogy"><span>비유</span><p>택배 기사가 반송처를 확인하지 않고 <strong>인증 스티커를 낯선 주소로 가는 택배에도 붙이는 오래된 습관</strong>이 있는 것과 같습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>화면 프로그램 묶음의 정보에서 <code>axios 0.21.4</code>를 확인했고, 해당 복사 동작 구문도 확인했습니다. 컴퓨터 안 모형으로 재현했습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>실제로 위조 방지 쿠키가 쓰이는지, 외부 주소를 호출하는 코드가 있는지 확인하지 못했습니다.</li><li>서버 쪽 Axios 버전은 알 수 없으며, 서버 침투 가능성은 추정하지 않았습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>외부 목적지, 인증 정보 포함 요청 설정 등 여러 조건이 모두 맞을 때만 문제가 됩니다. 현재 공개 응답에서는 해당 쿠키를 확인하지 못했습니다.</p>
+<h4>해야 할 일</h4><ol><li>현재 보안 권고를 반영한 지원 버전으로 교체하고, 실제 의존성 목록과 잠금 파일을 점검합니다.</li><li>승인된 API로 가는 요청에만 인증·XSRF 헤더가 붙는지 시험합니다. (F-10과 함께 처리하면 효율적입니다.)</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>실제 빌드 결과물의 부품 버전을 확인합니다.</li><li>브라우저 요청 시험에서 외부 주소로 확인 값이 가지 않습니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>XHR 어댑터에서 <code>withCredentials || sameOrigin</code> 조건이 참이면 쿠키 값을 xsrfHeaderName 헤더에 복사. 0.28.0에서 수정.</li></ul><p class="muted">근거 3  침입 경로 검토 기록 (F-07~F-09): 오류 메시지 경로, 토큰 갱신, Axios 동작 분석 결과</p></details></div>
+</article>
+<article class="item" id="item-F-04" data-group="tidy">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-04">
+    <span class="tag tidy"><span aria-hidden="true">◆</span> 함께 정리할 것</span>
+    <span class="id">F-04</span>
+    <span class="ttl">공개 화면 코드에 내부 서비스 주소가 그대로 적혀 있음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-04" hidden>
+<div class="chips"><span class="chip">원 판정 · 낮음 (잠정)</span><span class="chip">담당 · 개발·배포 운영</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>누구나 볼 수 있는 홈페이지 설정 정보 안에 <strong>내부 서비스의 이름, 주소, 포트처럼 보이는 문자열</strong>이 들어 있습니다. 외부 서비스용 키처럼 보이는 설정도 있지만, 비밀키라고 단정하지는 않았습니다. (보안을 위해 이 보고서에는 실제 주소를 적지 않았습니다.)</p>
+<div class="analogy"><span>비유</span><p>건물 밖 안내판에 <strong>내부 사무실 호수와 구내 전화번호까지 적어 둔 것</strong>과 같습니다. 그것만으로 안에 들어갈 수는 없지만 침입을 준비하는 사람에게 단서를 줍니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>홈과 로그인 응답의 공개 설정에 내부용으로 보이는 서비스 주소가 포함되어 있었습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>그 주소로 내부망에 접근할 수 있는지는 확인하지 않았습니다(접속하지 않음).</li><li>공개 설정에 있는 키의 실제 종류와 허용 범위는 확인하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>낮은 위험입니다. 내부 구조 정보가 노출된 상태이며, 내부망 접근이나 인증 우회가 가능하다는 뜻은 아닙니다.</p>
+<h4>해야 할 일</h4><ol><li>브라우저에 꼭 필요한 값만 공개하고, 내부 전용 값은 <strong>서버 전용 설정</strong>으로 분리합니다.</li><li>외부 서비스 키는 공급자 설정에서 허용 도메인과 사용 범위가 제한되어 있는지 확인합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>페이지 소스와 초기 상태 데이터에 내부 주소가 없습니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>Nuxt 2 기준 <code>publicRuntimeConfig</code>와 서버 전용 <code>privateRuntimeConfig</code>를 분리. <code>window.__NUXT__</code>에 직렬화되는 값 점검.</li></ul><div class="code"><div class="code-head"><span>수정 후 확인: 아래 결과가 0이면 내부 주소가 사라진 것입니다</span><button type="button" class="copy" data-target="code-F-04">복사</button></div><pre id="code-F-04"><code>curl -s https://www.lina.co.kr/ | grep -c &#x27;\.svc&#x27;</code></pre></div><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-F-06" data-group="tidy">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-06">
+    <span class="tag tidy"><span aria-hidden="true">◆</span> 함께 정리할 것</span>
+    <span class="id">F-06</span>
+    <span class="ttl">광고 유입 정보를 &quot;전체 주소&quot;째로 저장하고 화면 기록에도 출력</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-06" hidden>
+<div class="chips"><span class="chip">원 판정 · 낮음 (잠정)</span><span class="chip">담당 · 프런트엔드·분석 운영</span><span class="chip">목표 · D+10</span></div>
+<h4>쉽게 말하면</h4><p>광고를 클릭해 들어온 방문자의 유입 정보(<code>utm_source</code> 등)만 저장하면 되는데, 주소의 <code>?</code> 뒤 <strong>전체를 브라우저에 저장</strong>하고 개발자 도구 기록(콘솔)에도 출력합니다. 이름이 정확히 같지 않아도(예: <code>not_utm_source</code>) 저장됩니다.</p>
+<div class="analogy"><span>비유</span><p>방문 확인 도장(광고 코드)만 받으면 되는데 <strong>방문자의 명함 전체를 복사해 서랍에 넣어 두는 것</strong>과 같습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>가짜 주소 2건으로 시험했을 때, 광고와 무관한 값과 <code>#</code> 뒤의 값까지 저장되고 기록에 출력되었습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>실제 방문 주소에 이메일이나 토큰 같은 민감정보가 붙어 들어오는지 확인하지 못했습니다.</li><li>저장된 값이 외부 분석 서비스로 전송되었다는 증거는 없습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>낮은 위험입니다. 실제 주소에 민감정보가 붙는 경우가 있다면 위험도를 다시 평가해야 합니다.</p>
+<h4>해야 할 일</h4><ol><li>승인된 캠페인 항목만 <strong>정확한 이름</strong>으로 골라 저장하고 길이와 문자를 제한합니다.</li><li>원문 저장과 디버그 출력을 제거하고, 이미 저장된 값의 정리 방침을 정합니다.</li><li>주소에 인증 정보나 개인정보를 넣지 않는 원칙을 확인합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>허용되지 않은 값은 저장도 출력도 되지 않습니다.</li><li>정상적인 캠페인 집계는 그대로 동작합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>/external/load.js</code>가 <code>window.location.href.split('?')[1]</code> 전체를 <code>localStorage</code>의 <code>X_UTM_PARAM</code>에 저장하고 <code>includes('utm_source')</code>로 부분 일치 판단.</li></ul><p class="muted">근거 2  추가 검증 기록 (F-05, F-06): 로그인 관련 프로그램 코드와 캠페인 처리 코드의 분석 결과</p></details></div>
+</article>
+<article class="item" id="item-F-05" data-group="design">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-05">
+    <span class="tag design"><span aria-hidden="true">●</span> 설계·서버 확인</span>
+    <span class="id">F-05</span>
+    <span class="ttl">로그인 후 받은 증표를 화면 프로그램이 읽을 수 있는 곳에 보관</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-05" hidden>
+<div class="chips"><span class="chip">원 판정 · 조건부 중 위험 (설계 검토 사항)</span><span class="chip">담당 · 인증·백엔드</span><span class="chip">목표 · D+20</span></div>
+<h4>쉽게 말하면</h4><p>로그인에 성공하면 받은 증표(<code>idToken</code>, <code>refreshToken</code>)를 브라우저의 <code>sessionStorage</code>와, 자바스크립트로 만든 쿠키에 복사해 둡니다. 이 보관 공간들은 <strong>화면에서 실행되는 어떤 스크립트든 읽을 수 있습니다.</strong></p>
+<div class="analogy"><span>비유</span><p>호텔 객실 카드키를 프런트 금고가 아니라 <strong>로비 테이블 위에 두는 것</strong>과 같습니다. 로비에 나쁜 사람이 들어오지 않으면 안전하지만, 한 번 들어오면 바로 가져갑니다. 안전한 방법은 서버가 "스크립트가 읽을 수 없는 금고(HttpOnly 쿠키)"에 보관하는 것입니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>화면 프로그램 코드에서 증표를 <code>sessionStorage</code>와 JavaScript 쿠키에 저장하는 구문을 확인했습니다.</li><li>가짜 증표로 컴퓨터 안에서 저장 구문을 재현했습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>실제 로그인 증표는 관측하지 않았고, 브라우저가 실제로 쿠키를 받아들이는지도 시험하지 못했습니다.</li><li>서버가 증표의 수명, 교체(회전), 폐기를 어떻게 관리하는지 알 수 없습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>단독으로 침입을 뜻하지는 않습니다. 다만 XSS(F-07 등)나 신뢰한 외부 스크립트의 침해가 있을 때 <strong>피해를 키우는 요소</strong>입니다. 실제 영향은 서버의 증표 관리 정책에 달려 있습니다.</p>
+<h4>해야 할 일</h4><ol><li>구조가 허용되면 서버 세션 방식(BFF)으로 옮겨, 갱신용 증표는 서버에만 두고 브라우저에는 서버가 발급한 <code>HttpOnly</code>·<code>Secure</code> 쿠키만 줍니다. (이때 위조 요청 방지(CSRF) 통제도 함께 설계합니다.)</li><li>자바스크립트 쿠키 문자열에 <code>HttpOnly</code>만 덧붙이는 방식은 <strong>해결책이 아닙니다.</strong> 서버가 발급해야 합니다.</li><li>현재 구조(SPA)를 유지한다면 증표 수명 단축, 갱신 증표 회전과 재사용 탐지, 로그아웃 시 서버 폐기, 인증 화면의 외부 스크립트 최소화를 확인합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>전용 시험 계정으로 로그아웃·만료 후 옛 증표가 서버에서 거부되는지 확인합니다.</li><li>운영 계정으로는 시험하지 않습니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>sessionStorage.setItem("token", ...idToken)</code>, <code>sessionStorage.setItem("refreshToken", ...)</code>, <code>document.cookie = "x-lina-at-001=...; samesite=strict; secure"</code> 등. JS가 만든 쿠키는 HttpOnly 설정 불가.</li></ul><p class="muted">근거 2  추가 검증 기록 (F-05, F-06): 로그인 관련 프로그램 코드와 캠페인 처리 코드의 분석 결과</p></details></div>
+</article>
+<article class="item" id="item-F-08" data-group="design">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-F-08">
+    <span class="tag design"><span aria-hidden="true">●</span> 설계·서버 확인</span>
+    <span class="id">F-08</span>
+    <span class="ttl">새로 받은 갱신용 증표를 이전 값으로 되돌려 저장하는 경로</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-F-08" hidden>
+<div class="chips"><span class="chip">원 판정 · 서버 계약 확인 필요</span><span class="chip">담당 · 인증·백엔드</span><span class="chip">목표 · D+20</span></div>
+<h4>쉽게 말하면</h4><p>로그인 시간을 연장하려고 서버에서 새 갱신 증표(<code>refreshToken</code>)를 받아도, 특정 오류 처리 경로에서는 응답으로 받은 새 값 대신 <strong>이전 값을 다시 저장</strong>합니다.</p>
+<div class="analogy"><span>비유</span><p>새 출입증을 받고도 지갑에는 <strong>기존 출입증을 다시 넣는 것</strong>과 같습니다. 회사가 출입증을 매번 교체하는 정책이라면 곧 쓸 수 없게 됩니다. 교체하지 않는 정책이라면 문제가 없을 수도 있습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>특정 401 오류 갱신 분기에서 응답의 새 값에 이전 값을 다시 대입하는 구문을 확인했고, 가짜 값 시험에서도 이전 값이 선택되었습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>서버가 갱신 증표를 매번 교체(회전)하는지, 이전 값 재사용을 허용하는지 알 수 없습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>서버가 증표를 회전한다면 로그인 연장 실패나 재사용 탐지와의 충돌이 생길 수 있습니다. 반대로 이것만으로 서버에 증표 관리가 없다거나 공격이 가능하다는 뜻은 아닙니다.</p>
+<h4>해야 할 일</h4><ol><li>인증 서버의 갱신 정책(회전 여부, 폐기 방식)을 먼저 확인합니다.</li><li>회전 방식이라면 새 값을 보존하도록 수정하고, 동시 갱신과 여러 탭에서의 동작을 시험합니다.</li><li>회전하지 않는 방식이라면 그 정책과 보완 통제(수명, 폐기)를 문서화합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>새 증표 채택, 이전 증표 재사용 거부, 로그아웃·만료 후 거부를 전용 계정으로 확인합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>401 갱신 분기에서 <code>r.data.refreshToken = O</code>(이전 값)를 대입한 뒤 <code>authStore/setTokenInfo</code>에 전달.</li></ul><p class="muted">근거 3  침입 경로 검토 기록 (F-07~F-09): 오류 메시지 경로, 토큰 갱신, Axios 동작 분석 결과</p></details></div>
+</article>
+<article class="item" id="item-OK-1" data-group="ok">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-OK-1">
+    <span class="tag ok"><span aria-hidden="true">✓</span> 정상 관측</span>
+    <span class="id">정상</span>
+    <span class="ttl">암호화 연결(HTTPS)이 적용되어 있음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-OK-1" hidden>
+<div class="chips"><span class="chip">원 판정 · 정상 관측</span><span class="chip">담당 · 인프라</span><span class="chip">목표 · 유지</span></div>
+<h4>쉽게 말하면</h4><p>홈페이지는 암호화된 연결(HTTPS)로 접속되고, 암호화되지 않은 주소(http)로 접속하면 자동으로 암호화 연결로 이동합니다. 브라우저에 "이 사이트는 항상 HTTPS로 접속하라"고 알려 주는 설정(HSTS)도 적용되어 있습니다.</p>
+<div class="analogy"><span>비유</span><p>우편물을 <strong>봉투에 넣어 봉인해서</strong> 보내는 것과 같습니다. 중간에서 내용을 엿보기 어렵습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>http 주소가 https로 자동 이동(301)하는 것을 확인했습니다.</li><li>응답에 HSTS(<code>max-age=31536000; includeSubDomains; preload</code>)가 있었고, 관측한 연결은 TLS 1.3과 정상 인증서를 사용했습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>모든 접속 지점과 구형 프로토콜 지원 여부, 인증서 갱신 체계는 확인하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>확인한 연결에 대한 긍정적 근거입니다. 사이트 전체의 안전을 뜻하지는 않습니다.</p>
+<h4>해야 할 일</h4><ol><li>현재 설정을 유지합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>정기 점검에서 설정이 유지되는지 확인합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>strict-transport-security: max-age=31536000 ; includeSubDomains; preload</code> (응답 헤더 관측).</li></ul><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-OK-2" data-group="ok">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-OK-2">
+    <span class="tag ok"><span aria-hidden="true">✓</span> 정상 관측</span>
+    <span class="id">정상</span>
+    <span class="ttl">브라우저가 파일 종류를 멋대로 추측하지 못하게 막아 둠</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-OK-2" hidden>
+<div class="chips"><span class="chip">원 판정 · 정상 관측</span><span class="chip">담당 · 웹 운영</span><span class="chip">목표 · 유지</span></div>
+<h4>쉽게 말하면</h4><p>응답에 <code>X-Content-Type-Options: nosniff</code>가 있어서, 브라우저가 "이 파일은 아마 프로그램일 것"이라고 <strong>임의로 추측해 실행하는 것</strong>을 막습니다.</p>
+<div class="analogy"><span>비유</span><p>택배 상자에 적힌 내용물 표시를 <strong>그대로 믿게 하는 규칙</strong>입니다. 표시와 다른 물건을 받아들이지 않습니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>홈페이지 응답 헤더에서 <code>nosniff</code>가 적용된 것을 확인했습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>모든 종류의 응답(파일 다운로드, 업로드 영역)에 적용되는지는 확인하지 못했습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>확인한 응답에 대한 긍정적 근거입니다.</p>
+<h4>해야 할 일</h4><ol><li>현재 설정을 유지합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>정기 점검에서 유지 여부를 확인합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li><code>x-content-type-options: nosniff</code>.</li></ul><p class="muted">근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</p></details></div>
+</article>
+<article class="item" id="item-OK-3" data-group="ok">
+  <h3><button type="button" class="head" aria-expanded="false" aria-controls="panel-OK-3">
+    <span class="tag ok"><span aria-hidden="true">✓</span> 정상 관측</span>
+    <span class="id">정상</span>
+    <span class="ttl">로그아웃과 오류 화면에서 일부 보호 동작이 있음</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button></h3>
+  <div class="panel" id="panel-OK-3" hidden>
+<div class="chips"><span class="chip">원 판정 · 정상 관측 (서버 동작은 미확인)</span><span class="chip">담당 · 인증·백엔드</span><span class="chip">목표 · 유지</span></div>
+<h4>쉽게 말하면</h4><p>로그아웃 코드에는 서버에 로그아웃을 알리는 호출이 있고, 일부 인증 오류가 나면 화면에 저장된 증표 정보를 비웁니다. 운영 환경에서는 오류 세부 내용을 화면에 보여 주지 않도록 제한하는 분기도 있습니다.</p>
+<div class="analogy"><span>비유</span><p>퇴실할 때 <strong>카드키를 반납하고 객실 번호 기록을 지우는 절차</strong>가 코드에 들어 있는 셈입니다.</p></div>
+<div class="two">
+  <div><h4>확인한 것</h4><ul><li>프로그램 코드에서 해당 동작을 확인했습니다.</li></ul></div>
+  <div><h4>아직 확인하지 못한 것</h4><ul><li>서버가 실제로 증표를 폐기하는지, API 응답이 필요한 정보만 담는지는 보증되지 않습니다.</li></ul></div>
+</div>
+<h4>그래서 어떤 문제가 생길 수 있나</h4><p>화면 쪽 보호 동작이 있다는 근거입니다. 서버의 실제 폐기나 응답 최소화를 대신 증명하지는 않습니다.</p>
+<h4>해야 할 일</h4><ol><li>서버 쪽 폐기 동작은 "서버 쪽 확인이 필요한 항목"에서 시험합니다.</li></ol>
+<h4>끝났다고 보는 기준</h4><ul><li>전용 계정으로 로그아웃 후 옛 증표가 거부되는지 확인합니다.</li></ul>
+<details class="tech"><summary>IT 담당자용 기술 메모</summary><ul><li>로그아웃 시 서버 메서드 호출, 일부 인증 오류에서 토큰 상태 초기화, production/staging 환경 분기에서 오류 상세 UI 노출 제한.</li></ul><p class="muted">근거 2  추가 검증 기록 (F-05, F-06): 로그인 관련 프로그램 코드와 캠페인 처리 코드의 분석 결과</p></details></div>
+</article></div>
+<p class="muted">각 항목의 근거는 "근거 자료"의 근거 1~5에 해당하며, 점검 기록을 따로 보관하고 있습니다.</p></section>
+<section id="path" aria-labelledby="h-path"><div class="section-head"><h2 id="h-path">위험이 이어지는 경로와 끊는 지점</h2><p class="section-note">"오류 문구가 HTML로 들어간다"는 사실이 곧바로 "계정이 탈취된다"는 뜻은 아닙니다. 피해가 되려면 아래 고리가 <strong>모두</strong> 이어져야 하고, 지금은 앞의 세 고리만 확인했습니다. 한 고리라도 끊으면 피해로 이어지지 않으므로, 가장 앞에서 끊는 것이 효과적입니다.</p></div>
+<figure class="flow"><figcaption>도식 2 · 오류 메시지에서 계정 피해까지의 확인 경계</figcaption><div class="box done"><span class="state">코드로 확인</span><strong>1  서버가 오류 안내 문구를 보냄</strong><p>코드 경로로 확인했습니다.</p></div><div class="arrow solid" aria-hidden="true"><span>▼</span></div><div class="box done"><span class="state">코드로 확인</span><strong>2  공통 처리부가 문구를 화면 상태에 저장</strong><p>코드 경로로 확인했습니다. 이 구간에는 걸러내는 처리가 없습니다.</p></div><div class="arrow solid" aria-hidden="true"><span>▼</span></div><div class="box partial"><span class="state">컴퓨터 안 재현</span><strong>3  화면이 문구를 HTML로 표시</strong><p>가짜 데이터로 컴퓨터 안에서 재현했습니다. 실제 브라우저에서는 시험하지 않았습니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>4  외부 사람이 문구에 원하는 글을 넣을 수 있는가</strong><p>확인하지 못했습니다. 서버가 고정 문구만 보낸다면 여기서 끊깁니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>5  브라우저에서 악성 코드가 실제로 실행되는가</strong><p>시험하지 못했습니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>6  로그인 증표를 읽어 사용하는가</strong><p>시험하지 못했습니다. 증표 정책은 서버 확인이 필요합니다.</p></div><div class="arrow dashed" aria-hidden="true"><span>▽</span></div><div class="box unknown"><span class="state">미확인</span><strong>7  계정 피해</strong><p>입증하지 못했습니다. 여러 조건부 경로를 하나의 성공한 공격으로 이어 붙여 평가하지 않습니다.</p></div><p class="flow-note">실선 화살표(▼)는 코드 흐름 확인 또는 컴퓨터 안 재현으로 이어진 부분, 점선 화살표(▽)는 아직 충족 여부를 확인하지 않은 조건입니다. F-10(로그인 증표 전송 목적지)은 이 그림과 별도의 경로입니다.</p></figure>
+<h3 class="sub">어디서 끊을 것인가</h3>
+<div class="tbl"><table class=""><thead><tr><th scope="col">끊는 위치</th><th scope="col">먼저 적용할 조치</th><th scope="col">효과를 확인하는 방법</th></tr></thead><tbody><tr><td>메시지를 화면에 내기 전</td><td>텍스트로 출력하고 승인된 오류 코드만 정해진 문구로 표시 (F-07)</td><td>시험 문구가 HTML 요소로 해석되지 않고, 정상 안내는 그대로 보임</td></tr><tr><td>서버로 요청을 보내기 전</td><td>받는 곳이 승인된 주소와 정확히 같은지 확인 (F-10)</td><td>외부 주소 요청은 보내기 전에 거부되고 로그인 증표가 붙지 않음</td></tr><tr><td>증표를 보관·갱신할 때</td><td>서버 세션 또는 짧은 수명·교체·폐기 (F-05, F-08)</td><td>옛 증표·만료 증표는 거부되고 정상 갱신은 성공</td></tr><tr><td>API가 데이터를 내줄 때</td><td>고객·역할·항목별 권한과 누적 조회 제한</td><td>다른 합성 고객의 데이터가 차단되고 경보가 울림</td></tr></tbody></table></div></section>
+<section id="finance" aria-labelledby="h-finance"><div class="section-head"><h2 id="h-finance">최근 금융권 사고와 비교</h2><p class="section-note">최근 금융권 침해사고에서 공통으로 드러난 점은 <strong>대표 홈페이지보다 제휴·모집인·연계 서버 같은 "뒷문"에서 고객정보가 새는</strong> 경우가 있었다는 것입니다. 그래서 라이나에도 같은 질문을 던져 보는 것이 이 비교의 목적입니다. 다른 회사의 사고가 라이나에서 그대로 재현된다는 뜻이 아니며, 라이나에서 같은 결함을 확인했다는 뜻도 아닙니다.</p></div>
+<p class="caution">아래 사실은 첨부된 원 보고서가 인용한 당국 발표와 언론 보도(2026-10-29 기준)를 옮긴 것입니다. 이번 개정에서 기사와 발표 원문을 다시 확인하지는 못했습니다. 발표·보도 시점의 상태이며 조사가 진행 중인 항목은 이후 달라질 수 있습니다.</p>
+<div class="cases"><details class="case"><summary><strong>은행권 (금융위 발표)</strong></summary><p>2026-10-14 금융위원회는 신한·국민·부산·하나은행 등 16개 금융회사의 침해사고를 확인했다고 발표했습니다. 당시 정보유출은 약 10만 건으로 집계되었고, 공격 주체와 개별 침입경로는 조사 중이었습니다. 이 숫자는 최종 피해 규모가 아닙니다. [S1]</p><p class="q"><span>라이나에 던질 질문</span> 대표 홈페이지 이외의 직원·협력업체 접점이 점검 범위에 들어 있는가</p></details><details class="case"><summary><strong>신한은행</strong></summary><p>대출모집인용 조회 시스템에서 약 2만 5천 건의 고객정보가 유출되었다는 보도(2026-10-02)가 있었고, 고객번호로 다른 서비스를 조회한 정황도 보도되었습니다. [S2]</p><p class="q"><span>라이나에 던질 질문</span> 모집인·제휴 채널과 API에서 요청마다 인증하고 "이 고객 정보를 볼 권한이 있는가"를 검사하는가</p></details><details class="case"><summary><strong>미래에셋생명</strong></summary><p>이상 징후를 인지(10-25)하고 일부 고객정보 유출을 확인(10-26)했다는 회사 설명이 보도되었습니다. 홈페이지와 청약시스템 일부가 대상으로 파악되었으며 10-28 보도 시점에는 홈페이지 접근 제한과 복구가 진행 중이었습니다. 병력 등 구체 항목은 조사 중이었고, 공개 자료만으로 병력 유출을 단정할 수 없습니다. [S3]</p><p class="q"><span>라이나에 던질 질문</span> 홈페이지에서 청약·첨부파일로 이어지는 권한과 데이터 흐름이 안전한가</p></details><details class="case"><summary><strong>대신증권</strong></summary><p>투자일임 비대면 계좌개설 연계서버의 비정상 접근(10-17)을 발견했고, 10-28 총 38,490명의 개인·신용정보 유출을 발표한 것으로 보도되었습니다. 일부 항목이 암호화되어 있었다는 사실이 피해가 없다는 뜻은 아닙니다. [S4]</p><p class="q"><span>라이나에 던질 질문</span> 제휴·청약 API와 서비스 계정의 권한이 필요한 범위로 제한되어 있는가</p></details><details class="case"><summary><strong>미래에셋자산운용 (구분)</strong></summary><p>일부 웹 시스템에서 비정상 접근 정황과 차단 조치가 보도되었고, 당시 회사는 개인신용정보 유출이 없는 것으로 파악된다고 설명했습니다. 미래에셋생명, 대신증권 사고와 구분합니다. [S5]</p><p class="q"><span>라이나에 던질 질문</span> (참고) 사건을 서로 섞어 평가하지 않는다.</p></details></div>
+<p>아래 표는 영역별로 라이나에서 어떤 근거를 확보했는지 보여 줍니다. "확인 못함"은 문제가 있다는 뜻도, 없다는 뜻도 아닙니다. 증거가 없어서 판단을 보류한다는 뜻입니다.</p>
+<div class="tbl"><table class=""><thead><tr><th scope="col">비교 영역</th><th scope="col">라이나에서 확보한 근거</th><th scope="col">판단</th><th scope="col">의미와 추가 확인</th></tr></thead><tbody><tr><td>외부 업무 접점 (은행·증권 공통)</td><td>공식 홈페이지와 그 참조 프로그램만 점검</td><td><span class="tag design">확인 못함</span></td><td>제휴·모집인·모바일·관리·배포용 사이트를 목록화하고 데이터·내부망 연결을 확인해야 합니다. (후속 목록 8개 사이트)</td></tr><tr><td>부품 패치와 지원 종료 (금융위 공통 점검)</td><td>jQuery 1.12.4, Axios 0.21.4 확인</td><td><span class="tag fix">개선 필요</span></td><td>화면 쪽은 개선이 필요합니다. 서버·장비의 패치와 지원 종료 여부는 자산별 증빙이 필요합니다.</td></tr><tr><td>인증과 고객별 권한 (은행 후속 조회)</td><td>토큰 저장·갱신 코드 확인</td><td><span class="tag design">확인 못함</span></td><td>요청마다 인증·역할·고객·항목 권한이 서버에서 검사되는지 시험해야 합니다.</td></tr><tr><td>이용자 세션 피해 (화면 쪽)</td><td>F-05, F-07, F-10 조건부 경로</td><td><span class="tag fix">개선 필요</span></td><td>실제 악용 가능성(입력 도달, 브라우저 동작)은 확인하지 못했으나 먼저 막아 두는 것이 안전합니다.</td></tr><tr><td>청약·고객 데이터 (미래에셋생명)</td><td>서버·DB·파일 설정 없음</td><td><span class="tag design">확인 못함</span></td><td>파일 접근 권한, DB 최소 권한, 암호화·키 분리, 조회 한도를 확인해야 합니다.</td></tr><tr><td>외부 연계 서버 (대신증권)</td><td>연계 API의 서버 통제는 점검하지 못함</td><td><span class="tag design">확인 못함</span></td><td>연계 계정의 권한 범위와, 한 서버가 침해되어도 다른 업무 데이터로 번지지 않는 구조인지 확인해야 합니다.</td></tr><tr><td>탐지와 사고 대응</td><td>CDN 사용 흔적만 확인</td><td><span class="tag design">확인 못함</span></td><td>24시간 관제와 실제 차단 능력을 가짜 이상 이벤트로 시험해 경보·담당자 인지·조치까지 확인해야 합니다.</td></tr><tr><td>암호화 연결 (HTTPS)</td><td>확인한 연결은 TLS 1.3과 정상 인증서</td><td><span class="tag ok">정상 관측</span></td><td>해당 연결에 대한 긍정적 근거입니다. 모든 접속 지점과 구형 프로토콜, 인증서 갱신 체계는 별도 확인이 필요합니다.</td></tr></tbody></table></div>
+<div class="answer"><h3>종합 안전성 판단</h3><p>화면 쪽 개선 필요성은 확인되었지만 핵심 서버 통제는 확인 공백이 큽니다. 안전성 점수나 사고 확률을 계산할 근거가 부족합니다. 라이나에서 사고가 났다거나 대규모 유출이 가능하다는 것이 입증된 것은 아니지만, 현재 결과만으로 유사 사고가 불가능하다고 결론 내릴 수도 없습니다.</p></div></section>
+<section id="server" aria-labelledby="h-server"><div class="section-head"><h2 id="h-server">서버 쪽 확인이 필요한 항목과 합격 기준</h2><p class="section-note">아래 시험은 <strong>모두 아직 수행하지 않았습니다.</strong> 운영 서비스가 아니라 격리된 시험 환경에서, 전용 계정 A·B와 가짜(합성) 데이터로 진행해야 합니다. 운영 환경에서 대량 조회나 성능 한계 시험은 하지 않습니다. 허용되어야 할 요청과 거부되어야 할 요청의 정답을 먼저 정한 뒤 둘 다 시험합니다.</p></div>
+<div class="tbl"><table class=""><thead><tr><th scope="col">확인 영역</th><th scope="col">쉽게 말하면</th><th scope="col">합격 기준</th></tr></thead><tbody><tr><td>인증과 관리자 기능</td><td>로그인하지 않은 사람, 만료된 증표를 가진 사람, 일반 직원이 관리 기능을 쓸 수 있는가</td><td>민감 데이터 노출과 상태 변경이 없고, 정책에 맞는 거부 응답과 서버 인증 로그가 남음</td></tr><tr><td>고객별·항목별 권한</td><td>고객 A가 고객 B의 청약서나 정보를 보거나 바꿀 수 있는가</td><td>서버가 고객·행위·항목별로 거부함. 화면에서 숨기는 것이 아니라 API 결과와 DB 변경 없음으로 확인</td></tr><tr><td>로그인 증표의 수명</td><td>로그아웃·만료 후, 또는 이전 갱신 증표로 다시 접속할 수 있는가</td><td>정한 기한 안에 거부되고 정상 갱신은 성공함. 인증 서버 계약, 시각 기록, 감사 로그 보관</td></tr><tr><td>조회와 반출 제한</td><td>한 계정이 짧은 시간에 반복 조회·내보내기로 대량 정보를 가져갈 수 있는가</td><td>계정·업무·데이터량 한도와 경보 기한을 미리 합의하고 차단과 알림을 확인</td></tr><tr><td>서버 입력과 파일</td><td>이상한 값이나 파일을 올리면 서버가 걸러내는가, 다른 사람 파일을 내려받을 수 있는가</td><td>코드 검토와 격리 시험에서 실행 파일 노출·타 고객 접근·허용 범위 밖 처리가 없음</td></tr><tr><td>외부 사이트의 몰래 요청</td><td>다른 사이트가 사용자 몰래 상태를 바꾸는 요청을 보낼 수 있는가 (CORS·CSRF)</td><td>허용되지 않은 출처의 요청과 위조 요청이 차단되고 정상 인증·제휴 흐름은 유지</td></tr><tr><td>내부 확산과 암호화</td><td>서버 한 대가 뚫려도 다른 DB·파일로 번지지 않게 권한이 나뉘어 있는가</td><td>서비스 계정의 최소 권한, 키 분리, 내부 구간 제한을 설정과 감사 기록으로 확인</td></tr><tr><td>탐지와 복구</td><td>이상 조회 시 경보가 오고 세션을 회수·복원하는 훈련이 되는가</td><td>합의한 탐지·대응·복구 목표 충족. 경보 ID, 담당자 조치, 복원 결과 기록</td></tr></tbody></table></div>
+<h3 class="sub">권한 시험의 정답표 예시</h3><p>권한 시험의 "정답표" 예시입니다. 서버가 이 표대로 동작해야 합니다. 거부는 상태 코드만 보지 않고 실제 데이터 노출과 작업 생성 여부까지 확인합니다.</p><div class="tbl"><table class=""><thead><tr><th scope="col">누가</th><th scope="col">자기(A)의 정보</th><th scope="col">다른 고객(B)의 정보</th><th scope="col">관리 기능</th></tr></thead><tbody><tr><td>로그인하지 않은 사람</td><td>거부</td><td>거부</td><td>거부</td></tr><tr><td>고객 A</td><td>허용된 범위만</td><td>거부</td><td>거부</td></tr><tr><td>고객 B</td><td>거부</td><td>허용된 범위만</td><td>거부</td></tr><tr><td>제한된 운영자</td><td>업무 범위만</td><td>업무 범위만</td><td>따로 부여된 범위만</td></tr></tbody></table></div><p class="muted">예: 고객 A가 고객 B의 청약서 주소를 직접 입력해 열어 보려 하면, 화면에서 버튼이 안 보이는 것이 아니라 <strong>서버가 열어 주지 않아야</strong> 합니다.</p></section>
+<section id="decision" aria-labelledby="h-decision"><div class="section-head"><h2 id="h-decision">결정이 필요한 사항</h2><p class="section-note">의사결정권자께 요청드리는 결정입니다. 각 결정은 "승인"과 "보류"의 의미가 다르므로 함께 적었습니다.</p></div><div class="decisions"><article class="decision"><header><span class="dno">D-1</span><h3>먼저 고칠 5건(F-07, F-03, F-10, F-02, F-01)의 착수 승인</h3><span class="rec">권고 · 승인</span></header>
+<p>담당자를 지정하고 착수일(D)을 정해 주십시오. 목표는 10영업일 이내 개발·시험 완료, 운영 반영은 변경 승인 후 D+30입니다.</p><div class="two"><div><h4>승인하면</h4><p>화면 쪽의 가장 큰 약점이 줄어듭니다. 필요한 인력과 공수는 아직 추정하지 않았으며 담당 부서의 산정이 필요합니다.</p></div><div><h4>보류하면</h4><p>약점이 남은 채로 운영됩니다. 다른 약점이 발견되면 피해가 커질 수 있습니다.</p></div></div></article><article class="decision"><header><span class="dno">D-2</span><h3>서버 안쪽 검증을 위한 자료와 시험 환경 제공</h3><span class="rec">권고 · 승인</span></header>
+<p>원본 소스, 부품 목록(SBOM)·잠금 파일, API 명세, 인증 계약, CDN·WAF·서버 설정, 마스킹한 로그, 격리 시험 환경, 전용 시험 계정 A·B를 제공해 주십시오. 비밀키·실제 토큰·실고객 정보는 제외합니다.</p><div class="two"><div><h4>승인하면</h4><p>고객정보 보호에 가장 중요한 서버 쪽 통제(인증, 권한, 반출 제한, 탐지)를 처음으로 검증할 수 있습니다.</p></div><div><h4>보류하면</h4><p>서버 쪽은 계속 "확인 못함" 상태로 남고 안전성 판단을 할 수 없습니다.</p></div></div></article><article class="decision"><header><span class="dno">D-3</span><h3>후속 점검 범위 확대 승인 (8개 사이트, 23개 주소)</h3><span class="rec">권고 · 승인 (운영 부서 확인 후)</span></header>
+<p>별도 목록의 사이트를 승인된 범위에서 점검하도록 허가하고, 각 시스템의 운영 여부와 담당자를 확인해 주십시오. 우선순위 "높음"은 GA 멤버십 연동 테스트 화면, GA 설치 가이드 PDF, GA 업무지원 메인 3건입니다.</p><div class="two"><div><h4>승인하면</h4><p>홈페이지 외의 업무 접점(협력사, 설계사 업무, 모바일)까지 점검 범위가 넓어집니다. 사고 사례에서 약점이 된 "뒷문"을 확인하게 됩니다.</p></div><div><h4>보류하면</h4><p>공식 홈페이지 밖의 시스템은 계속 점검되지 않은 채 남습니다.</p></div></div></article><article class="decision"><header><span class="dno">D-4</span><h3>남는 위험의 수용 기준 확정</h3><span class="rec">권고 · 승인</span></header>
+<p>기한 안에 해결되지 않는 항목은 영향 범위, 보완 통제, 책임자, 기한, 재검증 방법을 적어 승인 여부를 정해 주십시오.</p><div class="two"><div><h4>승인하면</h4><p>위험을 알고 관리하는 상태가 됩니다. 이 보고서 자체는 출시 승인서가 아닙니다.</p></div><div><h4>보류하면</h4><p>책임자 없이 방치되는 항목이 생길 수 있습니다.</p></div></div></article></div></section>
+<section id="plan" aria-labelledby="h-plan"><div class="section-head"><h2 id="h-plan">진행 계획</h2><p class="section-note">아래 기간은 착수와 자료 제공이 끝난 날을 D로 잡은 <strong>제안 일정</strong>입니다. 실제 업무 범위, 담당자, 일정은 소유 부서가 확정하며 약속된 완료일이 아닙니다.</p></div>
+<figure class="flow h"><figcaption>도식 3 · 자료 확보에서 운영 재검증까지의 진행 순서</figcaption><ol class="stepflow"><li><span class="sn">1</span><strong>범위와 자료 확보</strong><span class="when">D까지</span></li><li><span class="sn">2</span><strong>우선 경로 개선</strong><span class="when">D ~ D+10</span></li><li><span class="sn">3</span><strong>핵심 통제 검증</strong><span class="when">D+10 ~ D+20</span></li><li><span class="sn">4</span><strong>반영과 재검증</strong><span class="when">D+20 ~ D+30</span></li><li><span class="sn">5</span><strong>정기 운영</strong><span class="when">D+30 이후</span></li></ol></figure>
+<div class="tbl"><table class=""><thead><tr><th scope="col">단계</th><th scope="col">책임(권고)</th><th scope="col">시기</th><th scope="col">진행할 사항</th><th scope="col">완료 산출물</th></tr></thead><tbody><tr><td>1  범위와 자료 확보</td><td>CISO·자산 소유자</td><td>D까지</td><td>전체 외부 접점, 데이터 흐름, 담당자를 확정합니다. 원본 소스·잠금 파일·설정·마스킹 로그와 시험 계정 A/B를 준비합니다.</td><td>대상 목록, 권한 범위, 운영·시험 환경 차이, 자료 인수 목록</td></tr><tr><td>2  우선 경로 개선</td><td>프런트·인증·운영팀</td><td>D ~ D+10</td><td>F-07 텍스트 출력, F-10 목적지 제한, jQuery·Axios 정리. F-02·F-04·F-06 개선, F-08 계약 확인.</td><td>원본에 통합한 패치, 영향 분석, 정상 흐름 회귀 결과, 배포·복구안</td></tr><tr><td>3  핵심 통제 검증</td><td>백엔드·DB·보안관제</td><td>D+10 ~ D+20</td><td>서버 인증, 고객별 권한, 청약·파일, 세션 회수, 누적 반출 제한, 최소 권한, 탐지를 검증합니다. F-05 구조 결정.</td><td>시험별 기대·실제 결과, 비식별 증적, 미해결 위험과 책임자</td></tr><tr><td>4  반영과 재검증</td><td>변경 승인자·운영팀</td><td>D+20 ~ D+30</td><td>변경 절차에 따라 운영에 적용하고, CDN 최종 응답과 실제 브라우저, 인증·제휴 흐름을 다시 확인합니다.</td><td>적용 버전, 재검증 증적, 롤백 결과 또는 복구 가능성, 남는 위험 승인</td></tr><tr><td>5  정기 운영</td><td>보안·개발 책임자</td><td>D+30 이후</td><td>부품과 외부 접점이 바뀔 때 재평가하고, 공식 위협정보와 운영 로그를 대조하며 사고 훈련을 합니다.</td><td>자산 현행화, 예외 만료일, 재점검 일정, 경보·복구 훈련 기록</td></tr></tbody></table></div>
+<h3 class="sub">착수할 때 먼저 필요한 자료</h3><ul><li>프런트엔드·백엔드 소스와 빌드 버전, 잠금 파일과 부품 목록(SBOM)</li><li>API 명세와 인증·토큰 계약(갱신 증표 회전 여부 포함)</li><li>CDN·WAF·프록시·서버 설정, 외부 접점과 서비스 계정 권한 목록</li><li>마스킹한 로그, 격리 시험 환경, 전용 시험 계정(A·B)</li><li>비밀키, 실제 토큰, 실고객 원문은 보고 자료에 넣지 않습니다.</li></ul>
+<h3 class="sub">항목별 조치 관리표</h3>
+<div class="tbl"><table class=""><thead><tr><th scope="col">항목</th><th scope="col">원 판정</th><th scope="col">조치</th><th scope="col">권고 담당</th><th scope="col">목표</th></tr></thead><tbody><tr><td>F-07</td><td>수정 우선순위 높음</td><td>서버 오류 문구가 "글자"가 아니라 "HTML"로 화면에 삽입됨</td><td>프런트엔드·백엔드</td><td>D+10</td></tr><tr><td>F-03</td><td>방어 함수 결함 확인 (F-07과 같은 경로, 중복 합산 제외)</td><td>자체 제작 "문자 안전 변환 함수"에 오류가 있음</td><td>프런트엔드</td><td>D+10</td></tr><tr><td>F-10</td><td>수정 우선순위 높음 · 조건부 인증정보 노출 위험</td><td>로그인 증표(토큰)를 붙이기 전에 "받는 곳"을 정확히 확인하지 않음</td><td>프런트엔드·인증</td><td>D+10</td></tr><tr><td>F-02</td><td>중 위험 (잠정)</td><td>다른 사이트 안에 우리 화면을 끼워 넣는 것을 막는 "표지"가 없음</td><td>웹 운영·보안</td><td>D+10</td></tr><tr><td>F-01</td><td>중 위험 (잠정)</td><td>오래된 부품(jQuery 1.12.4)이 새 부품과 함께 로드됨</td><td>프런트엔드 개발·운영</td><td>D+10</td></tr><tr><td>F-09</td><td>의존성 개선 필요</td><td>구형 통신 부품(Axios 0.21.4)이 다른 사이트로도 확인 값을 복사할 수 있음</td><td>프런트엔드·인증</td><td>D+10</td></tr><tr><td>F-04</td><td>낮음 (잠정)</td><td>공개 화면 코드에 내부 서비스 주소가 그대로 적혀 있음</td><td>개발·배포 운영</td><td>D+10</td></tr><tr><td>F-06</td><td>낮음 (잠정)</td><td>광고 유입 정보를 "전체 주소"째로 저장하고 화면 기록에도 출력</td><td>프런트엔드·분석 운영</td><td>D+10</td></tr><tr><td>F-05</td><td>조건부 중 위험 (설계 검토 사항)</td><td>로그인 후 받은 증표를 화면 프로그램이 읽을 수 있는 곳에 보관</td><td>인증·백엔드</td><td>D+20</td></tr><tr><td>F-08</td><td>서버 계약 확인 필요</td><td>새로 받은 갱신용 증표를 이전 값으로 되돌려 저장하는 경로</td><td>인증·백엔드</td><td>D+20</td></tr></tbody></table></div></section>
+<section id="status-sec" aria-labelledby="h-status-sec"><div class="section-head"><h2 id="h-status-sec">검증 현황과 종료 조건</h2><p class="section-note">지금까지 무엇을 검증했고 무엇이 남았는지 표로 정리했습니다. "컴퓨터 안 재현 성공"은 코드가 그렇게 동작한다는 근거이며, 실제 사이트에 대한 공격 성공이 아닙니다.</p></div>
+<div class="tbl"><table class=""><thead><tr><th scope="col">검증 구분</th><th scope="col">결과</th><th scope="col">해석</th></tr></thead><tbody><tr><td>의심 코드의 컴퓨터 안 재현</td><td>함수 4건, 주소 2건, 전송 목적지 5건 등 선택한 코드 구문을 가짜 값으로 재현</td><td>코드 동작의 근거. 브라우저·서버에 대한 원격 공격 성공이 아님</td></tr><tr><td>수집 응답 조건 검사</td><td>기존 스냅샷 검사에서 7개 통과, 6개 실패</td><td>실패한 조건은 화면 삽입 제한, 구버전 참조, 내부 설정 등 개선이 필요한 항목에 대응</td></tr><tr><td>수정 예시 코드 시험</td><td>2026-10-29 재실행에서 모두 통과</td><td>컴퓨터 안 예시 검증. 운영 서비스를 수정했다는 증거가 아님</td></tr><tr><td>실제 서비스 적용</td><td>원본 소스 통합, 운영 배포, 수정 후 재수집 모두 미수행</td><td>완료 처리할 수 없음</td></tr><tr><td>실제 서버 방어 검증</td><td>시험 절차만 마련, 인증·권한·반출·탐지 시험은 미수행</td><td>안전성 판단을 위한 핵심 남은 작업</td></tr></tbody></table></div>
+<h3 class="sub">항목을 &quot;끝났다&quot;고 보는 기준</h3><p><strong>개발 완료와 보안 검증 완료를 구분합니다.</strong> 항목마다 담당자, 수정 내역과 배포 버전, 기대 결과, 실제 시험 증적, 부작용 검토, 승인자를 기록합니다. 예시 코드가 있거나 시험이 통과한 것만으로 항목을 종료하지 않습니다.</p><p>F-01·F-09는 실제 빌드와 실행 버전, F-02는 최종 응답 정책과 제휴 화면 호환성, F-03·F-07은 입력부터 화면까지의 안전한 출력, F-04는 공개 설정에서 내부 주소 제거, F-06은 허용되지 않은 값의 저장·출력 제거, F-05·F-08은 실제 서버의 증표 수명 관리, F-10은 실제 호출 경로의 전송 목적지 통제까지 확인합니다.</p><p>적용은 되었지만 검증이 남은 항목은 "적용 완료, 검증 대기"로 따로 표시합니다.</p>
+<h3 class="sub">업무가 멈추지 않게 하는 확인</h3><p>보안을 강화하다가 정상 업무가 막히지 않도록 로그인, 로그아웃, 본인확인, 전자서명, 청약, 제휴 화면, 캠페인 집계의 회귀 시험 범위를 정합니다. CSP 적용, 부품 교체, 쿠키 인증 전환은 연계 영향이 있어 단계적 적용과 되돌리기 계획이 필요합니다.</p><p>이번 점검에서는 응답 속도나 장애 복구 같은 안정성을 측정하지 않았습니다. HTTPS가 정상이고 화면이 열린다는 사실만으로 업무 연속성이 확인된 것은 아닙니다.</p></section>
+<section id="limits" aria-labelledby="h-limits"><div class="section-head"><h2 id="h-limits">점검 범위와 한계</h2></div>
+<ul><li>이 보고서는 <strong>공식 홈페이지의 공개 화면</strong>에 대한 결과입니다. 라이나 전체의 안전성을 판단하지 않습니다.</li><li>2026-10-28에 수집한 응답이 기준입니다. 그 이후의 변경은 반영되지 않았고, 이번 개정에서도 운영 사이트를 다시 점검하지 않았습니다.</li><li>로그인, 실제 고객 정보 접근, 서버 공격, 부하 시험, 프로그램 설치는 하지 않았습니다.</li><li>실제 침입, 로그인 정보 탈취, 고객정보 유출은 확인하지 못했습니다. 이것은 "없다"는 증명이 아닙니다.</li><li>법령 준수 여부나 제재 책임은 이 기술 점검만으로 판단하지 않습니다. 침해사고 발생 여부를 판단하는 포렌식 보고서도 아닙니다.</li><li>심각도 표현(높음·중간·낮음)은 고치는 순서를 정하기 위한 잠정 평가이며 점수(CVSS)나 침입 성공 판정이 아닙니다.</li></ul><h3 class="sub">판정 표현을 읽는 방법</h3><div class="tbl"><table class=""><thead><tr><th scope="col">표현</th><th scope="col">의미</th></tr></thead><tbody><tr><td>확인</td><td>수집한 응답, 코드 구문 또는 컴퓨터 안 시험에서 근거를 확보했다는 뜻입니다.</td></tr><tr><td>조건부 위험</td><td>다른 조건이 함께 맞으면 피해로 이어질 수 있지만, 전체 경로는 입증하지 못했다는 뜻입니다.</td></tr><tr><td>미확인 · 확인 못함 · 미수행</td><td>자료나 환경, 점검 범위의 한계로 판단하지 못했다는 뜻입니다. 안전하다는 뜻도, 결함이라는 뜻도 아닙니다.</td></tr><tr><td>수정 예시 코드</td><td>고치는 방법을 보여 주는 예시입니다. 실제 서비스에 적용된 수정이 아닙니다.</td></tr></tbody></table></div></section>
+<section id="glossary" aria-labelledby="h-glossary"><div class="section-head"><h2 id="h-glossary">용어 풀이</h2><p class="section-note">낯선 용어를 눌러 쉬운 설명을 볼 수 있습니다.</p></div><div class="terms"><details class="term"><summary>응답 헤더(보안 헤더)</summary><p>웹사이트가 화면을 보낼 때 함께 붙이는 안내문입니다. 택배 상자에 붙은 "취급 주의" 스티커처럼, 브라우저에게 화면을 어떻게 다뤄야 하는지 알려 줍니다.</p></details><details class="term"><summary>CSP (콘텐츠 보안 정책)</summary><p>"이 사이트에서는 허용한 출처의 프로그램만 실행하세요"라고 정하는 규칙입니다. 허용 명단 밖의 프로그램이 끼어들어도 실행되지 않게 합니다.</p></details><details class="term"><summary>X-Frame-Options · frame-ancestors</summary><p>"이 화면을 다른 사이트 안에 끼워 넣지 마세요"라는 표지입니다. 클릭재킹을 막습니다.</p></details><details class="term"><summary>클릭재킹</summary><p>보이지 않는 투명 화면을 덮어씌워 방문자가 다른 버튼을 누르도록 속이는 수법입니다.</p></details><details class="term"><summary>XSS (교차 사이트 스크립팅)</summary><p>사이트 화면에 악성 코드가 끼어들어 방문자의 브라우저에서 실행되는 공격입니다. 화면에 들어가는 글이 걸러지지 않을 때 가능합니다.</p></details><details class="term"><summary>토큰 (idToken · refreshToken)</summary><p>로그인했다는 것을 증명하는 디지털 출입증입니다. idToken은 일상 출입용, refreshToken은 출입증을 다시 발급받는 데 쓰는 증표입니다.</p></details><details class="term"><summary>API</summary><p>화면과 서버가 데이터를 주고받는 창구입니다. 고객 정보 조회 같은 기능이 이 창구를 통해 이루어집니다.</p></details><details class="term"><summary>라이브러리(부품) · jQuery · Axios</summary><p>개발자가 직접 만들지 않고 가져다 쓰는 공용 프로그램 부품입니다. 오래된 부품에 공개된 약점이 있으면 그것을 쓰는 모든 사이트가 영향을 받을 수 있습니다.</p></details><details class="term"><summary>CVE</summary><p>공개된 보안 약점에 붙는 국제 식별 번호입니다. 예: CVE-2020-11022.</p></details><details class="term"><summary>XSRF · CSRF</summary><p>사용자가 모르는 사이에 다른 사이트가 사용자 이름으로 요청을 보내는 공격과, 이를 막는 확인 값입니다.</p></details><details class="term"><summary>CORS</summary><p>브라우저가 다른 사이트의 데이터 요청을 허용할지 정하는 규칙입니다.</p></details><details class="term"><summary>출처(origin)</summary><p>프로토콜(https), 도메인, 포트를 합친 주소의 정확한 단위입니다. 주소에 특정 글자가 들어 있는 것과 다릅니다.</p></details><details class="term"><summary>HttpOnly · Secure · SameSite</summary><p>쿠키의 보호 속성입니다. HttpOnly는 화면 스크립트가 읽지 못하게, Secure는 암호화 연결에서만 보내게, SameSite는 다른 사이트 요청에 붙지 않게 합니다.</p></details><details class="term"><summary>HSTS</summary><p>브라우저에게 "이 사이트는 항상 암호화 연결(HTTPS)로만 접속하라"고 기억시키는 설정입니다.</p></details><details class="term"><summary>프로그램 묶음(번들) · JS</summary><p>화면을 움직이는 프로그램 파일입니다. 누구나 내려받아 읽을 수 있는 공개 정보입니다.</p></details><details class="term"><summary>innerHTML · v-html</summary><p>글을 화면에 넣을 때 HTML 코드로 해석해서 넣는 방식입니다. 글자로만 넣는 방식과 달리 코드가 실행될 수 있습니다.</p></details><details class="term"><summary>SBOM</summary><p>소프트웨어에 어떤 부품이 어떤 버전으로 들어 있는지 적은 목록입니다. 약점이 발표됐을 때 영향 범위를 빨리 찾을 수 있습니다.</p></details><details class="term"><summary>객체 권한</summary><p>"이 요청자가 이 고객·문서·계약 정보를 볼 권한이 있는가"를 서버가 개별 데이터마다 검사하는 것입니다.</p></details><details class="term"><summary>BFF · 서버 세션</summary><p>로그인 증표를 브라우저가 아닌 서버가 보관하고, 브라우저에는 읽을 수 없는 출입 쿠키만 주는 구조입니다.</p></details><details class="term"><summary>CDN · WAF</summary><p>CDN은 화면을 가까운 곳에서 빨리 전달하는 배달망이고, WAF는 의심스러운 요청을 걸러내는 방화벽입니다.</p></details><details class="term"><summary>로컬 재현 · 합성 데이터</summary><p>실제 사이트가 아닌 내 컴퓨터 안에서, 진짜 정보가 아닌 가짜 값으로 코드를 실행해 보는 시험입니다.</p></details><details class="term"><summary>회귀 시험</summary><p>고친 뒤에 기존 기능이 여전히 잘 동작하는지 확인하는 시험입니다.</p></details><details class="term"><summary>Report-Only (보고 전용 모드)</summary><p>규칙을 강제로 적용하지 않고 위반 사항만 기록하는 시험 운영 방식입니다. 정상 기능이 막히는지 미리 알 수 있습니다.</p></details></div></section>
+<section id="sources" aria-labelledby="h-sources"><div class="section-head"><h2 id="h-sources">근거 자료</h2><p class="section-note">아래 점검 기록은 이 보고서의 근거입니다. 파일 지문(SHA-256)은 내용이 바뀌지 않았는지 확인하는 용도이며 독립적인 서명이나 시각 증명이 아닙니다. 기록에는 비밀 값과 실제 로그인 정보가 들어 있지 않습니다.</p></div>
+<h3 class="sub">점검 기록</h3><ul><li>근거 1  1차 점검 기록 (F-01~F-04): 공개 응답 21개 주소의 헤더와 본문 지문, 컴퓨터 안 재현 결과</li><li>근거 2  추가 검증 기록 (F-05, F-06): 로그인 관련 프로그램 코드와 캠페인 처리 코드의 분석 결과</li><li>근거 3  침입 경로 검토 기록 (F-07~F-09): 오류 메시지 경로, 토큰 갱신, Axios 동작 분석 결과</li><li>근거 4  금융권 비교와 목적지 검사 기록 (F-10): 인증 정보 전송 목적지 검사 재현 결과</li><li>근거 5  방어 검증 절차 문서: 실제 서버에서 확인할 인증·권한·반출 제한 시험 방법과 합격 기준</li></ul>
+<h3 class="sub">외부 출처</h3><div class="tbl"><table><thead><tr><th scope="col">번호</th><th scope="col">출처</th><th scope="col">주소</th></tr></thead><tbody><tr><td>S1</td><td>금융위원회, 2026-10-14 금융권 침해사고 재발방지를 위한 제2차 긴급 상황대응 회의</td><td><a href="https://www.fsc.go.kr/po010105/87927" target="_blank" rel="noopener noreferrer">https://www.fsc.go.kr/po010105/87927</a></td></tr><tr><td>S2</td><td>CBS노컷뉴스, 2026-10-02 신한은행 대출모집인 조회 시스템과 개인정보 유출 보도</td><td><a href="https://www.nocutnews.co.kr/news/6586151" target="_blank" rel="noopener noreferrer">https://www.nocutnews.co.kr/news/6586151</a></td></tr><tr><td>S3</td><td>뉴스1, 2026-10-28 미래에셋생명 홈페이지 차단 및 고객정보 유출 조사 보도</td><td><a href="https://www.news1.kr/finance/insurance-card/6334573" target="_blank" rel="noopener noreferrer">https://www.news1.kr/finance/insurance-card/6334573</a></td></tr><tr><td>S4</td><td>조선비즈, 2026-10-28 대신증권 고객 38,490명 정보 유출 발표 보도</td><td><a href="https://biz.chosun.com/stock/stock_general/2026/10/28/YC2P4IBA55FHVE7IZFRDSBDXBE/" target="_blank" rel="noopener noreferrer">https://biz.chosun.com/stock/stock_general/2026/10/28/YC2P4IBA55FHVE7IZFRDSBDXBE/</a></td></tr><tr><td>S5</td><td>중앙일보, 2026-10-28 미래에셋자산운용 및 대신증권 등 침해 현황 보도</td><td><a href="https://www.joongang.co.kr/article/25473563" target="_blank" rel="noopener noreferrer">https://www.joongang.co.kr/article/25473563</a></td></tr><tr><td>S6</td><td>jQuery 공식 보안 권고 CVE-2020-11022, CVE-2020-11023 (영향 범위: 3.5.0 미만)</td><td><span class="muted">공식 문서 이름과 CVE 번호로 표기</span></td></tr><tr><td>S7</td><td>Axios 공식 0.28.0 릴리스 노트와 교차 출처 XSRF 수정 (CVE-2023-45857 관련)</td><td><span class="muted">공식 문서 이름과 CVE 번호로 표기</span></td></tr><tr><td>S8</td><td>OWASP Session Management Cheat Sheet, RFC 9700 (OAuth 2.0 보안 모범 관행)</td><td><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html</a></td></tr><tr><td>S9</td><td>OWASP DOM based XSS Prevention, Authorization Cheat Sheet</td><td><a href="https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html</a></td></tr></tbody></table></div>
+<p class="muted">S6, S7은 공식 권고·릴리스 문서의 이름과 CVE 번호로 표기했습니다. 필요하면 IT 담당자가 해당 번호로 공식 문서를 조회할 수 있습니다.</p></section>
+<footer class="foot"><p>라이나생명 공개 홈페이지 보안 점검 결과 및 조치 계획 · 응답 수집 2026-10-28 · 개정 2026-11-06 · 이 보고서는 출시 승인서가 아닙니다.</p></footer></div>
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var items = $$('.item'), status = $('#status'), clearBtn = $('#clear');
+  var names = { ok: '정상 관측', fix: '먼저 고칠 것', tidy: '함께 정리할 것', design: '설계·서버 확인' };
+  var active = null;
+
+  function setOpen(item, open) {
+    var b = $('.head', item), p = $('.panel', item);
+    b.setAttribute('aria-expanded', open ? 'true' : 'false'); p.hidden = !open;
+  }
+  function visibleItems() { return items.filter(function (i) { return !i.hidden; }); }
+  function render() {
+    items.forEach(function (i) { i.hidden = !!active && i.getAttribute('data-group') !== active; });
+    $$('.stat').forEach(function (s) { s.setAttribute('aria-pressed', s.getAttribute('data-filter') === active ? 'true' : 'false'); });
+    var n = visibleItems().length;
+    status.textContent = active ? ('"' + names[active] + '" ' + n + '개 항목을 표시 중입니다 (전체 ' + items.length + '개)') : ('전체 ' + items.length + '개 항목을 표시 중입니다');
+    clearBtn.hidden = !active;
+  }
+  items.forEach(function (item) {
+    $('.head', item).addEventListener('click', function () { setOpen(item, $('.panel', item).hidden); });
+  });
+  $$('.stat').forEach(function (s) {
+    s.addEventListener('click', function () {
+      var f = s.getAttribute('data-filter'); active = (active === f) ? null : f; render();
+      var d = $('#details'); if (d && active) d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  clearBtn.addEventListener('click', function () { active = null; render(); });
+  $('#open-all').addEventListener('click', function () { visibleItems().forEach(function (i) { setOpen(i, true); }); });
+  $('#close-all').addEventListener('click', function () { visibleItems().forEach(function (i) { setOpen(i, false); }); });
+
+  function openById(id) {
+    var el = document.getElementById('item-' + id); if (!el) return false;
+    if (el.hidden) { active = null; render(); }
+    setOpen(el, true); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return true;
+  }
+  $$('a.pri').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('data-open'); if (id && id !== 'SRV' && openById(id)) { e.preventDefault(); }
+    });
+  });
+  function fromHash() {
+    var m = /^#item-(.+)$/.exec(location.hash); if (m) openById(decodeURIComponent(m[1]));
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  $$('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = document.getElementById(btn.getAttribute('data-target')); if (!pre) return;
+      var text = pre.innerText;
+      function done(ok) { var old = btn.textContent; btn.textContent = ok ? '복사됨' : '선택됨'; setTimeout(function () { btn.textContent = old; }, 1500); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
+      try { navigator.clipboard.writeText(text).then(function () { done(true); }, fallback); } catch (e) { fallback(); }
+    });
+  });
+  window.addEventListener('beforeprint', function () { items.forEach(function (i) { setOpen(i, true); }); });
+  render(); fromHash();
+})();
+</script>
