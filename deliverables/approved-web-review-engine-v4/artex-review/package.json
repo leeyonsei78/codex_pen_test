@@ -1,0 +1,8 @@
+{
+  "name": "approved-web-review",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs", "engine": "node engine-control.mjs start", "test": "node --test scan.test.mjs server.test.mjs", "plan": "node scan.mjs --config example.json" },
+  "engines": { "node": ">=22" }
+}

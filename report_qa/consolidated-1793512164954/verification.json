@@ -1,0 +1,40 @@
+{
+  "output": "deliverables/라이나생명_관련사이트_보안점검_통합보완보고서_20261101.html",
+  "outputSha256": "7464ced54a249be8fd308bb0c5cf99467e0addfa9e09c98621021a4572d5373e",
+  "originalPreserved": true,
+  "representatives": 8,
+  "detailUrls": 27,
+  "candidates": 5,
+  "matrixRows": 44,
+  "matrixCounts": {
+    "PASS": 8,
+    "N/A": 1,
+    "BLOCKED": 33,
+    "NOT_RUN": 2
+  },
+  "serviceTestsThisReport": 0,
+  "networkRequestsThisReport": 0,
+  "testReruns": 0,
+  "referenceTestsFromPreviousRun": [
+    {
+      "name": "existing-32",
+      "pass": 32,
+      "exitCode": 0
+    },
+    {
+      "name": "existing-7",
+      "pass": 7,
+      "exitCode": 0
+    }
+  ],
+  "reconcileCounts": {
+    "protected": 26,
+    "artifacts": 15
+  },
+  "checks": {
+    "rows": true,
+    "trialIds": true,
+    "noExternalDependencies": true
+  },
+  "createdAt": "2026-11-01T05:49:24.957Z"
+}

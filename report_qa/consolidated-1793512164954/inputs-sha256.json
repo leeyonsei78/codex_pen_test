@@ -1,0 +1,54 @@
+[
+  {
+    "file": "deliverables/라이나생명_관련사이트_보안점검_보고서_20261031.html",
+    "sha256": "8b0287cbc1d90db8a53ae4ee1ec2cba3800ac7819d153f9a54d3ebb1b03bf777"
+  },
+  {
+    "file": "report_qa/site-report/normalized-data.json",
+    "sha256": "0c647d22d5de40da30128690a47449b989bf38ab5d6286924137b31e657e6dfc"
+  },
+  {
+    "file": "report_qa/site-report/availability-20261031.json",
+    "sha256": "4d97a8713e4fb58175434118bc86e7f2bc80809687aeb4f2a4f8d8d3411a4ce2"
+  },
+  {
+    "file": "audit/recheck-20261101/responses.json",
+    "sha256": "340135bad8addcec0602ef40f5c7269af799bf5fbd6a739afcf81535c057e947"
+  },
+  {
+    "file": "audit/recheck-20261101/assets.json",
+    "sha256": "2eb5d84321d1e0211bfd2f0b37e4bcad88c936c6f488e6d1f513190f730b8806"
+  },
+  {
+    "file": "deliverables/라이나생명_후속_보안점검_20261101.md",
+    "sha256": "6f5c7eafbd708b8a5dd9b89c59d42d3e11793d3b371d65acf71e036edf8f7257"
+  },
+  {
+    "file": "deliverables/라이나생명_검증재개_준비현황_20261101.md",
+    "sha256": "a8fe2b9c3655eb158fa84e558eef9af625f808c34f725554ac652c2ecb9a8a69"
+  },
+  {
+    "file": "audit/handoff-reconciliation-20261101T143920133/reconciliation.json",
+    "sha256": "61ae166d1fefef5dd837357a02abf06998898a59a72b0a4b0ed8cfa9f23b6ebe"
+  },
+  {
+    "file": "audit/resume-preparation-20261101T053123175Z/results.json",
+    "sha256": "0bed565ffc2e4563fe1333cba1cad071f30987418565d8ca3914ef2a9e2ee3c8"
+  },
+  {
+    "file": "C:/codex_pen_test1/라이나생명_4차_검증매트릭스.csv",
+    "sha256": "b0fda73d5bef73eb3a83ac4b911af76ee04b6673e602967327eea28260310dd5"
+  },
+  {
+    "file": "C:/codex_pen_test1/라이나생명_4차_핵심보안검증보고서.md",
+    "sha256": "5f73c1f7a0c2a75573658d853395a51e519d8fc2fe5de69c7f9c63633aef571d"
+  },
+  {
+    "file": "C:/codex_pen_test1/라이나생명_4차_차단사항및자료요청.md",
+    "sha256": "dc6490cf8a4f3d3be1dbdb2a8705c5cfada0d5fe9ba74c6bf673be0fa76dd35d"
+  },
+  {
+    "file": "C:/codex_pen_test1/라이나생명_4차_출시보안검토의견.md",
+    "sha256": "b75062fd30c5f9dcec9d2eeef20f038c841fa8343053ca619c5167a9f23ec6fc"
+  }
+]

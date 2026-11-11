@@ -1,0 +1,14 @@
+{
+  "project": "사내 웹서비스 사전 점검",
+  "approval": {
+    "id": "CHANGE-2026-001",
+    "approved": false,
+    "operator": "홍길동 / 정보보안팀",
+    "validFrom": "2026-11-10T09:00:00+09:00",
+    "validUntil": "2026-11-10T18:00:00+09:00"
+  },
+  "allowedOrigins": ["https://staging.example.com"],
+  "targets": ["https://staging.example.com/", "https://staging.example.com/login"],
+  "intervalMs": 1500,
+  "timeoutMs": 10000
+}

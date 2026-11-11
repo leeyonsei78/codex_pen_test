@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "representativeSites": 8,
+  "uniqueDetailUrls": 27,
+  "sourceUrlsPreserved": true,
+  "localLinksValid": true,
+  "filtersAndReset": true,
+  "printRestoresAllRows": true,
+  "noExternalDependencies": true
+}

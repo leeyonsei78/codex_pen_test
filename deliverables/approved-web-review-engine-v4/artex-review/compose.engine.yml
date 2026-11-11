@@ -1,0 +1,34 @@
+name: artex-review-engine
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: artex
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run engine-control.mjs start first}
+      POSTGRES_DB: artex
+    volumes:
+      - engine_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U artex -d artex"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: "no"
+  artex:
+    image: ghcr.io/jiwoochris/artex-global:v0.3.15-global.1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ARTEX_PG_DSN: postgres://artex:${POSTGRES_PASSWORD}@postgres:5432/artex?sslmode=disable
+      ARTEX_SETUP_TOKEN: ${ARTEX_SETUP_TOKEN:?Run engine-control.mjs start first}
+      ARTEX_LANG: ko
+    ports:
+      - "127.0.0.1:8790:8787"
+      - "127.0.0.1:8791:8788"
+    volumes:
+      - ./engine-runtime/data:/app/data
+      - ./engine/skills:/app/skills:ro
+    restart: "no"
+volumes:
+  engine_pgdata:

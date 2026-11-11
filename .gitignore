@@ -1,0 +1,15 @@
+# Local synchronization workspaces
+/.sync-work/
+/.sync-tools/
+
+# Browser profiles created for report previews
+/report_qa/site-report/chrome-profile/
+/report_qa/site-report/edge-profile/
+
+# ARTEX persistent runtime data and local credentials
+**/engine-runtime/
+**/node_modules/
+**/.env
+**/.env.local
+**/.env.*.local
+**/.secrets/

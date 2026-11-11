@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-01T05:20:05.501Z",
+  "scope": "Offline request configuration only. No requests, browser preflight, real tokens or attacker-controlled application entry points were used.",
+  "reviewedSource": "[OMITTED; see original evidence]",
+  "axiosHelpers": {
+    "joinUrl": "function(t,e){return t&&!n(e)?o(t,e):e}",
+    "isAbsolute": "function(t){return/^([a-z][a-z\\d\\+\\-\\.]*:)?\\/\\//i.test(t)}",
+    "combineUrls": "function(t,e){return e?t.replace(/\\/+$/,\"\")+\"/\"+e.replace(/^\\/+/,\"\"):t}"
+  },
+  "cases": [
+    {
+      "inputUrl": "/api/local-only",
+      "originalEffectiveUrl": "https://api.example.invalid/api/local-only",
+      "originalAuthorization": "[SYNTHETIC_REDACTED]",
+      "outsideApprovedOrigin": false,
+      "fixedGuard": {
+        "allowed": true,
+        "url": "https://api.example.invalid/api/local-only"
+      }
+    },
+    {
+      "inputUrl": "/public/local-only",
+      "originalEffectiveUrl": "https://api.example.invalid/public/local-only",
+      "originalAuthorization": "[SYNTHETIC_REDACTED]",
+      "outsideApprovedOrigin": false,
+      "fixedGuard": {
+        "allowed": true,
+        "url": "https://api.example.invalid/public/local-only"
+      }
+    },
+    {
+      "inputUrl": "https://audit.example.invalid/api/local-only",
+      "originalEffectiveUrl": "https://audit.example.invalid/api/local-only",
+      "originalAuthorization": "[SYNTHETIC_REDACTED]",
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    },
+    {
+      "inputUrl": "//audit.example.invalid/public/local-only",
+      "originalEffectiveUrl": "//audit.example.invalid/public/local-only",
+      "originalAuthorization": "[SYNTHETIC_REDACTED]",
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    },
+    {
+      "inputUrl": "https://audit.example.invalid/local-only",
+      "originalEffectiveUrl": "https://audit.example.invalid/local-only",
+      "originalAuthorization": null,
+      "outsideApprovedOrigin": true,
+      "fixedGuard": {
+        "allowed": false
+      }
+    }
+  ],
+  "actualAttackerUrlControlVerified": false,
+  "actualNetworkHeaderTransmissionVerified": false,
+  "realCredentialsUsed": false
+}

@@ -1,0 +1,203 @@
+TAP version 13
+# Subtest: normal relative API requests resolve to the approved origin
+ok 1 - normal relative API requests resolve to the approved origin
+  ---
+  duration_ms: 1.0711
+  type: 'test'
+  ...
+# Subtest: absolute and scheme-relative outside destinations are rejected before token attachment
+ok 2 - absolute and scheme-relative outside destinations are rejected before token attachment
+  ---
+  duration_ms: 1.3076
+  type: 'test'
+  ...
+# Subtest: similar host strings, different ports and HTTP downgrade are not trusted
+ok 3 - similar host strings, different ports and HTTP downgrade are not trusted
+  ---
+  duration_ms: 0.3605
+  type: 'test'
+  ...
+# Subtest: userinfo URLs are rejected and cannot serve as origin allowlisting tricks
+ok 4 - userinfo URLs are rejected and cannot serve as origin allowlisting tricks
+  ---
+  duration_ms: 0.2392
+  type: 'test'
+  ...
+# Subtest: non-HTTP(S) destinations and malformed configuration are rejected
+ok 5 - non-HTTP(S) destinations and malformed configuration are rejected
+  ---
+  duration_ms: 0.4478
+  type: 'test'
+  ...
+# Subtest: matching HTTPS origin is accepted after standard URL normalization
+ok 6 - matching HTTPS origin is accepted after standard URL normalization
+  ---
+  duration_ms: 0.2654
+  type: 'test'
+  ...
+# Subtest: unrelated query and fragment values do not enter stored campaign data
+ok 7 - unrelated query and fragment values do not enter stored campaign data
+  ---
+  duration_ms: 2.8117
+  type: 'test'
+  ...
+# Subtest: source parameter is matched by exact name
+ok 8 - source parameter is matched by exact name
+  ---
+  duration_ms: 0.1957
+  type: 'test'
+  ...
+# Subtest: fragment-only campaign marker does not count as query data
+ok 9 - fragment-only campaign marker does not count as query data
+  ---
+  duration_ms: 0.2666
+  type: 'test'
+  ...
+# Subtest: approved campaign codes are kept in stable order
+ok 10 - approved campaign codes are kept in stable order
+  ---
+  duration_ms: 0.2868
+  type: 'test'
+  ...
+# Subtest: HTML markup, email values and oversized campaign fields are excluded
+ok 11 - HTML markup, email values and oversized campaign fields are excluded
+  ---
+  duration_ms: 0.4219
+  type: 'test'
+  ...
+# Subtest: duplicate source parameters produce at most one stored source
+ok 12 - duplicate source parameters produce at most one stored source
+  ---
+  duration_ms: 0.2729
+  type: 'test'
+  ...
+# Subtest: legacy raw query persistence is removed and only tab-scoped campaign data is set
+ok 13 - legacy raw query persistence is removed and only tab-scoped campaign data is set
+  ---
+  duration_ms: 0.5544
+  type: 'test'
+  ...
+# Subtest: non-HTTP input is rejected
+ok 14 - non-HTTP input is rejected
+  ---
+  duration_ms: 0.5914
+  type: 'test'
+  ...
+# Subtest: HTML metacharacters are encoded in one pass using valid entities
+ok 15 - HTML metacharacters are encoded in one pass using valid entities
+  ---
+  duration_ms: 0.985
+  type: 'test'
+  ...
+# Subtest: angle brackets are not double encoded by the encoder itself
+ok 16 - angle brackets are not double encoded by the encoder itself
+  ---
+  duration_ms: 0.138
+  type: 'test'
+  ...
+# Subtest: unlisted inert event markup is treated as text as well
+ok 17 - unlisted inert event markup is treated as text as well
+  ---
+  duration_ms: 0.1183
+  type: 'test'
+  ...
+# Subtest: existing entity text stays literal when inserted into HTML once
+ok 18 - existing entity text stays literal when inserted into HTML once
+  ---
+  duration_ms: 0.1066
+  type: 'test'
+  ...
+# Subtest: ordinary Korean text, number and empty values remain usable
+ok 19 - ordinary Korean text, number and empty values remain usable
+  ---
+  duration_ms: 0.2138
+  type: 'test'
+  ...
+# Subtest: reference middleware applies headers to normal and error responses locally
+    # Subtest: / (200)
+    ok 1 - / (200)
+      ---
+      duration_ms: 14.7815
+      type: 'test'
+      ...
+    # Subtest: /login (200)
+    ok 2 - /login (200)
+      ---
+      duration_ms: 3.4075
+      type: 'test'
+      ...
+    # Subtest: /missing (404)
+    ok 3 - /missing (404)
+      ---
+      duration_ms: 2.4852
+      type: 'test'
+      ...
+    # Subtest: /existing-policy (200)
+    ok 4 - /existing-policy (200)
+      ---
+      duration_ms: 3.3085
+      type: 'test'
+      ...
+    1..4
+ok 20 - reference middleware applies headers to normal and error responses locally
+  ---
+  duration_ms: 49.6031
+  type: 'test'
+  ...
+# Subtest: known error code produces reviewed text rather than the raw server message
+ok 21 - known error code produces reviewed text rather than the raw server message
+  ---
+  duration_ms: 1.0185
+  type: 'test'
+  ...
+# Subtest: unknown error does not echo HTML or synthetic private values
+ok 22 - unknown error does not echo HTML or synthetic private values
+  ---
+  duration_ms: 0.1401
+  type: 'test'
+  ...
+# Subtest: object prototype names do not select values from the error map
+ok 23 - object prototype names do not select values from the error map
+  ---
+  duration_ms: 0.1808
+  type: 'test'
+  ...
+# Subtest: inherited errorCode is not used as a trusted response field
+ok 24 - inherited errorCode is not used as a trusted response field
+  ---
+  duration_ms: 0.1351
+  type: 'test'
+  ...
+# Subtest: missing and malformed error objects have a stable non-sensitive fallback
+ok 25 - missing and malformed error objects have a stable non-sensitive fallback
+  ---
+  duration_ms: 0.1635
+  type: 'test'
+  ...
+# Subtest: recognized codes are matched exactly and raw body text never determines the message
+ok 26 - recognized codes are matched exactly and raw body text never determines the message
+  ---
+  duration_ms: 0.1234
+  type: 'test'
+  ...
+# Subtest: reference ingress blocks test page before application; retains prior policy on normal and error pages
+ok 27 - reference ingress blocks test page before application; retains prior policy on normal and error pages
+  ---
+  duration_ms: 54.9297
+  type: 'test'
+  ...
+# Subtest: session cookie configuration defines exactly one SameSite policy and mandates Secure and HttpOnly
+ok 28 - session cookie configuration defines exactly one SameSite policy and mandates Secure and HttpOnly
+  ---
+  duration_ms: 1.3357
+  type: 'test'
+  ...
+1..28
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 269.3281

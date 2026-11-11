@@ -1,0 +1,440 @@
+{
+  "checkedAt": "2026-10-31T05:35:10.580Z",
+  "method": "Fixed listed URLs only, sequential HEAD, manual redirects, no credentials or form submissions; DNS lookup per hostname",
+  "dns": [
+    {
+      "hostname": "www.lina.co.kr",
+      "addresses": [
+        {
+          "address": "18.67.51.105",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.14",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.19",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.79",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "m.lina.co.kr",
+      "addresses": [
+        {
+          "address": "3.168.178.6",
+          "family": 4
+        },
+        {
+          "address": "3.168.178.101",
+          "family": 4
+        },
+        {
+          "address": "3.168.178.82",
+          "family": 4
+        },
+        {
+          "address": "3.168.178.85",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "ga.lina.co.kr",
+      "addresses": [
+        {
+          "address": "175.126.235.35",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "srm.lina.co.kr",
+      "addresses": [
+        {
+          "address": "182.162.106.152",
+          "family": 4
+        },
+        {
+          "address": "182.162.106.145",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "direct.lina.co.kr",
+      "addresses": [
+        {
+          "address": "54.230.62.116",
+          "family": 4
+        },
+        {
+          "address": "54.230.62.99",
+          "family": 4
+        },
+        {
+          "address": "54.230.62.128",
+          "family": 4
+        },
+        {
+          "address": "54.230.62.22",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "mdirect.lina.co.kr",
+      "addresses": [
+        {
+          "address": "18.67.51.111",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.13",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.38",
+          "family": 4
+        },
+        {
+          "address": "18.67.51.125",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "blog.lina.co.kr",
+      "addresses": [
+        {
+          "address": "183.111.161.151",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "blog.direct.lina.co.kr",
+      "addresses": [
+        {
+          "address": "192.0.78.24",
+          "family": 4
+        },
+        {
+          "address": "192.0.78.25",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "nhrsite.com",
+      "addresses": [
+        {
+          "address": "112.175.184.81",
+          "family": 4
+        }
+      ]
+    },
+    {
+      "hostname": "linakorea-career2025.com",
+      "error": "ENOTFOUND"
+    },
+    {
+      "hostname": "linakorea.careerlink.kr",
+      "addresses": [
+        {
+          "address": "216.150.16.129",
+          "family": 4
+        },
+        {
+          "address": "216.150.1.129",
+          "family": 4
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "S1",
+      "url": "https://www.lina.co.kr/",
+      "at": "2026-10-31T05:35:10.727Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "S2",
+      "url": "https://m.lina.co.kr/",
+      "at": "2026-10-31T05:35:11.438Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "S3",
+      "url": "https://ga.lina.co.kr/",
+      "at": "2026-10-31T05:35:12.032Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "S4",
+      "url": "https://srm.lina.co.kr/",
+      "at": "2026-10-31T05:35:12.908Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html;charset=UTF-8"
+    },
+    {
+      "id": "S5",
+      "url": "https://direct.lina.co.kr/",
+      "at": "2026-10-31T05:35:13.845Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "S6",
+      "url": "https://mdirect.lina.co.kr/",
+      "at": "2026-10-31T05:35:14.654Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "S7",
+      "url": "https://blog.lina.co.kr/",
+      "at": "2026-10-31T05:35:15.322Z",
+      "error": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR",
+      "message": "fetch failed"
+    },
+    {
+      "id": "S8",
+      "url": "https://blog.direct.lina.co.kr/",
+      "at": "2026-10-31T05:35:15.851Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "U01",
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN999M0.html",
+      "at": "2026-10-31T05:35:16.951Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U02",
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P1C.html",
+      "at": "2026-10-31T05:35:17.530Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U03",
+      "url": "https://ga.lina.co.kr/help/gap/GA/setupguide.pdf",
+      "at": "2026-10-31T05:35:18.340Z",
+      "status": 200,
+      "location": null,
+      "contentType": "application/pdf"
+    },
+    {
+      "id": "U04",
+      "url": "https://ga.lina.co.kr/webfw/html/nawlogout2.html",
+      "at": "2026-10-31T05:35:19.157Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U05",
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P14.html",
+      "at": "2026-10-31T05:35:19.744Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U06",
+      "url": "https://ga.lina.co.kr/wizvera/veraport/install20/install_lina.html",
+      "at": "2026-10-31T05:35:20.618Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U07",
+      "url": "https://ga.lina.co.kr/webfw/html/nawmain.html",
+      "at": "2026-10-31T05:35:21.176Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U08",
+      "url": "https://srm.lina.co.kr/login.do",
+      "at": "2026-10-31T05:35:21.725Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html;charset=UTF-8"
+    },
+    {
+      "id": "U09",
+      "url": "https://www.lina.co.kr/service/health-screening",
+      "at": "2026-10-31T05:35:22.369Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "U10",
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1596",
+      "at": "2026-10-31T05:35:22.977Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "U11",
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1464",
+      "at": "2026-10-31T05:35:23.573Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "U12",
+      "url": "https://direct.lina.co.kr/event/detail?evtSeq=1266",
+      "at": "2026-10-31T05:35:24.168Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "U13",
+      "url": "https://ga.lina.co.kr/webfw/html/nawcheck.html",
+      "at": "2026-10-31T05:35:24.771Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U14",
+      "url": "https://ga.lina.co.kr/gap/serviceEndpoint/initech/extension/install/install.html",
+      "at": "2026-10-31T05:35:25.328Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U15",
+      "url": "https://www.lina.co.kr/lib/wizvera/delfino/install20/install.html?P_name=Delfino&module=G3&url=close",
+      "at": "2026-10-31T05:35:26.039Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "U16",
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN610M0.html",
+      "at": "2026-10-31T05:35:26.588Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U17",
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN602M0.html",
+      "at": "2026-10-31T05:35:27.177Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U18",
+      "url": "https://ga.lina.co.kr/html/gap/GM/GMU661M0.html?preWinId=GMU661M1&tkn=",
+      "at": "2026-10-31T05:35:27.719Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html"
+    },
+    {
+      "id": "U19",
+      "url": "https://srm.lina.co.kr/spLogin.do",
+      "at": "2026-10-31T05:35:28.266Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html;charset=UTF-8"
+    },
+    {
+      "id": "U20",
+      "url": "https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/terms_181205.pdf",
+      "at": "2026-10-31T05:35:28.859Z",
+      "status": 200,
+      "location": null,
+      "contentType": "application/pdf"
+    },
+    {
+      "id": "U21",
+      "url": "https://www.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/etc/comparison_181205.pdf",
+      "at": "2026-10-31T05:35:29.453Z",
+      "status": 200,
+      "location": null,
+      "contentType": "application/pdf"
+    },
+    {
+      "id": "U22",
+      "url": "https://m.lina.co.kr/upload/cms/customer/notice/__icsFiles/artimage/email_pdf/finance_service_clause_170614.pdf",
+      "at": "2026-10-31T05:35:29.988Z",
+      "status": 200,
+      "location": null,
+      "contentType": "application/pdf"
+    },
+    {
+      "id": "U23",
+      "url": "https://m.lina.co.kr/upload/docs/claim/exam/A1294.pdf",
+      "at": "2026-10-31T05:35:30.566Z",
+      "status": 200,
+      "location": null,
+      "contentType": "application/pdf"
+    },
+    {
+      "id": "C01",
+      "url": "https://nhrsite.com/lina25/",
+      "at": "2026-10-31T05:35:31.129Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "C02",
+      "url": "https://linakorea-career2025.com/",
+      "at": "2026-10-31T05:35:31.679Z",
+      "error": "ENOTFOUND",
+      "message": "fetch failed"
+    },
+    {
+      "id": "C03",
+      "url": "https://linakorea.careerlink.kr/",
+      "at": "2026-10-31T05:35:32.211Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "C05",
+      "url": "https://m.lina.co.kr/telanding/ob/Quiz_DT_reward.htm?adtype=LMS_C3&event=C3_T23_SSGPAY&media=20240807_30_BASKIN&source=DENTAL",
+      "at": "2026-10-31T05:35:32.888Z",
+      "status": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8"
+    }
+  ]
+}

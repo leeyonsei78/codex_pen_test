@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "url": "https://www.lina.co.kr/lib/jquery-3.7.1.js",
+      "time": "2026-11-01T04:44:54.954Z",
+      "status": 200,
+      "bytes": 285314,
+      "sha256": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+      "banner": "/*!\n * jQuery JavaScript Library v3.7.1\n * https://jquery.com/\n *\n * Copyright OpenJS Foundation and other contributors\n * Released under the MIT license\n * https://jquery.org/license\n *\n * Date: 2023"
+    },
+    {
+      "url": "https://www.lina.co.kr/lib/jquery/1.12.4/jquery.min.js",
+      "time": "2026-11-01T04:44:56.108Z",
+      "status": 200,
+      "bytes": 97163,
+      "sha256": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+      "banner": "/*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license */\n!function(a,b){\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)"
+    }
+  ]
+}

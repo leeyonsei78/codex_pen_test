@@ -1,0 +1,2360 @@
+{
+  "at": "2026-11-01T05:31:23.924Z",
+  "scope": "Existing local reference tests only; no new tests, no service API execution",
+  "externalRequests": 0,
+  "serviceFunctionalTests": 0,
+  "gitHead": "79c6850ac1d8998680aff33fe0f18fc3a4763248",
+  "serviceVersion": "UNKNOWN; Git HEAD is audit repository only",
+  "runs": [
+    {
+      "name": "existing-32",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "audit/tests/local-regression.test.mjs",
+        "audit/tests/campaign-regression.test.mjs",
+        "audit/tests/public-error-regression.test.mjs",
+        "audit/tests/approved-api-url.test.mjs",
+        "lina_header_review_20261030/release-policy.test.mjs"
+      ],
+      "cwd": "C:\\codex_pen_test\\",
+      "runtime": "v22.16.0",
+      "start": "2026-11-01T05:31:23.287Z",
+      "end": "2026-11-01T05:31:23.617Z",
+      "exitCode": 0,
+      "signal": null,
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "name": "existing-7",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "audit/followup-20261101-01/headers.test.mjs"
+      ],
+      "cwd": "C:\\codex_pen_test\\",
+      "runtime": "v22.16.0",
+      "start": "2026-11-01T05:31:23.618Z",
+      "end": "2026-11-01T05:31:23.821Z",
+      "exitCode": 0,
+      "signal": null,
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  ],
+  "sourceManifest": [
+    {
+      "file": "audit/tests/local-regression.test.mjs",
+      "sha256": "ff110c752d0d72d882afe8e8e47b18226eb373b5eab3b534e4eb121450f20451"
+    },
+    {
+      "file": "audit/tests/campaign-regression.test.mjs",
+      "sha256": "a41657aba956834ce2bc6ee4412d28854cf7e570e08e6b8891aeab0c4daf4a4b"
+    },
+    {
+      "file": "audit/tests/public-error-regression.test.mjs",
+      "sha256": "1b45834ab1298d7ec4808f740b5bb739b558ec8f7ca8aea81d39282aad6a0722"
+    },
+    {
+      "file": "audit/tests/approved-api-url.test.mjs",
+      "sha256": "581d7195f7be0ae5a4ee956c3032894b3350e47fff39a4b2f854fc2904ecdb54"
+    },
+    {
+      "file": "lina_header_review_20261030/release-policy.test.mjs",
+      "sha256": "1308a7609c18bb7995123783e62c2d5a7219806c1c5af10d8bab328e1bd9dac5"
+    },
+    {
+      "file": "audit/followup-20261101-01/headers.test.mjs",
+      "sha256": "3849339f801d0ddd250f17042f22cda901d3c65dd8f586aab4349e72d2ebb3dd"
+    },
+    {
+      "file": "audit/fixes/safe-html.mjs",
+      "sha256": "18b5cff1ddb1f2df7ec72218c91d2c2eb85a4a3395d998c864aa8e885b8916dd"
+    },
+    {
+      "file": "audit/fixes/security-headers.cjs",
+      "sha256": "72a98cfde6d30358bd1586e34513cdd073045f4f5c3458ded7dc2eb6581ce389"
+    },
+    {
+      "file": "audit/fixes/campaign-params.mjs",
+      "sha256": "83137fec153138e72a2db068cc8dfc2ce4c513995f81ed4b2d9acc3cd3842b07"
+    },
+    {
+      "file": "audit/fixes/public-error-message.mjs",
+      "sha256": "e1137388bab01992604e3baedc418d822a0a1816e3db48928739ac1eb13e1e3a"
+    },
+    {
+      "file": "audit/fixes/approved-api-url.mjs",
+      "sha256": "e10ea88c87abcde8d3495669a904e3a8bc3af32978bdba3f42b12ffee362ab61"
+    },
+    {
+      "file": "lina_header_review_20261030/release-policy.example.mjs",
+      "sha256": "a511ddf37d21be6542a9f1ae3567d4c3d13b2b8bf5849ab07a626e4c83445e84"
+    },
+    {
+      "file": "audit/followup-20261101-01/security-headers-preserve.cjs",
+      "sha256": "aa71fba8cbf02bbf3b318020df4bfa0097ae5e067729b3e164e577a1a6e9d8c7"
+    }
+  ],
+  "preservation": {
+    "scope": "Existing 187-file manifest; NOT the unavailable fourth-review 26-file manifest",
+    "before": [
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A01.html",
+        "expected": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+        "actual": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A02.js",
+        "expected": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+        "actual": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A03.js",
+        "expected": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+        "actual": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\local-verification.json",
+        "expected": "f6162173604df149ef1cf7061e263a27d608d9329171cee8e62c423a3e9e4687",
+        "actual": "f6162173604df149ef1cf7061e263a27d608d9329171cee8e62c423a3e9e4687",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\responses.json",
+        "expected": "31903200294b47873e417343d207d3e4d7946c052a2187dfc64a8391a6b06f5f",
+        "actual": "31903200294b47873e417343d207d3e4d7946c052a2187dfc64a8391a6b06f5f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\ai-review-evidence\\local-review.json",
+        "expected": "9acaf80ca45b850dc8dcdcdb2f527d83bff888a25686661d58f7a80c3a64a845",
+        "actual": "9acaf80ca45b850dc8dcdcdb2f527d83bff888a25686661d58f7a80c3a64a845",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\ai-security-review.ko.md",
+        "expected": "a6a715b219b3c343d26afbf08b981ea695334a2ed08bbc8e0d66962619751a66",
+        "actual": "a6a715b219b3c343d26afbf08b981ea695334a2ed08bbc8e0d66962619751a66",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\check-snapshot.mjs",
+        "expected": "b8efb6c11912a001f31c282e31c9b7338225010a3a4914ea26397ed7984f9290",
+        "actual": "b8efb6c11912a001f31c282e31c9b7338225010a3a4914ea26397ed7984f9290",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-additional.mjs",
+        "expected": "9665e9da6d7ff740b8d0708711e97612edb437a79f9f52bdc35cb6f9b28fe8e7",
+        "actual": "9665e9da6d7ff740b8d0708711e97612edb437a79f9f52bdc35cb6f9b28fe8e7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-path-review.mjs",
+        "expected": "da0b31e1fbcbf26d43b37dbe014e9f633766ee1bc58a81e91b6e010bce745d19",
+        "actual": "da0b31e1fbcbf26d43b37dbe014e9f633766ee1bc58a81e91b6e010bce745d19",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-public.mjs",
+        "expected": "ff8fb05be88fee4633fec557637052676c23b8e5d6d8a977e1e28b5c268ec02e",
+        "actual": "ff8fb05be88fee4633fec557637052676c23b8e5d6d8a977e1e28b5c268ec02e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-retired-candidates.mjs",
+        "expected": "92d4e27b8d4907d306d461c632c3db0710cfd72274c9d497e83a96bdb3633139",
+        "actual": "92d4e27b8d4907d306d461c632c3db0710cfd72274c9d497e83a96bdb3633139",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review-evidence\\2026-10-30T10-37-32-783Z\\public-response.html",
+        "expected": "b4e8a37ddb7e24207032269f6b309db69604ba435f2d1fb6e27b234b39893e7c",
+        "actual": "b4e8a37ddb7e24207032269f6b309db69604ba435f2d1fb6e27b234b39893e7c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review-evidence\\2026-10-30T10-37-32-783Z\\result.json",
+        "expected": "1e395cc294f2ea55e84781238530594188f0cb5ed3961c7db4263ca07c922c30",
+        "actual": "1e395cc294f2ea55e84781238530594188f0cb5ed3961c7db4263ca07c922c30",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review.ko.md",
+        "expected": "42f3a424e7ae5025888dfe6d343e8e5f4099cfc7868ae1dc0684f1a34058aa3e",
+        "actual": "42f3a424e7ae5025888dfe6d343e8e5f4099cfc7868ae1dc0684f1a34058aa3e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\defense-validation.ko.md",
+        "expected": "32e8c76d5e68688f6757bf8a1abc1c98a8b1ba8b2ab3cacd8033556de97fe57a",
+        "actual": "32e8c76d5e68688f6757bf8a1abc1c98a8b1ba8b2ab3cacd8033556de97fe57a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\baseline.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\marker.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\results.json",
+        "expected": "95722363e26194533f71a0958c4d86c1e2e9da935a4126c3a128a78c10c87861",
+        "actual": "95722363e26194533f71a0958c4d86c1e2e9da935a4126c3a128a78c10c87861",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-result.ko.md",
+        "expected": "00572e159a25497db1f508e9a7503f08d05872a22c3b6af01e24aa84d59ae35c",
+        "actual": "00572e159a25497db1f508e9a7503f08d05872a22c3b6af01e24aa84d59ae35c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-xss-evidence\\2026-10-30T10-20-31-325Z\\audit_probe.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-xss-evidence\\2026-10-30T10-20-31-325Z\\results.json",
+        "expected": "371d7b5e79908df072740b396123673cedf28c70b0902368aaa6a18d08b66eda",
+        "actual": "371d7b5e79908df072740b396123673cedf28c70b0902368aaa6a18d08b66eda",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\local-reproduction.json",
+        "expected": "276241965de8ef177dc279d27443fcf0725b864ea26df6125c7248ed2231fba6",
+        "actual": "276241965de8ef177dc279d27443fcf0725b864ea26df6125c7248ed2231fba6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R01.html",
+        "expected": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+        "actual": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R02.html",
+        "expected": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+        "actual": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R03.html",
+        "expected": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+        "actual": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R04.html",
+        "expected": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+        "actual": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R05.txt",
+        "expected": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+        "actual": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R06.txt",
+        "expected": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+        "actual": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R07.txt",
+        "expected": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+        "actual": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R08.txt",
+        "expected": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+        "actual": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R09.txt",
+        "expected": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+        "actual": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\responses.json",
+        "expected": "3941da0c4d2129bd268261dc6d45e9737575c47a76d98610e272f2764d23459d",
+        "actual": "3941da0c4d2129bd268261dc6d45e9737575c47a76d98610e272f2764d23459d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\snapshot-checks.json",
+        "expected": "abb78b39015ae113618358af8d0c363711988dc153fdf3277bb478918e4a34d5",
+        "actual": "abb78b39015ae113618358af8d0c363711988dc153fdf3277bb478918e4a34d5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\financial-incidents-comparison.ko.md",
+        "expected": "946946fd5d933671575efb96868a9008c7730a89929eaf10f4b7e4eebb443135",
+        "actual": "946946fd5d933671575efb96868a9008c7730a89929eaf10f4b7e4eebb443135",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\financial-review-evidence\\api-destination.json",
+        "expected": "c6ae3459908df665256f0d27a7756c82cb39e3ac9cd779b69ad50c9075a231f9",
+        "actual": "c6ae3459908df665256f0d27a7756c82cb39e3ac9cd779b69ad50c9075a231f9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\approved-api-url.mjs",
+        "expected": "e10ea88c87abcde8d3495669a904e3a8bc3af32978bdba3f42b12ffee362ab61",
+        "actual": "e10ea88c87abcde8d3495669a904e3a8bc3af32978bdba3f42b12ffee362ab61",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\campaign-params.mjs",
+        "expected": "83137fec153138e72a2db068cc8dfc2ce4c513995f81ed4b2d9acc3cd3842b07",
+        "actual": "83137fec153138e72a2db068cc8dfc2ce4c513995f81ed4b2d9acc3cd3842b07",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\nuxt.config.example.js",
+        "expected": "8664a2391c913cd1339852ce7c219e91c3ed9917200de7eaabc602d619475b5d",
+        "actual": "8664a2391c913cd1339852ce7c219e91c3ed9917200de7eaabc602d619475b5d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\PlainMessage.example.vue",
+        "expected": "10d98a12c6ad28816a4debc8f9eacd48d91f586367fb09dd50bce5867cb8936a",
+        "actual": "10d98a12c6ad28816a4debc8f9eacd48d91f586367fb09dd50bce5867cb8936a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\public-error-message.mjs",
+        "expected": "e1137388bab01992604e3baedc418d822a0a1816e3db48928739ac1eb13e1e3a",
+        "actual": "e1137388bab01992604e3baedc418d822a0a1816e3db48928739ac1eb13e1e3a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\safe-html.mjs",
+        "expected": "18b5cff1ddb1f2df7ec72218c91d2c2eb85a4a3395d998c864aa8e885b8916dd",
+        "actual": "18b5cff1ddb1f2df7ec72218c91d2c2eb85a4a3395d998c864aa8e885b8916dd",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\security-headers.cjs",
+        "expected": "72a98cfde6d30358bd1586e34513cdd073045f4f5c3458ded7dc2eb6581ce389",
+        "actual": "72a98cfde6d30358bd1586e34513cdd073045f4f5c3458ded7dc2eb6581ce389",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\intrusion-review.ko.md",
+        "expected": "bdf20ca3cad6ef102f9f970e9032bfe71efe762ec72e04d5e8f08855819b9843",
+        "actual": "bdf20ca3cad6ef102f9f970e9032bfe71efe762ec72e04d5e8f08855819b9843",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nhrsite-review-evidence\\2026-10-30T10-31-12-727Z\\public-response.html",
+        "expected": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "actual": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nhrsite-review-evidence\\2026-10-30T10-31-12-727Z\\result.json",
+        "expected": "c866ba83c48cb99409d40204376e137050525f057a088c0b7a46ea0158fdee04",
+        "actual": "c866ba83c48cb99409d40204376e137050525f057a088c0b7a46ea0158fdee04",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review-evidence\\2026-10-30T10-38-18-718Z\\public-response.html",
+        "expected": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "actual": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review-evidence\\2026-10-30T10-38-18-718Z\\result.json",
+        "expected": "3b1507823fffa4441481003ca7b8314b1600bdc86522c95fc5fbf7e2997e71a8",
+        "actual": "3b1507823fffa4441481003ca7b8314b1600bdc86522c95fc5fbf7e2997e71a8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review.ko.md",
+        "expected": "2be6d61acbcc5049c1be9d3a825490e96bb3eab112e1b45cea43ffe147e75a35",
+        "actual": "2be6d61acbcc5049c1be9d3a825490e96bb3eab112e1b45cea43ffe147e75a35",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-review-evidence\\public-response.html",
+        "expected": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "actual": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-review-evidence\\result.json",
+        "expected": "8a85daf542021408af1032310c0969f776b83bccd948f6c9f623c222416dcb96",
+        "actual": "8a85daf542021408af1032310c0969f776b83bccd948f6c9f623c222416dcb96",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P01.js",
+        "expected": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c",
+        "actual": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P02.js",
+        "expected": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee",
+        "actual": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P03.js",
+        "expected": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+        "actual": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P04.js",
+        "expected": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+        "actual": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\responses.json",
+        "expected": "9b64885870daba649427ecb856c7395e1d6284b46181c18e955dfa1ee8aa1757",
+        "actual": "9b64885870daba649427ecb856c7395e1d6284b46181c18e955dfa1ee8aa1757",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\local-path-verification.json",
+        "expected": "79842ebaf00ddfe4a8b982785e379697538ee54c8f0aa59080e7594c5bf933e9",
+        "actual": "79842ebaf00ddfe4a8b982785e379697538ee54c8f0aa59080e7594c5bf933e9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P01.js",
+        "expected": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+        "actual": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P02.js",
+        "expected": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767",
+        "actual": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P03.js",
+        "expected": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698",
+        "actual": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P04.js",
+        "expected": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6",
+        "actual": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P05.js",
+        "expected": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786",
+        "actual": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P06.js",
+        "expected": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21",
+        "actual": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\responses.json",
+        "expected": "c230738940fdb690c1313a1d8f4c47ec5d4a450b234d483b2b1e76cf7882ed8f",
+        "actual": "c230738940fdb690c1313a1d8f4c47ec5d4a450b234d483b2b1e76cf7882ed8f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\probe-authorized-direct.mjs",
+        "expected": "f3b3dc3a56bcfde7febb195c8d0d957a75ef4ac506fabae5a9a36ffde299cbfc",
+        "actual": "f3b3dc3a56bcfde7febb195c8d0d957a75ef4ac506fabae5a9a36ffde299cbfc",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\probe-authorized-xss.mjs",
+        "expected": "a7f71b48f6d17b42da04a0ccf01cc25dc41bb5fae3eb4b6a1415995326f80625",
+        "actual": "a7f71b48f6d17b42da04a0ccf01cc25dc41bb5fae3eb4b6a1415995326f80625",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\psamain-review-evidence\\2026-10-30T10-26-04-937Z\\public-response.html",
+        "expected": "f6b3866322ce57955525daeafb1c4b434d98a26e4874a38aa057e324a67cbbcc",
+        "actual": "f6b3866322ce57955525daeafb1c4b434d98a26e4874a38aa057e324a67cbbcc",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\psamain-review-evidence\\2026-10-30T10-26-04-937Z\\result.json",
+        "expected": "874a9f6b660c817df29cc1415257b128e24be354c4d1a6abf7d1588e1c8dfba4",
+        "actual": "874a9f6b660c817df29cc1415257b128e24be354c4d1a6abf7d1588e1c8dfba4",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\README.md",
+        "expected": "f0233ba6eea82e80aeffcabf297eba0b51e08be6f781e623d6d93bbea99dd4c6",
+        "actual": "f0233ba6eea82e80aeffcabf297eba0b51e08be6f781e623d6d93bbea99dd4c6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\assets.json",
+        "expected": "2eb5d84321d1e0211bfd2f0b37e4bcad88c936c6f488e6d1f513190f730b8806",
+        "actual": "2eb5d84321d1e0211bfd2f0b37e4bcad88c936c6f488e6d1f513190f730b8806",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\local-current-helper.json",
+        "expected": "d8b425ad53ee57c43c432dcc9fb96c09906044cc9319ce1672f2d6210ff571b2",
+        "actual": "d8b425ad53ee57c43c432dcc9fb96c09906044cc9319ce1672f2d6210ff571b2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\responses.json",
+        "expected": "340135bad8addcec0602ef40f5c7269af799bf5fbd6a739afcf81535c057e947",
+        "actual": "340135bad8addcec0602ef40f5c7269af799bf5fbd6a739afcf81535c057e947",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\verification.json",
+        "expected": "dba76a4a34e735fc66fc836e1cc8fdd417c1e09e9f096151169da9e98a0bb5db",
+        "actual": "dba76a4a34e735fc66fc836e1cc8fdd417c1e09e9f096151169da9e98a0bb5db",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101.mjs",
+        "expected": "13a7126bfeb99020b7b52085d2dc0f98143508276d734997d8a53e5f7f75749e",
+        "actual": "13a7126bfeb99020b7b52085d2dc0f98143508276d734997d8a53e5f7f75749e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-assets-20261101.mjs",
+        "expected": "b4a91f1e0e9ffadd423f8994b848055bfd8b91358efe15504f0f26a956210521",
+        "actual": "b4a91f1e0e9ffadd423f8994b848055bfd8b91358efe15504f0f26a956210521",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\report-additional.ko.md",
+        "expected": "63cab6e75953cbb9971dbab66ff1b7272fa3ec5e6c21167f0734ab8b1ed52a69",
+        "actual": "63cab6e75953cbb9971dbab66ff1b7272fa3ec5e6c21167f0734ab8b1ed52a69",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\report.ko.md",
+        "expected": "a8df542dd14b47fb5b7f8dec6321e848e2b5ca1ab6e6c33b6ff465b9ec3ff856",
+        "actual": "a8df542dd14b47fb5b7f8dec6321e848e2b5ca1ab6e6c33b6ff465b9ec3ff856",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\reproduce.mjs",
+        "expected": "c90fd50035e3259d04e57a6b0e1ef3e4962b95c3574f9f3a74890c2c8ac8b36e",
+        "actual": "c90fd50035e3259d04e57a6b0e1ef3e4962b95c3574f9f3a74890c2c8ac8b36e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C01.html",
+        "expected": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "actual": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C03.html",
+        "expected": "b397a000b67ca31b478f1ce86c718428a0d97bd3e9a7595584f69d0426468c95",
+        "actual": "b397a000b67ca31b478f1ce86c718428a0d97bd3e9a7595584f69d0426468c95",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C04.html",
+        "expected": "13817ec8d548c3acff848ebe6ede0257007ecb70d388188913201c95d640a8ed",
+        "actual": "13817ec8d548c3acff848ebe6ede0257007ecb70d388188913201c95d640a8ed",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C05.html",
+        "expected": "845c8f49b42c39797bb4ab5368fc854dfa16aa28aa65794a4accefb11d48ed09",
+        "actual": "845c8f49b42c39797bb4ab5368fc854dfa16aa28aa65794a4accefb11d48ed09",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\results.json",
+        "expected": "f97b90c487411330b8372ce4bf8c8eaab86ced6e8813d50747d965ffd18d0577",
+        "actual": "f97b90c487411330b8372ce4bf8c8eaab86ced6e8813d50747d965ffd18d0577",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-search-log.md",
+        "expected": "f9bedf6ab7d21bf9412090bc2eef5cd9e9ce54d3165b3f28c5ef8ae6b245a967",
+        "actual": "f9bedf6ab7d21bf9412090bc2eef5cd9e9ce54d3165b3f28c5ef8ae6b245a967",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-ai-readiness.mjs",
+        "expected": "1d0a9af4948a8976d420cb579bd5a361ed7f0429b7df9b1bb98ed2667327dae2",
+        "actual": "1d0a9af4948a8976d420cb579bd5a361ed7f0429b7df9b1bb98ed2667327dae2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-company-about-public.mjs",
+        "expected": "9c48513f6111ad980aa322d0f2f130489de62b6cf763056303b4e6f01ee1d2d2",
+        "actual": "9c48513f6111ad980aa322d0f2f130489de62b6cf763056303b4e6f01ee1d2d2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-nhrsite-public.mjs",
+        "expected": "4c089f98c3fd33db5b5f5543f6ef9270c989bd6ffbdbaf80e2aba3252301894c",
+        "actual": "4c089f98c3fd33db5b5f5543f6ef9270c989bd6ffbdbaf80e2aba3252301894c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-nmall-additional-public.mjs",
+        "expected": "4a5fcd11ceaec9494cb883e0fd0e328332bbc80b36dead7713f3c66acef20fac",
+        "actual": "4a5fcd11ceaec9494cb883e0fd0e328332bbc80b36dead7713f3c66acef20fac",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-psamain-public.mjs",
+        "expected": "fa380d73c1d080b2ebddcbeda41daa8f9fab55a7108b13ff5260edc483aa1991",
+        "actual": "fa380d73c1d080b2ebddcbeda41daa8f9fab55a7108b13ff5260edc483aa1991",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\summarize-recheck-20261101.mjs",
+        "expected": "da92f1adb69d90f0c8a55f1fe3f3d0728fb3ca4caa032565a463b91d7a1c4184",
+        "actual": "da92f1adb69d90f0c8a55f1fe3f3d0728fb3ca4caa032565a463b91d7a1c4184",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\approved-api-url.test.mjs",
+        "expected": "581d7195f7be0ae5a4ee956c3032894b3350e47fff39a4b2f854fc2904ecdb54",
+        "actual": "581d7195f7be0ae5a4ee956c3032894b3350e47fff39a4b2f854fc2904ecdb54",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\campaign-regression.test.mjs",
+        "expected": "a41657aba956834ce2bc6ee4412d28854cf7e570e08e6b8891aeab0c4daf4a4b",
+        "actual": "a41657aba956834ce2bc6ee4412d28854cf7e570e08e6b8891aeab0c4daf4a4b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\local-regression.test.mjs",
+        "expected": "ff110c752d0d72d882afe8e8e47b18226eb373b5eab3b534e4eb121450f20451",
+        "actual": "ff110c752d0d72d882afe8e8e47b18226eb373b5eab3b534e4eb121450f20451",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\public-error-regression.test.mjs",
+        "expected": "1b45834ab1298d7ec4808f740b5bb739b558ec8f7ca8aea81d39282aad6a0722",
+        "actual": "1b45834ab1298d7ec4808f740b5bb739b558ec8f7ca8aea81d39282aad6a0722",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-additional.mjs",
+        "expected": "7e68b3269d13768d7b96b197fc8150d7d730603915810cba15758b8cf9594742",
+        "actual": "7e68b3269d13768d7b96b197fc8150d7d730603915810cba15758b8cf9594742",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-api-destination.mjs",
+        "expected": "752990731356a9e1d7b4d89e7fe5f85d607cda7504d65cb6e3df9f0c217bf4b3",
+        "actual": "752990731356a9e1d7b4d89e7fe5f85d607cda7504d65cb6e3df9f0c217bf4b3",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-intrusion-paths.mjs",
+        "expected": "7dcb7960bd66ad46680d0d4e335cbb1fa6ba126bf5f83e6963bb410d8e69f5a7",
+        "actual": "7dcb7960bd66ad46680d0d4e335cbb1fa6ba126bf5f83e6963bb410d8e69f5a7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\build-html-report.mjs",
+        "expected": "ee969ddffc7c6ff4dc774951bac347215bb3c746567c7cb7af58f77fadae3d64",
+        "actual": "ee969ddffc7c6ff4dc774951bac347215bb3c746567c7cb7af58f77fadae3d64",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_1.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_10.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_11.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_12.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_13.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_14.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_15.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_16.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_17.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_18.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_19.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_2.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_20.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_21.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_22.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_23.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_24.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_25.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_26.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_27.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_28.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_29.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_3.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_30.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_31.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_4.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_5.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_6.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_7.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_8.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_9.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_1.html",
+        "expected": "e313ef954d6955d5793f7c5cba215429d54335f4466456a7111e1be667da2ef8",
+        "actual": "e313ef954d6955d5793f7c5cba215429d54335f4466456a7111e1be667da2ef8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_14.html",
+        "expected": "b4586fe43227f5994e2fdd4b873b7b48fc4ab951d90eef3dd7962b982ef03453",
+        "actual": "b4586fe43227f5994e2fdd4b873b7b48fc4ab951d90eef3dd7962b982ef03453",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_15.html",
+        "expected": "e05fc377d34e40188f6f6f97acb83e865c1d2caa152e8b7128135612f41e8632",
+        "actual": "e05fc377d34e40188f6f6f97acb83e865c1d2caa152e8b7128135612f41e8632",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_16.html",
+        "expected": "3fd7a819040d5669a1b1abbf9ede32e6e272174655287cd0063b8d062d93711b",
+        "actual": "3fd7a819040d5669a1b1abbf9ede32e6e272174655287cd0063b8d062d93711b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_22.html",
+        "expected": "6cc5d25b36411caafd2692651204ecdafdf8bde63117392d24d2d742e280b7a1",
+        "actual": "6cc5d25b36411caafd2692651204ecdafdf8bde63117392d24d2d742e280b7a1",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_3.html",
+        "expected": "96036c195dac22da1b4172a0d459fd2d5c7f9a84d94a4d115426ed23976baca0",
+        "actual": "96036c195dac22da1b4172a0d459fd2d5c7f9a84d94a4d115426ed23976baca0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_9.html",
+        "expected": "ca1ff188b9098eb8532a4df1bf21ad6fa2dd321e54a8265fc958453e308c76ee",
+        "actual": "ca1ff188b9098eb8532a4df1bf21ad6fa2dd321e54a8265fc958453e308c76ee",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\results.json",
+        "expected": "15888880ec5cc55f85499fcdf0778fe2889f073f0ba3c8374481f2498b4f1d4d",
+        "actual": "15888880ec5cc55f85499fcdf0778fe2889f073f0ba3c8374481f2498b4f1d4d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_1.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_10.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_11.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_12.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_13.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_14.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_15.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_16.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_17.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_18.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_19.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_2.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_20.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_21.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_22.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_23.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_24.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_25.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_26.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_27.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_28.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_29.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_3.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_30.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_31.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_4.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_5.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_6.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_7.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_8.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_9.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\local-test-results.txt",
+        "expected": "4716a5f2a74c6cd0196a55a26834508a4099dc80321d32d238a48f64838c6ce9",
+        "actual": "4716a5f2a74c6cd0196a55a26834508a4099dc80321d32d238a48f64838c6ce9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\node-public-review\\results.json",
+        "expected": "231dabf84544805177150e51eb954b460321ba9da6f28ae5bc8911860a3bcd75",
+        "actual": "231dabf84544805177150e51eb954b460321ba9da6f28ae5bc8911860a3bcd75",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\release-policy.example.mjs",
+        "expected": "a511ddf37d21be6542a9f1ae3567d4c3d13b2b8bf5849ab07a626e4c83445e84",
+        "actual": "a511ddf37d21be6542a9f1ae3567d4c3d13b2b8bf5849ab07a626e4c83445e84",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\release-policy.test.mjs",
+        "expected": "1308a7609c18bb7995123783e62c2d5a7219806c1c5af10d8bab328e1bd9dac5",
+        "actual": "1308a7609c18bb7995123783e62c2d5a7219806c1c5af10d8bab328e1bd9dac5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\results.json",
+        "expected": "f8ca9e45367b8c94f19704fef60b110026c59ca89edf68e35ebec1a215ceee46",
+        "actual": "f8ca9e45367b8c94f19704fef60b110026c59ca89edf68e35ebec1a215ceee46",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\review-pages.mjs",
+        "expected": "0d8e6dccae1e26e8205dc356f77e71da26574ff317946f27a4f40e4148b5b9d2",
+        "actual": "0d8e6dccae1e26e8205dc356f77e71da26574ff317946f27a4f40e4148b5b9d2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\review-public.mjs",
+        "expected": "4eb60773b24597432f5f1c7ac8af3acb61d1d88336024a496a5d6c4fa19d3f7f",
+        "actual": "4eb60773b24597432f5f1c7ac8af3acb61d1d88336024a496a5d6c4fa19d3f7f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\targets.txt",
+        "expected": "a7c0a6d2c3b4f150c278974941de43c43cb865b0666e36863fdb17137e756a17",
+        "actual": "a7c0a6d2c3b4f150c278974941de43c43cb865b0666e36863fdb17137e756a17",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\URL별_결과.md",
+        "expected": "79aff5c5938e34e303eafa016f4a1b807d75089c01f4de68e772fe4b8b0d7bd7",
+        "actual": "79aff5c5938e34e303eafa016f4a1b807d75089c01f4de68e772fe4b8b0d7bd7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\점검결과.md",
+        "expected": "6b22be962a42f3412636275f6d86ed254326933836ec2706e3b8f88ed72f14d5",
+        "actual": "6b22be962a42f3412636275f6d86ed254326933836ec2706e3b8f88ed72f14d5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\출시전_재점검.md",
+        "expected": "a7c03db40c660d52adc769307586a3bdd1fecbd1add2a0ef8816de9eee730401",
+        "actual": "a7c03db40c660d52adc769307586a3bdd1fecbd1add2a0ef8816de9eee730401",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_검색노출_종료후보_보안점검_2026-10-30.md",
+        "expected": "f58cbcc54a9cccedea51e3ed7706cb5c62e1e9a8160fc5e7d70273ef24c64504",
+        "actual": "f58cbcc54a9cccedea51e3ed7706cb5c62e1e9a8160fc5e7d70273ef24c64504",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_관련사이트_보안점검_보고서_20261031.html",
+        "expected": "8b0287cbc1d90db8a53ae4ee1ec2cba3800ac7819d153f9a54d3ebb1b03bf777",
+        "actual": "8b0287cbc1d90db8a53ae4ee1ec2cba3800ac7819d153f9a54d3ebb1b03bf777",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서.docx",
+        "expected": "332b4834ca2fe317222d8f852a66233b085e05c5d9c7983f6a984ebdecbb58aa",
+        "actual": "332b4834ca2fe317222d8f852a66233b085e05c5d9c7983f6a984ebdecbb58aa",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서_1.docx",
+        "expected": "4db03a0833146d0e887e2afdd276a99e77c791584fbf509076bfd56a238ffc1a",
+        "actual": "4db03a0833146d0e887e2afdd276a99e77c791584fbf509076bfd56a238ffc1a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서_최종.docx",
+        "expected": "cfa1cadd0f8c2699cbe2d30c81305357b47adab2d2dcfbae327ddc934d813f7d",
+        "actual": "cfa1cadd0f8c2699cbe2d30c81305357b47adab2d2dcfbae327ddc934d813f7d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_전체주소_사이트목록.docx",
+        "expected": "bf0339418729f2886e63f96a8a534dca64e45e93568ff9afa1bf87272cf05298",
+        "actual": "bf0339418729f2886e63f96a8a534dca64e45e93568ff9afa1bf87272cf05298",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_출시전_보안점검_20261101.md",
+        "expected": "13d756c9105f1a9d9f1330cd399eed54f25c2659a7d2089ac208b2443895de88",
+        "actual": "13d756c9105f1a9d9f1330cd399eed54f25c2659a7d2089ac208b2443895de88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_출시전_보안점검_보고서_20261030.html",
+        "expected": "58826057f42a76165e2d69f71d3489b26dfc11c8ab7d383df9efb8370b49c1f7",
+        "actual": "58826057f42a76165e2d69f71d3489b26dfc11c8ab7d383df9efb8370b49c1f7",
+        "status": "MATCH"
+      }
+    ],
+    "after": [
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A01.html",
+        "expected": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+        "actual": "af4b468f7d1624c142f55cd5367a0d8b1fefe54f791a0036f30ef3087b8699da",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A02.js",
+        "expected": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+        "actual": "fecc922091de44794d9976c0746947ec167f61f1dde91eefa261d58f96458ed1",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\A03.js",
+        "expected": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+        "actual": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\local-verification.json",
+        "expected": "f6162173604df149ef1cf7061e263a27d608d9329171cee8e62c423a3e9e4687",
+        "actual": "f6162173604df149ef1cf7061e263a27d608d9329171cee8e62c423a3e9e4687",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\additional-evidence\\responses.json",
+        "expected": "31903200294b47873e417343d207d3e4d7946c052a2187dfc64a8391a6b06f5f",
+        "actual": "31903200294b47873e417343d207d3e4d7946c052a2187dfc64a8391a6b06f5f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\ai-review-evidence\\local-review.json",
+        "expected": "9acaf80ca45b850dc8dcdcdb2f527d83bff888a25686661d58f7a80c3a64a845",
+        "actual": "9acaf80ca45b850dc8dcdcdb2f527d83bff888a25686661d58f7a80c3a64a845",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\ai-security-review.ko.md",
+        "expected": "a6a715b219b3c343d26afbf08b981ea695334a2ed08bbc8e0d66962619751a66",
+        "actual": "a6a715b219b3c343d26afbf08b981ea695334a2ed08bbc8e0d66962619751a66",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\check-snapshot.mjs",
+        "expected": "b8efb6c11912a001f31c282e31c9b7338225010a3a4914ea26397ed7984f9290",
+        "actual": "b8efb6c11912a001f31c282e31c9b7338225010a3a4914ea26397ed7984f9290",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-additional.mjs",
+        "expected": "9665e9da6d7ff740b8d0708711e97612edb437a79f9f52bdc35cb6f9b28fe8e7",
+        "actual": "9665e9da6d7ff740b8d0708711e97612edb437a79f9f52bdc35cb6f9b28fe8e7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-path-review.mjs",
+        "expected": "da0b31e1fbcbf26d43b37dbe014e9f633766ee1bc58a81e91b6e010bce745d19",
+        "actual": "da0b31e1fbcbf26d43b37dbe014e9f633766ee1bc58a81e91b6e010bce745d19",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-public.mjs",
+        "expected": "ff8fb05be88fee4633fec557637052676c23b8e5d6d8a977e1e28b5c268ec02e",
+        "actual": "ff8fb05be88fee4633fec557637052676c23b8e5d6d8a977e1e28b5c268ec02e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\collect-retired-candidates.mjs",
+        "expected": "92d4e27b8d4907d306d461c632c3db0710cfd72274c9d497e83a96bdb3633139",
+        "actual": "92d4e27b8d4907d306d461c632c3db0710cfd72274c9d497e83a96bdb3633139",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review-evidence\\2026-10-30T10-37-32-783Z\\public-response.html",
+        "expected": "b4e8a37ddb7e24207032269f6b309db69604ba435f2d1fb6e27b234b39893e7c",
+        "actual": "b4e8a37ddb7e24207032269f6b309db69604ba435f2d1fb6e27b234b39893e7c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review-evidence\\2026-10-30T10-37-32-783Z\\result.json",
+        "expected": "1e395cc294f2ea55e84781238530594188f0cb5ed3961c7db4263ca07c922c30",
+        "actual": "1e395cc294f2ea55e84781238530594188f0cb5ed3961c7db4263ca07c922c30",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\company-about-review.ko.md",
+        "expected": "42f3a424e7ae5025888dfe6d343e8e5f4099cfc7868ae1dc0684f1a34058aa3e",
+        "actual": "42f3a424e7ae5025888dfe6d343e8e5f4099cfc7868ae1dc0684f1a34058aa3e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\defense-validation.ko.md",
+        "expected": "32e8c76d5e68688f6757bf8a1abc1c98a8b1ba8b2ab3cacd8033556de97fe57a",
+        "actual": "32e8c76d5e68688f6757bf8a1abc1c98a8b1ba8b2ab3cacd8033556de97fe57a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\baseline.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\marker.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-evidence\\2026-10-30T10-18-40-090Z\\results.json",
+        "expected": "95722363e26194533f71a0958c4d86c1e2e9da935a4126c3a128a78c10c87861",
+        "actual": "95722363e26194533f71a0958c4d86c1e2e9da935a4126c3a128a78c10c87861",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-probe-result.ko.md",
+        "expected": "00572e159a25497db1f508e9a7503f08d05872a22c3b6af01e24aa84d59ae35c",
+        "actual": "00572e159a25497db1f508e9a7503f08d05872a22c3b6af01e24aa84d59ae35c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-xss-evidence\\2026-10-30T10-20-31-325Z\\audit_probe.html",
+        "expected": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "actual": "9177d28ce5288877558559a2fee9518a1a510933e0a8f2c0fa783da46b6f0bc6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\direct-xss-evidence\\2026-10-30T10-20-31-325Z\\results.json",
+        "expected": "371d7b5e79908df072740b396123673cedf28c70b0902368aaa6a18d08b66eda",
+        "actual": "371d7b5e79908df072740b396123673cedf28c70b0902368aaa6a18d08b66eda",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\local-reproduction.json",
+        "expected": "276241965de8ef177dc279d27443fcf0725b864ea26df6125c7248ed2231fba6",
+        "actual": "276241965de8ef177dc279d27443fcf0725b864ea26df6125c7248ed2231fba6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R01.html",
+        "expected": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+        "actual": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R02.html",
+        "expected": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+        "actual": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R03.html",
+        "expected": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+        "actual": "caeadad37a22e9441a397974f2ab4e07045e6c51565b52bf7356c52ee4e365d9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R04.html",
+        "expected": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+        "actual": "808f27ba90b9f6332ea94a94333d46439a0b0241b0353e63d2cb98f9e5c704b8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R05.txt",
+        "expected": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+        "actual": "78a85aca2f0b110c29e0d2b137e09f0a1fb7a8e554b499f740d6744dc8962cfe",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R06.txt",
+        "expected": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+        "actual": "668b046d12db350ccba6728890476b3efee53b2f42dbb84743e5e9f1ae0cc404",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R07.txt",
+        "expected": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+        "actual": "4c4861c245cc1c9e56be1c49f332de3cf9555f5f7ddfc0b14be4cd90f1c6777d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R08.txt",
+        "expected": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+        "actual": "9359086f9b2068df6beda96eb0a5ad12ac94d323ff4ab305b8907a9b24ab5c2f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\R09.txt",
+        "expected": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+        "actual": "1ba8d1f39986d73858f6cb32378882469025cc42735b838a79efa32b4d7a75b0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\responses.json",
+        "expected": "3941da0c4d2129bd268261dc6d45e9737575c47a76d98610e272f2764d23459d",
+        "actual": "3941da0c4d2129bd268261dc6d45e9737575c47a76d98610e272f2764d23459d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\evidence\\snapshot-checks.json",
+        "expected": "abb78b39015ae113618358af8d0c363711988dc153fdf3277bb478918e4a34d5",
+        "actual": "abb78b39015ae113618358af8d0c363711988dc153fdf3277bb478918e4a34d5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\financial-incidents-comparison.ko.md",
+        "expected": "946946fd5d933671575efb96868a9008c7730a89929eaf10f4b7e4eebb443135",
+        "actual": "946946fd5d933671575efb96868a9008c7730a89929eaf10f4b7e4eebb443135",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\financial-review-evidence\\api-destination.json",
+        "expected": "c6ae3459908df665256f0d27a7756c82cb39e3ac9cd779b69ad50c9075a231f9",
+        "actual": "c6ae3459908df665256f0d27a7756c82cb39e3ac9cd779b69ad50c9075a231f9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\approved-api-url.mjs",
+        "expected": "e10ea88c87abcde8d3495669a904e3a8bc3af32978bdba3f42b12ffee362ab61",
+        "actual": "e10ea88c87abcde8d3495669a904e3a8bc3af32978bdba3f42b12ffee362ab61",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\campaign-params.mjs",
+        "expected": "83137fec153138e72a2db068cc8dfc2ce4c513995f81ed4b2d9acc3cd3842b07",
+        "actual": "83137fec153138e72a2db068cc8dfc2ce4c513995f81ed4b2d9acc3cd3842b07",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\nuxt.config.example.js",
+        "expected": "8664a2391c913cd1339852ce7c219e91c3ed9917200de7eaabc602d619475b5d",
+        "actual": "8664a2391c913cd1339852ce7c219e91c3ed9917200de7eaabc602d619475b5d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\PlainMessage.example.vue",
+        "expected": "10d98a12c6ad28816a4debc8f9eacd48d91f586367fb09dd50bce5867cb8936a",
+        "actual": "10d98a12c6ad28816a4debc8f9eacd48d91f586367fb09dd50bce5867cb8936a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\public-error-message.mjs",
+        "expected": "e1137388bab01992604e3baedc418d822a0a1816e3db48928739ac1eb13e1e3a",
+        "actual": "e1137388bab01992604e3baedc418d822a0a1816e3db48928739ac1eb13e1e3a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\safe-html.mjs",
+        "expected": "18b5cff1ddb1f2df7ec72218c91d2c2eb85a4a3395d998c864aa8e885b8916dd",
+        "actual": "18b5cff1ddb1f2df7ec72218c91d2c2eb85a4a3395d998c864aa8e885b8916dd",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\fixes\\security-headers.cjs",
+        "expected": "72a98cfde6d30358bd1586e34513cdd073045f4f5c3458ded7dc2eb6581ce389",
+        "actual": "72a98cfde6d30358bd1586e34513cdd073045f4f5c3458ded7dc2eb6581ce389",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\intrusion-review.ko.md",
+        "expected": "bdf20ca3cad6ef102f9f970e9032bfe71efe762ec72e04d5e8f08855819b9843",
+        "actual": "bdf20ca3cad6ef102f9f970e9032bfe71efe762ec72e04d5e8f08855819b9843",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nhrsite-review-evidence\\2026-10-30T10-31-12-727Z\\public-response.html",
+        "expected": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "actual": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nhrsite-review-evidence\\2026-10-30T10-31-12-727Z\\result.json",
+        "expected": "c866ba83c48cb99409d40204376e137050525f057a088c0b7a46ea0158fdee04",
+        "actual": "c866ba83c48cb99409d40204376e137050525f057a088c0b7a46ea0158fdee04",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review-evidence\\2026-10-30T10-38-18-718Z\\public-response.html",
+        "expected": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "actual": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review-evidence\\2026-10-30T10-38-18-718Z\\result.json",
+        "expected": "3b1507823fffa4441481003ca7b8314b1600bdc86522c95fc5fbf7e2997e71a8",
+        "actual": "3b1507823fffa4441481003ca7b8314b1600bdc86522c95fc5fbf7e2997e71a8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-additional-review.ko.md",
+        "expected": "2be6d61acbcc5049c1be9d3a825490e96bb3eab112e1b45cea43ffe147e75a35",
+        "actual": "2be6d61acbcc5049c1be9d3a825490e96bb3eab112e1b45cea43ffe147e75a35",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-review-evidence\\public-response.html",
+        "expected": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "actual": "51698512294ebbd24d759bac6f1e6909d4fb8fdca919ec1313d12cba8b0a2c97",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\nmall-review-evidence\\result.json",
+        "expected": "8a85daf542021408af1032310c0969f776b83bccd948f6c9f623c222416dcb96",
+        "actual": "8a85daf542021408af1032310c0969f776b83bccd948f6c9f623c222416dcb96",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P01.js",
+        "expected": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c",
+        "actual": "37248fca741f702aa355fa0b6bbaedc27bfdb51a7b5ed13142638d07414ad04c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P02.js",
+        "expected": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee",
+        "actual": "5146eec0b8782499001739e451716c42331e012a683292926b1662d96a914cee",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P03.js",
+        "expected": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+        "actual": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\P04.js",
+        "expected": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+        "actual": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\common\\responses.json",
+        "expected": "9b64885870daba649427ecb856c7395e1d6284b46181c18e955dfa1ee8aa1757",
+        "actual": "9b64885870daba649427ecb856c7395e1d6284b46181c18e955dfa1ee8aa1757",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\local-path-verification.json",
+        "expected": "79842ebaf00ddfe4a8b982785e379697538ee54c8f0aa59080e7594c5bf933e9",
+        "actual": "79842ebaf00ddfe4a8b982785e379697538ee54c8f0aa59080e7594c5bf933e9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P01.js",
+        "expected": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+        "actual": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P02.js",
+        "expected": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767",
+        "actual": "9d0aebce658b3bbe4fdddc08ffe535ca69b98dc4023bfbdb2e92cf4b2be6e767",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P03.js",
+        "expected": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698",
+        "actual": "73e463aabf9d9225e30fc2964c91efb3afebddb5c091f0b8edda3e9a4ec15698",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P04.js",
+        "expected": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6",
+        "actual": "4db6911864d0bd8d5ada4c4c354232cde6cb468339752b3b53fc30b821b345b6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P05.js",
+        "expected": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786",
+        "actual": "fbd433fbb1455d2b2c1919e7abb85a23f418dd5ef308877eb5b0271895532786",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\P06.js",
+        "expected": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21",
+        "actual": "5f6ea11e6c1adfdce1993bb43a8ff72e0de0aa95b1fdc2eed4d1cc9ce4d91f21",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\path-evidence\\responses.json",
+        "expected": "c230738940fdb690c1313a1d8f4c47ec5d4a450b234d483b2b1e76cf7882ed8f",
+        "actual": "c230738940fdb690c1313a1d8f4c47ec5d4a450b234d483b2b1e76cf7882ed8f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\probe-authorized-direct.mjs",
+        "expected": "f3b3dc3a56bcfde7febb195c8d0d957a75ef4ac506fabae5a9a36ffde299cbfc",
+        "actual": "f3b3dc3a56bcfde7febb195c8d0d957a75ef4ac506fabae5a9a36ffde299cbfc",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\probe-authorized-xss.mjs",
+        "expected": "a7f71b48f6d17b42da04a0ccf01cc25dc41bb5fae3eb4b6a1415995326f80625",
+        "actual": "a7f71b48f6d17b42da04a0ccf01cc25dc41bb5fae3eb4b6a1415995326f80625",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\psamain-review-evidence\\2026-10-30T10-26-04-937Z\\public-response.html",
+        "expected": "f6b3866322ce57955525daeafb1c4b434d98a26e4874a38aa057e324a67cbbcc",
+        "actual": "f6b3866322ce57955525daeafb1c4b434d98a26e4874a38aa057e324a67cbbcc",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\psamain-review-evidence\\2026-10-30T10-26-04-937Z\\result.json",
+        "expected": "874a9f6b660c817df29cc1415257b128e24be354c4d1a6abf7d1588e1c8dfba4",
+        "actual": "874a9f6b660c817df29cc1415257b128e24be354c4d1a6abf7d1588e1c8dfba4",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\README.md",
+        "expected": "f0233ba6eea82e80aeffcabf297eba0b51e08be6f781e623d6d93bbea99dd4c6",
+        "actual": "f0233ba6eea82e80aeffcabf297eba0b51e08be6f781e623d6d93bbea99dd4c6",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\assets.json",
+        "expected": "2eb5d84321d1e0211bfd2f0b37e4bcad88c936c6f488e6d1f513190f730b8806",
+        "actual": "2eb5d84321d1e0211bfd2f0b37e4bcad88c936c6f488e6d1f513190f730b8806",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\local-current-helper.json",
+        "expected": "d8b425ad53ee57c43c432dcc9fb96c09906044cc9319ce1672f2d6210ff571b2",
+        "actual": "d8b425ad53ee57c43c432dcc9fb96c09906044cc9319ce1672f2d6210ff571b2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\responses.json",
+        "expected": "340135bad8addcec0602ef40f5c7269af799bf5fbd6a739afcf81535c057e947",
+        "actual": "340135bad8addcec0602ef40f5c7269af799bf5fbd6a739afcf81535c057e947",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101\\verification.json",
+        "expected": "dba76a4a34e735fc66fc836e1cc8fdd417c1e09e9f096151169da9e98a0bb5db",
+        "actual": "dba76a4a34e735fc66fc836e1cc8fdd417c1e09e9f096151169da9e98a0bb5db",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-20261101.mjs",
+        "expected": "13a7126bfeb99020b7b52085d2dc0f98143508276d734997d8a53e5f7f75749e",
+        "actual": "13a7126bfeb99020b7b52085d2dc0f98143508276d734997d8a53e5f7f75749e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\recheck-assets-20261101.mjs",
+        "expected": "b4a91f1e0e9ffadd423f8994b848055bfd8b91358efe15504f0f26a956210521",
+        "actual": "b4a91f1e0e9ffadd423f8994b848055bfd8b91358efe15504f0f26a956210521",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\report-additional.ko.md",
+        "expected": "63cab6e75953cbb9971dbab66ff1b7272fa3ec5e6c21167f0734ab8b1ed52a69",
+        "actual": "63cab6e75953cbb9971dbab66ff1b7272fa3ec5e6c21167f0734ab8b1ed52a69",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\report.ko.md",
+        "expected": "a8df542dd14b47fb5b7f8dec6321e848e2b5ca1ab6e6c33b6ff465b9ec3ff856",
+        "actual": "a8df542dd14b47fb5b7f8dec6321e848e2b5ca1ab6e6c33b6ff465b9ec3ff856",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\reproduce.mjs",
+        "expected": "c90fd50035e3259d04e57a6b0e1ef3e4962b95c3574f9f3a74890c2c8ac8b36e",
+        "actual": "c90fd50035e3259d04e57a6b0e1ef3e4962b95c3574f9f3a74890c2c8ac8b36e",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C01.html",
+        "expected": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "actual": "f2014e1c127e9df7362f04e80cc7fab2b8f27947134fc17d62c6d1403983bc88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C03.html",
+        "expected": "b397a000b67ca31b478f1ce86c718428a0d97bd3e9a7595584f69d0426468c95",
+        "actual": "b397a000b67ca31b478f1ce86c718428a0d97bd3e9a7595584f69d0426468c95",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C04.html",
+        "expected": "13817ec8d548c3acff848ebe6ede0257007ecb70d388188913201c95d640a8ed",
+        "actual": "13817ec8d548c3acff848ebe6ede0257007ecb70d388188913201c95d640a8ed",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\C05.html",
+        "expected": "845c8f49b42c39797bb4ab5368fc854dfa16aa28aa65794a4accefb11d48ed09",
+        "actual": "845c8f49b42c39797bb4ab5368fc854dfa16aa28aa65794a4accefb11d48ed09",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-review-evidence\\2026-10-30T10-40-50-785Z\\results.json",
+        "expected": "f97b90c487411330b8372ce4bf8c8eaab86ced6e8813d50747d965ffd18d0577",
+        "actual": "f97b90c487411330b8372ce4bf8c8eaab86ced6e8813d50747d965ffd18d0577",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\retired-site-search-log.md",
+        "expected": "f9bedf6ab7d21bf9412090bc2eef5cd9e9ce54d3165b3f28c5ef8ae6b245a967",
+        "actual": "f9bedf6ab7d21bf9412090bc2eef5cd9e9ce54d3165b3f28c5ef8ae6b245a967",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-ai-readiness.mjs",
+        "expected": "1d0a9af4948a8976d420cb579bd5a361ed7f0429b7df9b1bb98ed2667327dae2",
+        "actual": "1d0a9af4948a8976d420cb579bd5a361ed7f0429b7df9b1bb98ed2667327dae2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-company-about-public.mjs",
+        "expected": "9c48513f6111ad980aa322d0f2f130489de62b6cf763056303b4e6f01ee1d2d2",
+        "actual": "9c48513f6111ad980aa322d0f2f130489de62b6cf763056303b4e6f01ee1d2d2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-nhrsite-public.mjs",
+        "expected": "4c089f98c3fd33db5b5f5543f6ef9270c989bd6ffbdbaf80e2aba3252301894c",
+        "actual": "4c089f98c3fd33db5b5f5543f6ef9270c989bd6ffbdbaf80e2aba3252301894c",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-nmall-additional-public.mjs",
+        "expected": "4a5fcd11ceaec9494cb883e0fd0e328332bbc80b36dead7713f3c66acef20fac",
+        "actual": "4a5fcd11ceaec9494cb883e0fd0e328332bbc80b36dead7713f3c66acef20fac",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\review-psamain-public.mjs",
+        "expected": "fa380d73c1d080b2ebddcbeda41daa8f9fab55a7108b13ff5260edc483aa1991",
+        "actual": "fa380d73c1d080b2ebddcbeda41daa8f9fab55a7108b13ff5260edc483aa1991",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\summarize-recheck-20261101.mjs",
+        "expected": "da92f1adb69d90f0c8a55f1fe3f3d0728fb3ca4caa032565a463b91d7a1c4184",
+        "actual": "da92f1adb69d90f0c8a55f1fe3f3d0728fb3ca4caa032565a463b91d7a1c4184",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\approved-api-url.test.mjs",
+        "expected": "581d7195f7be0ae5a4ee956c3032894b3350e47fff39a4b2f854fc2904ecdb54",
+        "actual": "581d7195f7be0ae5a4ee956c3032894b3350e47fff39a4b2f854fc2904ecdb54",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\campaign-regression.test.mjs",
+        "expected": "a41657aba956834ce2bc6ee4412d28854cf7e570e08e6b8891aeab0c4daf4a4b",
+        "actual": "a41657aba956834ce2bc6ee4412d28854cf7e570e08e6b8891aeab0c4daf4a4b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\local-regression.test.mjs",
+        "expected": "ff110c752d0d72d882afe8e8e47b18226eb373b5eab3b534e4eb121450f20451",
+        "actual": "ff110c752d0d72d882afe8e8e47b18226eb373b5eab3b534e4eb121450f20451",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\tests\\public-error-regression.test.mjs",
+        "expected": "1b45834ab1298d7ec4808f740b5bb739b558ec8f7ca8aea81d39282aad6a0722",
+        "actual": "1b45834ab1298d7ec4808f740b5bb739b558ec8f7ca8aea81d39282aad6a0722",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-additional.mjs",
+        "expected": "7e68b3269d13768d7b96b197fc8150d7d730603915810cba15758b8cf9594742",
+        "actual": "7e68b3269d13768d7b96b197fc8150d7d730603915810cba15758b8cf9594742",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-api-destination.mjs",
+        "expected": "752990731356a9e1d7b4d89e7fe5f85d607cda7504d65cb6e3df9f0c217bf4b3",
+        "actual": "752990731356a9e1d7b4d89e7fe5f85d607cda7504d65cb6e3df9f0c217bf4b3",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\audit\\verify-intrusion-paths.mjs",
+        "expected": "7dcb7960bd66ad46680d0d4e335cbb1fa6ba126bf5f83e6963bb410d8e69f5a7",
+        "actual": "7dcb7960bd66ad46680d0d4e335cbb1fa6ba126bf5f83e6963bb410d8e69f5a7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\build-html-report.mjs",
+        "expected": "ee969ddffc7c6ff4dc774951bac347215bb3c746567c7cb7af58f77fadae3d64",
+        "actual": "ee969ddffc7c6ff4dc774951bac347215bb3c746567c7cb7af58f77fadae3d64",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_1.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_10.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_11.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_12.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_13.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_14.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_15.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_16.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_17.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_18.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_19.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_2.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_20.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_21.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_22.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_23.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_24.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_25.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_26.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_27.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_28.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_29.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_3.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_30.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_31.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_4.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_5.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_6.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_7.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_8.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\error_9.txt",
+        "expected": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "actual": "539627091533af5bf6093a5dae57849589d7aa9ba2b345b89d00b73f552d554b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_1.html",
+        "expected": "e313ef954d6955d5793f7c5cba215429d54335f4466456a7111e1be667da2ef8",
+        "actual": "e313ef954d6955d5793f7c5cba215429d54335f4466456a7111e1be667da2ef8",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_14.html",
+        "expected": "b4586fe43227f5994e2fdd4b873b7b48fc4ab951d90eef3dd7962b982ef03453",
+        "actual": "b4586fe43227f5994e2fdd4b873b7b48fc4ab951d90eef3dd7962b982ef03453",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_15.html",
+        "expected": "e05fc377d34e40188f6f6f97acb83e865c1d2caa152e8b7128135612f41e8632",
+        "actual": "e05fc377d34e40188f6f6f97acb83e865c1d2caa152e8b7128135612f41e8632",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_16.html",
+        "expected": "3fd7a819040d5669a1b1abbf9ede32e6e272174655287cd0063b8d062d93711b",
+        "actual": "3fd7a819040d5669a1b1abbf9ede32e6e272174655287cd0063b8d062d93711b",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_22.html",
+        "expected": "6cc5d25b36411caafd2692651204ecdafdf8bde63117392d24d2d742e280b7a1",
+        "actual": "6cc5d25b36411caafd2692651204ecdafdf8bde63117392d24d2d742e280b7a1",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_3.html",
+        "expected": "96036c195dac22da1b4172a0d459fd2d5c7f9a84d94a4d115426ed23976baca0",
+        "actual": "96036c195dac22da1b4172a0d459fd2d5c7f9a84d94a4d115426ed23976baca0",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\page_9.html",
+        "expected": "ca1ff188b9098eb8532a4df1bf21ad6fa2dd321e54a8265fc958453e308c76ee",
+        "actual": "ca1ff188b9098eb8532a4df1bf21ad6fa2dd321e54a8265fc958453e308c76ee",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\get-public-review\\results.json",
+        "expected": "15888880ec5cc55f85499fcdf0778fe2889f073f0ba3c8374481f2498b4f1d4d",
+        "actual": "15888880ec5cc55f85499fcdf0778fe2889f073f0ba3c8374481f2498b4f1d4d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_1.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_10.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_11.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_12.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_13.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_14.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_15.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_16.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_17.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_18.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_19.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_2.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_20.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_21.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_22.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_23.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_24.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_25.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_26.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_27.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_28.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_29.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_3.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_30.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_31.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_4.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_5.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_6.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_7.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_8.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\headers_9.txt",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\local-test-results.txt",
+        "expected": "4716a5f2a74c6cd0196a55a26834508a4099dc80321d32d238a48f64838c6ce9",
+        "actual": "4716a5f2a74c6cd0196a55a26834508a4099dc80321d32d238a48f64838c6ce9",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\node-public-review\\results.json",
+        "expected": "231dabf84544805177150e51eb954b460321ba9da6f28ae5bc8911860a3bcd75",
+        "actual": "231dabf84544805177150e51eb954b460321ba9da6f28ae5bc8911860a3bcd75",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\release-policy.example.mjs",
+        "expected": "a511ddf37d21be6542a9f1ae3567d4c3d13b2b8bf5849ab07a626e4c83445e84",
+        "actual": "a511ddf37d21be6542a9f1ae3567d4c3d13b2b8bf5849ab07a626e4c83445e84",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\release-policy.test.mjs",
+        "expected": "1308a7609c18bb7995123783e62c2d5a7219806c1c5af10d8bab328e1bd9dac5",
+        "actual": "1308a7609c18bb7995123783e62c2d5a7219806c1c5af10d8bab328e1bd9dac5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\results.json",
+        "expected": "f8ca9e45367b8c94f19704fef60b110026c59ca89edf68e35ebec1a215ceee46",
+        "actual": "f8ca9e45367b8c94f19704fef60b110026c59ca89edf68e35ebec1a215ceee46",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\review-pages.mjs",
+        "expected": "0d8e6dccae1e26e8205dc356f77e71da26574ff317946f27a4f40e4148b5b9d2",
+        "actual": "0d8e6dccae1e26e8205dc356f77e71da26574ff317946f27a4f40e4148b5b9d2",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\review-public.mjs",
+        "expected": "4eb60773b24597432f5f1c7ac8af3acb61d1d88336024a496a5d6c4fa19d3f7f",
+        "actual": "4eb60773b24597432f5f1c7ac8af3acb61d1d88336024a496a5d6c4fa19d3f7f",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\targets.txt",
+        "expected": "a7c0a6d2c3b4f150c278974941de43c43cb865b0666e36863fdb17137e756a17",
+        "actual": "a7c0a6d2c3b4f150c278974941de43c43cb865b0666e36863fdb17137e756a17",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\URL별_결과.md",
+        "expected": "79aff5c5938e34e303eafa016f4a1b807d75089c01f4de68e772fe4b8b0d7bd7",
+        "actual": "79aff5c5938e34e303eafa016f4a1b807d75089c01f4de68e772fe4b8b0d7bd7",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\점검결과.md",
+        "expected": "6b22be962a42f3412636275f6d86ed254326933836ec2706e3b8f88ed72f14d5",
+        "actual": "6b22be962a42f3412636275f6d86ed254326933836ec2706e3b8f88ed72f14d5",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\lina_header_review_20261030\\출시전_재점검.md",
+        "expected": "a7c03db40c660d52adc769307586a3bdd1fecbd1add2a0ef8816de9eee730401",
+        "actual": "a7c03db40c660d52adc769307586a3bdd1fecbd1add2a0ef8816de9eee730401",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_검색노출_종료후보_보안점검_2026-10-30.md",
+        "expected": "f58cbcc54a9cccedea51e3ed7706cb5c62e1e9a8160fc5e7d70273ef24c64504",
+        "actual": "f58cbcc54a9cccedea51e3ed7706cb5c62e1e9a8160fc5e7d70273ef24c64504",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_관련사이트_보안점검_보고서_20261031.html",
+        "expected": "8b0287cbc1d90db8a53ae4ee1ec2cba3800ac7819d153f9a54d3ebb1b03bf777",
+        "actual": "8b0287cbc1d90db8a53ae4ee1ec2cba3800ac7819d153f9a54d3ebb1b03bf777",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서.docx",
+        "expected": "332b4834ca2fe317222d8f852a66233b085e05c5d9c7983f6a984ebdecbb58aa",
+        "actual": "332b4834ca2fe317222d8f852a66233b085e05c5d9c7983f6a984ebdecbb58aa",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서_1.docx",
+        "expected": "4db03a0833146d0e887e2afdd276a99e77c791584fbf509076bfd56a238ffc1a",
+        "actual": "4db03a0833146d0e887e2afdd276a99e77c791584fbf509076bfd56a238ffc1a",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_보안점검_통합보고서_최종.docx",
+        "expected": "cfa1cadd0f8c2699cbe2d30c81305357b47adab2d2dcfbae327ddc934d813f7d",
+        "actual": "cfa1cadd0f8c2699cbe2d30c81305357b47adab2d2dcfbae327ddc934d813f7d",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_전체주소_사이트목록.docx",
+        "expected": "bf0339418729f2886e63f96a8a534dca64e45e93568ff9afa1bf87272cf05298",
+        "actual": "bf0339418729f2886e63f96a8a534dca64e45e93568ff9afa1bf87272cf05298",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_출시전_보안점검_20261101.md",
+        "expected": "13d756c9105f1a9d9f1330cd399eed54f25c2659a7d2089ac208b2443895de88",
+        "actual": "13d756c9105f1a9d9f1330cd399eed54f25c2659a7d2089ac208b2443895de88",
+        "status": "MATCH"
+      },
+      {
+        "file": "C:\\codex_pen_test\\deliverables\\라이나생명_출시전_보안점검_보고서_20261030.html",
+        "expected": "58826057f42a76165e2d69f71d3489b26dfc11c8ab7d383df9efb8370b49c1f7",
+        "actual": "58826057f42a76165e2d69f71d3489b26dfc11c8ab7d383df9efb8370b49c1f7",
+        "status": "MATCH"
+      }
+    ]
+  },
+  "matrixIds": "UNAVAILABLE; no IDs invented or updated"
+}

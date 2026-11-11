@@ -1,0 +1,169 @@
+{
+  "at": "2026-11-01T05:21:01.894Z",
+  "networkRequests": 0,
+  "verifiedOriginalBodies": [
+    {
+      "file": "evidence/R01.html",
+      "collectionTime": "2026-10-28T13:53:13.286Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R02.html",
+      "collectionTime": "2026-10-28T13:53:14.519Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R03.html",
+      "collectionTime": "2026-10-28T13:53:15.564Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R04.html",
+      "collectionTime": "2026-10-28T13:53:16.736Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R05.txt",
+      "collectionTime": "2026-10-28T13:53:17.848Z",
+      "jqueryBanner": "jQuery JavaScript Library v3.7.1"
+    },
+    {
+      "file": "evidence/R06.txt",
+      "collectionTime": "2026-10-28T13:53:18.985Z",
+      "jqueryBanner": "jQuery v1.12.4"
+    },
+    {
+      "file": "evidence/R07.txt",
+      "collectionTime": "2026-10-28T13:53:20.111Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R08.txt",
+      "collectionTime": "2026-10-28T13:53:21.170Z",
+      "jqueryBanner": null
+    },
+    {
+      "file": "evidence/R09.txt",
+      "collectionTime": "2026-10-28T13:53:22.248Z",
+      "jqueryBanner": null
+    }
+  ],
+  "helperCases": [
+    {
+      "fn": "escapeHtml",
+      "input": "\"",
+      "actual": "&qout;"
+    },
+    {
+      "fn": "escapeHtml",
+      "input": "<",
+      "actual": "&amp;lt;"
+    },
+    {
+      "fn": "excapeHtmlOrReturn",
+      "input": "<b>LOCAL</b>",
+      "actual": "<b>LOCAL</b>"
+    },
+    {
+      "fn": "excapeHtmlOrReturn",
+      "input": "<b onclick=\"void 0\">LOCAL</b>",
+      "actual": "<b onclick=\"void 0\">LOCAL</b>"
+    }
+  ],
+  "occurrences": [
+    {
+      "file": "evidence/R01.html",
+      "term": "escapeHtml",
+      "offsets": [
+        2873,
+        3620
+      ]
+    },
+    {
+      "file": "evidence/R01.html",
+      "term": "excapeHtmlOrReturn",
+      "offsets": [
+        3389
+      ]
+    },
+    {
+      "file": "evidence/R03.html",
+      "term": "escapeHtml",
+      "offsets": [
+        2873,
+        3620
+      ]
+    },
+    {
+      "file": "evidence/R03.html",
+      "term": "excapeHtmlOrReturn",
+      "offsets": [
+        3389
+      ]
+    },
+    {
+      "file": "evidence/R04.html",
+      "term": "escapeHtml",
+      "offsets": [
+        2873,
+        3620
+      ]
+    },
+    {
+      "file": "evidence/R04.html",
+      "term": "excapeHtmlOrReturn",
+      "offsets": [
+        3389
+      ]
+    },
+    {
+      "file": "additional-evidence/A01.html",
+      "term": "escapeHtml",
+      "offsets": [
+        2873,
+        3620
+      ]
+    },
+    {
+      "file": "additional-evidence/A01.html",
+      "term": "excapeHtmlOrReturn",
+      "offsets": [
+        3389
+      ]
+    }
+  ],
+  "csp": [
+    {
+      "policies": [
+        [
+          "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval'"
+        ]
+      ]
+    },
+    {
+      "policies": [
+        [
+          "object-src 'none'",
+          "script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js",
+          "script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js",
+          "style-src 'self' 'unsafe-inline'"
+        ],
+        [
+          "default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval'",
+          "script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:",
+          "object-src 'self' data: 'unsafe-inline' 'unsafe-eval'",
+          "img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval'",
+          "style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval'"
+        ]
+      ]
+    }
+  ],
+  "blogTls": {
+    "message": "fetch failed",
+    "code": "ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR"
+  },
+  "notes": [
+    "CSP split is inventory only, not a browser parser.",
+    "Text search covers saved corpus only; dynamic property access and missing chunks remain unverified."
+  ]
+}

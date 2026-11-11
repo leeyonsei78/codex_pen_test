@@ -1,0 +1,17 @@
+{
+  "file": "deliverables/라이나생명_관련사이트_보안점검_통합보완보고서_20261101.html",
+  "checkedAt": "2026-11-01T05:50:08.310Z",
+  "scope": "Static HTML and script behavior with a mock DOM; no browser layout or actual print pagination verification",
+  "checks": {
+    "scriptSyntax": true,
+    "search": true,
+    "emptySearchResult": true,
+    "reset": true,
+    "priorityFilter": true,
+    "expand44Trials": true,
+    "printAllAndRestore": true,
+    "localLinks": true
+  },
+  "missingLocalLinks": [],
+  "visualInspection": "NOT_RUN"
+}

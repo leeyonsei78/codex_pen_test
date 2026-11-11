@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>사내 웹 보안 점검</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><header><span class="brand">WEB REVIEW / LOCAL</span><span class="badge">승인 대상 한정 · 공개 응답 점검</span></header>
+<main><section class="intro"><p class="eyebrow">INTERNAL SECURITY WORKSPACE</p><h1>웹 보안 점검</h1><p>범위를 지정하고 계획을 검토한 뒤, 승인된 시간에 점검하세요.</p></section>
+<section class="panel engine"><h2>ARTEX Global 엔진</h2><p>원본 엔진과 웹 UI 포함 · v0.3.15-global.1 · 한국어 전환 지원</p><p>run.bat에서 <strong>2번</strong>을 선택해 엔진을 시작한 뒤 아래 버튼으로 접속하세요. Docker Desktop과 LLM 설정이 필요합니다.</p><a href="http://127.0.0.1:8790" target="_blank" rel="noopener noreferrer">ARTEX 웹 UI 열기 ↗</a><p class="note">아래는 별도의 경량 점검기입니다. 아래 승인 설정과 중단 버튼은 ARTEX 작업에 적용되지 않습니다. 엔진 중지는 run.bat의 3번을 사용하세요.</p></section>
+<div class="layout"><section class="panel"><h2>01 <span>점검 설정</span></h2><form id="config">
+<label>프로젝트 이름<input name="project" required placeholder="사내 포털 사전 점검"></label>
+<div class="row"><label>승인번호<input name="approvalId" required placeholder="SEC-2026-0123"></label><label>수행자 / 부서<input name="operator" required placeholder="홍길동 / 정보보안팀"></label></div>
+<div class="row"><label>승인 시작<input name="from" type="datetime-local" required></label><label>승인 종료<input name="until" type="datetime-local" required></label></div><small>현재 PC의 시간대로 입력합니다. 제출할 JSON에는 시간 정보가 UTC로 기록됩니다.</small>
+<label>허용 Origin <small>한 줄에 하나 · 경로 없이 프로토콜/호스트/포트 입력</small><textarea name="origins" rows="2" required placeholder="https://staging.example.com"></textarea></label>
+<label>점검 URL <small>한 줄에 하나 · 최대 20개 · 쿼리/인증정보 제외</small><textarea name="targets" rows="4" required placeholder="https://staging.example.com/&#10;https://staging.example.com/login"></textarea></label>
+<div class="row"><label>요청 간격 (ms)<input name="interval" type="number" min="1000" max="60000" value="1500" required></label><label>요청 제한시간 (ms)<input name="timeout" type="number" min="1000" max="30000" value="10000" required></label></div>
+<label class="check"><input name="approved" type="checkbox">회사 승인이 완료되었고, 입력한 대상과 수행 기간이 승인 범위와 일치합니다.</label>
+<div class="actions"><button type="submit">계획 검토</button><button type="button" id="run" class="primary" disabled>점검 실행</button><button type="button" id="stop" disabled>중단</button></div>
+<div class="actions secondary"><button type="button" id="export">설정 JSON 저장</button><label class="import">설정 불러오기<input type="file" id="import" accept=".json,application/json"></label></div>
+</form><p class="note">Node.js 서버가 대상에 GET 요청을 보냅니다. 본문·쿠키 값은 저장하지 않습니다. ARTEX 엔진을 포함하지 않는 독립 점검 도구입니다.</p></section>
+<section class="panel results"><h2>02 <span>실행 현황과 결과</span></h2><p id="message" role="status" aria-live="polite">설정을 입력하고 계획 검토를 눌러 주세요.</p><div class="metrics"><div><strong id="progress">0 / 0</strong><span>조회한 URL</span></div><div><strong id="count">0</strong><span>검토 필요 항목</span></div></div><progress id="bar" value="0" max="1"></progress><pre id="plan" hidden></pre><div id="findings"></div><button id="download" disabled>결과 JSON 다운로드</button><p class="note">헤더 누락은 확정 취약점이 아닙니다. 쿠키 용도 및 서비스 정책을 담당자가 검토해야 합니다. 429·5xx·통신 오류 시 중단합니다.</p></section></div>
+<footer>로컬 전용 127.0.0.1 · 리다이렉트 미추적 · 동시 요청 1개 · 별도 패키지 설치 없음</footer></main></body></html>

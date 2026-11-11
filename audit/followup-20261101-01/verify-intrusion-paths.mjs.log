@@ -1,0 +1,71 @@
+{
+  "verdict": {
+    "serverIntrusion": "NOT_VERIFIED",
+    "accountTakeover": "NOT_VERIFIED",
+    "apiMessageToHtmlDataFlow": "REPRODUCED_OFFLINE",
+    "safeToRelease": "NOT_DETERMINED"
+  },
+  "requestCount": 10,
+  "totalCapturedBytes": 1042498,
+  "apiMessageToHtml": {
+    "cases": [
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_LOCAL_CODE",
+          "message": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>"
+        },
+        "storedMessage": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>",
+        "htmlSinkValue": "<b data-audit=\"LOCAL_ONLY\">AUDIT_MARKER</b>"
+      },
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_LOCAL_CODE",
+          "message": "일시적인 오류입니다."
+        },
+        "storedMessage": "일시적인 오류입니다.",
+        "htmlSinkValue": "일시적인 오류입니다."
+      },
+      {
+        "syntheticApiData": {
+          "errorCode": "AUDIT_IDENTICAL",
+          "message": "AUDIT_IDENTICAL"
+        },
+        "storedMessage": "오류가 발생했습니다",
+        "htmlSinkValue": "오류가 발생했습니다"
+      }
+    ],
+    "actualAttackerControlVerified": false,
+    "browserXssExecuted": false
+  },
+  "tokenRotation": {
+    "originalNewResponseValue": "AUDIT_FAKE_NEW_REFRESH",
+    "actualSelectedValue": "AUDIT_FAKE_PREVIOUS_REFRESH",
+    "serverRotationPolicyVerified": false
+  },
+  "axiosXsrf": {
+    "version": "0.21.4",
+    "cases": [
+      {
+        "sameOrigin": false,
+        "withCredentials": true,
+        "syntheticHeaderValue": "AUDIT_FAKE_XSRF"
+      },
+      {
+        "sameOrigin": false,
+        "withCredentials": false,
+        "syntheticHeaderValue": null
+      },
+      {
+        "sameOrigin": true,
+        "withCredentials": false,
+        "syntheticHeaderValue": "AUDIT_FAKE_XSRF"
+      }
+    ],
+    "realCookieOrExternalDestinationUsed": false,
+    "applicationExploitConditionsVerified": false
+  },
+  "logout": {
+    "serverLogoutMethodCallPresent": true,
+    "serverInvalidationVerified": false
+  }
+}

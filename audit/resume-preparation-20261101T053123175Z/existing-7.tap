@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: original reference weakens existing DENY; fixed reference preserves it
+ok 1 - original reference weakens existing DENY; fixed reference preserves it
+  ---
+  duration_ms: 0.9447
+  type: 'test'
+  ...
+# Subtest: local reference supplies frame restriction on 200
+ok 2 - local reference supplies frame restriction on 200
+  ---
+  duration_ms: 32.0129
+  type: 'test'
+  ...
+# Subtest: local reference supplies frame restriction on 401
+ok 3 - local reference supplies frame restriction on 401
+  ---
+  duration_ms: 4.6763
+  type: 'test'
+  ...
+# Subtest: local reference supplies frame restriction on 403
+ok 4 - local reference supplies frame restriction on 403
+  ---
+  duration_ms: 2.8221
+  type: 'test'
+  ...
+# Subtest: local reference supplies frame restriction on 404
+ok 5 - local reference supplies frame restriction on 404
+  ---
+  duration_ms: 3.1759
+  type: 'test'
+  ...
+# Subtest: local reference supplies frame restriction on 500
+ok 6 - local reference supplies frame restriction on 500
+  ---
+  duration_ms: 3.5167
+  type: 'test'
+  ...
+# Subtest: existing enforced CSP remains alongside the new frame policy
+ok 7 - existing enforced CSP remains alongside the new frame policy
+  ---
+  duration_ms: 0.4297
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 146.4606

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-01T04:46:31.874Z",
+  "docxTargets": 31,
+  "collectedResponses": 39,
+  "assetRequests": 2,
+  "https200": 29,
+  "https302": 1,
+  "tlsFailures": 1,
+  "httpRedirects": 6,
+  "http403": 2,
+  "referenceTestsPassed": 32,
+  "currentHelperReproductions": 2,
+  "reportRows": 39,
+  "cookieValuesPersisted": false
+}

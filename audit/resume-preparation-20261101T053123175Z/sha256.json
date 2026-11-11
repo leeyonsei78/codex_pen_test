@@ -1,0 +1,14 @@
+[
+  {
+    "file": "results.json",
+    "sha256": "0bed565ffc2e4563fe1333cba1cad071f30987418565d8ca3914ef2a9e2ee3c8"
+  },
+  {
+    "file": "existing-32.tap",
+    "sha256": "8bd740edaf4af859ac975a3d67a31fdcc3057898dddcc3d69b20d68b3e4ae2ce"
+  },
+  {
+    "file": "existing-7.tap",
+    "sha256": "2b1f930a29b008d9f5ecddc8c659b49d88f73d43214d70f430cfb88a72210e9a"
+  }
+]

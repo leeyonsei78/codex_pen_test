@@ -1,0 +1,94 @@
+{
+  "at": "2026-11-01T05:20:05.339Z",
+  "scope": "Three additional GETs already captured. This script runs offline; only synthetic token/query data are used.",
+  "certificate": {
+    "authorized": true,
+    "authorizationError": null,
+    "hostnameMatch": true,
+    "protocol": "TLSv1.3",
+    "cipher": {
+      "name": "TLS_AES_128_GCM_SHA256",
+      "standardName": "TLS_AES_128_GCM_SHA256",
+      "version": "TLSv1.3"
+    },
+    "certificate": {
+      "subject": {
+        "C": "KR",
+        "ST": "Seoul",
+        "O": "LINA Life Insurance Company of Korea",
+        "CN": "www.lina.co.kr"
+      },
+      "issuer": {
+        "C": "GB",
+        "ST": "Greater Manchester",
+        "L": "Salford",
+        "O": "Sectigo Limited",
+        "CN": "Sectigo RSA Organization Validation Secure Server CA"
+      },
+      "subjectAltName": "DNS:www.lina.co.kr, DNS:lina.co.kr",
+      "validFrom": "Dec 30 00:00:00 2025 GMT",
+      "validTo": "Jan 30 23:59:59 2027 GMT",
+      "fingerprint256": "89:EF:16:B8:5A:5F:BB:B8:07:EF:89:39:1A:AF:92:6D:9F:96:3F:57:EB:B4:F9:58:B2:6F:E7:52:02:20:A7:A4"
+    },
+    "daysRemainingAtCollection": 94
+  },
+  "tokenStorage": {
+    "source": "[OMITTED; see original evidence]",
+    "offset": 3771,
+    "extractedStatement": "[OMITTED; see original evidence]",
+    "syntheticSessionStorage": "[OMITTED; see original evidence]",
+    "syntheticCookieAssignments": "[OMITTED; see original evidence]",
+    "realLoginOrTokensUsed": false,
+    "browserCookieAndServerLifecycleTested": false
+  },
+  "rawQueryStorage": {
+    "source": "[OMITTED; see original evidence]",
+    "cases": [
+      {
+        "href": "https://www.lina.co.kr/?utm_source=audit&token=[SYNTHETIC_REDACTED]&email=fake%40example.invalid#[SYNTHETIC_REDACTED]",
+        "storage": {
+          "X_UTM_PARAM": "utm_source=audit&token=[SYNTHETIC_REDACTED]&email=fake%40example.invalid#[SYNTHETIC_REDACTED]",
+          "X_UTM_SOURCE": "audit"
+        },
+        "logs": [
+          "UTM_ARR == >>  utm_source=audit",
+          "UTM_ARR == >>  token=[SYNTHETIC_REDACTED]",
+          "UTM_ARR == >>  email=fake%40example.invalid#[SYNTHETIC_REDACTED]",
+          "new browser ~"
+        ]
+      },
+      {
+        "href": "https://www.lina.co.kr/?not_utm_source=audit&code=[SYNTHETIC_REDACTED]",
+        "storage": {
+          "X_UTM_PARAM": "not_utm_source=audit&code=[SYNTHETIC_REDACTED]",
+          "X_UTM_SOURCE": "audit"
+        },
+        "logs": [
+          "UTM_ARR == >>  not_utm_source=audit",
+          "UTM_ARR == >>  code=[SYNTHETIC_REDACTED]",
+          "new browser ~"
+        ]
+      }
+    ]
+  },
+  "rawHtmlSink": {
+    "source": "[OMITTED; see original evidence]",
+    "marker": "domProps:{innerHTML:t._s(t.messageState.messageInfo.message)}",
+    "offset": 28929,
+    "untrustedInputPathVerified": false
+  },
+  "scriptLoading": {
+    "source": "[OMITTED; see original evidence]",
+    "referencedUrlsAcrossBranches": [
+      "https://www.googletagmanager.com/gtm.js?id=GTM-NW4QDN65",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-W7FKMGX2",
+      "https://www.googletagmanager.com/gtag/js?id=G-0K0ZYG493N",
+      "https://www.googletagmanager.com/gtag/js?id=G-FKVTFL0D0Q",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-5MNQXK3K",
+      "https://www.googletagmanager.com/gtm.js?id=GTM-NGBB95X"
+    ],
+    "integrityAssignmentPresentInReviewedLoader": false,
+    "remoteScriptsExecutedOrDownloaded": false
+  },
+  "excerpts": "[OMITTED; see original evidence]"
+}

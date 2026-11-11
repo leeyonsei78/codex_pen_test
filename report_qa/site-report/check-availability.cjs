@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),dns=require('dns').promises;
+const folder=__dirname,data=JSON.parse(fs.readFileSync(path.join(folder,'normalized-data.json'),'utf8'));
+const targets=[...data.sites.map(a=>({id:'S'+a.id,url:a.url})),...data.assets.map(a=>({id:a.id,url:a.url}))];
+const out={checkedAt:new Date().toISOString(),method:'Fixed listed URLs only, sequential HEAD, manual redirects, no credentials or form submissions; DNS lookup per hostname',dns:[],records:[]};
+(async()=>{for(const hostname of new Set(targets.map(t=>new URL(t.url).hostname))){try{out.dns.push({hostname,addresses:await dns.lookup(hostname,{all:true})});}catch(e){out.dns.push({hostname,error:e.code});}}
+for(const target of targets){const record={...target,at:new Date().toISOString()};try{const r=await fetch(target.url,{method:'HEAD',redirect:'manual',credentials:'omit',signal:AbortSignal.timeout(7000)});Object.assign(record,{status:r.status,location:r.headers.get('location'),contentType:r.headers.get('content-type')});await r.body?.cancel();}catch(e){record.error=e.cause?.code||e.name;record.message=e.message;}out.records.push(record);fs.writeFileSync(path.join(folder,'availability-20261031.json'),JSON.stringify(out,null,2));console.log(JSON.stringify(record));await new Promise(r=>setTimeout(r,500));}
+console.log('SUMMARY '+JSON.stringify({dns:out.dns,statuses:out.records.reduce((a,r)=>(a[r.status||r.error]=(a[r.status||r.error]||0)+1,a),{})}));})();

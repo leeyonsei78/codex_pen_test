@@ -1,0 +1,1656 @@
+﻿{
+    "checkedAt":  "2026-11-01T14:39:20.8454835+09:00",
+    "sourceRoot":  "C:\\codex_pen_test1",
+    "sourceReadOnly":  true,
+    "serviceTests":  0,
+    "requests":  0,
+    "testReruns":  0,
+    "matrixRows":  44,
+    "uniqueIds":  44,
+    "originalStatusCounts":  [
+                                 {
+                                     "state":  "PASS",
+                                     "count":  8
+                                 },
+                                 {
+                                     "state":  "N/A",
+                                     "count":  1
+                                 },
+                                 {
+                                     "state":  "BLOCKED",
+                                     "count":  33
+                                 },
+                                 {
+                                     "state":  "NOT_RUN",
+                                     "count":  2
+                                 }
+                             ],
+    "originalIdsAndConditions":  [
+                                     {
+                                         "시험ID":  "O-01",
+                                         "상태":  "PASS",
+                                         "검증항목":  "인계 원문 존재 및 전체 열람",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "필수 5개와 관련 텍스트 자료 원문 열람",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-02",
+                                         "상태":  "PASS",
+                                         "검증항목":  "CSV 대상·스킴 대응",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "31개 ID 각각 HTTP·HTTPS 1행",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-03",
+                                         "상태":  "PASS",
+                                         "검증항목":  "CSV 중복·누락",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "62행·고유 URL 62개·중복 0",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-04",
+                                         "상태":  "PASS",
+                                         "검증항목":  "과거 관측과 CSV 행별 대조",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "2차 및 3차 직접 측정 상태와 일치",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-05",
+                                         "상태":  "PASS",
+                                         "검증항목":  "인증서 날짜 정정의 출처·시각 연결",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "7개 호스트 notAfter를 원문·관측 시각에 연결",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-06",
+                                         "상태":  "PASS",
+                                         "검증항목":  "제공된 소스·설정·계정 자료 목록 확인",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "프로젝트 경계 안에서 자료 존재 여부 확인",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-07",
+                                         "상태":  "PASS",
+                                         "검증항목":  "환경변수 이름과 존재 여부 확인",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "현재 프로세스 이름만 확인하고 값 미출력",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-08",
+                                         "상태":  "PASS",
+                                         "검증항목":  "기존 자료 무결성",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "기존 26개 파일 시작·종료 해시 일치",
+                                         "재개필요자료":  "없음"
+                                     },
+                                     {
+                                         "시험ID":  "O-09",
+                                         "상태":  "N/A",
+                                         "검증항목":  "Git 변경 상태",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "Git 저장소이면 시작·종료 상태 비교",
+                                         "재개필요자료":  "Git 저장소 미제공"
+                                     },
+                                     {
+                                         "시험ID":  "O-10",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "회귀 테스트 32건 통과 주장 출처",
+                                         "수행조건":  "기존 로컬 자료 읽기 허용",
+                                         "기대결과":  "대상 참고 코드·테스트·실행 로그·해시로 주장 연결",
+                                         "재개필요자료":  "REQ-09 참고 코드·테스트·실행 로그"
+                                     },
+                                     {
+                                         "시험ID":  "S-01",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "로그인·암호 재설정 호출 경로",
+                                         "수행조건":  "REQ-03 인증 컨트롤러·필터·서비스·재설정 코드",
+                                         "기대결과":  "라우트 → 인증 서비스 → 토큰 저장소까지 파일·줄 연결",
+                                         "재개필요자료":  "REQ-03 인증 컨트롤러·필터·서비스·재설정 코드"
+                                     },
+                                     {
+                                         "시험ID":  "S-02",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "API 역할·객체 소유권",
+                                         "수행조건":  "REQ-03 API 라우트·권한 필터·정책표",
+                                         "기대결과":  "모든 API의 인증 → 역할 → 객체 소유권 호출 경로 확인",
+                                         "재개필요자료":  "REQ-03 API 라우트·권한 필터·정책표"
+                                     },
+                                     {
+                                         "시험ID":  "S-03",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "입력 → DB 쿼리",
+                                         "수행조건":  "REQ-03 컨트롤러·서비스·쿼리 매퍼",
+                                         "기대결과":  "입력 파싱 → 서비스 → SQL/ORM 바인딩 확인",
+                                         "재개필요자료":  "REQ-03 컨트롤러·서비스·쿼리 매퍼"
+                                     },
+                                     {
+                                         "시험ID":  "S-04",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "입력 → HTML/DOM 출력",
+                                         "수행조건":  "REQ-03 프런트 원본·템플릿·delfino_getSystemInfo 정의",
+                                         "기대결과":  "location.search와 document.write의 입력·변환·sink 전체 연결",
+                                         "재개필요자료":  "REQ-03 프런트 원본·템플릿·delfino_getSystemInfo 정의"
+                                     },
+                                     {
+                                         "시험ID":  "S-05",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "파일·비공개 다운로드",
+                                         "수행조건":  "REQ-03 업로드·다운로드 컨트롤러와 저장소 정책",
+                                         "기대결과":  "요청 → 소유권 검사 → 경로 검증 → 저장소 호출 추적",
+                                         "재개필요자료":  "REQ-03 업로드·다운로드 컨트롤러와 저장소 정책"
+                                     },
+                                     {
+                                         "시험ID":  "S-06",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "토큰 저장·회전·로그아웃",
+                                         "수행조건":  "REQ-03 토큰 서비스·세션 저장소·재설정 구현",
+                                         "기대결과":  "발급·저장·회전·무효화·재사용 방지 경로 확인",
+                                         "재개필요자료":  "REQ-03 토큰 서비스·세션 저장소·재설정 구현"
+                                     },
+                                     {
+                                         "시험ID":  "S-07",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "인증 헤더 목적지 제한",
+                                         "수행조건":  "REQ-03 외부 연동 클라이언트·허용목록·리다이렉션 설정",
+                                         "기대결과":  "HTTP 클라이언트의 대상·리다이렉션·헤더 전달 제한 확인",
+                                         "재개필요자료":  "REQ-03 외부 연동 클라이언트·허용목록·리다이렉션 설정"
+                                     },
+                                     {
+                                         "시험ID":  "S-08",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "개인정보·로그·실제 의존성",
+                                         "수행조건":  "REQ-03 DTO·로깅·오류 코드·의존성 잠금·빌드 식별자",
+                                         "기대결과":  "응답 DTO·로그 필터·오류 처리·버전·취약 기능 도달 경로 확인",
+                                         "재개필요자료":  "REQ-03 DTO·로깅·오류 코드·의존성 잠금·빌드 식별자"
+                                     },
+                                     {
+                                         "시험ID":  "T-01",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "비로그인 보호 API",
+                                         "수행조건":  "REQ-01/02/03/04 API 인증 정책·보호 API·익명 테스트",
+                                         "기대결과":  "익명 요청 거부·업무 응답 없음",
+                                         "재개필요자료":  "REQ-01/02/03/04 API 인증 정책·보호 API·익명 테스트"
+                                     },
+                                     {
+                                         "시험ID":  "T-02",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "만료 토큰 보호 API",
+                                         "수행조건":  "REQ-01/02/03/04 만료 토큰 발급/시계 제어",
+                                         "기대결과":  "만료된 테스트 토큰 거부",
+                                         "재개필요자료":  "REQ-01/02/03/04 만료 토큰 발급/시계 제어"
+                                     },
+                                     {
+                                         "시험ID":  "T-03",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "동일 역할 객체 조회",
+                                         "수행조건":  "REQ-01/02/03/04 A/B와 소유 객체·조회 API",
+                                         "기대결과":  "A의 B 합성 객체 조회 거부·대조용 본인 조회 허용",
+                                         "재개필요자료":  "REQ-01/02/03/04 A/B와 소유 객체·조회 API"
+                                     },
+                                     {
+                                         "시험ID":  "T-04",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "객체 수정 권한",
+                                         "수행조건":  "REQ-01/02/03/04 A/B와 수정 허용 합성 객체",
+                                         "기대결과":  "A의 B 합성 객체 수정 거부·데이터 불변",
+                                         "재개필요자료":  "REQ-01/02/03/04 A/B와 수정 허용 합성 객체"
+                                     },
+                                     {
+                                         "시험ID":  "T-05",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "객체 삭제 권한",
+                                         "수행조건":  "REQ-01/02/03/04 A/B와 삭제 시험용 합성 객체",
+                                         "기대결과":  "A의 B 합성 객체 삭제 거부·객체 유지",
+                                         "재개필요자료":  "REQ-01/02/03/04 A/B와 삭제 시험용 합성 객체"
+                                     },
+                                     {
+                                         "시험ID":  "T-06",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "비공개 다운로드 권한",
+                                         "수행조건":  "REQ-01/02/03/04 합성 파일·소유권·다운로드 API",
+                                         "기대결과":  "타인 합성 파일 다운로드 거부·본인 허용",
+                                         "재개필요자료":  "REQ-01/02/03/04 합성 파일·소유권·다운로드 API"
+                                     },
+                                     {
+                                         "시험ID":  "T-07",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "관리자 기능 권한",
+                                         "수행조건":  "REQ-01/02/03/04 일반/관리 계정·정책표",
+                                         "기대결과":  "일반 사용자 거부·관리 역할 정상 경로 허용",
+                                         "재개필요자료":  "REQ-01/02/03/04 일반/관리 계정·정책표"
+                                     },
+                                     {
+                                         "시험ID":  "T-08",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "로그아웃 후 재사용",
+                                         "수행조건":  "REQ-01/02/03/04 로그인·로그아웃 시험 허용·토큰 정책",
+                                         "기대결과":  "로그아웃한 테스트 세션/토큰이 정책에 맞게 거부",
+                                         "재개필요자료":  "REQ-01/02/03/04 로그인·로그아웃 시험 허용·토큰 정책"
+                                     },
+                                     {
+                                         "시험ID":  "T-09",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "Refresh Token 회전",
+                                         "수행조건":  "REQ-01/02/03/04 갱신 명세·테스트 토큰",
+                                         "기대결과":  "유효 갱신 후 새 토큰 발급·이전 토큰 폐기",
+                                         "재개필요자료":  "REQ-01/02/03/04 갱신 명세·테스트 토큰"
+                                     },
+                                     {
+                                         "시험ID":  "T-10",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "Refresh Token 재사용",
+                                         "수행조건":  "REQ-01/02/03/04 테스트 토큰·정책·감사 로그",
+                                         "기대결과":  "이미 사용한 토큰 재사용 거부·정책상 가족 무효화 확인",
+                                         "재개필요자료":  "REQ-01/02/03/04 테스트 토큰·정책·감사 로그"
+                                     },
+                                     {
+                                         "시험ID":  "T-11",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "동시 갱신",
+                                         "수행조건":  "REQ-01/02/03/04 동시 갱신 시험 승인·명세",
+                                         "기대결과":  "명세상 허용된 결과만 생성·경쟁으로 중복 유효 토큰 미생성",
+                                         "재개필요자료":  "REQ-01/02/03/04 동시 갱신 시험 승인·명세"
+                                     },
+                                     {
+                                         "시험ID":  "T-12",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "재설정 토큰 만료",
+                                         "수행조건":  "REQ-01/02/03/04 테스트 메일함·시계 제어·재설정 코드",
+                                         "기대결과":  "만료된 테스트 토큰 거부·암호 불변",
+                                         "재개필요자료":  "REQ-01/02/03/04 테스트 메일함·시계 제어·재설정 코드"
+                                     },
+                                     {
+                                         "시험ID":  "T-13",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "재설정 토큰 일회성",
+                                         "수행조건":  "REQ-01/02/03/04 일회성 시험 계정·토큰",
+                                         "기대결과":  "첫 사용만 허용·재사용 거부",
+                                         "재개필요자료":  "REQ-01/02/03/04 일회성 시험 계정·토큰"
+                                     },
+                                     {
+                                         "시험ID":  "T-14",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "재설정 토큰 계정 연결",
+                                         "수행조건":  "REQ-01/02/03/04 A/B 합성 계정·재설정 시험 승인",
+                                         "기대결과":  "A 발급 토큰을 B에 사용 불가",
+                                         "재개필요자료":  "REQ-01/02/03/04 A/B 합성 계정·재설정 시험 승인"
+                                     },
+                                     {
+                                         "시험ID":  "T-15",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "SQL 파라미터 처리",
+                                         "수행조건":  "REQ-01/02/03/04 격리 DB·로그·소스",
+                                         "기대결과":  "합성 입력을 데이터로 처리·추가 쿼리/데이터 접근 없음",
+                                         "재개필요자료":  "REQ-01/02/03/04 격리 DB·로그·소스"
+                                     },
+                                     {
+                                         "시험ID":  "T-16",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "HTML 출력",
+                                         "수행조건":  "REQ-01/02/03/04 스테이징 렌더링 환경·출력 코드",
+                                         "기대결과":  "합성 표식이 문맥에 맞게 인코딩되고 실행되지 않음",
+                                         "재개필요자료":  "REQ-01/02/03/04 스테이징 렌더링 환경·출력 코드"
+                                     },
+                                     {
+                                         "시험ID":  "T-17",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "쿠키·CSRF",
+                                         "수행조건":  "REQ-01/02/03/04 테스트 세션·CSRF 명세·합성 변경 객체",
+                                         "기대결과":  "정책상 쿠키 속성 유지·CSRF 누락/불일치 거부·정상 경로 허용",
+                                         "재개필요자료":  "REQ-01/02/03/04 테스트 세션·CSRF 명세·합성 변경 객체"
+                                     },
+                                     {
+                                         "시험ID":  "T-18",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "정상 업무 순서·중복 처리",
+                                         "수행조건":  "REQ-01/02/03/04 업무 명세·결제/발송 없는 샌드박스",
+                                         "기대결과":  "단계 건너뛰기·중복은 명세대로 거부·정상 합성 업무 허용",
+                                         "재개필요자료":  "REQ-01/02/03/04 업무 명세·결제/발송 없는 샌드박스"
+                                     },
+                                     {
+                                         "시험ID":  "T-19",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "API 개인정보 최소화",
+                                         "수행조건":  "REQ-01/02/03/04 합성 개인정보·필드 허용표·로그",
+                                         "기대결과":  "역할별 승인 필드만 반환·로그/오류에 비밀정보 없음",
+                                         "재개필요자료":  "REQ-01/02/03/04 합성 개인정보·필드 허용표·로그"
+                                     },
+                                     {
+                                         "시험ID":  "R-01",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "TLS 실패 원인 분리",
+                                         "수행조건":  "REQ-05 TLS/SNI 설정·시각별 로그·점검 경로 메타데이터",
+                                         "기대결과":  "인증서·SNI·프록시·신뢰 저장소·서버 로그로 실패 계층 식별",
+                                         "재개필요자료":  "REQ-05 TLS/SNI 설정·시각별 로그·점검 경로 메타데이터"
+                                     },
+                                     {
+                                         "시험ID":  "R-02",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "HTTP 403 정책 적정성",
+                                         "수행조건":  "REQ-06 WAF/서버 정책·요청 로그",
+                                         "기대결과":  "4개 URL 차단이 승인 정책과 로그에 부합",
+                                         "재개필요자료":  "REQ-06 WAF/서버 정책·요청 로그"
+                                     },
+                                     {
+                                         "시험ID":  "R-03",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "CSP 실제 배포 계층·호환성",
+                                         "수행조건":  "REQ-04 웹서버·CDN 정책·제휴 명세·스테이징",
+                                         "기대결과":  "정상·오류 응답에서 검토된 CSP와 정상 제휴 흐름 확인",
+                                         "재개필요자료":  "REQ-04 웹서버·CDN 정책·제휴 명세·스테이징"
+                                     },
+                                     {
+                                         "시험ID":  "R-04",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "프레임 제한 배포·호환성",
+                                         "수행조건":  "REQ-04 프레임 사용 정책·제휴 명세·스테이징",
+                                         "기대결과":  "허용 업무 프레임만 동작·비허용 출처 삽입 차단",
+                                         "재개필요자료":  "REQ-04 프레임 사용 정책·제휴 명세·스테이징"
+                                     },
+                                     {
+                                         "시험ID":  "R-05",
+                                         "상태":  "BLOCKED",
+                                         "검증항목":  "HSTS 배포 계층·적용 범위",
+                                         "수행조건":  "REQ-04 TLS/CDN 정책·도메인대장·브라우저 정책",
+                                         "기대결과":  "인증서 정상·정상/오류 HTTPS 응답 정책과 상위 범위 확인",
+                                         "재개필요자료":  "REQ-04 TLS/CDN 정책·도메인대장·브라우저 정책"
+                                     },
+                                     {
+                                         "시험ID":  "N-01",
+                                         "상태":  "NOT_RUN",
+                                         "검증항목":  "운영 로그인·공격 입력·상태 변경",
+                                         "수행조건":  "운영 기능 시험 별도 명시 승인",
+                                         "기대결과":  "별도 명시 승인 없이는 실행하지 않음",
+                                         "재개필요자료":  "운영 기능 시험 별도 명시 승인"
+                                     },
+                                     {
+                                         "시험ID":  "N-02",
+                                         "상태":  "NOT_RUN",
+                                         "검증항목":  "신규 API·외부 시스템 요청",
+                                         "수행조건":  "호스트·경로·행위별 범위 확대 승인",
+                                         "기대결과":  "기존 승인을 새 대상 승인으로 확장하지 않음",
+                                         "재개필요자료":  "호스트·경로·행위별 범위 확대 승인"
+                                     }
+                                 ],
+    "protected26":  [
+                        {
+                            "path":  "C:\\codex_pen_test1\\3차_curl오류.tmp",
+                            "expected":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                            "actual":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\3차_기존파일해시.json",
+                            "expected":  "4E15589A55550511E3D526025671F317200F6E252BD77134AF0B192529B65561",
+                            "actual":  "4E15589A55550511E3D526025671F317200F6E252BD77134AF0B192529B65561",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\3차_응답분석근거.json",
+                            "expected":  "D2009398FB17F79AC7D89881E541818B4C546FE40C68AF3874855C83FCC57896",
+                            "actual":  "D2009398FB17F79AC7D89881E541818B4C546FE40C68AF3874855C83FCC57896",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\3차_입력흐름근거.json",
+                            "expected":  "F28A43D57A8BA1EEC053C46FA76E30BF2397314B29DE7916577D9FAF52908F99",
+                            "actual":  "F28A43D57A8BA1EEC053C46FA76E30BF2397314B29DE7916577D9FAF52908F99",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\followup_collect.ps1",
+                            "expected":  "E3C844E9404CDCF2F90FF728B520CAEE7F1FBB0144A4B8113EA0288DE0C34E73",
+                            "actual":  "E3C844E9404CDCF2F90FF728B520CAEE7F1FBB0144A4B8113EA0288DE0C34E73",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\followup_curl_error.tmp",
+                            "expected":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                            "actual":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\followup_resources.ps1",
+                            "expected":  "BB83A738426888E1537EB1510B5973F3A5944C054AFF785C56F9115D02B6B804",
+                            "actual":  "BB83A738426888E1537EB1510B5973F3A5944C054AFF785C56F9115D02B6B804",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\third_collect.ps1",
+                            "expected":  "C614BDBD0095B01D48CB071D8B11E887A0E9751CE89BC1A3DD9C1CF0E3E5372F",
+                            "actual":  "C614BDBD0095B01D48CB071D8B11E887A0E9751CE89BC1A3DD9C1CF0E3E5372F",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\third_focus.ps1",
+                            "expected":  "4F8BE73B3F833B48162CB5D73669686BE78FC50DF84F13037BF71CE91A988B58",
+                            "actual":  "4F8BE73B3F833B48162CB5D73669686BE78FC50DF84F13037BF71CE91A988B58",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_URL별_취약점현황.csv",
+                            "expected":  "1E41BEA1F77B8FB8C35E8EC0627B75C2FB626BB11C57D48099D1BCB0644DA9B0",
+                            "actual":  "1E41BEA1F77B8FB8C35E8EC0627B75C2FB626BB11C57D48099D1BCB0644DA9B0",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_미검증항목및필요자료.md",
+                            "expected":  "DADF40B185702AD405828696BA2E171311C665478992542CA914CA5ED07F70B0",
+                            "actual":  "DADF40B185702AD405828696BA2E171311C665478992542CA914CA5ED07F70B0",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_심화보안점검보고서.md",
+                            "expected":  "692C6C7EB13713AA9E6EDF0A077A39BC15B5EB6EF315FBAF3F09BA32951FC5A0",
+                            "actual":  "692C6C7EB13713AA9E6EDF0A077A39BC15B5EB6EF315FBAF3F09BA32951FC5A0",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_출시보안검토의견.md",
+                            "expected":  "CA90210BCD63EEDB213AD86A389CD771278F93C4B6121516B46C03B91D72EC56",
+                            "actual":  "CA90210BCD63EEDB213AD86A389CD771278F93C4B6121516B46C03B91D72EC56",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_취약점개선가이드.md",
+                            "expected":  "D912F03E80E346977E3F6720D9E37E336BA1D395EA0889C8E2A9B51B4E4083D1",
+                            "actual":  "D912F03E80E346977E3F6720D9E37E336BA1D395EA0889C8E2A9B51B4E4083D1",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_URL별_보안점검결과.csv",
+                            "expected":  "75F8566A9D63A396249C1F722F76BE961AAAE679BD43F8BBB3AA439AC45F6A53",
+                            "actual":  "75F8566A9D63A396249C1F722F76BE961AAAE679BD43F8BBB3AA439AC45F6A53",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_보안예비점검.md",
+                            "expected":  "829291187094818BA4DF42333863F75B0827E4D09D21F7469FF711A5AF34380B",
+                            "actual":  "829291187094818BA4DF42333863F75B0827E4D09D21F7469FF711A5AF34380B",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_전체주소_사이트목록.docx",
+                            "expected":  "BF0339418729F2886E63F96A8A534DCA64E45E93568FF9AFA1BF87272CF05298",
+                            "actual":  "BF0339418729F2886E63F96A8A534DCA64E45E93568FF9AFA1BF87272CF05298",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_추가검증필요항목.md",
+                            "expected":  "79EEAFBE176126A1C7CD2F3CC174907532F5405620E74F2542E5254B5A84CC65",
+                            "actual":  "79EEAFBE176126A1C7CD2F3CC174907532F5405620E74F2542E5254B5A84CC65",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_출시전_보안체크리스트.md",
+                            "expected":  "9D6E645B04109207CA6E73FC39BEDD9CA99D904C6B258EE7E70C0300C1B439FD",
+                            "actual":  "9D6E645B04109207CA6E73FC39BEDD9CA99D904C6B258EE7E70C0300C1B439FD",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_취약점_상세목록.json",
+                            "expected":  "6424F2DF2431F598456D4E3089321EAA44B36184EB197FECC06D7027FD287E5D",
+                            "actual":  "6424F2DF2431F598456D4E3089321EAA44B36184EB197FECC06D7027FD287E5D",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\라이나생명_후속보안점검_보고서.md",
+                            "expected":  "1049853C0D6AAA00EB1816A4736B695F7884FECF5FA26080E03FBEE3AD0F9FFE",
+                            "actual":  "1049853C0D6AAA00EB1816A4736B695F7884FECF5FA26080E03FBEE3AD0F9FFE",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\보안점검_사전현황.md",
+                            "expected":  "572E74E0F6C0FE7E3CF7F3385843C5503CB4F2ABBE6D6B80163B08CACDF6299A",
+                            "actual":  "572E74E0F6C0FE7E3CF7F3385843C5503CB4F2ABBE6D6B80163B08CACDF6299A",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\점검대상_조회결과.json",
+                            "expected":  "294A51C3C2894DD65215C7BE761B4C2A300CC9C20233E3F3882E5C3600A0BF99",
+                            "actual":  "294A51C3C2894DD65215C7BE761B4C2A300CC9C20233E3F3882E5C3600A0BF99",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\점검대상_현황.json",
+                            "expected":  "0BEB688BBE80EE95AA3947E451D7C18C69CCD034A9BF164209FA3AEE7ADAC196",
+                            "actual":  "0BEB688BBE80EE95AA3947E451D7C18C69CCD034A9BF164209FA3AEE7ADAC196",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\후속점검_리소스근거.json",
+                            "expected":  "82977ADA81B1D78E012A52B4C2D32A15513B531158F1D5D1F26EA1BA719D8F71",
+                            "actual":  "82977ADA81B1D78E012A52B4C2D32A15513B531158F1D5D1F26EA1BA719D8F71",
+                            "state":  "MATCH"
+                        },
+                        {
+                            "path":  "C:\\codex_pen_test1\\후속점검_응답증거.json",
+                            "expected":  "73A8F3C0DD3C2E4044EE3F43BD81B91BBEE4D4E35D7FD9BE07212111FE1CAEC7",
+                            "actual":  "73A8F3C0DD3C2E4044EE3F43BD81B91BBEE4D4E35D7FD9BE07212111FE1CAEC7",
+                            "state":  "MATCH"
+                        }
+                    ],
+    "historicalStartEndAgreement":  [
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\3차_curl오류.tmp",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\3차_기존파일해시.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\3차_응답분석근거.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\3차_입력흐름근거.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\followup_collect.ps1",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\followup_curl_error.tmp",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\followup_resources.ps1",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\third_collect.ps1",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\third_focus.ps1",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_URL별_취약점현황.csv",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_미검증항목및필요자료.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_심화보안점검보고서.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_출시보안검토의견.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_3차_취약점개선가이드.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_URL별_보안점검결과.csv",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_보안예비점검.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_전체주소_사이트목록.docx",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_추가검증필요항목.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_출시전_보안체크리스트.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_취약점_상세목록.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\라이나생명_후속보안점검_보고서.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\보안점검_사전현황.md",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\점검대상_조회결과.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\점검대상_현황.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\후속점검_리소스근거.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        },
+                                        {
+                                            "path":  "C:\\codex_pen_test1\\후속점검_응답증거.json",
+                                            "matchingEntries":  1,
+                                            "startAndEndAgree":  true
+                                        }
+                                    ],
+    "listedArtifacts":  [
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\CSV_대상및증거대조.json",
+                                "expected":  "2D67E699CDD840A865563D6853CF14B67073FF671B7D840C916EDE9AAA0C30F3",
+                                "actual":  "2D67E699CDD840A865563D6853CF14B67073FF671B7D840C916EDE9AAA0C30F3",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\Git_시작종료.json",
+                                "expected":  "34AEF3560395719F70141CE0C64C28857EAE9C7F597E0ED1A2702A43C406245C",
+                                "actual":  "34AEF3560395719F70141CE0C64C28857EAE9C7F597E0ED1A2702A43C406245C",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_시작.json",
+                                "expected":  "8CA0F636A37C7B30D471091B3F36F20A624CC2A96F7724AAE1616D45D9643CB8",
+                                "actual":  "8CA0F636A37C7B30D471091B3F36F20A624CC2A96F7724AAE1616D45D9643CB8",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_최종검증.json",
+                                "expected":  "566EE53B083094402751EC424886C95458258FCE9EE28703625BEB020CB156B1",
+                                "actual":  "566EE53B083094402751EC424886C95458258FCE9EE28703625BEB020CB156B1",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일목록.json",
+                                "expected":  "C689BA60730A15FFA5BEDB887DED09418805F724777EC10B80E877A89E9892D9",
+                                "actual":  "C689BA60730A15FFA5BEDB887DED09418805F724777EC10B80E877A89E9892D9",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\실행정보.json",
+                                "expected":  "F6CF43329A9BD858EF22E68A9D502A5EE549D52392DB8DAFA1AD9675EA526105",
+                                "actual":  "F6CF43329A9BD858EF22E68A9D502A5EE549D52392DB8DAFA1AD9675EA526105",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\오프라인_분석근거.md",
+                                "expected":  "CEC79420C48A6EC88DF0313D565538A4B1D0C908C2DC1F6C90FE84FF96B1C9D2",
+                                "actual":  "CEC79420C48A6EC88DF0313D565538A4B1D0C908C2DC1F6C90FE84FF96B1C9D2",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\원문열람목록.json",
+                                "expected":  "F4233E70EE7293CBC3C81135DCFA31298153817D21760722DBC554E0042CA2F9",
+                                "actual":  "F4233E70EE7293CBC3C81135DCFA31298153817D21760722DBC554E0042CA2F9",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\인증서정정_관측시점대조.json",
+                                "expected":  "4ED132B6D558DBED0B29E0F6DF27D048F202730A4E72151804CDB0FD353EE357",
+                                "actual":  "4ED132B6D558DBED0B29E0F6DF27D048F202730A4E72151804CDB0FD353EE357",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\최종집계.json",
+                                "expected":  "82A1AA8D3598C54EC4A90F8456179C12DBB72D68F36084AFAF5D25F5CB96059D",
+                                "actual":  "82A1AA8D3598C54EC4A90F8456179C12DBB72D68F36084AFAF5D25F5CB96059D",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\환경변수_이름존재만.json",
+                                "expected":  "351F15218DF379A0D88CEB9FD05E61214980D4B1213CAAEB7139FB752019417A",
+                                "actual":  "351F15218DF379A0D88CEB9FD05E61214980D4B1213CAAEB7139FB752019417A",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\라이나생명_4차_핵심보안검증보고서.md",
+                                "expected":  "5F73C1F7A0C2A75573658D853395A51E519D8FC2FE5DE69C7F9C63633AEF571D",
+                                "actual":  "5F73C1F7A0C2A75573658D853395A51E519D8FC2FE5DE69C7F9C63633AEF571D",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\라이나생명_4차_검증매트릭스.csv",
+                                "expected":  "B0FDA73D5BEF73EB3A83AC4B911AF76EE04B6673E602967327EEA28260310DD5",
+                                "actual":  "B0FDA73D5BEF73EB3A83AC4B911AF76EE04B6673E602967327EEA28260310DD5",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\라이나생명_4차_차단사항및자료요청.md",
+                                "expected":  "DC6490CF8A4F3D3BE1DBDB2A8705C5CFADA0D5FE9BA74C6BF673BE0FA76DD35D",
+                                "actual":  "DC6490CF8A4F3D3BE1DBDB2A8705C5CFADA0D5FE9BA74C6BF673BE0FA76DD35D",
+                                "state":  "MATCH"
+                            },
+                            {
+                                "path":  "C:\\codex_pen_test1\\라이나생명_4차_출시보안검토의견.md",
+                                "expected":  "B75062FD30C5F9DCEC9D2EEEF20F038C841FA8343053CA619C5167A9F23EC6FC",
+                                "actual":  "B75062FD30C5F9DCEC9D2EEEF20F038C841FA8343053CA619C5167A9F23EC6FC",
+                                "state":  "MATCH"
+                            }
+                        ],
+    "matrixFileReferences":  [
+                                 {
+                                     "id":  "O-01",
+                                     "reference":  "4차_증적_20261101_142151/원문열람목록.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-02",
+                                     "reference":  "4차_증적_20261101_142151/CSV_대상및증거대조.json:pair_checks",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-03",
+                                     "reference":  "4차_증적_20261101_142151/CSV_대상및증거대조.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-04",
+                                     "reference":  "4차_증적_20261101_142151/CSV_대상및증거대조.json:row_evidence_comparison",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-05",
+                                     "reference":  "4차_증적_20261101_142151/인증서정정_관측시점대조.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-06",
+                                     "reference":  "4차_증적_20261101_142151/기존파일목록.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-07",
+                                     "reference":  "4차_증적_20261101_142151/환경변수_이름존재만.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-08",
+                                     "reference":  "4차_증적_20261101_142151/기존파일_SHA256_최종검증.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-09",
+                                     "reference":  "4차_증적_20261101_142151/Git_시작종료.json",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "O-10",
+                                     "reference":  "라이나생명_3차_취약점개선가이드.md:100",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-01",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-02",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-03",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-04",
+                                     "reference":  "3차_입력흐름근거.json:18,22,32; HTML 수신 줄 255/258/38",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-05",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-06",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-07",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "S-08",
+                                     "reference":  "라이나생명_3차_미검증항목및필요자료.md:5",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "R-01",
+                                     "reference":  "3차_응답분석근거.json:blog 3개 tls_mode",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "R-02",
+                                     "reference":  "라이나생명_3차_심화보안점검보고서.md:45-50",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "R-03",
+                                     "reference":  "라이나생명_3차_취약점개선가이드.md:14,20",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "R-04",
+                                     "reference":  "라이나생명_3차_취약점개선가이드.md:39",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "R-05",
+                                     "reference":  "라이나생명_3차_취약점개선가이드.md:54,68",
+                                     "exists":  true
+                                 },
+                                 {
+                                     "id":  "N-02",
+                                     "reference":  "라이나생명_3차_심화보안점검보고서.md:90-103",
+                                     "exists":  true
+                                 }
+                             ],
+    "originalSnapshotBefore":  [
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\3차_curl오류.tmp",
+                                       "bytes":  0,
+                                       "created":  "2026-11-01T14:13:51.6267209+09:00",
+                                       "modified":  "2026-11-01T14:13:53.1827064+09:00",
+                                       "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\3차_기존파일해시.json",
+                                       "bytes":  1653,
+                                       "created":  "2026-11-01T14:13:27.9050840+09:00",
+                                       "modified":  "2026-11-01T14:13:27.9060839+09:00",
+                                       "sha256":  "4E15589A55550511E3D526025671F317200F6E252BD77134AF0B192529B65561"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\3차_응답분석근거.json",
+                                       "bytes":  101696,
+                                       "created":  "2026-11-01T14:13:29.5136111+09:00",
+                                       "modified":  "2026-11-01T14:15:04.0076153+09:00",
+                                       "sha256":  "D2009398FB17F79AC7D89881E541818B4C546FE40C68AF3874855C83FCC57896"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\3차_입력흐름근거.json",
+                                       "bytes":  2720,
+                                       "created":  "2026-11-01T14:14:56.4023999+09:00",
+                                       "modified":  "2026-11-01T14:14:56.4036153+09:00",
+                                       "sha256":  "F28A43D57A8BA1EEC053C46FA76E30BF2397314B29DE7916577D9FAF52908F99"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\followup_collect.ps1",
+                                       "bytes":  4476,
+                                       "created":  "2026-11-01T14:00:04.9326199+09:00",
+                                       "modified":  "2026-11-01T14:00:26.4273670+09:00",
+                                       "sha256":  "E3C844E9404CDCF2F90FF728B520CAEE7F1FBB0144A4B8113EA0288DE0C34E73"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\followup_curl_error.tmp",
+                                       "bytes":  0,
+                                       "created":  "2026-11-01T14:00:27.1032161+09:00",
+                                       "modified":  "2026-11-01T14:01:27.2882465+09:00",
+                                       "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\followup_resources.ps1",
+                                       "bytes":  2174,
+                                       "created":  "2026-11-01T14:01:56.3275365+09:00",
+                                       "modified":  "2026-11-01T14:01:58.0639243+09:00",
+                                       "sha256":  "BB83A738426888E1537EB1510B5973F3A5944C054AFF785C56F9115D02B6B804"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\third_collect.ps1",
+                                       "bytes":  5824,
+                                       "created":  "2026-11-01T14:13:25.7105598+09:00",
+                                       "modified":  "2026-11-01T14:13:27.1485582+09:00",
+                                       "sha256":  "C614BDBD0095B01D48CB071D8B11E887A0E9751CE89BC1A3DD9C1CF0E3E5372F"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\third_focus.ps1",
+                                       "bytes":  1322,
+                                       "created":  "2026-11-01T14:14:48.5873366+09:00",
+                                       "modified":  "2026-11-01T14:14:50.1540595+09:00",
+                                       "sha256":  "4F8BE73B3F833B48162CB5D73669686BE78FC50DF84F13037BF71CE91A988B58"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_3차_URL별_취약점현황.csv",
+                                       "bytes":  19672,
+                                       "created":  "2026-11-01T14:18:22.7121118+09:00",
+                                       "modified":  "2026-11-01T14:18:22.7121118+09:00",
+                                       "sha256":  "1E41BEA1F77B8FB8C35E8EC0627B75C2FB626BB11C57D48099D1BCB0644DA9B0"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_3차_미검증항목및필요자료.md",
+                                       "bytes":  4809,
+                                       "created":  "2026-11-01T14:18:24.7527963+09:00",
+                                       "modified":  "2026-11-01T14:18:24.7527963+09:00",
+                                       "sha256":  "DADF40B185702AD405828696BA2E171311C665478992542CA914CA5ED07F70B0"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_3차_심화보안점검보고서.md",
+                                       "bytes":  13376,
+                                       "created":  "2026-11-01T14:18:21.7157334+09:00",
+                                       "modified":  "2026-11-01T14:18:47.0241369+09:00",
+                                       "sha256":  "692C6C7EB13713AA9E6EDF0A077A39BC15B5EB6EF315FBAF3F09BA32951FC5A0"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_3차_출시보안검토의견.md",
+                                       "bytes":  2674,
+                                       "created":  "2026-11-01T14:18:25.7407428+09:00",
+                                       "modified":  "2026-11-01T14:18:25.7407428+09:00",
+                                       "sha256":  "CA90210BCD63EEDB213AD86A389CD771278F93C4B6121516B46C03B91D72EC56"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_3차_취약점개선가이드.md",
+                                       "bytes":  8548,
+                                       "created":  "2026-11-01T14:18:23.7594837+09:00",
+                                       "modified":  "2026-11-01T14:18:23.7594837+09:00",
+                                       "sha256":  "D912F03E80E346977E3F6720D9E37E336BA1D395EA0889C8E2A9B51B4E4083D1"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_4차_검증매트릭스.csv",
+                                       "bytes":  38157,
+                                       "created":  "2026-11-01T14:24:07.5468626+09:00",
+                                       "modified":  "2026-11-01T14:26:27.9549663+09:00",
+                                       "sha256":  "B0FDA73D5BEF73EB3A83AC4B911AF76EE04B6673E602967327EEA28260310DD5"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_4차_차단사항및자료요청.md",
+                                       "bytes":  5331,
+                                       "created":  "2026-11-01T14:26:03.1387024+09:00",
+                                       "modified":  "2026-11-01T14:26:03.1387024+09:00",
+                                       "sha256":  "DC6490CF8A4F3D3BE1DBDB2A8705C5CFADA0D5FE9BA74C6BF673BE0FA76DD35D"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_4차_출시보안검토의견.md",
+                                       "bytes":  2274,
+                                       "created":  "2026-11-01T14:26:04.0764476+09:00",
+                                       "modified":  "2026-11-01T14:26:04.0764476+09:00",
+                                       "sha256":  "B75062FD30C5F9DCEC9D2EEEF20F038C841FA8343053CA619C5167A9F23EC6FC"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_4차_핵심보안검증보고서.md",
+                                       "bytes":  9439,
+                                       "created":  "2026-11-01T14:26:02.1977729+09:00",
+                                       "modified":  "2026-11-01T14:26:42.9903768+09:00",
+                                       "sha256":  "5F73C1F7A0C2A75573658D853395A51E519D8FC2FE5DE69C7F9C63633AEF571D"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_URL별_보안점검결과.csv",
+                                       "bytes":  26069,
+                                       "created":  "2026-11-01T14:05:15.7642189+09:00",
+                                       "modified":  "2026-11-01T14:05:15.7642189+09:00",
+                                       "sha256":  "75F8566A9D63A396249C1F722F76BE961AAAE679BD43F8BBB3AA439AC45F6A53"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_검증재개_준비현황.md",
+                                       "bytes":  7243,
+                                       "created":  "2026-11-01T14:31:39.2380399+09:00",
+                                       "modified":  "2026-11-01T14:31:39.2390445+09:00",
+                                       "sha256":  "F7311DDCB1CDF9D5FF28283E4FAD2CCA7CD38137F0FC7831E320C60F1403A506"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_보안예비점검.md",
+                                       "bytes":  11267,
+                                       "created":  "2026-11-01T13:53:24.6298541+09:00",
+                                       "modified":  "2026-11-01T13:53:24.6298541+09:00",
+                                       "sha256":  "829291187094818BA4DF42333863F75B0827E4D09D21F7469FF711A5AF34380B"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_전체주소_사이트목록.docx",
+                                       "bytes":  43865,
+                                       "created":  "2026-11-01T13:48:04.7326032+09:00",
+                                       "modified":  "2026-10-30T20:12:32.1327717+09:00",
+                                       "sha256":  "BF0339418729F2886E63F96A8A534DCA64E45E93568FF9AFA1BF87272CF05298"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_추가검증필요항목.md",
+                                       "bytes":  4052,
+                                       "created":  "2026-11-01T14:05:17.6522327+09:00",
+                                       "modified":  "2026-11-01T14:05:17.6522327+09:00",
+                                       "sha256":  "79EEAFBE176126A1C7CD2F3CC174907532F5405620E74F2542E5254B5A84CC65"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_출시전_보안체크리스트.md",
+                                       "bytes":  2807,
+                                       "created":  "2026-11-01T14:05:18.5924236+09:00",
+                                       "modified":  "2026-11-01T14:05:18.5924236+09:00",
+                                       "sha256":  "9D6E645B04109207CA6E73FC39BEDD9CA99D904C6B258EE7E70C0300C1B439FD"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_취약점_상세목록.json",
+                                       "bytes":  9022,
+                                       "created":  "2026-11-01T14:05:16.7260789+09:00",
+                                       "modified":  "2026-11-01T14:05:16.7260789+09:00",
+                                       "sha256":  "6424F2DF2431F598456D4E3089321EAA44B36184EB197FECC06D7027FD287E5D"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_후속보안점검_보고서.md",
+                                       "bytes":  12960,
+                                       "created":  "2026-11-01T14:05:14.8202691+09:00",
+                                       "modified":  "2026-11-01T14:05:14.8202691+09:00",
+                                       "sha256":  "1049853C0D6AAA00EB1816A4736B695F7884FECF5FA26080E03FBEE3AD0F9FFE"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\보안점검_사전현황.md",
+                                       "bytes":  3351,
+                                       "created":  "2026-11-01T13:48:43.7981023+09:00",
+                                       "modified":  "2026-11-01T13:48:43.7990988+09:00",
+                                       "sha256":  "572E74E0F6C0FE7E3CF7F3385843C5503CB4F2ABBE6D6B80163B08CACDF6299A"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\점검대상_조회결과.json",
+                                       "bytes":  18248,
+                                       "created":  "2026-11-01T13:53:28.7406947+09:00",
+                                       "modified":  "2026-11-01T13:53:28.7406947+09:00",
+                                       "sha256":  "294A51C3C2894DD65215C7BE761B4C2A300CC9C20233E3F3882E5C3600A0BF99"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\점검대상_현황.json",
+                                       "bytes":  12290,
+                                       "created":  "2026-11-01T13:48:43.7910766+09:00",
+                                       "modified":  "2026-11-01T13:48:43.7920754+09:00",
+                                       "sha256":  "0BEB688BBE80EE95AA3947E451D7C18C69CCD034A9BF164209FA3AEE7ADAC196"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\후속점검_리소스근거.json",
+                                       "bytes":  4138,
+                                       "created":  "2026-11-01T14:02:09.8599894+09:00",
+                                       "modified":  "2026-11-01T14:02:09.8609927+09:00",
+                                       "sha256":  "82977ADA81B1D78E012A52B4C2D32A15513B531158F1D5D1F26EA1BA719D8F71"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\후속점검_응답증거.json",
+                                       "bytes":  147564,
+                                       "created":  "2026-11-01T14:00:27.2416249+09:00",
+                                       "modified":  "2026-11-01T14:01:29.0986724+09:00",
+                                       "sha256":  "73A8F3C0DD3C2E4044EE3F43BD81B91BBEE4D4E35D7FD9BE07212111FE1CAEC7"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\CSV_대상및증거대조.json",
+                                       "bytes":  35114,
+                                       "created":  "2026-11-01T14:22:25.7711963+09:00",
+                                       "modified":  "2026-11-01T14:22:53.6823069+09:00",
+                                       "sha256":  "2D67E699CDD840A865563D6853CF14B67073FF671B7D840C916EDE9AAA0C30F3"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\Git_시작종료.json",
+                                       "bytes":  681,
+                                       "created":  "2026-11-01T14:26:28.2418614+09:00",
+                                       "modified":  "2026-11-01T14:26:28.2428616+09:00",
+                                       "sha256":  "34AEF3560395719F70141CE0C64C28857EAE9C7F597E0ED1A2702A43C406245C"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_시작.json",
+                                       "bytes":  4633,
+                                       "created":  "2026-11-01T14:21:51.2718045+09:00",
+                                       "modified":  "2026-11-01T14:21:51.2728082+09:00",
+                                       "sha256":  "8CA0F636A37C7B30D471091B3F36F20A624CC2A96F7724AAE1616D45D9643CB8"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_최종검증.json",
+                                       "bytes":  9573,
+                                       "created":  "2026-11-01T14:26:28.1378248+09:00",
+                                       "modified":  "2026-11-01T14:26:28.1388247+09:00",
+                                       "sha256":  "566EE53B083094402751EC424886C95458258FCE9EE28703625BEB020CB156B1"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일목록.json",
+                                       "bytes":  4665,
+                                       "created":  "2026-11-01T14:21:51.1576230+09:00",
+                                       "modified":  "2026-11-01T14:21:51.1586246+09:00",
+                                       "sha256":  "C689BA60730A15FFA5BEDB887DED09418805F724777EC10B80E877A89E9892D9"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\신규증적및산출물_SHA256.json",
+                                       "bytes":  2964,
+                                       "created":  "2026-11-01T14:26:28.3250034+09:00",
+                                       "modified":  "2026-11-01T14:26:44.6499594+09:00",
+                                       "sha256":  "CAE1866E95796F79D8C134ABAE126A78064C002293DD669FFC92129945C9A7A2"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\실행정보.json",
+                                       "bytes":  312,
+                                       "created":  "2026-11-01T14:21:51.2942801+09:00",
+                                       "modified":  "2026-11-01T14:21:51.2953196+09:00",
+                                       "sha256":  "F6CF43329A9BD858EF22E68A9D502A5EE549D52392DB8DAFA1AD9675EA526105"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\오프라인_분석근거.md",
+                                       "bytes":  3100,
+                                       "created":  "2026-11-01T14:26:01.2283709+09:00",
+                                       "modified":  "2026-11-01T14:26:01.2283709+09:00",
+                                       "sha256":  "CEC79420C48A6EC88DF0313D565538A4B1D0C908C2DC1F6C90FE84FF96B1C9D2"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\원문열람목록.json",
+                                       "bytes":  5673,
+                                       "created":  "2026-11-01T14:22:53.7167945+09:00",
+                                       "modified":  "2026-11-01T14:22:53.7167945+09:00",
+                                       "sha256":  "F4233E70EE7293CBC3C81135DCFA31298153817D21760722DBC554E0042CA2F9"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\인증서정정_관측시점대조.json",
+                                       "bytes":  2953,
+                                       "created":  "2026-11-01T14:22:53.8034224+09:00",
+                                       "modified":  "2026-11-01T14:22:53.8044219+09:00",
+                                       "sha256":  "4ED132B6D558DBED0B29E0F6DF27D048F202730A4E72151804CDB0FD353EE357"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\최종집계.json",
+                                       "bytes":  993,
+                                       "created":  "2026-11-01T14:26:28.2648669+09:00",
+                                       "modified":  "2026-11-01T14:26:28.2648669+09:00",
+                                       "sha256":  "82A1AA8D3598C54EC4A90F8456179C12DBB72D68F36084AFAF5D25F5CB96059D"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\환경변수_이름존재만.json",
+                                       "bytes":  285,
+                                       "created":  "2026-11-01T14:22:25.5294452+09:00",
+                                       "modified":  "2026-11-01T14:22:25.5294452+09:00",
+                                       "sha256":  "351F15218DF379A0D88CEB9FD05E61214980D4B1213CAAEB7139FB752019417A"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\계정객체_설계.json",
+                                       "bytes":  8771,
+                                       "created":  "2026-11-01T14:35:09.1294352+09:00",
+                                       "modified":  "2026-11-01T14:35:09.1304435+09:00",
+                                       "sha256":  "74B2B616E6B4B0A5426D8438EDB71EBC52EEB5F0B4251DDBF65198D16FB5F585"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\기존파일_SHA256_시작.json",
+                                       "bytes":  7205,
+                                       "created":  "2026-11-01T14:35:08.1310654+09:00",
+                                       "modified":  "2026-11-01T14:35:08.1310654+09:00",
+                                       "sha256":  "6175F40DF3A2151712932D8876F909B26845993593D27C956D6D5EAB5E1215F9"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\생성목록_SHA256.json",
+                                       "bytes":  1693,
+                                       "created":  "2026-11-01T14:36:27.3264963+09:00",
+                                       "modified":  "2026-11-01T14:36:27.3264963+09:00",
+                                       "sha256":  "D427CFE322AA0947A3922A67C5FFC988F97EA447E43394DFF3CF504D683ED8DA"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\시험ID_대응표.json",
+                                       "bytes":  12577,
+                                       "created":  "2026-11-01T14:35:10.1181912+09:00",
+                                       "modified":  "2026-11-01T14:35:10.1181912+09:00",
+                                       "sha256":  "48C3B813DF9D8C60AB8ED01F7394ABB7075FE661875884FD90650E891C09D294"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\정리절차.md",
+                                       "bytes":  3667,
+                                       "created":  "2026-11-01T14:36:24.6202974+09:00",
+                                       "modified":  "2026-11-01T14:36:24.6202974+09:00",
+                                       "sha256":  "0D203F98694D6326F3758E35631AA6F8FD2DD457F7915BD3DB4EF054039B6551"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비결과.md",
+                                       "bytes":  5342,
+                                       "created":  "2026-11-01T14:36:25.5815958+09:00",
+                                       "modified":  "2026-11-01T14:36:25.5831644+09:00",
+                                       "sha256":  "4531ECCCDD1C6DEA512A7D841321F0DDAA8B41D1B869E1C8004B0642F051ED6D"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비확인.json",
+                                       "bytes":  871,
+                                       "created":  "2026-11-01T14:36:27.3068060+09:00",
+                                       "modified":  "2026-11-01T14:36:27.3078119+09:00",
+                                       "sha256":  "9470385AC58EEA2295D49CC9C2A18D0E57BBC68073DF6E5183DFE29EE6331225"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\A_private.txt",
+                                       "bytes":  126,
+                                       "created":  "2026-11-01T14:35:13.0902805+09:00",
+                                       "modified":  "2026-11-01T14:35:13.0902805+09:00",
+                                       "sha256":  "E22AD3AE2DA4B46BA2BEECA11271425118F5249A45BDC60EC5222FA8BEF5D46F"
+                                   },
+                                   {
+                                       "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\B_private.txt",
+                                       "bytes":  126,
+                                       "created":  "2026-11-01T14:35:14.0727334+09:00",
+                                       "modified":  "2026-11-01T14:35:14.0727334+09:00",
+                                       "sha256":  "BF06BFFB3B2719BCA4F768222CD31F25E085CE6E704EF748BC81872A05F17AE0"
+                                   }
+                               ],
+    "originalSnapshotAfter":  [
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\3차_curl오류.tmp",
+                                      "bytes":  0,
+                                      "created":  "2026-11-01T14:13:51.6267209+09:00",
+                                      "modified":  "2026-11-01T14:13:53.1827064+09:00",
+                                      "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\3차_기존파일해시.json",
+                                      "bytes":  1653,
+                                      "created":  "2026-11-01T14:13:27.9050840+09:00",
+                                      "modified":  "2026-11-01T14:13:27.9060839+09:00",
+                                      "sha256":  "4E15589A55550511E3D526025671F317200F6E252BD77134AF0B192529B65561"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\3차_응답분석근거.json",
+                                      "bytes":  101696,
+                                      "created":  "2026-11-01T14:13:29.5136111+09:00",
+                                      "modified":  "2026-11-01T14:15:04.0076153+09:00",
+                                      "sha256":  "D2009398FB17F79AC7D89881E541818B4C546FE40C68AF3874855C83FCC57896"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\3차_입력흐름근거.json",
+                                      "bytes":  2720,
+                                      "created":  "2026-11-01T14:14:56.4023999+09:00",
+                                      "modified":  "2026-11-01T14:14:56.4036153+09:00",
+                                      "sha256":  "F28A43D57A8BA1EEC053C46FA76E30BF2397314B29DE7916577D9FAF52908F99"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\followup_collect.ps1",
+                                      "bytes":  4476,
+                                      "created":  "2026-11-01T14:00:04.9326199+09:00",
+                                      "modified":  "2026-11-01T14:00:26.4273670+09:00",
+                                      "sha256":  "E3C844E9404CDCF2F90FF728B520CAEE7F1FBB0144A4B8113EA0288DE0C34E73"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\followup_curl_error.tmp",
+                                      "bytes":  0,
+                                      "created":  "2026-11-01T14:00:27.1032161+09:00",
+                                      "modified":  "2026-11-01T14:01:27.2882465+09:00",
+                                      "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\followup_resources.ps1",
+                                      "bytes":  2174,
+                                      "created":  "2026-11-01T14:01:56.3275365+09:00",
+                                      "modified":  "2026-11-01T14:01:58.0639243+09:00",
+                                      "sha256":  "BB83A738426888E1537EB1510B5973F3A5944C054AFF785C56F9115D02B6B804"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\third_collect.ps1",
+                                      "bytes":  5824,
+                                      "created":  "2026-11-01T14:13:25.7105598+09:00",
+                                      "modified":  "2026-11-01T14:13:27.1485582+09:00",
+                                      "sha256":  "C614BDBD0095B01D48CB071D8B11E887A0E9751CE89BC1A3DD9C1CF0E3E5372F"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\third_focus.ps1",
+                                      "bytes":  1322,
+                                      "created":  "2026-11-01T14:14:48.5873366+09:00",
+                                      "modified":  "2026-11-01T14:14:50.1540595+09:00",
+                                      "sha256":  "4F8BE73B3F833B48162CB5D73669686BE78FC50DF84F13037BF71CE91A988B58"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_3차_URL별_취약점현황.csv",
+                                      "bytes":  19672,
+                                      "created":  "2026-11-01T14:18:22.7121118+09:00",
+                                      "modified":  "2026-11-01T14:18:22.7121118+09:00",
+                                      "sha256":  "1E41BEA1F77B8FB8C35E8EC0627B75C2FB626BB11C57D48099D1BCB0644DA9B0"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_3차_미검증항목및필요자료.md",
+                                      "bytes":  4809,
+                                      "created":  "2026-11-01T14:18:24.7527963+09:00",
+                                      "modified":  "2026-11-01T14:18:24.7527963+09:00",
+                                      "sha256":  "DADF40B185702AD405828696BA2E171311C665478992542CA914CA5ED07F70B0"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_3차_심화보안점검보고서.md",
+                                      "bytes":  13376,
+                                      "created":  "2026-11-01T14:18:21.7157334+09:00",
+                                      "modified":  "2026-11-01T14:18:47.0241369+09:00",
+                                      "sha256":  "692C6C7EB13713AA9E6EDF0A077A39BC15B5EB6EF315FBAF3F09BA32951FC5A0"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_3차_출시보안검토의견.md",
+                                      "bytes":  2674,
+                                      "created":  "2026-11-01T14:18:25.7407428+09:00",
+                                      "modified":  "2026-11-01T14:18:25.7407428+09:00",
+                                      "sha256":  "CA90210BCD63EEDB213AD86A389CD771278F93C4B6121516B46C03B91D72EC56"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_3차_취약점개선가이드.md",
+                                      "bytes":  8548,
+                                      "created":  "2026-11-01T14:18:23.7594837+09:00",
+                                      "modified":  "2026-11-01T14:18:23.7594837+09:00",
+                                      "sha256":  "D912F03E80E346977E3F6720D9E37E336BA1D395EA0889C8E2A9B51B4E4083D1"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_4차_검증매트릭스.csv",
+                                      "bytes":  38157,
+                                      "created":  "2026-11-01T14:24:07.5468626+09:00",
+                                      "modified":  "2026-11-01T14:26:27.9549663+09:00",
+                                      "sha256":  "B0FDA73D5BEF73EB3A83AC4B911AF76EE04B6673E602967327EEA28260310DD5"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_4차_차단사항및자료요청.md",
+                                      "bytes":  5331,
+                                      "created":  "2026-11-01T14:26:03.1387024+09:00",
+                                      "modified":  "2026-11-01T14:26:03.1387024+09:00",
+                                      "sha256":  "DC6490CF8A4F3D3BE1DBDB2A8705C5CFADA0D5FE9BA74C6BF673BE0FA76DD35D"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_4차_출시보안검토의견.md",
+                                      "bytes":  2274,
+                                      "created":  "2026-11-01T14:26:04.0764476+09:00",
+                                      "modified":  "2026-11-01T14:26:04.0764476+09:00",
+                                      "sha256":  "B75062FD30C5F9DCEC9D2EEEF20F038C841FA8343053CA619C5167A9F23EC6FC"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_4차_핵심보안검증보고서.md",
+                                      "bytes":  9439,
+                                      "created":  "2026-11-01T14:26:02.1977729+09:00",
+                                      "modified":  "2026-11-01T14:26:42.9903768+09:00",
+                                      "sha256":  "5F73C1F7A0C2A75573658D853395A51E519D8FC2FE5DE69C7F9C63633AEF571D"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_URL별_보안점검결과.csv",
+                                      "bytes":  26069,
+                                      "created":  "2026-11-01T14:05:15.7642189+09:00",
+                                      "modified":  "2026-11-01T14:05:15.7642189+09:00",
+                                      "sha256":  "75F8566A9D63A396249C1F722F76BE961AAAE679BD43F8BBB3AA439AC45F6A53"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_검증재개_준비현황.md",
+                                      "bytes":  7243,
+                                      "created":  "2026-11-01T14:31:39.2380399+09:00",
+                                      "modified":  "2026-11-01T14:31:39.2390445+09:00",
+                                      "sha256":  "F7311DDCB1CDF9D5FF28283E4FAD2CCA7CD38137F0FC7831E320C60F1403A506"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_보안예비점검.md",
+                                      "bytes":  11267,
+                                      "created":  "2026-11-01T13:53:24.6298541+09:00",
+                                      "modified":  "2026-11-01T13:53:24.6298541+09:00",
+                                      "sha256":  "829291187094818BA4DF42333863F75B0827E4D09D21F7469FF711A5AF34380B"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_전체주소_사이트목록.docx",
+                                      "bytes":  43865,
+                                      "created":  "2026-11-01T13:48:04.7326032+09:00",
+                                      "modified":  "2026-10-30T20:12:32.1327717+09:00",
+                                      "sha256":  "BF0339418729F2886E63F96A8A534DCA64E45E93568FF9AFA1BF87272CF05298"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_추가검증필요항목.md",
+                                      "bytes":  4052,
+                                      "created":  "2026-11-01T14:05:17.6522327+09:00",
+                                      "modified":  "2026-11-01T14:05:17.6522327+09:00",
+                                      "sha256":  "79EEAFBE176126A1C7CD2F3CC174907532F5405620E74F2542E5254B5A84CC65"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_출시전_보안체크리스트.md",
+                                      "bytes":  2807,
+                                      "created":  "2026-11-01T14:05:18.5924236+09:00",
+                                      "modified":  "2026-11-01T14:05:18.5924236+09:00",
+                                      "sha256":  "9D6E645B04109207CA6E73FC39BEDD9CA99D904C6B258EE7E70C0300C1B439FD"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_취약점_상세목록.json",
+                                      "bytes":  9022,
+                                      "created":  "2026-11-01T14:05:16.7260789+09:00",
+                                      "modified":  "2026-11-01T14:05:16.7260789+09:00",
+                                      "sha256":  "6424F2DF2431F598456D4E3089321EAA44B36184EB197FECC06D7027FD287E5D"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_후속보안점검_보고서.md",
+                                      "bytes":  12960,
+                                      "created":  "2026-11-01T14:05:14.8202691+09:00",
+                                      "modified":  "2026-11-01T14:05:14.8202691+09:00",
+                                      "sha256":  "1049853C0D6AAA00EB1816A4736B695F7884FECF5FA26080E03FBEE3AD0F9FFE"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\보안점검_사전현황.md",
+                                      "bytes":  3351,
+                                      "created":  "2026-11-01T13:48:43.7981023+09:00",
+                                      "modified":  "2026-11-01T13:48:43.7990988+09:00",
+                                      "sha256":  "572E74E0F6C0FE7E3CF7F3385843C5503CB4F2ABBE6D6B80163B08CACDF6299A"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\점검대상_조회결과.json",
+                                      "bytes":  18248,
+                                      "created":  "2026-11-01T13:53:28.7406947+09:00",
+                                      "modified":  "2026-11-01T13:53:28.7406947+09:00",
+                                      "sha256":  "294A51C3C2894DD65215C7BE761B4C2A300CC9C20233E3F3882E5C3600A0BF99"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\점검대상_현황.json",
+                                      "bytes":  12290,
+                                      "created":  "2026-11-01T13:48:43.7910766+09:00",
+                                      "modified":  "2026-11-01T13:48:43.7920754+09:00",
+                                      "sha256":  "0BEB688BBE80EE95AA3947E451D7C18C69CCD034A9BF164209FA3AEE7ADAC196"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\후속점검_리소스근거.json",
+                                      "bytes":  4138,
+                                      "created":  "2026-11-01T14:02:09.8599894+09:00",
+                                      "modified":  "2026-11-01T14:02:09.8609927+09:00",
+                                      "sha256":  "82977ADA81B1D78E012A52B4C2D32A15513B531158F1D5D1F26EA1BA719D8F71"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\후속점검_응답증거.json",
+                                      "bytes":  147564,
+                                      "created":  "2026-11-01T14:00:27.2416249+09:00",
+                                      "modified":  "2026-11-01T14:01:29.0986724+09:00",
+                                      "sha256":  "73A8F3C0DD3C2E4044EE3F43BD81B91BBEE4D4E35D7FD9BE07212111FE1CAEC7"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\CSV_대상및증거대조.json",
+                                      "bytes":  35114,
+                                      "created":  "2026-11-01T14:22:25.7711963+09:00",
+                                      "modified":  "2026-11-01T14:22:53.6823069+09:00",
+                                      "sha256":  "2D67E699CDD840A865563D6853CF14B67073FF671B7D840C916EDE9AAA0C30F3"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\Git_시작종료.json",
+                                      "bytes":  681,
+                                      "created":  "2026-11-01T14:26:28.2418614+09:00",
+                                      "modified":  "2026-11-01T14:26:28.2428616+09:00",
+                                      "sha256":  "34AEF3560395719F70141CE0C64C28857EAE9C7F597E0ED1A2702A43C406245C"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_시작.json",
+                                      "bytes":  4633,
+                                      "created":  "2026-11-01T14:21:51.2718045+09:00",
+                                      "modified":  "2026-11-01T14:21:51.2728082+09:00",
+                                      "sha256":  "8CA0F636A37C7B30D471091B3F36F20A624CC2A96F7724AAE1616D45D9643CB8"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_최종검증.json",
+                                      "bytes":  9573,
+                                      "created":  "2026-11-01T14:26:28.1378248+09:00",
+                                      "modified":  "2026-11-01T14:26:28.1388247+09:00",
+                                      "sha256":  "566EE53B083094402751EC424886C95458258FCE9EE28703625BEB020CB156B1"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일목록.json",
+                                      "bytes":  4665,
+                                      "created":  "2026-11-01T14:21:51.1576230+09:00",
+                                      "modified":  "2026-11-01T14:21:51.1586246+09:00",
+                                      "sha256":  "C689BA60730A15FFA5BEDB887DED09418805F724777EC10B80E877A89E9892D9"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\신규증적및산출물_SHA256.json",
+                                      "bytes":  2964,
+                                      "created":  "2026-11-01T14:26:28.3250034+09:00",
+                                      "modified":  "2026-11-01T14:26:44.6499594+09:00",
+                                      "sha256":  "CAE1866E95796F79D8C134ABAE126A78064C002293DD669FFC92129945C9A7A2"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\실행정보.json",
+                                      "bytes":  312,
+                                      "created":  "2026-11-01T14:21:51.2942801+09:00",
+                                      "modified":  "2026-11-01T14:21:51.2953196+09:00",
+                                      "sha256":  "F6CF43329A9BD858EF22E68A9D502A5EE549D52392DB8DAFA1AD9675EA526105"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\오프라인_분석근거.md",
+                                      "bytes":  3100,
+                                      "created":  "2026-11-01T14:26:01.2283709+09:00",
+                                      "modified":  "2026-11-01T14:26:01.2283709+09:00",
+                                      "sha256":  "CEC79420C48A6EC88DF0313D565538A4B1D0C908C2DC1F6C90FE84FF96B1C9D2"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\원문열람목록.json",
+                                      "bytes":  5673,
+                                      "created":  "2026-11-01T14:22:53.7167945+09:00",
+                                      "modified":  "2026-11-01T14:22:53.7167945+09:00",
+                                      "sha256":  "F4233E70EE7293CBC3C81135DCFA31298153817D21760722DBC554E0042CA2F9"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\인증서정정_관측시점대조.json",
+                                      "bytes":  2953,
+                                      "created":  "2026-11-01T14:22:53.8034224+09:00",
+                                      "modified":  "2026-11-01T14:22:53.8044219+09:00",
+                                      "sha256":  "4ED132B6D558DBED0B29E0F6DF27D048F202730A4E72151804CDB0FD353EE357"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\최종집계.json",
+                                      "bytes":  993,
+                                      "created":  "2026-11-01T14:26:28.2648669+09:00",
+                                      "modified":  "2026-11-01T14:26:28.2648669+09:00",
+                                      "sha256":  "82A1AA8D3598C54EC4A90F8456179C12DBB72D68F36084AFAF5D25F5CB96059D"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\4차_증적_20261101_142151\\환경변수_이름존재만.json",
+                                      "bytes":  285,
+                                      "created":  "2026-11-01T14:22:25.5294452+09:00",
+                                      "modified":  "2026-11-01T14:22:25.5294452+09:00",
+                                      "sha256":  "351F15218DF379A0D88CEB9FD05E61214980D4B1213CAAEB7139FB752019417A"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\계정객체_설계.json",
+                                      "bytes":  8771,
+                                      "created":  "2026-11-01T14:35:09.1294352+09:00",
+                                      "modified":  "2026-11-01T14:35:09.1304435+09:00",
+                                      "sha256":  "74B2B616E6B4B0A5426D8438EDB71EBC52EEB5F0B4251DDBF65198D16FB5F585"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\기존파일_SHA256_시작.json",
+                                      "bytes":  7205,
+                                      "created":  "2026-11-01T14:35:08.1310654+09:00",
+                                      "modified":  "2026-11-01T14:35:08.1310654+09:00",
+                                      "sha256":  "6175F40DF3A2151712932D8876F909B26845993593D27C956D6D5EAB5E1215F9"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\생성목록_SHA256.json",
+                                      "bytes":  1693,
+                                      "created":  "2026-11-01T14:36:27.3264963+09:00",
+                                      "modified":  "2026-11-01T14:36:27.3264963+09:00",
+                                      "sha256":  "D427CFE322AA0947A3922A67C5FFC988F97EA447E43394DFF3CF504D683ED8DA"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\시험ID_대응표.json",
+                                      "bytes":  12577,
+                                      "created":  "2026-11-01T14:35:10.1181912+09:00",
+                                      "modified":  "2026-11-01T14:35:10.1181912+09:00",
+                                      "sha256":  "48C3B813DF9D8C60AB8ED01F7394ABB7075FE661875884FD90650E891C09D294"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\정리절차.md",
+                                      "bytes":  3667,
+                                      "created":  "2026-11-01T14:36:24.6202974+09:00",
+                                      "modified":  "2026-11-01T14:36:24.6202974+09:00",
+                                      "sha256":  "0D203F98694D6326F3758E35631AA6F8FD2DD457F7915BD3DB4EF054039B6551"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비결과.md",
+                                      "bytes":  5342,
+                                      "created":  "2026-11-01T14:36:25.5815958+09:00",
+                                      "modified":  "2026-11-01T14:36:25.5831644+09:00",
+                                      "sha256":  "4531ECCCDD1C6DEA512A7D841321F0DDAA8B41D1B869E1C8004B0642F051ED6D"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비확인.json",
+                                      "bytes":  871,
+                                      "created":  "2026-11-01T14:36:27.3068060+09:00",
+                                      "modified":  "2026-11-01T14:36:27.3078119+09:00",
+                                      "sha256":  "9470385AC58EEA2295D49CC9C2A18D0E57BBC68073DF6E5183DFE29EE6331225"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\A_private.txt",
+                                      "bytes":  126,
+                                      "created":  "2026-11-01T14:35:13.0902805+09:00",
+                                      "modified":  "2026-11-01T14:35:13.0902805+09:00",
+                                      "sha256":  "E22AD3AE2DA4B46BA2BEECA11271425118F5249A45BDC60EC5222FA8BEF5D46F"
+                                  },
+                                  {
+                                      "path":  "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\B_private.txt",
+                                      "bytes":  126,
+                                      "created":  "2026-11-01T14:35:14.0727334+09:00",
+                                      "modified":  "2026-11-01T14:35:14.0727334+09:00",
+                                      "sha256":  "BF06BFFB3B2719BCA4F768222CD31F25E085CE6E704EF748BC81872A05F17AE0"
+                                  }
+                              ],
+    "changedDuring":  [
+
+                      ],
+    "addedDuring":  [
+
+                    ],
+    "extraComparedTo26":  [
+                              "C:\\codex_pen_test1\\라이나생명_4차_검증매트릭스.csv",
+                              "C:\\codex_pen_test1\\라이나생명_4차_차단사항및자료요청.md",
+                              "C:\\codex_pen_test1\\라이나생명_4차_출시보안검토의견.md",
+                              "C:\\codex_pen_test1\\라이나생명_4차_핵심보안검증보고서.md",
+                              "C:\\codex_pen_test1\\라이나생명_검증재개_준비현황.md",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\CSV_대상및증거대조.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\Git_시작종료.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_시작.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일_SHA256_최종검증.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\기존파일목록.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\신규증적및산출물_SHA256.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\실행정보.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\오프라인_분석근거.md",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\원문열람목록.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\인증서정정_관측시점대조.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\최종집계.json",
+                              "C:\\codex_pen_test1\\4차_증적_20261101_142151\\환경변수_이름존재만.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\계정객체_설계.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\기존파일_SHA256_시작.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\생성목록_SHA256.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\시험ID_대응표.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\정리절차.md",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비결과.md",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\준비확인.json",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\A_private.txt",
+                              "C:\\codex_pen_test1\\라이나생명_테스트준비_20261101_1434\\dummy\\B_private.txt"
+                          ],
+    "statusChanges":  [
+
+                      ],
+    "note":  "No original CSV updated. O-10 is linked to separate workspace evidence; historical execution metadata limits remain. N-01/N-02 classification correction is documented separately, not rewritten."
+}

@@ -1,0 +1,298 @@
+{
+  "at": "2026-11-01T05:20:05.943Z",
+  "dateKst": "20261101",
+  "round": 1,
+  "networkRequests": 0,
+  "runs": [
+    {
+      "name": "verify-additional.mjs",
+      "exitCode": 0
+    },
+    {
+      "name": "verify-intrusion-paths.mjs",
+      "exitCode": 0
+    },
+    {
+      "name": "verify-api-destination.mjs",
+      "exitCode": 0
+    },
+    {
+      "name": "reference-tests",
+      "exitCode": 0,
+      "tests": 32,
+      "pass": 32,
+      "fail": 0
+    }
+  ],
+  "sources": [
+    {
+      "file": "evidence/R01.html",
+      "sha256": "3c10353296a34681b6217f834f0e2bd9425e296978dad4294f2af8ed026070e0",
+      "markers": [
+        {
+          "marker": "excapeHtmlOrReturn",
+          "offsets": [
+            3389
+          ]
+        },
+        {
+          "marker": "escapeHtml",
+          "offsets": [
+            2873,
+            3620
+          ]
+        }
+      ]
+    },
+    {
+      "file": "additional-evidence/A03.js",
+      "sha256": "c77f693366f0b02f68b13acf3c4b345300479f02a66ba45188a11288729d90ae",
+      "markers": [
+        {
+          "marker": "domProps:{innerHTML:t._s(t.messageState.messageInfo.message)}",
+          "offsets": [
+            28929
+          ]
+        }
+      ]
+    },
+    {
+      "file": "path-evidence/common/P03.js",
+      "sha256": "d5ecd0cee75e1fc848afb1bea4d0bb9d642abc0bb4b722dda123d8e3f5320101",
+      "markers": [
+        {
+          "marker": "m=null!==(c=null==d?void 0:d.message)",
+          "offsets": [
+            1735
+          ]
+        },
+        {
+          "marker": "r.data.refreshToken=O",
+          "offsets": [
+            4731
+          ]
+        },
+        {
+          "marker": "var n=e.store,r=n.state.authStore.uuid,a=/",
+          "offsets": [
+            427
+          ]
+        }
+      ]
+    },
+    {
+      "file": "path-evidence/common/P04.js",
+      "sha256": "8a439ecbc1914d87e9d21028834924386d2393a9f0de26724402b982090111ef",
+      "markers": [
+        {
+          "marker": "showMessageState:function",
+          "offsets": [
+            2971
+          ]
+        }
+      ]
+    },
+    {
+      "file": "path-evidence/P01.js",
+      "sha256": "caf1b05d1390d5a82e495b3ea7ebbe6eb27b5438d6df9b82487e6b8aa15fdab8",
+      "markers": []
+    }
+  ],
+  "headerChecks": [
+    {
+      "id": 1,
+      "url": "https://www.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:51.329Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 2,
+      "url": "https://m.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:52.495Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 3,
+      "url": "https://ga.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:53.584Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 5,
+      "url": "https://direct.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:56.291Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 6,
+      "url": "https://mdirect.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:57.378Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 8,
+      "url": "https://blog.direct.lina.co.kr/",
+      "collectedAt": "2026-11-01T04:43:59.646Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 9,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN999M0.html",
+      "collectedAt": "2026-11-01T04:44:01.343Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 10,
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P1C.html",
+      "collectedAt": "2026-11-01T04:44:02.483Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 12,
+      "url": "https://ga.lina.co.kr/webfw/html/nawlogout2.html",
+      "collectedAt": "2026-11-01T04:44:04.738Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 13,
+      "url": "https://ga.lina.co.kr/html/gap/GA/GAZ910P14.html",
+      "collectedAt": "2026-11-01T04:44:05.766Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 14,
+      "url": "https://ga.lina.co.kr/wizvera/veraport/install20/install_lina.html",
+      "collectedAt": "2026-11-01T04:44:06.785Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 15,
+      "url": "https://ga.lina.co.kr/webfw/html/nawmain.html",
+      "collectedAt": "2026-11-01T04:44:07.827Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 16,
+      "url": "https://srm.lina.co.kr/login.do",
+      "collectedAt": "2026-11-01T04:44:08.857Z",
+      "status": 200,
+      "frame": true,
+      "csp": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;"
+    },
+    {
+      "id": 17,
+      "url": "https://www.lina.co.kr/service/health-screening",
+      "collectedAt": "2026-11-01T04:44:10.398Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 18,
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1596",
+      "collectedAt": "2026-11-01T04:44:11.458Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 19,
+      "url": "https://www.lina.co.kr/event/detail?evtSeq=1464",
+      "collectedAt": "2026-11-01T04:44:12.504Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 20,
+      "url": "https://direct.lina.co.kr/event/detail?evtSeq=1266",
+      "collectedAt": "2026-11-01T04:44:13.555Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 21,
+      "url": "https://ga.lina.co.kr/webfw/html/nawcheck.html",
+      "collectedAt": "2026-11-01T04:44:14.647Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 22,
+      "url": "https://ga.lina.co.kr/gap/serviceEndpoint/initech/extension/install/install.html",
+      "collectedAt": "2026-11-01T04:44:15.677Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 23,
+      "url": "https://www.lina.co.kr/lib/wizvera/delfino/install20/install.html?P_name=Delfino&module=G3&url=close",
+      "collectedAt": "2026-11-01T04:44:16.912Z",
+      "status": 200,
+      "frame": false,
+      "csp": null
+    },
+    {
+      "id": 24,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN610M0.html",
+      "collectedAt": "2026-11-01T04:44:17.961Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 25,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GPN602M0.html",
+      "collectedAt": "2026-11-01T04:44:18.993Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 26,
+      "url": "https://ga.lina.co.kr/html/gap/GM/GMU661M0.html?preWinId=GMU661M1&tkn=",
+      "collectedAt": "2026-11-01T04:44:20.014Z",
+      "status": 200,
+      "frame": false,
+      "csp": "script-src * 'self' blob: 'unsafe-inline' 'unsafe-eval' "
+    },
+    {
+      "id": 27,
+      "url": "https://srm.lina.co.kr/spLogin.do",
+      "collectedAt": "2026-11-01T04:44:21.063Z",
+      "status": 200,
+      "frame": true,
+      "csp": "object-src 'none'; script-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; script-src-elem 'self' data: blob: 'unsafe-inline' https://bgrins.github.io/filereader.js/filereader.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js https://unpkg.com/jsonpath@0.2.11/jsonpath.min.js; style-src 'self' 'unsafe-inline';, default-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; script-src 'self' https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' blob:; object-src 'self' data: 'unsafe-inline' 'unsafe-eval' ; img-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' http://www.unisign.co.kr https://127.0.0.1:15018 http://127.0.0.1:14319 https://127.0.0.1:14315 data: 'unsafe-inline' 'unsafe-eval' ;"
+    }
+  ],
+  "originalFilesChecked": 187,
+  "changedOriginalFiles": [],
+  "reportPath": "deliverables/라이나생명_후속_보안점검_20261101.md"
+}
